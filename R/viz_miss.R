@@ -6,27 +6,22 @@
 #'
 #' @param x a data.frame object
 #'
-#' @importFrom tidyr gather
-#' @import dplyr
-#' @import ggplot2
-#'
 #' @export
 vis_miss <- function(x){
 
   x %>%
     is.na %>%
     as.data.frame %>%
-    mutate(rows = 1:n()) %>%
+    mutate(rows = row_number()) %>%
     # gather the variables together for plotting
     # here we now have a column of the row number (row), then the variable(variables), then the contents of that variable (value)
-    gather(key = variables,
-           value = value,
-           -rows) %>%
+    tidyr::gather_(key_col = "variables",
+                   value_col = "value",
+                   gather_cols = names(.)[-length(.)]) %>%
     # then we plot it
-    ggplot(data = .,
-           aes(x = variables,
-               y = rows)) +
-    geom_raster(aes(fill = value)) +
+    ggplot(aes_string(x = "variables",
+                      y = "rows")) +
+    geom_raster(aes_string(fill = "value")) +
     # change the colour, so that missing is grey, present is black
     scale_fill_grey(name = "",
                     labels = c("Present",
