@@ -6,10 +6,6 @@
 #'
 #' @param x a data.frame object
 #'
-#' @importFrom tidyr gather
-#' @import dplyr
-#' @import ggplot2
-#'
 #' @export
 vis_dat <- function(x){
 
