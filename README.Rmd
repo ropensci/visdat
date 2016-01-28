@@ -32,7 +32,7 @@ Part of the name suggests that it could be integrated with testdat and testthat.
 
 library(devtools)
 
-install_github("tierneyn/footprintr")
+install_github("tierneyn/visdat")
 ```
 
 # Example

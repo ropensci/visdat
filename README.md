@@ -19,7 +19,7 @@ How to install
 
 library(devtools)
 
-install_github("tierneyn/footprintr")
+install_github("tierneyn/visdat")
 ```
 
 Example
