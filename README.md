@@ -39,7 +39,7 @@ vis_dat(airquality)
 
 ![](README-vis_dat-1.png)
 
-The classes are represented on the legend, and missing data represented by grey. This tells us
+The classes are represented on the legend, and missing data represented by grey. This tells us that R reads this dataset as having numeric and integer values, along with some missing data in `Ozone` and `Solar.R`.
 
 We can explore the missing data further using `vis_miss`
 
@@ -66,20 +66,11 @@ Future work
 
 In the future I am keen to explore how to allow for each cell to be colored according to its type (e.g., strings, factors, integers, decimals, dates, missing data). It would also be really cool to get this function to "intelligently" read in data types.
 
-`vis_datly`. `vis_dat` could include an interactive version of the plots (similar to csv-fingerprint), so that you can
+`vis_datly`. `vis_dat` could include an interactive version of the plots using `plotly`, so that you can actually *see* what is inside the data.
 
-Thank yous
-==========
+Thank you
+=========
 
-Thank you to @jennbc, whose [tweet](https://twitter.com/JennyBryan/status/679011378414268416) got me thinking about this, and for her code contributions.
+Thank you to Jenny Bryan, whose [tweet](https://twitter.com/JennyBryan/status/679011378414268416) got me thinking about vis\_dat, and for her code contributions.
 
 Thanks also to Noam Ross for his suggestions on using plotly with visdat.
-
-Known Issues.
-=============
-
-**Individual cells do not have an individual class** Due to the fact that R coerces a vector to be the same type, this means that you cannot have something like c("a", 1L, 10.555) together as a vector, as it will just convert this to `[1] "a"      "1"      "10.555"`. This means that you don't get the ideal feature of picking up on nuances such as individuals cells that are different classes in the dataframe. Perhaps there is a way to read in a csv as a list so that these features are preserved?
-
-**Missing Data not listed in legend**
-
-When running the example below, the gray bars indicate missing values, but these are currently not specified as missing values.
