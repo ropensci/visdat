@@ -7,7 +7,7 @@ What does visdat do?
 
 Initially inspired by [`csv-fingerprint`](https://github.com/setosa/csv-fingerprint), `vis_dat` helps you visualise a dataframe and "get a look at the data" by displaying the variable classes in a dataframe as a plot with `vis_dat`, and getting a brief look into missing data patterns `vis_miss`.
 
-The name `visdat` was chosen as I think in the future it could be integrated with R packages `testdat` and `testthat`. The idea being that first you visualise your data (`visdat`), then you run tests from `testdat` or `testthat` to fix them.
+The name `visdat` was chosen as I think in the future it could be integrated with [`testdat`](https://github.com/ropensci/testdat). The idea being that first you visualise your data (`visdat`), then you run tests from `testdat` to fix them.
 
 There are currently two main commands: `vis_dat` and `vis_miss`.
 
