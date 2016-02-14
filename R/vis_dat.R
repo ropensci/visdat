@@ -2,7 +2,7 @@
 #'
 #' \code{vis_dat} visualises a data.frame to tell you what it contains.
 #'
-#' @description \code{vis_dat} gives you an at-a-glance ggplot of what is inside a dataframe, colouring cells according to what class they are and whether the values are missing. As it returns a ggplot object, it is very easy to customize and change labels, etc.
+#' @description \code{vis_dat} gives you an at-a-glance ggplot object of what is inside a dataframe. Cells are coloured according to what class they are and whether the values are missing. As \code{vis_dat} returns a ggplot object, it is very easy to customize and change labels, and customize the plot
 #'
 #' @param x a data.frame object
 #'
@@ -20,6 +20,6 @@ vis_dat <- function(x) {
     theme_minimal() +
     theme(axis.text.x = element_text(angle = 45, vjust = 0.5)) +
     labs(x = "Variables in Dataset",
-         y = "Rows / observations")
+         y = "Observations")
 
 }
