@@ -2,19 +2,18 @@
 visdat
 ======
 
-This package is the second iteration of my attempt at cloning the super cool and way sexier "csv-fingerprint" from flowing data - see [here](https://github.com/setosa/csv-fingerprint) and [here](https://flowingdata.com/2014/08/14/csv-fingerprint-spot-errors-in-your-data-at-a-glance/). Initially I had named the package "footprintr", to keep in spirit with the name "csv-fingerprint". However, after a little more thought and usage, I felt that "footprintr" didn't actually describe what was going on with the pacakge, and what it does, and so "visdat" was born.
+What does visdat do?
+====================
 
-What does it do?
-================
+Initially inspired by [`csv-fingerprint`](https://github.com/setosa/csv-fingerprint), `vis_dat` helps you visualise a dataframe and "get a look at the data" by displaying the variable classes in a dataframe as a plot with `vis_dat`, and getting a brief look into missing data patterns `vis_miss`.
 
-`visdat` is a small r package that visualises a dataframe, displaying missing data and variable classes with different colours. `vis_dat`
+The name `visdat` was chosen as I think in the future it could be integrated with R packages `testdat` and `testthat`. The idea being that first you visualise your data (`visdat`), then you run tests from `testdat` or `testthat` to fix them.
 
-Future work
-===========
+There are currently two main commands: `vis_dat` and `vis_miss`.
 
-In the future I am keen to explore how to allow for each cell to be colored according to its type (e.g., strings, factors, integers, decimals, dates, missing data). It would also be really cool to get this function to "intelligently" read in data types.
+-   `vis_dat` visualises a dataframe showing you what the classes of the columns are, and also displaying the missing data.
 
-Part of the name suggests that it could be integrated with testdat and testthat. The idea being that first you visualise your data, then you run tests to fix them.
+`v- is_miss` visualises the missing data, and allows for missingness to be clustered and columns rearranged. `vis_miss` is similar to `missing.pattern.plot` from the `mi` package. Unfortunately `missing.pattern.plot` is no longer in the `mi` package (well, at 14/02/2016).
 
 How to install
 ==============
@@ -30,7 +29,7 @@ install_github("tierneyn/visdat")
 Example
 =======
 
-Let's see what's inside airquality
+Let's see what's inside the dataset `airquality`
 
 ``` r
 library(visdat)
@@ -40,7 +39,7 @@ vis_dat(airquality)
 
 ![](README-vis_dat-1.png)
 
-The classes are represented on the legend, and missing data represented by grey.
+The classes are represented on the legend, and missing data represented by grey. This tells us
 
 We can explore the missing data further using `vis_miss`
 
@@ -61,6 +60,20 @@ vis_miss(airquality,
 ```
 
 ![](README-vis_miss-cluster-1.png)
+
+Future work
+===========
+
+In the future I am keen to explore how to allow for each cell to be colored according to its type (e.g., strings, factors, integers, decimals, dates, missing data). It would also be really cool to get this function to "intelligently" read in data types.
+
+`vis_datly`. `vis_dat` could include an interactive version of the plots (similar to csv-fingerprint), so that you can
+
+Thank yous
+==========
+
+Thank you to @jennbc, whose [tweet](https://twitter.com/JennyBryan/status/679011378414268416) got me thinking about this, and for her code contributions.
+
+Thanks also to Noam Ross for his suggestions on using plotly with visdat.
 
 Known Issues.
 =============

@@ -16,11 +16,9 @@ knitr::opts_chunk$set(
 
 # visdat
 
-This package is the second iteration of my attempt at cloning the super cool and way sexier "csv-fingerprint" from flowing data - see [here](https://github.com/setosa/csv-fingerprint) and [here](https://flowingdata.com/2014/08/14/csv-fingerprint-spot-errors-in-your-data-at-a-glance/). Initially I had named the package "footprintr", to keep in spirit with the name "csv-fingerprint". However, after a little more thought and usage, I felt that "footprintr" didn't actually describe what was going on with the pacakge, and what it does, and so "visdat" was born. 
+# What does visdat do?
 
-# What does it do?
-
-Initially inspired by `csv-fingerprint`, `vis_dat` helps you visualise a dataframe and "get a look at the data" by displaying the variable classes in a dataframe as a plot with `vis_dat`, and getting a brief look into missing data patterns `vis_miss`.
+Initially inspired by [`csv-fingerprint`](https://github.com/setosa/csv-fingerprint), `vis_dat` helps you visualise a dataframe and "get a look at the data" by displaying the variable classes in a dataframe as a plot with `vis_dat`, and getting a brief look into missing data patterns `vis_miss`.
 
 The name `visdat` was chosen as I think in the future it could be integrated with R packages `testdat` and `testthat`. The idea being that first you visualise your data (`visdat`), then you run tests from `testdat` or `testthat` to fix them.
 
@@ -78,6 +76,11 @@ In the future I am keen to explore how to allow for each cell to be colored acco
 
 `vis_datly`. `vis_dat` could include an interactive version of the plots (similar to csv-fingerprint), so that you can 
 
+# Thank yous
+
+Thank you to @jennbc, whose [tweet](https://twitter.com/JennyBryan/status/679011378414268416) got me thinking about this, and for her code contributions.
+
+Thanks also to Noam Ross for his suggestions on using plotly with visdat.
 
 # Known Issues.
   
