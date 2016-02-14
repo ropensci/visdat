@@ -13,7 +13,7 @@ There are currently two main commands: `vis_dat` and `vis_miss`.
 
 -   `vis_dat` visualises a dataframe showing you what the classes of the columns are, and also displaying the missing data.
 
-`v- is_miss` visualises the missing data, and allows for missingness to be clustered and columns rearranged. `vis_miss` is similar to `missing.pattern.plot` from the `mi` package. Unfortunately `missing.pattern.plot` is no longer in the `mi` package (well, at 14/02/2016).
+-   `vis_miss` visualises the missing data, and allows for missingness to be clustered and columns rearranged. `vis_miss` is similar to `missing.pattern.plot` from the `mi` package. Unfortunately `missing.pattern.plot` is no longer in the `mi` package (well, at 14/02/2016).
 
 How to install
 ==============
