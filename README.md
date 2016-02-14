@@ -7,7 +7,12 @@ This package is the second iteration of my attempt at cloning the super cool and
 What does it do?
 ================
 
-visdat is a small r package that visualises a dataframe, displaying missing data and variable classes with different colours. Future work will allow for each cell to be colored according to its type (e.g., strings, factors, integers, decimals, dates, missing data). It would also be really cool to get this function to "intelligently" read in data types.
+`visdat` is a small r package that visualises a dataframe, displaying missing data and variable classes with different colours. `vis_dat`
+
+Future work
+===========
+
+In the future I am keen to explore how to allow for each cell to be colored according to its type (e.g., strings, factors, integers, decimals, dates, missing data). It would also be really cool to get this function to "intelligently" read in data types.
 
 Part of the name suggests that it could be integrated with testdat and testthat. The idea being that first you visualise your data, then you run tests to fix them.
 
@@ -25,23 +30,37 @@ install_github("tierneyn/visdat")
 Example
 =======
 
-Let's explore the missing data
+Let's see what's inside airquality
 
 ``` r
 library(visdat)
 
-vis_miss(airquality)
-```
-
-![](README-vis_miss-1.png)<!-- -->
-
-Let's see what's inside airquality
-
-``` r
 vis_dat(airquality)
 ```
 
-![](README-vis_dat-1.png)<!-- -->
+![](README-vis_dat-1.png)
+
+The classes are represented on the legend, and missing data represented by grey.
+
+We can explore the missing data further using `vis_miss`
+
+``` r
+
+vis_miss(airquality)
+```
+
+![](README-vis_miss-1.png)
+
+You can further cluster the missingness and arrange the columns by missingness by setting `cluster = TRUE` and `sort_cols = TRUE`.
+
+``` r
+
+vis_miss(airquality, 
+         cluster = TRUE,
+         sort_cols = TRUE)
+```
+
+![](README-vis_miss-cluster-1.png)
 
 Known Issues.
 =============
