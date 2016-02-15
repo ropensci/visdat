@@ -4,10 +4,12 @@
 \alias{vis_dat}
 \title{vis_dat}
 \usage{
-vis_dat(x)
+vis_dat(x, sort_type = TRUE)
 }
 \arguments{
 \item{x}{a data.frame object}
+
+\item{sort_type}{logical TRUE/FALSE. When TRUE (default), it sorts by the type in the column to make it easier to see what is in the data}
 }
 \description{
 \code{vis_dat} gives you an at-a-glance ggplot object of what is inside a dataframe. Cells are coloured according to what class they are and whether the values are missing. As \code{vis_dat} returns a ggplot object, it is very easy to customize and change labels, and customize the plot

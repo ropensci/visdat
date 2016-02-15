@@ -3,6 +3,7 @@
 #' @name visdat
 #' @docType package
 #' @importFrom tidyr gather_
+#' @importFrom purrr map_chr
 #' @import dplyr
 #' @import ggplot2
 NULL

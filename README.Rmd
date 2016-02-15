@@ -49,7 +49,22 @@ library(visdat)
 vis_dat(airquality)
 ```
 
-The classes are represented on the legend, and missing data represented by grey. This tells us that R reads this dataset as having numeric and integer values, along with some missing data in `Ozone` and `Solar.R`.
+The classes are represented on the legend, and missing data represented by grey. 
+
+by default, `vis_dat` sorts the columns according to the type of the data in the vectors. You can turn this off by setting `sort_type == FALSE`. Perhaps this feature is better illustrated using the `example2` dataset, borrowed from csv-fingerprint
+
+```{r}
+
+vis_dat(example2)
+
+vis_dat(example2, 
+        sort_type = FALSE)
+
+```
+
+
+This tells us that R reads this dataset as having numeric and integer values, along with some missing data in `Ozone` and `Solar.R`.
+
 
 We can explore the missing data further using `vis_miss`
 
