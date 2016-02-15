@@ -69,13 +69,13 @@ vis_miss(airquality)
 
 ![](README-vis_miss-1.png)
 
-You can further cluster the missingness and arrange the columns by missingness by setting `cluster = TRUE` and `sort_cols = TRUE`.
+You can further cluster the missingness and arrange the columns by missingness by setting `cluster = TRUE` and `sort_miss = TRUE`.
 
 ``` r
 
 vis_miss(airquality, 
          cluster = TRUE,
-         sort_cols = TRUE)
+         sort_miss = TRUE)
 ```
 
 ![](README-vis_miss-cluster-1.png)

@@ -8,12 +8,12 @@
 #'
 #' @param cluster logical TRUE/FALSE. TRUE specifies that you want to use hierarchical clustering (mcquitty method) to arrange rows according to missingness. FALSE specifies that you want to leave it as is
 #'
-#' @param sort_cols logical TRUE/FALSE. TRUE arranges the columns in order of missingness
+#' @param sort_miss logical TRUE/FALSE. TRUE arranges the columns in order of missingness
 #'
 #' @export
 vis_miss <- function(x,
                      cluster = FALSE,
-                     sort_cols = FALSE){
+                     sort_miss = FALSE){
   # make a TRUE/FALSE matrix of the data.
   # This tells us whether it is missing (true) or not (false)
   x.na <- is.na(x)
@@ -31,7 +31,7 @@ vis_miss <- function(x,
     row_order_index <- 1:nrow(x)
   } # end else
 
-  if (sort_cols == TRUE) {
+  if (sort_miss == TRUE) {
 
     # arrange by the columns with the highest missingness
     # code inspired from https://r-forge.r-project.org/scm/viewvc.php/pkg/R/missing.pattern.plot.R?view=markup&root=mi-dev
@@ -80,5 +80,7 @@ vis_miss <- function(x,
     labs(x = "Variables in Data",
          y = "Observations") +
   scale_x_discrete(limits = col_order_index)
+  # Thanks to http://www.markhneedham.com/blog/2015/02/27/rggplot-controlling-x-axis-order/
+  # For the tip on using scale_x_discrete
 
 }

@@ -4,14 +4,14 @@
 \alias{vis_miss}
 \title{vis_miss}
 \usage{
-vis_miss(x, cluster = FALSE, sort_cols = FALSE)
+vis_miss(x, cluster = FALSE, sort_miss = FALSE)
 }
 \arguments{
 \item{x}{a data.frame}
 
 \item{cluster}{logical TRUE/FALSE. TRUE specifies that you want to use hierarchical clustering (mcquitty method) to arrange rows according to missingness. FALSE specifies that you want to leave it as is}
 
-\item{sort_cols}{logical TRUE/FALSE. TRUE arranges the columns in order of missingness}
+\item{sort_miss}{logical TRUE/FALSE. TRUE arranges the columns in order of missingness}
 }
 \description{
 \code{vis_miss} gives you an at-a-glance ggplot of the missingness inside a dataframe, colouring cells according to missingness, where black indicates a present cell and grey indicates a missing cell. As it returns a ggplot object, it is very easy to customize and change labels, and so on.

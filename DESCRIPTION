@@ -12,6 +12,7 @@ RoxygenNote: 5.0.1
 Imports:
     ggplot2,
     tidyr,
-    dplyr
+    dplyr,
+    purrr
 URL: https://github.com/tierneyn/visdat
 BugReports: https://github.com/tierneyn/visdat/issues
