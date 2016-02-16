@@ -14,8 +14,6 @@ vis_dat <- function(x,
 
   if (sort_type == TRUE) {
 
-
-
     # arrange by the columns with the highest missingness
     # code inspired from https://r-forge.r-project.org/scm/viewvc.php/pkg/R/missing.pattern.plot.R?view=markup&root=mi-dev
     # get the order of columns with highest missingness
@@ -39,11 +37,10 @@ vis_dat <- function(x,
     ggplot(aes_string(x = "variables", y = "rows")) +
     geom_raster(aes_string(fill = "value")) +
     theme_minimal() +
-    theme(axis.text.x = element_text(angle = 45, vjust = 0.5)) +
+    theme(axis.text.x = element_text(angle = 45,
+                                     vjust = 1,
+                                     hjust = 1)) +
     labs(x = "Variables in Dataset",
          y = "Observations") +
     scale_x_discrete(limits = type_order_index)
 }
-
-
-

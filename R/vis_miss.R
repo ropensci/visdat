@@ -76,7 +76,8 @@ vis_miss <- function(x,
                                "Missing")) +
     theme_minimal() +
     theme(axis.text.x = element_text(angle = 45,
-                                     vjust = 0.5)) +
+                                     vjust = 1,
+                                     hjust = 1)) +
     labs(x = "Variables in Data",
          y = "Observations") +
   scale_x_discrete(limits = col_order_index)
