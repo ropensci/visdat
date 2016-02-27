@@ -13,7 +13,7 @@ There are currently two main commands: `vis_dat` and `vis_miss`.
 
 -   `vis_dat` visualises a dataframe showing you what the classes of the columns are, and also displaying the missing data.
 
--   `vis_miss` visualises the missing data, and allows for missingness to be clustered and columns rearranged. `vis_miss` is similar to `missing.pattern.plot` from the `mi` package. Unfortunately `missing.pattern.plot` is no longer in the `mi` package (well, at 14/02/2016).
+-   `vis_miss` visualises just the missing data, and allows for missingness to be clustered and columns rearranged. `vis_miss` is similar to `missing.pattern.plot` from the `mi` package. Unfortunately `missing.pattern.plot` is no longer in the `mi` package (well, as of 14/02/2016).
 
 How to install
 ==============
@@ -37,28 +37,30 @@ library(visdat)
 vis_dat(airquality)
 ```
 
-![](README-vis_dat-1.png)
+![](README-vis_dat-1.svg)
 
 The classes are represented on the legend, and missing data represented by grey.
 
-by default, `vis_dat` sorts the columns according to the type of the data in the vectors. You can turn this off by setting `sort_type == FALSE`. Perhaps this feature is better illustrated using the `example2` dataset, borrowed from csv-fingerprint
+by default, `vis_dat` sorts the columns according to the type of the data in the vectors. You can turn this off by setting `sort_type == FALSE`. This feature is better illustrated using the `example2` dataset, borrowed from csv-fingerprint.
 
 ``` r
+
 
 vis_dat(example2)
 ```
 
-![](README-unnamed-chunk-3-1.png)
+![](README-unnamed-chunk-3-1.svg)
 
 ``` r
+
 
 vis_dat(example2, 
         sort_type = FALSE)
 ```
 
-![](README-unnamed-chunk-3-2.png)
+![](README-unnamed-chunk-3-2.svg)
 
-This tells us that R reads this dataset as having numeric and integer values, along with some missing data in `Ozone` and `Solar.R`.
+The plot above tells us that R reads this dataset as having numeric and integer values, along with some missing data in `Ozone` and `Solar.R`.
 
 We can explore the missing data further using `vis_miss`
 
@@ -67,29 +69,49 @@ We can explore the missing data further using `vis_miss`
 vis_miss(airquality)
 ```
 
-![](README-vis_miss-1.png)
+![](README-vis_miss-1.svg)
 
-You can further cluster the missingness and arrange the columns by missingness by setting `cluster = TRUE` and `sort_miss = TRUE`.
+You can cluster the missingness by setting `cluster = TRUE`
 
 ``` r
 
 vis_miss(airquality, 
-         cluster = TRUE,
+         cluster = TRUE)
+```
+
+![](README-vis_miss-cluster-1.svg)
+
+The columns can also just be arranged by columns with most missingness, by setting `sort_miss = TRUE`.
+
+``` r
+
+vis_miss(airquality,
          sort_miss = TRUE)
 ```
 
-![](README-vis_miss-cluster-1.png)
+![](README-unnamed-chunk-4-1.svg)
 
 Future work
 ===========
 
-In the future I am keen to explore how to allow for each cell to be colored according to its type (e.g., strings, factors, integers, decimals, dates, missing data). It would also be really cool to get this function to "intelligently" read in data types.
+I am keen to allow for each cell to be colored according to its type (e.g., strings, factors, integers, decimals, dates, missing data). This is currently being undertaken using functions from Hadley Wickham's `readr` package.
+
+**visualising expectations**
+
+Another idea is to pass expectations into `vis_dat` or `vis_miss`, along the lines of the `expectation` command in `assertr`. For example, you could ask `vis_dat` to identify those cells with values of -1 with something like this:
+
+``` r
+
+data %>% 
+  expect(value == -1) %>%
+  vis_dat
+```
 
 `vis_datly`. `vis_dat` could include an interactive version of the plots using `plotly`, so that you can actually *see* what is inside the data.
 
 Thank you
 =========
 
-Thank you to Jenny Bryan, whose [tweet](https://twitter.com/JennyBryan/status/679011378414268416) got me thinking about vis\_dat, and for her code contributions.
+Thank you to Jenny Bryan, whose [tweet](https://twitter.com/JennyBryan/status/679011378414268416) got me thinking about vis\_dat, and for her code contributions that actually allow the paper to .
 
-Thanks also to Noam Ross for his suggestions on using plotly with visdat.
+Thanks also to Noam Ross for his suggestions and code for using plotly with visdat.

@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 504.00 360.00'>
+<defs>
+  <style type='text/css'><![CDATA[
+    line, polyline, path, rect, circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+  ]]></style>
+</defs>
+<rect width='100%' height='100%' style='stroke: none; fill: #FFFFFF;'/>
+<polyline points='40.15,250.61 418.61,250.61 ' style='stroke-width: 1.07; stroke: #FAFAFA; stroke-linecap: butt;' />
+<polyline points='40.15,160.77 418.61,160.77 ' style='stroke-width: 1.07; stroke: #FAFAFA; stroke-linecap: butt;' />
+<polyline points='40.15,70.93 418.61,70.93 ' style='stroke-width: 1.07; stroke: #FAFAFA; stroke-linecap: butt;' />
+<polyline points='40.15,295.53 418.61,295.53 ' style='stroke-width: 0.43; stroke: #E5E5E5; stroke-linecap: butt;' />
+<polyline points='40.15,205.69 418.61,205.69 ' style='stroke-width: 0.43; stroke: #E5E5E5; stroke-linecap: butt;' />
+<polyline points='40.15,115.85 418.61,115.85 ' style='stroke-width: 0.43; stroke: #E5E5E5; stroke-linecap: butt;' />
+<polyline points='40.15,26.01 418.61,26.01 ' style='stroke-width: 0.43; stroke: #E5E5E5; stroke-linecap: butt;' />
+<polyline points='76.77,308.37 76.77,5.98 ' style='stroke-width: 0.43; stroke: #E5E5E5; stroke-linecap: butt;' />
+<polyline points='137.82,308.37 137.82,5.98 ' style='stroke-width: 0.43; stroke: #E5E5E5; stroke-linecap: butt;' />
+<polyline points='198.86,308.37 198.86,5.98 ' style='stroke-width: 0.43; stroke: #E5E5E5; stroke-linecap: butt;' />
+<polyline points='259.90,308.37 259.90,5.98 ' style='stroke-width: 0.43; stroke: #E5E5E5; stroke-linecap: butt;' />
+<polyline points='320.94,308.37 320.94,5.98 ' style='stroke-width: 0.43; stroke: #E5E5E5; stroke-linecap: butt;' />
+<polyline points='381.99,308.37 381.99,5.98 ' style='stroke-width: 0.43; stroke: #E5E5E5; stroke-linecap: butt;' />
+<image width='366.25' height='274.91' x='46.25' y='19.72' xlink:href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAW4AAAESCAIAAABSIKhiAAAABmJLR0QA/wD/AP+gvaeTAAADpElEQVR4nO3XwQ0CMRAEQUBk5KAck7Mlh1PrjKEqgnm1dp9jjAd3WWvtnnDFnHP3BL7da/cA4BdICRCQEiAgJUBASoCAlAABKQECUgIEpAQISAkQkBIgICVAQEqAgJQAASkBAlICBKQECEgJEJASICAlQEBKgICUAAEpAQJSAgSkBAhICRCQEiAgJUBASoCAlAABKQECUgIEpAQISAkQkBIgICVAQEqAgJQAASkBAlICBKQECEgJEJASICAlQEBKgICUAAEpAQJSAgSkBAhICRCQEiAgJUBASoCAlAABKQECUgIEpAQISAkQkBIgICVAQEqAgJQAgffuARxgrbV7whVzzt0T/oirBAhICRDw4Nzq0JP70AeHO7lKgICUAAEpAQJSAgSkBAhICRCQEiAgJUDgOcbYvQE4nqsECEgJEJASICAlQEBKgICUAAEpAQJSAgSkBAhICRCQEiAgJUBASoCAlAABKQECUgIEpAQISAkQkBIgICVAQEqAgJQAASkBAlICBKQECEgJEJASICAlQEBKgICUAAEpAQJSAgSkBAhICRCQEiAgJUBASoCAlAABKQECUgIEpAQISAkQkBIgICVAQEqAgJQAASkBAlICBKQECEgJEJASICAlQEBKgICUAAEpAQJSAgSkBAhICRCQEiAgJUBASoCAlAABKQECUgIEpAQISAkQkBIgICVAQEqAgJQAASkBAlICBKQECEgJEJASICAlQEBKgICUAAEpAQJSAgSkBAhICRCQEiAgJUBASoCAlAABKQECUgIEpAQISAkQkBIgICVAQEqAgJQAASkBAlICBKQECEgJEJASICAlQEBKgICUAAEpAQJSAgSkBAhICRCQEiAgJUBASoCAlAABKQECUgIEpAQISAkQkBIgICVAQEqAgJQAASkBAlICBKQECEgJEJASICAlQEBKgICUAAEpAQJSAgSkBAhICRCQEiAgJUBASoCAlAABKQECUgIEpAQISAkQkBIgICVAQEqAgJQAASkBAlICBKQECEgJEJASICAlQEBKgICUAAEpAQJSAgSkBAhICRCQEiAgJUBASoCAlAABKQECUgIEpAQISAkQkBIgICVAQEqAgJQAASkBAlICBKQECEgJEJASICAlQEBKgICUAAEpAQJSAgSkBAhICRCQEiAgJUBASoCAlAABKQECUgIEpAQISAkQkBIgICVAQEqAgJQAASkBAlICBKQECEgJEJASICAlQEBKgICUAIEPd8YMWbTkJa4AAAAASUVORK5CYII='/><text x='32.42' y='298.96' style='font-size: 9.60pt; font-family: Arial;'>0</text>
+<text x='27.08' y='209.12' style='font-size: 9.60pt; font-family: Arial;'>50</text>
+<text x='21.74' y='119.29' style='font-size: 9.60pt; font-family: Arial;'>100</text>
+<text x='21.74' y='29.45' style='font-size: 9.60pt; font-family: Arial;'>150</text>
+<text transform='translate(69.56,327.70) rotate(-45)' style='font-size: 9.60pt; font-family: Arial;'>Day</text>
+<text transform='translate(123.81,334.49) rotate(-45)' style='font-size: 9.60pt; font-family: Arial;'>Month</text>
+<text transform='translate(183.72,335.62) rotate(-45)' style='font-size: 9.60pt; font-family: Arial;'>Ozone</text>
+<text transform='translate(242.12,338.26) rotate(-45)' style='font-size: 9.60pt; font-family: Arial;'>Solar.R</text>
+<text transform='translate(308.45,332.98) rotate(-45)' style='font-size: 9.60pt; font-family: Arial;'>Temp</text>
+<text transform='translate(371.38,331.09) rotate(-45)' style='font-size: 9.60pt; font-family: Arial;'>Wind</text>
+<text x='183.69' y='351.63' style='font-size: 12.00pt; font-family: Arial;'>Variables in Data</text>
+<text transform='translate(16.96,192.53) rotate(-90)' style='font-size: 12.00pt; font-family: Arial;'>Observations</text>
+<rect x='431.37' y='146.36' width='17.28' height='17.28' style='stroke-width: 0.75; stroke: none; fill: #333333;' />
+<rect x='431.37' y='163.64' width='17.28' height='17.28' style='stroke-width: 0.75; stroke: none; fill: #CCCCCC;' />
+<text x='450.81' y='158.44' style='font-size: 9.60pt; font-family: Arial;'>Present</text>
+<text x='450.81' y='175.72' style='font-size: 9.60pt; font-family: Arial;'>Missing</text>
+</svg>
