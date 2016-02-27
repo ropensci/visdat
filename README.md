@@ -37,7 +37,7 @@ library(visdat)
 vis_dat(airquality)
 ```
 
-![](README-vis_dat-1.svg)
+![](README-vis_dat-1.png)
 
 The classes are represented on the legend, and missing data represented by grey.
 
@@ -49,7 +49,7 @@ by default, `vis_dat` sorts the columns according to the type of the data in the
 vis_dat(example2)
 ```
 
-![](README-unnamed-chunk-3-1.svg)
+![](README-unnamed-chunk-3-1.png)
 
 ``` r
 
@@ -58,7 +58,7 @@ vis_dat(example2,
         sort_type = FALSE)
 ```
 
-![](README-unnamed-chunk-3-2.svg)
+![](README-unnamed-chunk-3-2.png)
 
 The plot above tells us that R reads this dataset as having numeric and integer values, along with some missing data in `Ozone` and `Solar.R`.
 
@@ -69,7 +69,7 @@ We can explore the missing data further using `vis_miss`
 vis_miss(airquality)
 ```
 
-![](README-vis_miss-1.svg)
+![](README-vis_miss-1.png)
 
 You can cluster the missingness by setting `cluster = TRUE`
 
@@ -79,7 +79,7 @@ vis_miss(airquality,
          cluster = TRUE)
 ```
 
-![](README-vis_miss-cluster-1.svg)
+![](README-vis_miss-cluster-1.png)
 
 The columns can also just be arranged by columns with most missingness, by setting `sort_miss = TRUE`.
 
@@ -89,7 +89,7 @@ vis_miss(airquality,
          sort_miss = TRUE)
 ```
 
-![](README-unnamed-chunk-4-1.svg)
+![](README-unnamed-chunk-4-1.png)
 
 Future work
 ===========

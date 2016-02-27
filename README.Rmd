@@ -13,8 +13,7 @@ library(svglite)
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "README-",
-  dev = "svglite"
+  fig.path = "README-"
 )
 
 ```
