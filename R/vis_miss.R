@@ -51,7 +51,7 @@ vis_miss <- function(x,
 
   } else {
 
-    col_order_index <- sort(names(x))
+    col_order_index <- names(x)
 
   }
 
