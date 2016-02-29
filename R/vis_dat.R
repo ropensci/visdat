@@ -24,7 +24,7 @@ vis_dat <- function(x,
 
   } else {
 
-    type_order_index <- sort(names(x))
+    type_order_index <- names(x)
 
   }
 
