@@ -43,6 +43,6 @@ vis_guess <- function(x){
     labs(x = "Variables in Dataset",
          y = "Observations") +
     scale_x_discrete(limits = names(x))
-  
+
 }
 
