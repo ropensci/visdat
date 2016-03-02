@@ -6,20 +6,19 @@
 #' @export
 #'
 guess_type <- function(x){
-
+  
   # since
   # readr:::collectorGuess(NA,
   #                        locale_ = readr::locale())
   #
   # returns "character", use an ifelse to identify NAs
-
-  ifelse(is.na(x),
-         # yes? Leave as is NA
-         yes = NA,
-         # no? have a guess at the type of data it is using readr
-         no = readr:::collectorGuess(x,
-                                     locale_ = readr::locale())
-  )
+  output <- character(length(x))
+  nas <- is.na(x)
+  
+  output[!nas] <- readr:::collectorGuess(x[!nas], 
+                                         locale_ = readr::locale())
+  output[nas] <- NA
+  output
 }
 
 # > foo <- c(NA, "10", "10.1", "10/01/2001")

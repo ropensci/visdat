@@ -11,7 +11,6 @@
 #' @examples
 #' library(dplyr)
 #' library(tidyr)
-#' library(purrr)
 #' library(visdat)
 #'
 #' vis_guess(example2)
@@ -26,23 +25,24 @@
 #'
 #' @export
 vis_guess <- function(x){
-x %>%
-  mutate(rows = row_number()) %>%
-  tidyr::gather_(key_col = "variables",
-                 value_col = "value",
-                 gather_cols = names(.)[-length(.)]) %>%
-  mutate(
-    value = purrr:::map_chr(.$value, guess_type)
-  ) %>%
-  ggplot(aes_string(x = "variables", y = "rows")) +
-  geom_raster(aes_string(fill = "value")) +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45,
-                                   vjust = 1,
-                                   hjust = 1)) +
-  labs(x = "Variables in Dataset",
-       y = "Observations") +
-  scale_x_discrete(limits = names(x))
-
+  x %>%
+    mutate(rows = row_number()) %>%
+    tidyr::gather_(key_col = "variables",
+                   value_col = "value",
+                   gather_cols = names(.)[-length(.)]) %>%
+    mutate(
+      type = guess_type(value)
+    ) %>%
+    select(-value) %>%
+    ggplot(aes_string(x = "variables", y = "rows")) +
+    geom_raster(aes_string(fill = "type")) +
+    theme_minimal() +
+    theme(axis.text.x = element_text(angle = 45,
+                                     vjust = 1,
+                                     hjust = 1)) +
+    labs(x = "Variables in Dataset",
+         y = "Observations") +
+    scale_x_discrete(limits = names(x))
+  
 }
 
