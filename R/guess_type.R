@@ -6,7 +6,7 @@
 #' @export
 #'
 guess_type <- function(x){
-  
+
   # since
   # readr:::collectorGuess(NA,
   #                        locale_ = readr::locale())
@@ -14,9 +14,9 @@ guess_type <- function(x){
   # returns "character", use an ifelse to identify NAs
   output <- character(length(x))
   nas <- is.na(x)
-  
-  output[!nas] <- readr:::collectorGuess(x[!nas], 
-                                         locale_ = readr::locale())
+
+  output[!nas] <- vapply(FUN = readr:::collectorGuess, X = x[!nas], FUN.VALUE = character(1), locale_ = readr::locale())
+
   output[nas] <- NA
   output
 }
