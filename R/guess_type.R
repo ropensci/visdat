@@ -1,49 +1,91 @@
 #' guess_type
 #'
-#' @param x a vector of values you want to guess
+#' @title guess_type
 #'
-#' @return a character describing the suspected class. e.g., "10" is an integer, "20.11" is a double, "text" is character, etc.
+#' @param x is a vector of values you want to guess
+#'
+#' @return a character vector that describes the suspected class. e.g., "10" is an integer, "20.11" is a double, "text" is character, etc.
+#'
+#' @description guess_type is used in vis_guess, where it
+#'
 #' @export
 #'
 guess_type <- function(x){
-  
+
   # since
   # readr:::collectorGuess(NA,
   #                        locale_ = readr::locale())
   #
   # returns "character", use an ifelse to identify NAs
+  #
+  # Basically, this is fast way to check individual elements of a vector
+  # I'd like to use purrr::map for this but I couldn't get it to work without
+  # writing more function calls, which slowed it down, by a factor of about 3.
+  # So this is faster, for the moment. Thanks Miles!
+  #
   output <- character(length(x))
   nas <- is.na(x)
-  
-  output[!nas] <- readr:::collectorGuess(x[!nas], 
-                                         locale_ = readr::locale())
+
+  output[!nas] <- vapply(FUN = readr:::collectorGuess,
+                         X = x[!nas],
+                         FUN.VALUE = character(1),
+                         locale_ = readr::locale())
   output[nas] <- NA
   output
 }
-
-# > foo <- c(NA, "10", "10.1", "10/01/2001")
-# > guess_type(foo)
-# [1] NA          "character" "character"
-# [4] "character"
-#
-# > purrr::map_chr(foo, guess_type)
-# [1] NA          "integer"   "double"
-# [4] "character"
-#
-# foo_bar <- dplyr::data_frame(x1 = c(NA, "10", "10.1", "10/01/2001"),
-#                              x2 = c(NA, "10.1", NA, "FALSE"))
-#
-# purrr:::map(foo_bar, guess_type)
-#
-# $x1
-# [1] NA          "character" "character"
-# [4] "character"
-#
-# $x2
-# [1] NA          "character" NA
-# [4] "character"
-#
-# purrr:::map_chr(foo_bar$x1, guess_type)
-#
-# [1] NA          "integer"   "double"
-# [4] "character"
+#'
+#' all.equal(guess_df_1(iris), guess_df_2(iris))
+#'
+#' iris %>%
+#'   gather %>%
+#'   guess_vector()
+#'
+#' messy_df %>%
+#'
+#'
+#'
+#' mb_df <-
+#' microbenchmark::microbenchmark(
+#'   guess_df_1(iris),
+#'   guess_df_2(iris)
+#'   )
+#'
+#' # then do this:
+#' #
+#' #     new_function <- function(x) purrr::dmap(x, ~purrr::map_chr(., guess_type))
+#' #
+#' #     or maybe make it an S3 method?
+#' #
+#' # guess.data.frame
+#'
+#' # > foo <- c(NA, "10", "10.1", "10/01/2001")
+#' # > guess_type(foo)
+#' # [1] NA          "character" "character"
+#' # [4] "character"
+#' #
+#' # > purrr::map_chr(foo, guess_type)
+#' # [1] NA          "integer"   "double"
+#' # [4] "character"
+#' #
+#' # foo_bar <- dplyr::data_frame(x1 = c(NA, "10", "10.1", "10/01/2001"),
+#' #                              x2 = c(NA, "10.1", NA, "FALSE"))
+#' #
+#' # purrr:::map(foo_bar, guess_type)
+#' #
+#' # $x1
+#' # [1] NA          "character" "character"
+#' # [4] "character"
+#' #
+#' # $x2
+#' # [1] NA          "character" NA
+#' # [4] "character"
+#' #
+#' # purrr:::map_chr(foo_bar$x1, guess_type)
+#' #
+#' # [1] NA          "integer"   "double"
+#' # [4] "character"
+#'
+#'
+#'
+#' # ------------------ perhaps rename guess_type to do this: purrr::map_chr(messy_vector, guess_type).
+#'

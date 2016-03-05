@@ -7,12 +7,15 @@
 guess_type(x)
 }
 \arguments{
-\item{x}{a vector of values you want to guess}
+\item{x}{is a vector of values you want to guess}
 }
 \value{
-a character describing the suspected class. e.g., "10" is an integer, "20.11" is a double, "text" is character, etc.
+a character vector that describes the suspected class. e.g., "10" is an integer, "20.11" is a double, "text" is character, etc.
 }
 \description{
+guess_type is used in vis_guess, where it
+}
+\details{
 guess_type
 }
 

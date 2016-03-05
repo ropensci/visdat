@@ -23,7 +23,7 @@ vis_dat <- function(x,
     type_order_index <- names(x)[type_sort]
 
   } else {
-
+    # this means that the order remains the same as the dataframe.
     type_order_index <- names(x)
 
   }

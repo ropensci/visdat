@@ -6,8 +6,6 @@
 #'
 #' @param x a data.frame object
 #'
-#' @param sort_type logical TRUE/FALSE. When TRUE (default), it sorts by the type in the column to make it easier to see what is in the data
-#'
 #' @examples
 #' library(dplyr)
 #' library(tidyr)
@@ -43,6 +41,5 @@ vis_guess <- function(x){
     labs(x = "Variables in Dataset",
          y = "Observations") +
     scale_x_discrete(limits = names(x))
-  
-}
 
+} #end function
