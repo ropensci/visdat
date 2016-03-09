@@ -28,14 +28,15 @@ vis_dat <- function(x,
 
   }
 
-  x %>%
+  d <- x %>%
     mutate_each_(funs(fingerprint), tbl_vars(.)) %>%
     mutate(rows = row_number()) %>%
     tidyr::gather_(key_col = "variables",
-                   value_col = "value",
-                   gather_cols = names(.)[-length(.)]) %>%
-    ggplot(aes_string(x = "variables", y = "rows")) +
-    geom_raster(aes_string(fill = "value")) +
+                   value_col = "valueType",
+                   gather_cols = names(.)[-length(.)])
+  d$value <- tidyr::gather_(x, "variables", "value", names(x))$value
+  ggplot(d, aes_string(x = "variables", y = "rows", text = "value")) +
+    geom_raster(aes_string(fill = "valueType")) +
     theme_minimal() +
     theme(axis.text.x = element_text(angle = 45,
                                      vjust = 1,
