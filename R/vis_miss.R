@@ -56,7 +56,8 @@ vis_miss <- function(x,
   }
 
   # Arranged data by dendrogram order index
-  x.na[row_order_index , ] %>%
+
+  d <- x.na[row_order_index , ] %>%
     as.data.frame %>%
     mutate(rows = row_number()) %>%
     # gather the variables together for plotting
@@ -64,12 +65,18 @@ vis_miss <- function(x,
     # then the variable(variables),
     # then the contents of that variable (value)
     tidyr::gather_(key_col = "variables",
-                   value_col = "value",
-                   gather_cols = names(.)[-length(.)]) %>%
+                   value_col = "valueType",
+                   gather_cols = names(.)[-length(.)])
+
+  d$value <- tidyr::gather_(x, "variables", "value", names(x))$value
+
     # then we plot it
-    ggplot(aes_string(x = "variables",
-                      y = "rows")) +
-    geom_raster(aes_string(fill = "value")) +
+    ggplot(data = d,
+           aes_string(x = "variables",
+                      y = "rows",
+                      # text assists with plotly mouseover
+                      text = "value")) +
+    geom_raster(aes_string(fill = "valueType")) +
     # change the colour, so that missing is grey, present is black
     scale_fill_grey(name = "",
                     labels = c("Present",

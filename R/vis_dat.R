@@ -28,14 +28,23 @@ vis_dat <- function(x,
 
   }
 
+  # reshape the dataframe ready for geom_raster
   d <- x %>%
     mutate_each_(funs(fingerprint), tbl_vars(.)) %>%
     mutate(rows = row_number()) %>%
     tidyr::gather_(key_col = "variables",
                    value_col = "valueType",
                    gather_cols = names(.)[-length(.)])
+
+  # get the values here so plotly can make them visible
   d$value <- tidyr::gather_(x, "variables", "value", names(x))$value
-  ggplot(d, aes_string(x = "variables", y = "rows", text = "value")) +
+
+  # do the plotting
+  ggplot(data = d,
+         aes_string(x = "variables",
+                    y = "rows",
+                    # text assists with plotly mouseover
+                    text = "value")) +
     geom_raster(aes_string(fill = "valueType")) +
     theme_minimal() +
     theme(axis.text.x = element_text(angle = 45,

@@ -23,17 +23,25 @@
 #'
 #' @export
 vis_guess <- function(x){
-  x %>%
+
+  d <- x %>%
     mutate(rows = row_number()) %>%
     tidyr::gather_(key_col = "variables",
-                   value_col = "value",
+                   value_col = "valueGuess",
                    gather_cols = names(.)[-length(.)]) %>%
-    mutate(
-      type = guess_type(value)
-    ) %>%
-    select(-value) %>%
-    ggplot(aes_string(x = "variables", y = "rows")) +
-    geom_raster(aes_string(fill = "type")) +
+    mutate(guess = guess_type(valueGuess)) %>%
+    # drop Valueguess....
+    select(-valueGuess)
+
+  # value for plotly mouseover
+  d$value <- tidyr::gather_(x, "variables", "value", names(x))$value
+
+    ggplot(data = d,
+           aes_string(x = "variables",
+                      y = "rows",
+                      # text assist with plotly mouseover
+                      text = "value")) +
+    geom_raster(aes_string(fill = "guess")) +
     theme_minimal() +
     theme(axis.text.x = element_text(angle = 45,
                                      vjust = 1,
