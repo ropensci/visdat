@@ -30,7 +30,8 @@ vis_dat <- function(x,
 
   # reshape the dataframe ready for geom_raster
   d <- x %>%
-    mutate_each_(funs(fingerprint), tbl_vars(.)) %>%
+    # mutate_each_(funs(fingerprint), tbl_vars(.)) %>%
+    purrr::dmap(fingerprint) %>%
     mutate(rows = row_number()) %>%
     tidyr::gather_(key_col = "variables",
                    value_col = "valueType",

@@ -1,3 +1,6 @@
+#
+# This is currently commented out as I'm still working out how to do tests!!
+#
 # context("Guess type")
 #
 #
@@ -77,46 +80,46 @@
 #                expected_vector)
 # })
 #
+# # #
+# # # don't need to get this to work on dataframes anymore.
+# # #
+# # # messy_df <- data.frame(x = messy_vector,
+# # #                        y = messy_vector,
+# # #                        z = messy_vector)
+# # #
+# # # expected_df <- data.frame(x = expected_vector,
+# # #                           y = expected_vector,
+# # #                           z = expected_vector)
+# # #
+# # # test_that("guess_df correctly identifies elements in a dataframe", {
+# # #   expect_equal(guess_df(messy_df),
+# # #                expected_df)
+# # # })
 # #
-# # don't need to get this to work on dataframes anymore.
-# #
-# # messy_df <- data.frame(x = messy_vector,
-# #                        y = messy_vector,
-# #                        z = messy_vector)
-# #
-# # expected_df <- data.frame(x = expected_vector,
-# #                           y = expected_vector,
-# #                           z = expected_vector)
-# #
-# # test_that("guess_df correctly identifies elements in a dataframe", {
-# #   expect_equal(guess_df(messy_df),
-# #                expected_df)
-# # })
-#
-# # guess_type(NA)
-# # guess_type("10.1")
-# #
-# # guess_type(messy_vector)
-# #
-# # purrr::map(messy_vector, guess_type)
-# # purrr::map_chr(messy_vector, guess_type)
-# #
-# # purrr::by_row(iris, mean)
-# #
-# # # for vector
-# # purrr::map_chr(x, guess_type)
-# #
-# # # for dataframe
-# # purrr::dmap(x, ~purrr::map_chr(., guess_type))
-# #
-# # messy_vector
-# #
-# # guess_type(messy_vector)
-# #
-# # readr:::collectorGuess("01/01/01",
-# #                        locale_ = readr::locale())
-# #
-# # readr:::collectorGuess(messy_vector,
-# #                        locale_ = readr::locale())
-# #
-# #
+# # # guess_type(NA)
+# # # guess_type("10.1")
+# # #
+# # # guess_type(messy_vector)
+# # #
+# # # purrr::map(messy_vector, guess_type)
+# # # purrr::map_chr(messy_vector, guess_type)
+# # #
+# # # purrr::by_row(iris, mean)
+# # #
+# # # # for vector
+# # # purrr::map_chr(x, guess_type)
+# # #
+# # # # for dataframe
+# # # purrr::dmap(x, ~purrr::map_chr(., guess_type))
+# # #
+# # # messy_vector
+# # #
+# # # guess_type(messy_vector)
+# # #
+# # # readr:::collectorGuess("01/01/01",
+# # #                        locale_ = readr::locale())
+# # #
+# # # readr:::collectorGuess(messy_vector,
+# # #                        locale_ = readr::locale())
+# # #
+# # #
