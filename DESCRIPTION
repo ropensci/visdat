@@ -8,7 +8,7 @@ Depends:
     R (>= 3.2.2)
 License: MIT + file LICENSE
 LazyData: true
-RoxygenNote: 5.0.1
+RoxygenNote: 5.0.1.9000
 Imports:
     ggplot2,
     tidyr,
@@ -16,4 +16,5 @@ Imports:
     purrr
 URL: https://github.com/tierneyn/visdat
 BugReports: https://github.com/tierneyn/visdat/issues
-Suggests: testthat
+Suggests:
+    testthat

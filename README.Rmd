@@ -2,13 +2,12 @@
 output:
   md_document:
     variant: markdown_github
+always_allow_html: yes
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r, echo = FALSE}
-
-library(svglite)
 
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -50,6 +49,7 @@ install_github("tierneyn/visdat")
 Let's see what's inside the dataset `airquality`
 
 ```{r vis_dat}
+
 library(visdat)
 
 vis_dat(airquality)
@@ -62,7 +62,6 @@ by default, `vis_dat` sorts the columns according to the type of the data in the
 
 ```{r}
 
-
 vis_dat(example2)
 
 
@@ -71,9 +70,7 @@ vis_dat(example2,
 
 ```
 
-
 The plot above tells us that R reads this dataset as having numeric and integer values, along with some missing data in `Ozone` and `Solar.R`.
-
 
 We can explore the missing data further using `vis_miss`
 
@@ -146,13 +143,29 @@ vis_dat(messy_df)
 
 Where you'd just assume your data is wierd because it's all factors - or worse, not notice that this is a problem.
 
-At the moment `vis_guess` is slow as - take this into consideration when you are using it on data with more than 1000 rows. We're looking into ways of making it faster, potentially using methods from the `parallel` package, or writing some c++ code.
+At the moment `vis_guess` is very slow. Please take this into consideration when you are using it on data with more than 1000 rows. We're looking into ways of making it faster, potentially using methods from the `parallel` package, or extending the c++ code from `readr:::collectorGuess`.
 
-# Future work 
+# Interactivity
+
+Thanks to Carson Sievert, you can now add some really nifty interactivity into visdat by using `plotly::ggplotly`, allowing for information to be revealed upon mouseover of a cell. For example:
+
+```{r}
+
+library(plotly)
+
+vis_dat(example2) %>% ggplotly()
+
+```
+
+# Road Map
+
+**Allowing for missings to be visualised/seen when there is a small proportion**
+
+This problem will be approached by adding in a bar at the top of the visualisation that indicates whether there are any missings in a column. I will also add into the legend the % of overall missing/absent.
 
 **visualising expectations**
 
-Another idea is to pass expectations into `vis_dat` or `vis_miss`, along the lines of the `expectation` command in `assertr`. For example, you could ask `vis_dat` to identify those cells with values of -1 with something like this:
+The idea here is to pass expectations into `vis_dat` or `vis_miss`, along the lines of the `expectation` command in `assertr`. For example, you could ask `vis_dat` to identify those cells with values of -1 with something like this:
 
 ```{r eval = FALSE}
 
@@ -163,8 +176,6 @@ data %>%
 ```
 
 
-`vis_datly`. `vis_dat` could include an interactive version of the plots using `plotly`, so that you can actually _see_ what is inside the data.
-
 # Thank you
 
 Thank you to Jenny Bryan, whose [tweet](https://twitter.com/JennyBryan/status/679011378414268416) got me thinking about vis_dat, and for her code contributions that remove a lot of testing errors.
@@ -173,4 +184,4 @@ Thank you to Hadley Wickham for suggesting the use of the internals of `readr` t
 
 Thank you to Miles McBain for his suggestions on how to improve vis guess. This resulted in making it at least 2-3 times faster.
 
-Thanks also to Noam Ross for his suggestions and code for using plotly with visdat.
+Thanks also to Carson Sievert for writing the code that combined plotly with visdat, and for Noam Ross for suggesting this in the first place.
