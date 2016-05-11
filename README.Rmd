@@ -18,6 +18,13 @@ knitr::opts_chunk$set(
 
 # visdat
 
+<!-- add a TravisCI badge -->
+[![Travis-CI Build Status](https://travis-ci.org/tierneyn/visdat.svg?branch=master)](https://travis-ci.org/tierneyn/visdat)
+
+<!-- Add an appVeyor badge -->
+
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/tierneyn/visdat?branch=master&svg=true)](https://ci.appveyor.com/project/tierneyn/visdat)
+
 # What does visdat do?
 
 Initially inspired by [`csv-fingerprint`](https://github.com/setosa/csv-fingerprint), `vis_dat` helps you visualise a dataframe and "get a look at the data" by displaying the variable classes in a dataframe as a plot with `vis_dat`, and getting a brief look into missing data patterns `vis_miss`.
