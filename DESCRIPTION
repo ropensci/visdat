@@ -1,6 +1,6 @@
 Package: visdat
 Title: preliminary visualisation of data
-Version: 0.1.1.9000
+Version: 0.0.4.9000
 Authors@R: person("Nicholas", "Tierney", email = "nicholas.tierney@gmail.com", role = c("aut", "cre"))
 Description: visdat makes it easy to visualise your whole dataset so that you
     can quickly identify problems visually.
