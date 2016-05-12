@@ -10,10 +10,13 @@
 #'
 #' @param sort_miss logical TRUE/FALSE. TRUE arranges the columns in order of missingness
 #'
+#' @param show_perc logical TRUE/FALSE. TRUE now adds in the % of missing/complete data in the whole dataset into the legend. Default value is TRUE
+#'
 #' @export
 vis_miss <- function(x,
                      cluster = FALSE,
-                     sort_miss = FALSE){
+                     sort_miss = FALSE,
+                     show_perc = TRUE){
   # make a TRUE/FALSE matrix of the data.
   # This tells us whether it is missing (true) or not (false)
   x.na <- is.na(x)
@@ -70,6 +73,39 @@ vis_miss <- function(x,
 
   d$value <- tidyr::gather_(x, "variables", "value", names(x))$value
 
+  # calculate the overall % missingness to display in legend ------------
+
+  if (show_perc == TRUE){
+
+    x <- example2
+    p_miss <- (mean(is.na(x)) * 100)
+    p_miss <- round(p_miss, 1)
+
+    # calculate % present
+    p_pres <- 100-p_miss
+
+    # create the labels
+    p_miss_lab <- paste("Missing (",
+                        p_miss,
+                        "%)",
+                        sep = "")
+
+    p_pres_lab <- paste("Present (",
+                        p_pres,
+                        "%)",
+                        sep = "")
+
+  } else {
+
+    p_miss_lab <- "Missing"
+
+    p_pres_lab <- "Present"
+
+  }
+
+
+  # note: There should be some sort fo really easy test to do here
+
     # then we plot it
     ggplot(data = d,
            aes_string(x = "variables",
@@ -79,8 +115,8 @@ vis_miss <- function(x,
     geom_raster(aes_string(fill = "valueType")) +
     # change the colour, so that missing is grey, present is black
     scale_fill_grey(name = "",
-                    labels = c("Present",
-                               "Missing")) +
+                    labels = c(p_pres_lab,
+                               p_miss_lab)) +
     theme_minimal() +
     theme(axis.text.x = element_text(angle = 45,
                                      vjust = 1,

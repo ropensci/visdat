@@ -4,7 +4,7 @@
 \alias{vis_miss}
 \title{vis_miss}
 \usage{
-vis_miss(x, cluster = FALSE, sort_miss = FALSE)
+vis_miss(x, cluster = FALSE, sort_miss = FALSE, show_perc = TRUE)
 }
 \arguments{
 \item{x}{a data.frame}
@@ -12,6 +12,8 @@ vis_miss(x, cluster = FALSE, sort_miss = FALSE)
 \item{cluster}{logical TRUE/FALSE. TRUE specifies that you want to use hierarchical clustering (mcquitty method) to arrange rows according to missingness. FALSE specifies that you want to leave it as is}
 
 \item{sort_miss}{logical TRUE/FALSE. TRUE arranges the columns in order of missingness}
+
+\item{show_perc}{logical TRUE/FALSE. TRUE now adds in the % of missing/complete data in the whole dataset into the legend. Default value is TRUE}
 }
 \description{
 \code{vis_miss} gives you an at-a-glance ggplot of the missingness inside a dataframe, colouring cells according to missingness, where black indicates a present cell and grey indicates a missing cell. As it returns a ggplot object, it is very easy to customize and change labels, and so on.
