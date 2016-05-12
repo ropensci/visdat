@@ -4,7 +4,7 @@ visdat
 
 <!-- add a TravisCI badge -->
 <!-- Add an appVeyor badge -->
-[![Travis-CI Build Status](https://travis-ci.org/njtierney/visdat.svg?branch=master)](https://travis-ci.org/njtierney/visdat) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/njtierney/visdat?branch=master&svg=true)](https://ci.appveyor.com/project/njtierney/visdat)
+[![Travis-CI Build Status](https://travis-ci.org/njtierney/visdat.svg?branch=master)](https://travis-ci.org/njtierney/visdat) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/tierneyn/visdat?branch=master&svg=true)](https://ci.appveyor.com/project/tierneyn/visdat)
 
 What does visdat do?
 ====================

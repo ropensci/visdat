@@ -1,5 +1,17 @@
 
-# visdat 0.0.4.9000 (20/04/2016)
+# visdat 0.0.4.9100 (2016/05/12)
+=========================
+
+## NEW FEATURE
+
+- `vis_miss` now gains a `show_perc` argument, which displays the % of missing and complete data. This is switched on by default and addresses issue #19.
+
+## MINOR IMPROVEMENTS
+
+- Added appveyor-CI and travis-CI, addressing issues #22 and #23
+
+
+# visdat 0.0.4.9000 (2016/04/20)
 =========================
 
 ## BUG FIXES
