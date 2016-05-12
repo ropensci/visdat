@@ -7,6 +7,7 @@
 #' @param x a data.frame object
 #'
 #' @examples
+#' \dontrun{
 #' library(dplyr)
 #' library(tidyr)
 #' library(visdat)
@@ -20,7 +21,7 @@
 #'                            no = capacity))
 #'
 #' vis_guess(dat_messy)
-#'
+#'}
 #' @export
 vis_guess <- function(x){
 

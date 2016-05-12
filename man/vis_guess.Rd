@@ -16,6 +16,7 @@ vis_guess(x)
 \code{vis_guess} visualises a data.frame like vis_dat, but takes a guess at to telling you what it contains.
 }
 \examples{
+\dontrun{
 library(dplyr)
 library(tidyr)
 library(visdat)
@@ -29,6 +30,6 @@ dat_messy <-
                            no = capacity))
 
 vis_guess(dat_messy)
-
+}
 }
 
