@@ -13,7 +13,8 @@ Imports:
     ggplot2,
     tidyr,
     dplyr,
-    purrr
+    purrr,
+    readr
 URL: https://github.com/tierneyn/visdat
 BugReports: https://github.com/tierneyn/visdat/issues
 Suggests:

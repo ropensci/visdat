@@ -8,7 +8,7 @@
 #'
 #' @param sort_miss logical TRUE/FALSE. TRUE arranges the columns in order of missingness
 #'
-#' @param show_perc logical TRUE/FALSE. TRUE now adds in the % of missing/complete data in the whole dataset into the legend. Default value is TRUE
+#' @param show_perc logical TRUE/FALSE. TRUE now adds in the \% of missing/complete data in the whole dataset into the legend. Default value is TRUE
 #'
 #'
 #' @export

@@ -6,8 +6,9 @@
 #'
 #' @examples
 #' \dontrun{
-#' library(dplyr)
 #' library(tidyr)
+#' library(readr) # to load the `readr:::collectorGuess` function
+#' library(dplyr)
 #' library(visdat)
 #'
 #' vis_guess(example2)
