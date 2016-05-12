@@ -2,7 +2,7 @@
 % Please edit documentation in R/vis_dat.R
 \name{vis_dat}
 \alias{vis_dat}
-\title{vis_dat}
+\title{Visualises a data.frame to tell you what it contains.}
 \usage{
 vis_dat(x, sort_type = TRUE)
 }
@@ -13,8 +13,5 @@ vis_dat(x, sort_type = TRUE)
 }
 \description{
 \code{vis_dat} gives you an at-a-glance ggplot object of what is inside a dataframe. Cells are coloured according to what class they are and whether the values are missing. As \code{vis_dat} returns a ggplot object, it is very easy to customize and change labels, and customize the plot
-}
-\details{
-\code{vis_dat} visualises a data.frame to tell you what it contains.
 }
 

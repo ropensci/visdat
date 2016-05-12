@@ -2,7 +2,7 @@
 % Please edit documentation in R/vis_guess.R
 \name{vis_guess}
 \alias{vis_guess}
-\title{vis_guess}
+\title{Visualise a data.frame like vis_dat, but takes a guess at to telling you what it contains.}
 \usage{
 vis_guess(x)
 }
@@ -11,9 +11,6 @@ vis_guess(x)
 }
 \description{
 \code{vis_guess} just like vis_dat, vis_guess gives you an at-a-glance ggplot object of what is inside a dataframe. Except this time, vis_guess uses `readr` to help it guess what the individual cells are. These cells are coloured according to what class they are and whether the values are missing. As \code{vis_guess} returns a ggplot object, it is very easy to customize. Currently very slow.
-}
-\details{
-\code{vis_guess} visualises a data.frame like vis_dat, but takes a guess at to telling you what it contains.
 }
 \examples{
 \dontrun{

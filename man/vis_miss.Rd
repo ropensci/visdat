@@ -2,7 +2,7 @@
 % Please edit documentation in R/vis_miss.R
 \name{vis_miss}
 \alias{vis_miss}
-\title{vis_miss}
+\title{Visualise a data.frame to display missingness.}
 \usage{
 vis_miss(x, cluster = FALSE, sort_miss = FALSE, show_perc = TRUE)
 }
@@ -16,9 +16,6 @@ vis_miss(x, cluster = FALSE, sort_miss = FALSE, show_perc = TRUE)
 \item{show_perc}{logical TRUE/FALSE. TRUE now adds in the % of missing/complete data in the whole dataset into the legend. Default value is TRUE}
 }
 \description{
-\code{vis_miss} gives you an at-a-glance ggplot of the missingness inside a dataframe, colouring cells according to missingness, where black indicates a present cell and grey indicates a missing cell. As it returns a ggplot object, it is very easy to customize and change labels, and so on.
-}
-\details{
-\code{vis_miss} visualises a data.frame to display missingness.
+\code{vis_miss} provides an at-a-glance ggplot of the missingness inside a dataframe, colouring cells according to missingness, where black indicates a present cell and grey indicates a missing cell. As it returns a ggplot object, it is very easy to customize and change labels, and so on.
 }
 

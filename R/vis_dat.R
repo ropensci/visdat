@@ -1,8 +1,6 @@
-#' vis_dat
+#' Visualises a data.frame to tell you what it contains.
 #'
-#' \code{vis_dat} visualises a data.frame to tell you what it contains.
-#'
-#' @description \code{vis_dat} gives you an at-a-glance ggplot object of what is inside a dataframe. Cells are coloured according to what class they are and whether the values are missing. As \code{vis_dat} returns a ggplot object, it is very easy to customize and change labels, and customize the plot
+#' \code{vis_dat} gives you an at-a-glance ggplot object of what is inside a dataframe. Cells are coloured according to what class they are and whether the values are missing. As \code{vis_dat} returns a ggplot object, it is very easy to customize and change labels, and customize the plot
 #'
 #' @param x a data.frame object
 #'

@@ -2,7 +2,7 @@
 % Please edit documentation in R/vis_compare.R
 \name{vis_compare}
 \alias{vis_compare}
-\title{vis_compare}
+\title{compare two dataframes and see where they are different.}
 \usage{
 vis_compare(x, sort_match = FALSE)
 }
@@ -13,8 +13,5 @@ vis_compare(x, sort_match = FALSE)
 }
 \description{
 \code{vis_compare}, like the other vis_* families, gives an at-a-glance ggplot of a particular feature. In this case, it is the difference between two dataframes. This function has not been implemented yet, but this serves as a note of how it might work. It would be very similar to vis_miss, where you basically colouring cells according to "match" and "non-match". The code for this would be pretty crazy simple. `x <- 1:10; y <- c(1:5, 10:14) ;x == y` returns ` [1]  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE` Here black could indicate a match, and white a non match. One of the challenges with this would be cases where the datasets are different dimensions. One option could be to return as a message the columns that are not in the same dataset. Matching rows could be done by row number, and just lopping off the trailing ones and spitting out a note. Then, if the user wants, it could use an ID/key to match by.
-}
-\details{
-\code{vis_compare} compare two dataframes and see where they are different.
 }
 

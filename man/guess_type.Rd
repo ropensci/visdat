@@ -2,7 +2,7 @@
 % Please edit documentation in R/guess_type.R
 \name{guess_type}
 \alias{guess_type}
-\title{guess_type}
+\title{Guess the type of each individual cell in a dataframe}
 \usage{
 guess_type(x)
 }
@@ -13,9 +13,6 @@ guess_type(x)
 a character vector that describes the suspected class. e.g., "10" is an integer, "20.11" is a double, "text" is character, etc.
 }
 \description{
-guess_type is used in vis_guess, where it
-}
-\details{
-guess_type
+\code{guess_type} is used in vis_guess as a utility function. Similar to \code{fingerprint}.
 }
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/fingerprint.R
 \name{fingerprint}
 \alias{fingerprint}
-\title{fingerprint}
+\title{A utility function for \code{vis_dat}}
 \usage{
 fingerprint(x)
 }
@@ -10,9 +10,6 @@ fingerprint(x)
 \item{x}{a vector}
 }
 \description{
-fingerprint takes the fingerprint of a dataframe, and (currently) replaces the contents (x) with the class of a given object, unless it is missing (coded as NA), in which case it leaves it as NA. The name fingerprint is taken from the csv-fingerprint, of which this package is based.
-}
-\details{
-\code{fingerprint} is a utility function for vis_dat
+\code{fingerprint} takes the "fingerprint" of a dataframe, and (currently) replaces the contents (x) with the class of a given object, unless it is missing (coded as NA), in which case it leaves it as NA. The name "fingerprint" is taken from the csv-fingerprint, of which this package is based.
 }
 
