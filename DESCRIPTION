@@ -14,7 +14,8 @@ Imports:
     tidyr,
     dplyr,
     purrr,
-    readr
+    readr,
+    plotly
 URL: https://github.com/tierneyn/visdat
 BugReports: https://github.com/tierneyn/visdat/issues
 Suggests:

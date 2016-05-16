@@ -3,7 +3,7 @@
 export(fingerprint)
 export(guess_type)
 export(vis_dat)
-export(vis_datly)
+export(vis_dat_ly)
 export(vis_guess)
 export(vis_miss)
 import(dplyr)
