@@ -51,5 +51,6 @@ vis_dat <- function(x,
                                      hjust = 1)) +
     labs(x = "Variables in Dataset",
          y = "Observations") +
-    scale_x_discrete(limits = type_order_index)
+    scale_x_discrete(limits = type_order_index) +
+    guides(fill = guide_legend(title = "Type"))
 }

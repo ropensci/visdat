@@ -1,3 +1,17 @@
+# visdat 0.0.4.9400 (2016/05/30)
+=========================
+
+## MINOR IMPROVEMENTS
+
+- `vis_miss` legend labels are created using the internal function `miss_guide_label`. `miss_guide_label` will check if data is 100% missing or 100% present and display this in the figure. Additionally, if there is less than 0.1% missing data, "<0.1% missingness" will also be displayed. This sort of gets around issue #18 for the moment.
+
+- tests have been added for the `miss_guide_label` legend labels function.
+
+- Changed legend label for `vis_miss`, `vis_dat`, and `vis_guess`. 
+
+- updated README
+
+- Added vignette folder (but not vignettes added yet)
 
 # visdat 0.0.4.9100 (2016/05/12)
 =========================

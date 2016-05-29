@@ -41,13 +41,14 @@ vis_guess <- function(x){
                       y = "rows",
                       # text assist with plotly mouseover
                       text = "value")) +
-    geom_raster(aes_string(fill = "guess")) +
-    theme_minimal() +
-    theme(axis.text.x = element_text(angle = 45,
-                                     vjust = 1,
-                                     hjust = 1)) +
-    labs(x = "Variables in Dataset",
-         y = "Observations") +
-    scale_x_discrete(limits = names(x))
+      geom_raster(aes_string(fill = "guess")) +
+      theme_minimal() +
+      theme(axis.text.x = element_text(angle = 45,
+                                       vjust = 1,
+                                       hjust = 1)) +
+      labs(x = "Variables in Dataset",
+           y = "Observations") +
+      scale_x_discrete(limits = names(x))  +
+      guides(fill = guide_legend(title = "Type"))
 
 } #end function

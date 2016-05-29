@@ -13,13 +13,13 @@ Initially inspired by [`csv-fingerprint`](https://github.com/setosa/csv-fingerpr
 
 The name `visdat` was chosen as I think in the future it could be integrated with [`testdat`](https://github.com/ropensci/testdat). The idea being that first you visualise your data (`visdat`), then you run tests from `testdat` to fix them.
 
-There are currently two main commands: `vis_dat` and `vis_miss`.
+There are currently three main commands: `vis_dat`, `vis_miss`, and `vis_guess`
 
 -   `vis_dat` visualises a dataframe showing you what the classes of the columns are, and also displaying the missing data.
 
 -   `vis_miss` visualises just the missing data, and allows for missingness to be clustered and columns rearranged. `vis_miss` is similar to `missing.pattern.plot` from the `mi` package. Unfortunately `missing.pattern.plot` is no longer in the `mi` package (well, as of 14/02/2016).
 
--   **new!!** `vis_guess` has a guess at what the value of each cell. So "10.1" will return "double", and `10.1` will return "double", and 01/01/01 will return "date". Keep in mind that it is a **guess** at what each cell is, so you can't trust this fully. `vis_guess` is made possible thanks to Hadley Wickham's `readr` package - thanks mate!
+-   `vis_guess` has a guess at what the value of each cell. So "10.1" will return "double", and `10.1` will return "double", and `01/01/01` will return "date". Keep in mind that it is a **guess** at what each cell is, so you can't trust this fully. `vis_guess` is made possible thanks to Hadley Wickham's `readr` package - thanks mate!
 
 How to install
 ==============
@@ -32,8 +32,11 @@ library(devtools)
 install_github("tierneyn/visdat")
 ```
 
-Example
-=======
+Examples
+========
+
+Using `vis_dat`
+---------------
 
 Let's see what's inside the dataset `airquality`
 
@@ -68,6 +71,9 @@ vis_dat(example2,
 
 The plot above tells us that R reads this dataset as having numeric and integer values, along with some missing data in `Ozone` and `Solar.R`.
 
+using `vis_miss`
+----------------
+
 We can explore the missing data further using `vis_miss`
 
 ``` r
@@ -76,6 +82,8 @@ vis_miss(airquality)
 ```
 
 ![](README-vis_miss-1.png)
+
+The percentages of missing/complete in `vis_miss` are accurate to 1 decimal place.
 
 You can cluster the missingness by setting `cluster = TRUE`
 
@@ -96,6 +104,33 @@ vis_miss(airquality,
 ```
 
 ![](README-unnamed-chunk-4-1.png)
+
+When there is &lt;0.1% of missingness, `vis_miss` indicates that there is &gt;1% missingness.
+
+``` r
+
+test_miss_df <- data.frame(x1 = 1:10000,
+                           x2 = rep("A", 10000),
+                           x3 = c(rep(1L, 9999), NA))
+
+vis_miss(test_miss_df)
+#> Warning: attributes are not identical across measure variables; they will
+#> be dropped
+```
+
+![](README-unnamed-chunk-5-1.png)
+
+`vis_miss` will also indicate when there is no missing data at all
+
+``` r
+
+vis_miss(mtcars)
+```
+
+![](README-unnamed-chunk-6-1.png)
+
+using `vis_guess`
+-----------------
 
 `vis_guess` takes a guess at what each cell is. It's best illustrated using some messy data, which we'll make here.
 
@@ -129,7 +164,7 @@ messy_df <- data.frame(var1 = messy_vector,
 vis_guess(messy_df)
 ```
 
-![](README-unnamed-chunk-6-1.png)
+![](README-unnamed-chunk-8-1.png)
 
 So here we see that there are many different kinds of data in your dataframe. As an analyst this might be a depressing finding. Compare this to `vis_dat`.
 
@@ -138,7 +173,7 @@ So here we see that there are many different kinds of data in your dataframe. As
 vis_dat(messy_df)
 ```
 
-![](README-unnamed-chunk-7-1.png)
+![](README-unnamed-chunk-9-1.png)
 
 Where you'd just assume your data is wierd because it's all factors - or worse, not notice that this is a problem.
 
@@ -159,10 +194,6 @@ vis_dat(example2) %>% ggplotly()
 Road Map
 ========
 
-**Allowing for missings to be visualised/seen when there is a small proportion**
-
-This problem will be approached by adding in a bar at the top of the visualisation that indicates whether there are any missings in a column. I will also add into the legend the % of overall missing/absent.
-
 **visualising expectations**
 
 The idea here is to pass expectations into `vis_dat` or `vis_miss`, along the lines of the `expectation` command in `assertr`. For example, you could ask `vis_dat` to identify those cells with values of -1 with something like this:
@@ -174,8 +205,8 @@ data %>%
   vis_dat
 ```
 
-Thank you
-=========
+Thank yous
+==========
 
 Thank you to Jenny Bryan, whose [tweet](https://twitter.com/JennyBryan/status/679011378414268416) got me thinking about vis\_dat, and for her code contributions that remove a lot of testing errors.
 
