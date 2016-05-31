@@ -1,3 +1,11 @@
+# visdat 0.0.4.9500 (2016/05/31)
+=========================
+
+## NEW FEATURE (under development)
+
+- `vis_dat` gains a "palette" argument in line with [issue 26](https://github.com/njtierney/visdat/issues/26), drawn from http://colorbrewer2.org/, there are currently three arguments, "default", "qual", and "cb_safe". "default" provides the ggplot defaults, "qual" uses some colour blind **unfriendly** colours, and "cb_safe" provides some colours friendly for colour blindness.
+
+
 # visdat 0.0.4.9400 (2016/05/30)
 =========================
 
