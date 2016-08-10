@@ -11,7 +11,7 @@
 guess_type <- function(x){
 
   # since
-  # readr:::collectorGuess(NA,
+  # readr::collector_guess(NA,
   #                        locale_ = readr::locale())
   #
   # returns "character", use an ifelse to identify NAs
@@ -20,16 +20,19 @@ guess_type <- function(x){
   # I'd like to use purrr::map for this but I couldn't get it to work without
   # writing more function calls, which slowed it down, by a factor of about 3.
   # So this is faster, for the moment. Thanks Miles!
+  # look into using a vectorised function.
+  # e.g.,
   #
   output <- character(length(x))
   nas <- is.na(x)
 
-  output[!nas] <- vapply(FUN = readr:::collectorGuess,
+  output[!nas] <- vapply(FUN = readr::collector_guess,
                          X = x[!nas],
                          FUN.VALUE = character(1),
                          locale_ = readr::locale())
   output[nas] <- NA
   output
+
 }
 #'
 #' all.equal(guess_df_1(iris), guess_df_2(iris))

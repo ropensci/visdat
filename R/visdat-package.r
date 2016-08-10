@@ -3,6 +3,7 @@
 #' @name visdat
 #' @docType package
 #' @importFrom tidyr gather_
+#' @importFrom readr collector_guess
 #' @importFrom purrr map_chr
 #' @importFrom purrr map
 #' @importFrom purrr dmap
