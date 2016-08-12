@@ -20,7 +20,11 @@ vis_dat <- function(x,
     # code inspired from https://r-forge.r-project.org/scm/viewvc.php/pkg/R/missing.pattern.plot.R?view=markup&root=mi-dev
     # get the order of columns with highest missingness
 
-    type_sort <- order(purrr::map_chr(x, class))
+    type_sort <- order(
+      # get the class, if there are multiple classes, combine them together
+      purrr::map_chr(.x = typical_larger_data,
+                     .f = function(x) paste(class(x), collapse = "\n"))
+      )
     # get the names of those columns
     type_order_index <- names(x)[type_sort]
 

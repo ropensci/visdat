@@ -29,6 +29,7 @@ vis_miss <- function(x,
       hclust(method = "mcquitty") %>%
       as.dendrogram %>%
       order.dendrogram
+
   } else {
     row_order_index <- 1:nrow(x)
   } # end else

@@ -26,10 +26,9 @@ guess_type <- function(x){
   output <- character(length(x))
   nas <- is.na(x)
 
-  output[!nas] <- vapply(FUN = readr::collector_guess,
+  output[!nas] <- vapply(FUN = readr::guess_parser,
                          X = x[!nas],
-                         FUN.VALUE = character(1),
-                         locale_ = readr::locale())
+                         FUN.VALUE = character(1))
   output[nas] <- NA
   output
 

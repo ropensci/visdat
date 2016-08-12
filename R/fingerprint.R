@@ -11,6 +11,7 @@ fingerprint <- function(x){
          # yes? Leave as is NA
          yes = NA,
          # no? make that value no equal to the class of this cell.
-         no = class(x))
-
+         # no = class(x))
+         no = paste(class(x), collapse = "\n")
+  )
 } # end function
