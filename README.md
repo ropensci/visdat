@@ -51,11 +51,11 @@ vis_dat(airquality)
 
 The classes are represented on the legend, and missing data represented by grey.
 
-by default, `vis_dat` sorts the columns according to the type of the data in the vectors. You can turn this off by setting `sort_type == FALSE`. This feature is better illustrated using the `example2` dataset, borrowed from csv-fingerprint.
+by default, `vis_dat` sorts the columns according to the type of the data in the vectors. You can turn this off by setting `sort_type == FALSE`. This feature is better illustrated using the `airquality` dataset from base R.
 
 ``` r
 
-vis_dat(example2)
+vis_dat(airquality)
 ```
 
 ![](README-unnamed-chunk-3-1.png)
@@ -63,13 +63,37 @@ vis_dat(example2)
 ``` r
 
 
-vis_dat(example2, 
+vis_dat(airquality, 
         sort_type = FALSE)
 ```
 
 ![](README-unnamed-chunk-3-2.png)
 
-The plot above tells us that R reads this dataset as having numeric and integer values, along with some missing data in `Ozone` and `Solar.R`.
+The plot above tells us that R reads this dataset as having characters, and integer values, along with some missing data in `Ozone` and `Solar.R`.
+
+### with different data
+
+To demonstrate what visdat looks like when you have different kinds of data, we can look at the `typical_data` from within visdat, created using the excellent [`wakefield package`](https://github.com/trinker/wakefield).
+
+``` r
+
+vis_dat(typical_data)
+#> Warning: attributes are not identical across measure variables; they will
+#> be dropped
+```
+
+![](README-unnamed-chunk-4-1.png)
+
+We can also look into using even wider data, looking at `typical_larger_data`
+
+``` r
+
+vis_dat(typical_larger_data)
+#> Warning: attributes are not identical across measure variables; they will
+#> be dropped
+```
+
+![](README-unnamed-chunk-5-1.png)
 
 using `vis_miss`
 ----------------
@@ -103,7 +127,7 @@ vis_miss(airquality,
          sort_miss = TRUE)
 ```
 
-![](README-unnamed-chunk-4-1.png)
+![](README-unnamed-chunk-6-1.png)
 
 When there is &lt;0.1% of missingness, `vis_miss` indicates that there is &gt;1% missingness.
 
@@ -118,7 +142,7 @@ vis_miss(test_miss_df)
 #> be dropped
 ```
 
-![](README-unnamed-chunk-5-1.png)
+![](README-unnamed-chunk-7-1.png)
 
 `vis_miss` will also indicate when there is no missing data at all
 
@@ -127,7 +151,48 @@ vis_miss(test_miss_df)
 vis_miss(mtcars)
 ```
 
-![](README-unnamed-chunk-6-1.png)
+![](README-unnamed-chunk-8-1.png)
+
+using `vis_compare`
+-------------------
+
+Sometimes you want to see what has changed in your data. `vis_compare` helps with that. It is currently only just barely working, so keep in mind that this is very much in its beta stages.
+
+For the sake of simplicity, lets make some changes to `iris`, and compare this new dataset
+
+``` r
+
+iris_diff <- iris
+iris_diff[sample(1:150, 30),sample(1:4, 2)] <- NA
+
+vis_compare(iris_diff, iris)
+#> Warning in vis_compare(iris_diff, iris): vis_compare is still in BETA!
+#> If you have suggestions or errors, post an issue at https://github.com/
+#> njtierney/visdat/issues
+#> Warning in if (dim(df1) != dim(df2)) stop("Dimensions of df1 and df2
+#> are not the same! Unfortunately at this stage vis_compare only handles
+#> dataframes of the exact same dimension. Sorry!"): the condition has length
+#> > 1 and only the first element will be used
+#> Warning: attributes are not identical across measure variables; they will
+#> be dropped
+
+#> Warning: attributes are not identical across measure variables; they will
+#> be dropped
+```
+
+![](README-unnamed-chunk-9-1.png)
+
+Here the differences are marked in red.
+
+If you try and compare differences when the dimensions are different, you get an ugly error.
+
+``` r
+
+iris_diff_2 <- iris
+iris_diff_2$new_col <- iris$Sepal.Length + iris$Sepal.Width
+
+# vis_compare(iris, iris_diff_2)
+```
 
 using `vis_guess`
 -----------------
@@ -164,7 +229,7 @@ messy_df <- data.frame(var1 = messy_vector,
 vis_guess(messy_df)
 ```
 
-![](README-unnamed-chunk-8-1.png)
+![](README-unnamed-chunk-12-1.png)
 
 So here we see that there are many different kinds of data in your dataframe. As an analyst this might be a depressing finding. Compare this to `vis_dat`.
 
@@ -173,7 +238,7 @@ So here we see that there are many different kinds of data in your dataframe. As
 vis_dat(messy_df)
 ```
 
-![](README-unnamed-chunk-9-1.png)
+![](README-unnamed-chunk-13-1.png)
 
 Where you'd just assume your data is wierd because it's all factors - or worse, not notice that this is a problem.
 
@@ -188,7 +253,7 @@ Thanks to Carson Sievert, you can now add some really nifty interactivity into v
 
 library(plotly)
 
-vis_dat(example2) %>% ggplotly()
+vis_dat(airquality) %>% ggplotly()
 ```
 
 Road Map

@@ -1,32 +1,66 @@
 ---
-output:
-  md_document:
-    variant: markdown_github
+title: "Using visdat"
+author: "Nicholas Tierney"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
-
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-
-```{r, echo = FALSE}
-
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "README-"
-)
-
-```
 
 # visdat
 
-<!-- add a TravisCI badge -->
-<!-- Add an appVeyor badge -->
-[![Travis-CI Build Status](https://travis-ci.org/njtierney/visdat.svg?branch=master)](https://travis-ci.org/njtierney/visdat) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/tierneyn/visdat?branch=master&svg=true)](https://ci.appveyor.com/project/njtierney/visdat)
-
 # What does visdat do?
 
-Initially inspired by [`csv-fingerprint`](https://github.com/setosa/csv-fingerprint), `vis_dat` helps you visualise a dataframe and "get a look at the data" by displaying the variable classes in a dataframe as a plot with `vis_dat`, and getting a brief look into missing data patterns `vis_miss`.
+Initially inspired by [`csv-fingerprint`](https://github.com/setosa/csv-fingerprint), `vis_dat` helps visualise a dataframe in a heatmap-like fashion, allowing you to "get a look at the data", by displaying the variable classes in a dataframe as a plot with `vis_dat`, and getting a brief look into missing data patterns `vis_miss`.
 
-The name `visdat` was chosen as I think in the future it could be integrated with [`testdat`](https://github.com/ropensci/testdat). The idea being that first you visualise your data (`visdat`), then you run tests from `testdat` to fix them.
+There have been 6 phases of data science [1](http://r4ds.had.co.nz/introduction.html) described, being:
+
+[image from this datascience page with reference]()
+
+Where Wickham describes that you can get insight into your data by modelling, visualising, and transforming, which he describes as "Understanding" or "knowledge generation". There is some overlap here, as in this process it wouldn't be surprising that you might uncover some feature of your dataset that you would need to clean up - you might discover that some strings were indeed factors, or that gender was considered numeric in your regression, warranting you to re-visit the Tidying phase.
+
+In the same way, I think that this process gets applied in the Tidying step of data science. You read in your data, but you then need to look at it to understand what you need to do to "fix it". And that's a key phrase here "looking at the data" - what does that mean?
+
+On one hand, you can look at the head of the data:
+
+```{r}
+
+head(iris)
+
+```
+
+Or you can have a `glimpse` at it through `tibble`/`dplyr`
+
+```{r}
+
+tibble::glimpse(iris)
+
+```
+
+And we can see we have doubles, and a factor. And we get a little insight into the data.
+
+But we don't always have data like iris, let's take a look at some data that might be a bit more typical of "messy" data.
+
+```{r}
+library(visdat)
+dplyr::glimpse(typical_data)
+
+```
+
+And you might then ask:
+
+> Isn't it odd that Income is  afactor? And Age is a character? 
+
+```{r}
+
+
+
+```
+
+
+The name `visdat` was chosen as it borrows from the idea of [`testdat`](https://github.com/ropensci/testdat), which provides unit testing for your data.  In a similar way, `visdat` provides visual tests for The idea being that first you visualise your data (`visdat`), then you run tests from `testdat` to fix them.
 
 There are currently three main commands: `vis_dat`, `vis_miss`, and `vis_guess`
 
@@ -44,7 +78,8 @@ There are currently three main commands: `vis_dat`, `vis_miss`, and `vis_guess`
 
 library(devtools)
 
-install_github("tierneyn/visdat")
+install_github("njtierney/visdat")
+
 ```
 
 # Examples
@@ -63,38 +98,18 @@ vis_dat(airquality)
 
 The classes are represented on the legend, and missing data represented by grey. 
 
-by default, `vis_dat` sorts the columns according to the type of the data in the vectors. You can turn this off by setting `sort_type == FALSE`. This feature is better illustrated using the `airquality` dataset from base R.
-
-```{r}
-
-vis_dat(airquality)
-
-
-vis_dat(airquality, 
-        sort_type = FALSE)
-
-```
-
-The plot above tells us that R reads this dataset as having characters, and integer values, along with some missing data in `Ozone` and `Solar.R`.
-
-### with different data
-
-To demonstrate what visdat looks like when you have different kinds of data, we can look at the `typical_data` from within visdat, created using the excellent [`wakefield package`](https://github.com/trinker/wakefield).
+by default, `vis_dat` sorts the columns according to the type of the data in the vectors. You can turn this off by setting `sort_type == FALSE`. This feature is better illustrated using the `typical_data` dataset, created using [wakefield](github.com/trinker/wakefield) and contained within visdat
 
 ```{r}
 
 vis_dat(typical_data)
 
-```
-
-We can also look into using even wider data, looking at `typical_larger_data`
-
-```{r}
-
-vis_dat(typical_larger_data)
+vis_dat(typical_data, 
+        sort_type = FALSE)
 
 ```
 
+The plot above tells us that R reads this dataset as having numeric and integer values, along with some missing data in `Ozone` and `Solar.R`.
 
 ## using `vis_miss`
 
@@ -143,34 +158,6 @@ vis_miss(test_miss_df)
 ```{r}
 
 vis_miss(mtcars)
-
-```
-
-## using `vis_compare`
-
-Sometimes you want to see what has changed in your data. `vis_compare` helps with that. It is currently only just barely working, so keep in mind that this is very much in its beta stages.
-
-For the sake of simplicity, lets make some changes to `iris`, and compare this new dataset
-
-```{r}
-
-iris_diff <- iris
-iris_diff[sample(1:150, 30),sample(1:4, 2)] <- NA
-
-vis_compare(iris_diff, iris)
-
-```
-
-Here the differences are marked in red.
-
-If you try and compare differences when the dimensions are different, you get an ugly error.
-
-```{r}
-
-iris_diff_2 <- iris
-iris_diff_2$new_col <- iris$Sepal.Length + iris$Sepal.Width
-
-# vis_compare(iris, iris_diff_2)
 
 ```
 
@@ -249,13 +236,3 @@ data %>%
 
 ```
 
-
-# Thank yous
-
-Thank you to Jenny Bryan, whose [tweet](https://twitter.com/JennyBryan/status/679011378414268416) got me thinking about vis_dat, and for her code contributions that remove a lot of testing errors.
-
-Thank you to Hadley Wickham for suggesting the use of the internals of `readr` to make `vis_guess` work.
-
-Thank you to Miles McBain for his suggestions on how to improve vis guess. This resulted in making it at least 2-3 times faster.
-
-Thanks also to Carson Sievert for writing the code that combined plotly with visdat, and for Noam Ross for suggesting this in the first place.
