@@ -22,7 +22,7 @@ vis_dat <- function(x,
 
     type_sort <- order(
       # get the class, if there are multiple classes, combine them together
-      purrr::map_chr(.x = typical_larger_data,
+      purrr::map_chr(.x = x,
                      .f = function(x) paste(class(x), collapse = "\n"))
       )
     # get the names of those columns
