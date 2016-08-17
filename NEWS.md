@@ -1,3 +1,10 @@
+# visdat 0.0.4.9600 (2016/08/18)
+=========================
+
+## NEW FEATURE (under development)
+
+- `vis_compare` is a new function that allows you to compare two dataframes of the same dimension. It gives a fairly ugly warning if they are not of the same dimension.
+
 # visdat 0.0.4.9500 (2016/05/31)
 =========================
 
