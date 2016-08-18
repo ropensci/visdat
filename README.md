@@ -4,7 +4,7 @@ visdat
 
 <!-- add a TravisCI badge -->
 <!-- Add an appVeyor badge -->
-[![Travis-CI Build Status](https://travis-ci.org/njtierney/visdat.svg?branch=master)](https://travis-ci.org/njtierney/visdat) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/tierneyn/visdat?branch=master&svg=true)](https://ci.appveyor.com/project/njtierney/visdat)
+[![Travis-CI Build Status](https://travis-ci.org/njtierney/visdat.svg?branch=master)](https://travis-ci.org/njtierney/visdat) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/njtierney/visdat?branch=master&svg=true)](https://ci.appveyor.com/project/njtierney/visdat)
 
 What does visdat do?
 ====================
@@ -169,10 +169,8 @@ vis_compare(iris_diff, iris)
 #> Warning in vis_compare(iris_diff, iris): vis_compare is still in BETA!
 #> If you have suggestions or errors, post an issue at https://github.com/
 #> njtierney/visdat/issues
-#> Warning in if (dim(df1) != dim(df2)) stop("Dimensions of df1 and df2
-#> are not the same! Unfortunately at this stage vis_compare only handles
-#> dataframes of the exact same dimension. Sorry!"): the condition has length
-#> > 1 and only the first element will be used
+#> Warning in if (dim(df1) != dim(df2)) {: the condition has length > 1 and
+#> only the first element will be used
 #> Warning: attributes are not identical across measure variables; they will
 #> be dropped
 
