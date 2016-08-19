@@ -235,6 +235,21 @@ vis_dat(airquality) %>% ggplotly()
 
 ```
 
+## vis_dat_ly
+
+This is still under development, but it is basically a faster version of doing a ggplot and then calling ggplotly.
+
+## vis_miss_ly
+
+This is also just brand new under development, but should prove interesting once I fix up the legend, etc.
+
+```{r eval = FALSE, echo = TRUE}
+
+vis_miss_ly(airquality)
+
+```
+
+
 # Road Map
 
 **visualising expectations**

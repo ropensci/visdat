@@ -254,6 +254,21 @@ library(plotly)
 vis_dat(airquality) %>% ggplotly()
 ```
 
+vis\_dat\_ly
+------------
+
+This is still under development, but it is basically a faster version of doing a ggplot and then calling ggplotly.
+
+vis\_miss\_ly
+-------------
+
+This is also just brand new under development, but should prove interesting once I fix up the legend, etc.
+
+``` r
+
+vis_miss_ly(airquality)
+```
+
 Road Map
 ========
 
