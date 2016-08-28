@@ -4,9 +4,6 @@ language: R
 sudo: false
 cache: packages
 
-r_packages:
-  - xml2
-
 r_github_packages:
   - jimhester/covr
 
