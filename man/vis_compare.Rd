@@ -18,11 +18,11 @@ vis_compare(df1, df2)
 
 # make a new dataset of iris that contains some NA values
 iris_diff <- iris
-iris_diff[sample(1:150, 30),sample(1:4, 2)] <- NA
+iris_diff[1:10, 1:2] <- NA
 
 library(visdat)
-vis_compare(iris_diff, iris)
 
+vis_compare(iris, iris_diff)
 
 }
 

@@ -11,11 +11,11 @@
 #'
 #' # make a new dataset of iris that contains some NA values
 #' iris_diff <- iris
-#' iris_diff[sample(1:150, 30),sample(1:4, 2)] <- NA
+#' iris_diff[1:10, 1:2] <- NA
 #'
 #' library(visdat)
-#' vis_compare(iris_diff, iris)
 #'
+#' vis_compare(iris, iris_diff)
 #'
 #' @export
 
@@ -72,7 +72,14 @@ vis_compare <- function(df1,
                                      vjust = 1,
                                      hjust = 1)) +
     labs(x = "Variables in Data",
-         y = "Observations") +
-    scale_x_discrete(limits = names(df_diff))
-
+         y = "Observations",
+         fill = "Cell Type") +
+    scale_x_discrete(limits = names(df_diff)) +
+    scale_fill_manual(limits = c("same",
+                                 "different"),
+                      breaks = c("same", # red
+                                 "different"), # dark blue
+                      values = c("#ff7f00", # Orange
+                                 "#377eb8"), # blue
+                      na.value = "grey")
 }
