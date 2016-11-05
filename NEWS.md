@@ -1,9 +1,13 @@
 # visdat 0.0.4.9700 (2016/08/19)
-
-## NEW FEATURE (under development)
 =========================
 
+## NEW FEATURE (under development)
+
 - `vis_miss_ly` is a new function that uses plotly to plot missing data, like `vis_miss`, but interactive, without the need to call `plotly::ggplotly` on it. It's fast, but at the moment it needs a bit of love on the legend front to maintain the style and features (clustering, etc) of current `vis_miss`.
+
+## Minor Improvement
+
+- Changed the default colours of `vis_compare` to be different to the ggplot2 standards.
 
 # visdat 0.0.4.9600 (2016/08/18)
 =========================
