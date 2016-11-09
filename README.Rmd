@@ -28,9 +28,7 @@ knitr::opts_chunk$set(
 ```{r eval = FALSE}
 # install.packages("devtools")
 
-library(devtools)
-
-install_github("tierneyn/visdat")
+devtools::install_github("njtierney/visdat")
 ```
 
 # What does visdat do?
