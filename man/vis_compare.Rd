@@ -23,6 +23,5 @@ iris_diff[1:10, 1:2] <- NA
 library(visdat)
 
 vis_compare(iris, iris_diff)
-
 }
 

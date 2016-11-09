@@ -5,24 +5,39 @@
 #' @param x a data.frame object
 #'
 #' @examples
-#' \dontrun{
+#'
 #' library(tidyr)
 #' library(readr) # to load the `readr:::collectorGuess` function
 #' library(dplyr)
 #' library(visdat)
 #'
-#' vis_guess(example2)
+#' messy_vector <- c(TRUE,
+#'                  "TRUE",
+#'                  "T",
+#'                  "01/01/01",
+#'                  "01/01/2001",
+#'                  NA,
+#'                  NaN,
+#'                  "NA",
+#'                  "Na",
+#'                  "na",
+#'                  "10",
+#'                  10,
+#'                  "10.1",
+#'                  10.1,
+#'                  "abc",
+#'                  "$%TG")
+#' set.seed(1114)
+#' messy_df <- data.frame(var1 = messy_vector,
+#'                        var2 = sample(messy_vector),
+#'                        var3 = sample(messy_vector))
+#' vis_guess(messy_df)
 #'
-#' dat_messy <-
-#'   example2 %>%
-#'   mutate(capacity = ifelse(capacity <= 60500,
-#'                            yes = "2010/10/10",
-#'                            no = capacity))
-#'
-#' vis_guess(dat_messy)
-#'}
 #' @export
 vis_guess <- function(x){
+
+  warning("vis_guess is still in BETA! If you have suggestions or errors, post an issue at https://github.com/njtierney/visdat/issues")
+
 
   d <- x %>%
     mutate(rows = row_number()) %>%
