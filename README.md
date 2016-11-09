@@ -12,9 +12,7 @@ How to install
 ``` r
 # install.packages("devtools")
 
-library(devtools)
-
-install_github("tierneyn/visdat")
+devtools::install_github("njtierney/visdat")
 ```
 
 What does visdat do?
