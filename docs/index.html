@@ -24,13 +24,7 @@
 <li>
   <a href="news/index.html">News</a>
 </li>
-      </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="https://github.com/tierneyn/visdat">
-    <span class="fa fa-github fa-lg"></span>
-     
-  </a>
-</li>
-      </ul></div><!--/.nav-collapse -->
+      </ul><ul class="nav navbar-nav navbar-right"></ul></div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
 
@@ -49,15 +43,6 @@
 <!-- Add an appVeyor badge -->
 
 </div>
-<div id="what-does-visdat-do" class="section level1">
-<h1 class="hasAnchor"><a href="#what-does-visdat-do" class="anchor"> </a>What does visdat do?</h1>
-<p>Initially inspired by <a href="https://github.com/setosa/csv-fingerprint"><code>csv-fingerprint</code></a>, <code>vis_dat</code> helps you visualise a dataframe and &ldquo;get a look at the data&rdquo; by displaying the variable classes in a dataframe as a plot with <code>vis_dat</code>, and getting a brief look into missing data patterns <code>vis_miss</code>.</p>
-<p>The name <code>visdat</code> was chosen as I think in the future it could be integrated with <a href="https://github.com/ropensci/testdat"><code>testdat</code></a>. The idea being that first you visualise your data (<code>visdat</code>), then you run tests from <code>testdat</code> to fix them.</p>
-<p>There are currently three main commands: <code>vis_dat</code>, <code>vis_miss</code>, and <code>vis_guess</code></p>
-<ul><li><p><code>vis_dat</code> visualises a dataframe showing you what the classes of the columns are, and also displaying the missing data.</p></li>
-<li><p><code>vis_miss</code> visualises just the missing data, and allows for missingness to be clustered and columns rearranged. <code>vis_miss</code> is similar to <code>missing.pattern.plot</code> from the <code>mi</code> package. Unfortunately <code>missing.pattern.plot</code> is no longer in the <code>mi</code> package (well, as of 14/02/2016).</p></li>
-<li><p><code>vis_guess</code> has a guess at what the value of each cell. So &ldquo;10.1&rdquo; will return &ldquo;double&rdquo;, and <code>10.1</code> will return &ldquo;double&rdquo;, and <code>01/01/01</code> will return &ldquo;date&rdquo;. Keep in mind that it is a <strong>guess</strong> at what each cell is, so you can&rsquo;t trust this fully. <code>vis_guess</code> is made possible thanks to Hadley Wickham&rsquo;s <code>readr</code> package - thanks mate!</p></li>
-</ul></div>
 <div id="how-to-install" class="section level1">
 <h1 class="hasAnchor"><a href="#how-to-install" class="anchor"> </a>How to install</h1>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages("devtools")</span>
@@ -66,26 +51,35 @@
 
 <span class="kw">install_github</span>(<span class="st">"tierneyn/visdat"</span>)</code></pre></div>
 </div>
+<div id="what-does-visdat-do" class="section level1">
+<h1 class="hasAnchor"><a href="#what-does-visdat-do" class="anchor"> </a>What does visdat do?</h1>
+<p>Initially inspired by <a href="https://github.com/setosa/csv-fingerprint"><code>csv-fingerprint</code></a>, <code>vis_dat</code> helps you visualise a dataframe and &ldquo;get a look at the data&rdquo; by displaying the variable classes in a dataframe as a plot with <code>vis_dat</code>, and getting a brief look into missing data patterns <code>vis_miss</code>.</p>
+<p>The name <code>visdat</code> was chosen as I think in the future it could be integrated with <a href="https://github.com/ropensci/testdat"><code>testdat</code></a>. The idea being that first you visualise your data (<code>visdat</code>), then you run tests from <code>testdat</code> to fix them.</p>
+<p>There are two main commands in the <code>visdat</code> package: - <code><a href="reference/vis_dat.html">vis_dat()</a></code> - <code><a href="reference/vis_miss.html">vis_miss()</a></code></p>
+<ul><li><p><code><a href="reference/vis_dat.html">vis_dat()</a></code> visualises a dataframe showing you what the classes of the columns are, and also displaying the missing data.</p></li>
+<li><p><code><a href="reference/vis_miss.html">vis_miss()</a></code> visualises just the missing data, and allows for missingness to be clustered and columns rearranged. <code><a href="reference/vis_miss.html">vis_miss()</a></code> is similar to <code>missing.pattern.plot</code> from the <code>mi</code> package. Unfortunately <code>missing.pattern.plot</code> is no longer in the <code>mi</code> package (well, as of 14/02/2016).</p></li>
+</ul><p>There are two some experimental functions:</p>
+<ul><li><code><a href="reference/vis_guess.html">vis_guess()</a></code></li>
+<li><p><code><a href="reference/vis_compare.html">vis_compare()</a></code></p></li>
+<li><p><code><a href="reference/vis_guess.html">vis_guess()</a></code> has a guess at what the value of each cell, using <code>readr::parse_guess</code>. This means that &ldquo;10.1&rdquo; will return &ldquo;double&rdquo;, and <code>10.1</code> will return &ldquo;double&rdquo;, and <code>01/01/01</code> will return &ldquo;date&rdquo;. Keep in mind that it is a <strong>guess</strong> at what each cell is, so you can&rsquo;t trust this fully.</p></li>
+<li><p><code><a href="reference/vis_compare.html">vis_compare()</a></code> compares two dataframes, displaying the differences.</p></li>
+</ul></div>
 <div id="examples" class="section level1">
 <h1 class="hasAnchor"><a href="#examples" class="anchor"> </a>Examples</h1>
 <div id="using-vis_dat" class="section level2">
-<h2 class="hasAnchor"><a href="#using-vis_dat" class="anchor"> </a>Using <code>vis_dat</code></h2>
+<h2 class="hasAnchor"><a href="#using-vis_dat" class="anchor"> </a>Using <code><a href="reference/vis_dat.html">vis_dat()</a></code></h2>
 <p>Let&rsquo;s see what&rsquo;s inside the dataset <code>airquality</code></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw">library</span>(visdat)
 
 <span class="kw"><a href="reference/vis_dat.html">vis_dat</a></span>(airquality)</code></pre></div>
-<p><img src="README-vis_dat-1.png" width="672"></p>
+<p><img src="README-vis-dat-aq-1.png" width="672"></p>
 <p>The classes are represented on the legend, and missing data represented by grey.</p>
 <p>by default, <code>vis_dat</code> sorts the columns according to the type of the data in the vectors. You can turn this off by setting <code>sort_type == FALSE</code>. This feature is better illustrated using the <code>airquality</code> dataset from base R.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-<span class="kw"><a href="reference/vis_dat.html">vis_dat</a></span>(airquality)</code></pre></div>
-<p><img src="README-unnamed-chunk-3-1.png" width="672"></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
 <span class="kw"><a href="reference/vis_dat.html">vis_dat</a></span>(airquality, 
         <span class="dt">sort_type =</span> <span class="ot">FALSE</span>)</code></pre></div>
-<p><img src="README-unnamed-chunk-3-2.png" width="672"></p>
+<p><img src="README-vis-dat-aq-sort-type-1.png" width="672"></p>
 <p>The plot above tells us that R reads this dataset as having characters, and integer values, along with some missing data in <code>Ozone</code> and <code>Solar.R</code>.</p>
 <div id="with-different-data" class="section level3">
 <h3 class="hasAnchor"><a href="#with-different-data" class="anchor"> </a>with different data</h3>
@@ -94,32 +88,32 @@
 <span class="kw"><a href="reference/vis_dat.html">vis_dat</a></span>(typical_data)
 <span class="co">#&gt; Warning: attributes are not identical across measure variables; they will</span>
 <span class="co">#&gt; be dropped</span></code></pre></div>
-<p><img src="README-unnamed-chunk-4-1.png" width="672"></p>
+<p><img src="README-vis-dat-typical-data-1.png" width="672"></p>
 <p>We can also look into using even wider data, looking at <code>typical_larger_data</code></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw"><a href="reference/vis_dat.html">vis_dat</a></span>(typical_larger_data)
 <span class="co">#&gt; Warning: attributes are not identical across measure variables; they will</span>
 <span class="co">#&gt; be dropped</span></code></pre></div>
-<p><img src="README-unnamed-chunk-5-1.png" width="672"></p>
+<p><img src="README-vis-dat-typical-larger-data-1.png" width="672"></p>
 </div>
 </div>
 <div id="using-vis_miss" class="section level2">
-<h2 class="hasAnchor"><a href="#using-vis_miss" class="anchor"> </a>using <code>vis_miss</code></h2>
-<p>We can explore the missing data further using <code>vis_miss</code></p>
+<h2 class="hasAnchor"><a href="#using-vis_miss" class="anchor"> </a>using <code><a href="reference/vis_miss.html">vis_miss()</a></code></h2>
+<p>We can explore the missing data further using <code><a href="reference/vis_miss.html">vis_miss()</a></code></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw"><a href="reference/vis_miss.html">vis_miss</a></span>(airquality)</code></pre></div>
-<p><img src="README-vis_miss-1.png" width="672"></p>
+<p><img src="README-vis-miss-aq-1.png" width="672"></p>
 <p>The percentages of missing/complete in <code>vis_miss</code> are accurate to 1 decimal place.</p>
 <p>You can cluster the missingness by setting <code>cluster = TRUE</code></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw"><a href="reference/vis_miss.html">vis_miss</a></span>(airquality, 
          <span class="dt">cluster =</span> <span class="ot">TRUE</span>)</code></pre></div>
-<p><img src="README-vis_miss-cluster-1.png" width="672"></p>
+<p><img src="README-vis-miss-aq-cluster-1.png" width="672"></p>
 <p>The columns can also just be arranged by columns with most missingness, by setting <code>sort_miss = TRUE</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw"><a href="reference/vis_miss.html">vis_miss</a></span>(airquality,
          <span class="dt">sort_miss =</span> <span class="ot">TRUE</span>)</code></pre></div>
-<p><img src="README-unnamed-chunk-6-1.png" width="672"></p>
+<p><img src="README-vis-miss-aq-sort-miss-1.png" width="672"></p>
 <p>When there is &lt;0.1% of missingness, <code>vis_miss</code> indicates that there is &gt;1% missingness.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 test_miss_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x1 =</span> <span class="dv">1</span>:<span class="dv">10000</span>,
@@ -129,15 +123,18 @@ test_miss_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<s
 <span class="kw"><a href="reference/vis_miss.html">vis_miss</a></span>(test_miss_df)
 <span class="co">#&gt; Warning: attributes are not identical across measure variables; they will</span>
 <span class="co">#&gt; be dropped</span></code></pre></div>
-<p><img src="README-unnamed-chunk-7-1.png" width="672"></p>
+<p><img src="README-vis-miss-test-1.png" width="672"></p>
 <p><code>vis_miss</code> will also indicate when there is no missing data at all</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw"><a href="reference/vis_miss.html">vis_miss</a></span>(mtcars)</code></pre></div>
-<p><img src="README-unnamed-chunk-8-1.png" width="672"></p>
+<p><img src="README-vis-miss-mtcars-1.png" width="672"></p>
+</div>
+<div id="experimental-features" class="section level2">
+<h2 class="hasAnchor"><a href="#experimental-features" class="anchor"> </a>Experimental features</h2>
 </div>
 <div id="using-vis_compare" class="section level2">
-<h2 class="hasAnchor"><a href="#using-vis_compare" class="anchor"> </a>using <code>vis_compare</code></h2>
-<p>Sometimes you want to see what has changed in your data. <code>vis_compare</code> helps with that. It is currently only just barely working, so keep in mind that this is very much in its beta stages.</p>
+<h2 class="hasAnchor"><a href="#using-vis_compare" class="anchor"> </a>using <code><a href="reference/vis_compare.html">vis_compare()</a></code></h2>
+<p>Sometimes you want to see what has changed in your data. <code><a href="reference/vis_compare.html">vis_compare()</a></code> helps with that. It is currently only just barely working, so keep in mind that this is very much in its beta stages.</p>
 <p>For the sake of simplicity, lets make some changes to <code>iris</code>, and compare this new dataset</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 iris_diff &lt;-<span class="st"> </span>iris
@@ -154,18 +151,19 @@ iris_diff[<span class="kw">sample</span>(<span class="dv">1</span>:<span class="
 
 <span class="co">#&gt; Warning: attributes are not identical across measure variables; they will</span>
 <span class="co">#&gt; be dropped</span></code></pre></div>
-<p><img src="README-unnamed-chunk-9-1.png" width="672"></p>
+<p><img src="README-vis-compare-iris-1.png" width="672"></p>
 <p>Here the differences are marked in red.</p>
 <p>If you try and compare differences when the dimensions are different, you get an ugly error.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 iris_diff_2 &lt;-<span class="st"> </span>iris
 iris_diff_2$new_col &lt;-<span class="st"> </span>iris$Sepal.Length +<span class="st"> </span>iris$Sepal.Width
 
-<span class="co"># vis_compare(iris, iris_diff_2)</span></code></pre></div>
+<span class="kw"><a href="reference/vis_compare.html">vis_compare</a></span>(iris, iris_diff_2)
+<span class="co">#&gt; vis_compare is still in BETA! If you have suggestions or errors, post an issue at https://github.com/njtierney/visdat/issuesthe condition has length &gt; 1 and only the first element will be usedError: `.x` (5) and `.y` (6) are different lengths</span></code></pre></div>
 </div>
 <div id="using-vis_guess" class="section level2">
-<h2 class="hasAnchor"><a href="#using-vis_guess" class="anchor"> </a>using <code>vis_guess</code></h2>
-<p><code>vis_guess</code> takes a guess at what each cell is. It&rsquo;s best illustrated using some messy data, which we&rsquo;ll make here.</p>
+<h2 class="hasAnchor"><a href="#using-vis_guess" class="anchor"> </a>using <code><a href="reference/vis_guess.html">vis_guess()</a></code></h2>
+<p><code><a href="reference/vis_guess.html">vis_guess()</a></code> takes a guess at what each cell is. It&rsquo;s best illustrated using some messy data, which we&rsquo;ll make here.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 messy_vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>,
                   T,
@@ -185,16 +183,20 @@ messy_vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class
                   <span class="st">"abc"</span>,
                   <span class="st">"$%TG"</span>)
 
+<span class="kw">set.seed</span>(<span class="dv">1114</span>)
 messy_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">var1 =</span> messy_vector,
                        <span class="dt">var2 =</span> <span class="kw">sample</span>(messy_vector),
                        <span class="dt">var3 =</span> <span class="kw">sample</span>(messy_vector))</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-<span class="kw"><a href="reference/vis_guess.html">vis_guess</a></span>(messy_df)</code></pre></div>
-<p><img src="README-unnamed-chunk-12-1.png" width="672"></p>
+<span class="kw"><a href="reference/vis_guess.html">vis_guess</a></span>(messy_df)
+<span class="co">#&gt; Warning in vis_guess(messy_df): vis_guess is still in BETA! If you have</span>
+<span class="co">#&gt; suggestions or errors, post an issue at https://github.com/njtierney/</span>
+<span class="co">#&gt; visdat/issues</span></code></pre></div>
+<p><img src="README-vis-guess-messy-df-1.png" width="672"></p>
 <p>So here we see that there are many different kinds of data in your dataframe. As an analyst this might be a depressing finding. Compare this to <code>vis_dat</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw"><a href="reference/vis_dat.html">vis_dat</a></span>(messy_df)</code></pre></div>
-<p><img src="README-unnamed-chunk-13-1.png" width="672"></p>
+<p><img src="README-visdat-messy-df-1.png" width="672"></p>
 <p>Where you&rsquo;d just assume your data is wierd because it&rsquo;s all factors - or worse, not notice that this is a problem.</p>
 <p>At the moment <code>vis_guess</code> is very slow. Please take this into consideration when you are using it on data with more than 1000 rows. We&rsquo;re looking into ways of making it faster, potentially using methods from the <code>parallel</code> package, or extending the c++ code from <code>readr:::collectorGuess</code>.</p>
 </div>
@@ -237,8 +239,7 @@ data %&gt;%<span class="st"> </span>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Links</h2><ul class="list-unstyled"><li>Browse source code at <br><a href="https://github.com/tierneyn/visdat">https://&#8203;github.com/&#8203;tierneyn/&#8203;visdat</a></li>
-<li>Report a bug at <br><a href="https://github.com/tierneyn/visdat/issues">https://&#8203;github.com/&#8203;tierneyn/&#8203;visdat/&#8203;issues</a></li>
+    <h2>Links</h2><ul class="list-unstyled"><li>Report a bug at <br><a href="https://github.com/njtierney/visdat/issues">https://&#8203;github.com/&#8203;njtierney/&#8203;visdat/&#8203;issues</a></li>
 </ul><h2>License</h2>
 <p><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE">LICENSE</a></p>
 <h2>Developers</h2><ul class="list-unstyled"><li>Nicholas Tierney <br><small class="roles"> Author, maintainer </small> </li>

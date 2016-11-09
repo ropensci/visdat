@@ -60,12 +60,7 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        <li>
-  <a href="https://github.com/tierneyn/visdat">
-    <span class="fa fa-github fa-lg"></span>
-     
-  </a>
-</li>
+        
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -94,22 +89,34 @@
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Not run: ------------------------------------</span>
-<span class='co'># library(tidyr)</span>
-<span class='co'># library(readr) # to load the `readr:::collectorGuess` function</span>
-<span class='co'># library(dplyr)</span>
-<span class='co'># library(visdat)</span>
-<span class='co'># </span>
-<span class='co'># vis_guess(example2)</span>
-<span class='co'># </span>
-<span class='co'># dat_messy &lt;-</span>
-<span class='co'>#   example2 %&gt;%</span>
-<span class='co'>#   mutate(capacity = ifelse(capacity &lt;= 60500,</span>
-<span class='co'>#                            yes = "2010/10/10",</span>
-<span class='co'>#                            no = capacity))</span>
-<span class='co'># </span>
-<span class='co'># vis_guess(dat_messy)</span>
-<span class='co'>## ---------------------------------------------</span></div></pre>
+    <pre class="examples"><div class='input'>
+<span class='fu'>library</span>(<span class='no'>tidyr</span>)
+<span class='fu'>library</span>(<span class='no'>readr</span>) <span class='co'># to load the `readr:::collectorGuess` function</span>
+<span class='fu'>library</span>(<span class='no'>dplyr</span>)
+<span class='fu'>library</span>(<span class='no'>visdat</span>)
+
+<span class='no'>messy_vector</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='fl'>TRUE</span>,
+                 <span class='st'>"TRUE"</span>,
+                 <span class='st'>"T"</span>,
+                 <span class='st'>"01/01/01"</span>,
+                 <span class='st'>"01/01/2001"</span>,
+                 <span class='fl'>NA</span>,
+                 <span class='fl'>NaN</span>,
+                 <span class='st'>"NA"</span>,
+                 <span class='st'>"Na"</span>,
+                 <span class='st'>"na"</span>,
+                 <span class='st'>"10"</span>,
+                 <span class='fl'>10</span>,
+                 <span class='st'>"10.1"</span>,
+                 <span class='fl'>10.1</span>,
+                 <span class='st'>"abc"</span>,
+                 <span class='st'>"$%TG"</span>)
+<span class='fu'>set.seed</span>(<span class='fl'>1114</span>)
+<span class='no'>messy_df</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='kw'>var1</span> <span class='kw'>=</span> <span class='no'>messy_vector</span>,
+                       <span class='kw'>var2</span> <span class='kw'>=</span> <span class='fu'>sample</span>(<span class='no'>messy_vector</span>),
+                       <span class='kw'>var3</span> <span class='kw'>=</span> <span class='fu'>sample</span>(<span class='no'>messy_vector</span>))
+<span class='fu'>vis_guess</span>(<span class='no'>messy_df</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: vis_guess is still in BETA! If you have suggestions or errors, post an issue at https://github.com/njtierney/visdat/issues</span></div><img src='vis_guess-3.png' alt='' width='540' height='400' /><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
