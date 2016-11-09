@@ -10,6 +10,15 @@
 #'
 #' @param show_perc logical TRUE/FALSE. TRUE now adds in the \% of missing/complete data in the whole dataset into the legend. Default value is TRUE
 #'
+#' @examples
+#'
+#' library(visdat)
+#'
+#' vis_miss(airquality)
+#'
+#' vis_miss(airquality, cluster = TRUE)
+#'
+#' vis_miss(airquality, sort_miss = TRUE)
 #'
 #' @export
 vis_miss <- function(x,

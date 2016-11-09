@@ -18,4 +18,15 @@ vis_miss(x, cluster = FALSE, sort_miss = FALSE, show_perc = TRUE)
 \description{
 \code{vis_miss} provides an at-a-glance ggplot of the missingness inside a dataframe, colouring cells according to missingness, where black indicates a present cell and grey indicates a missing cell. As it returns a ggplot object, it is very easy to customize and change labels, and so on.
 }
+\examples{
+
+library(visdat)
+
+vis_miss(airquality)
+
+vis_miss(airquality, cluster = TRUE)
+
+vis_miss(airquality, sort_miss = TRUE)
+
+}
 
