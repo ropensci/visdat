@@ -6,21 +6,6 @@ visdat
 <!-- Add an appVeyor badge -->
 [![Travis-CI Build Status](https://travis-ci.org/njtierney/visdat.svg?branch=master)](https://travis-ci.org/njtierney/visdat) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/njtierney/visdat?branch=master&svg=true)](https://ci.appveyor.com/project/njtierney/visdat)
 
-What does visdat do?
-====================
-
-Initially inspired by [`csv-fingerprint`](https://github.com/setosa/csv-fingerprint), `vis_dat` helps you visualise a dataframe and "get a look at the data" by displaying the variable classes in a dataframe as a plot with `vis_dat`, and getting a brief look into missing data patterns `vis_miss`.
-
-The name `visdat` was chosen as I think in the future it could be integrated with [`testdat`](https://github.com/ropensci/testdat). The idea being that first you visualise your data (`visdat`), then you run tests from `testdat` to fix them.
-
-There are currently three main commands: `vis_dat`, `vis_miss`, and `vis_guess`
-
--   `vis_dat` visualises a dataframe showing you what the classes of the columns are, and also displaying the missing data.
-
--   `vis_miss` visualises just the missing data, and allows for missingness to be clustered and columns rearranged. `vis_miss` is similar to `missing.pattern.plot` from the `mi` package. Unfortunately `missing.pattern.plot` is no longer in the `mi` package (well, as of 14/02/2016).
-
--   `vis_guess` has a guess at what the value of each cell. So "10.1" will return "double", and `10.1` will return "double", and `01/01/01` will return "date". Keep in mind that it is a **guess** at what each cell is, so you can't trust this fully. `vis_guess` is made possible thanks to Hadley Wickham's `readr` package - thanks mate!
-
 How to install
 ==============
 
@@ -32,11 +17,33 @@ library(devtools)
 install_github("tierneyn/visdat")
 ```
 
+What does visdat do?
+====================
+
+Initially inspired by [`csv-fingerprint`](https://github.com/setosa/csv-fingerprint), `vis_dat` helps you visualise a dataframe and "get a look at the data" by displaying the variable classes in a dataframe as a plot with `vis_dat`, and getting a brief look into missing data patterns `vis_miss`.
+
+The name `visdat` was chosen as I think in the future it could be integrated with [`testdat`](https://github.com/ropensci/testdat). The idea being that first you visualise your data (`visdat`), then you run tests from `testdat` to fix them.
+
+There are two main commands in the `visdat` package: - `vis_dat()` - `vis_miss()`
+
+-   `vis_dat()` visualises a dataframe showing you what the classes of the columns are, and also displaying the missing data.
+
+-   `vis_miss()` visualises just the missing data, and allows for missingness to be clustered and columns rearranged. `vis_miss()` is similar to `missing.pattern.plot` from the `mi` package. Unfortunately `missing.pattern.plot` is no longer in the `mi` package (well, as of 14/02/2016).
+
+There are two some experimental functions:
+
+-   `vis_guess()`
+-   `vis_compare()`
+
+-   `vis_guess()` has a guess at what the value of each cell, using `readr::parse_guess`. This means that "10.1" will return "double", and `10.1` will return "double", and `01/01/01` will return "date". Keep in mind that it is a **guess** at what each cell is, so you can't trust this fully.
+
+-   `vis_compare()` compares two dataframes, displaying the differences.
+
 Examples
 ========
 
-Using `vis_dat`
----------------
+Using `vis_dat()`
+-----------------
 
 Let's see what's inside the dataset `airquality`
 
@@ -47,7 +54,7 @@ library(visdat)
 vis_dat(airquality)
 ```
 
-![](README-vis_dat-1.png)
+![](README-vis-dat-aq-1.png)
 
 The classes are represented on the legend, and missing data represented by grey.
 
@@ -55,19 +62,11 @@ by default, `vis_dat` sorts the columns according to the type of the data in the
 
 ``` r
 
-vis_dat(airquality)
-```
-
-![](README-unnamed-chunk-3-1.png)
-
-``` r
-
-
 vis_dat(airquality, 
         sort_type = FALSE)
 ```
 
-![](README-unnamed-chunk-3-2.png)
+![](README-vis-dat-aq-sort-type-1.png)
 
 The plot above tells us that R reads this dataset as having characters, and integer values, along with some missing data in `Ozone` and `Solar.R`.
 
@@ -82,7 +81,7 @@ vis_dat(typical_data)
 #> be dropped
 ```
 
-![](README-unnamed-chunk-4-1.png)
+![](README-vis-dat-typical-data-1.png)
 
 We can also look into using even wider data, looking at `typical_larger_data`
 
@@ -93,19 +92,19 @@ vis_dat(typical_larger_data)
 #> be dropped
 ```
 
-![](README-unnamed-chunk-5-1.png)
+![](README-vis-dat-typical-larger-data-1.png)
 
-using `vis_miss`
-----------------
+using `vis_miss()`
+------------------
 
-We can explore the missing data further using `vis_miss`
+We can explore the missing data further using `vis_miss()`
 
 ``` r
 
 vis_miss(airquality)
 ```
 
-![](README-vis_miss-1.png)
+![](README-vis-miss-aq-1.png)
 
 The percentages of missing/complete in `vis_miss` are accurate to 1 decimal place.
 
@@ -117,7 +116,7 @@ vis_miss(airquality,
          cluster = TRUE)
 ```
 
-![](README-vis_miss-cluster-1.png)
+![](README-vis-miss-aq-cluster-1.png)
 
 The columns can also just be arranged by columns with most missingness, by setting `sort_miss = TRUE`.
 
@@ -127,7 +126,7 @@ vis_miss(airquality,
          sort_miss = TRUE)
 ```
 
-![](README-unnamed-chunk-6-1.png)
+![](README-vis-miss-aq-sort-miss-1.png)
 
 When there is &lt;0.1% of missingness, `vis_miss` indicates that there is &gt;1% missingness.
 
@@ -142,7 +141,7 @@ vis_miss(test_miss_df)
 #> be dropped
 ```
 
-![](README-unnamed-chunk-7-1.png)
+![](README-vis-miss-test-1.png)
 
 `vis_miss` will also indicate when there is no missing data at all
 
@@ -151,12 +150,15 @@ vis_miss(test_miss_df)
 vis_miss(mtcars)
 ```
 
-![](README-unnamed-chunk-8-1.png)
+![](README-vis-miss-mtcars-1.png)
 
-using `vis_compare`
--------------------
+Experimental features
+---------------------
 
-Sometimes you want to see what has changed in your data. `vis_compare` helps with that. It is currently only just barely working, so keep in mind that this is very much in its beta stages.
+using `vis_compare()`
+---------------------
+
+Sometimes you want to see what has changed in your data. `vis_compare()` helps with that. It is currently only just barely working, so keep in mind that this is very much in its beta stages.
 
 For the sake of simplicity, lets make some changes to `iris`, and compare this new dataset
 
@@ -178,7 +180,7 @@ vis_compare(iris_diff, iris)
 #> be dropped
 ```
 
-![](README-unnamed-chunk-9-1.png)
+![](README-vis-compare-iris-1.png)
 
 Here the differences are marked in red.
 
@@ -189,13 +191,14 @@ If you try and compare differences when the dimensions are different, you get an
 iris_diff_2 <- iris
 iris_diff_2$new_col <- iris$Sepal.Length + iris$Sepal.Width
 
-# vis_compare(iris, iris_diff_2)
+vis_compare(iris, iris_diff_2)
+#> vis_compare is still in BETA! If you have suggestions or errors, post an issue at https://github.com/njtierney/visdat/issuesthe condition has length > 1 and only the first element will be usedError: `.x` (5) and `.y` (6) are different lengths
 ```
 
-using `vis_guess`
------------------
+using `vis_guess()`
+-------------------
 
-`vis_guess` takes a guess at what each cell is. It's best illustrated using some messy data, which we'll make here.
+`vis_guess()` takes a guess at what each cell is. It's best illustrated using some messy data, which we'll make here.
 
 ``` r
 
@@ -217,6 +220,7 @@ messy_vector <- c(TRUE,
                   "abc",
                   "$%TG")
 
+set.seed(1114)
 messy_df <- data.frame(var1 = messy_vector,
                        var2 = sample(messy_vector),
                        var3 = sample(messy_vector))
@@ -225,9 +229,12 @@ messy_df <- data.frame(var1 = messy_vector,
 ``` r
 
 vis_guess(messy_df)
+#> Warning in vis_guess(messy_df): vis_guess is still in BETA! If you have
+#> suggestions or errors, post an issue at https://github.com/njtierney/
+#> visdat/issues
 ```
 
-![](README-unnamed-chunk-12-1.png)
+![](README-vis-guess-messy-df-1.png)
 
 So here we see that there are many different kinds of data in your dataframe. As an analyst this might be a depressing finding. Compare this to `vis_dat`.
 
@@ -236,7 +243,7 @@ So here we see that there are many different kinds of data in your dataframe. As
 vis_dat(messy_df)
 ```
 
-![](README-unnamed-chunk-13-1.png)
+![](README-visdat-messy-df-1.png)
 
 Where you'd just assume your data is wierd because it's all factors - or worse, not notice that this is a problem.
 
