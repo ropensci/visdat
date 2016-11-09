@@ -25,7 +25,7 @@ In the same way, I think that this process gets applied in the Tidying step of d
 
 On one hand, you can look at the head of the data:
 
-```{r}
+```{r head-iris}
 
 head(iris)
 
@@ -33,7 +33,7 @@ head(iris)
 
 Or you can have a `glimpse` at it through `tibble`/`dplyr`
 
-```{r}
+```{r glimpse}
 
 tibble::glimpse(iris)
 
@@ -43,7 +43,7 @@ And we can see we have doubles, and a factor. And we get a little insight into t
 
 But we don't always have data like iris, let's take a look at some data that might be a bit more typical of "messy" data.
 
-```{r}
+```{r visdat-glimpse}
 library(visdat)
 dplyr::glimpse(typical_data)
 
@@ -51,38 +51,22 @@ dplyr::glimpse(typical_data)
 
 And you might then ask:
 
-> Isn't it odd that Income is  afactor? And Age is a character? 
+> Isn't it odd that Income is a factor? And Age is a character? 
 
-```{r}
+And then you can use `vis_dat()` and `vis_miss()` to explore this
 
 
+```{r load-data}
+
+
+vis_dat(typical_data)
+
+vis_miss(typical_data)
 
 ```
 
 
 The name `visdat` was chosen as it borrows from the idea of [`testdat`](https://github.com/ropensci/testdat), which provides unit testing for your data.  In a similar way, `visdat` provides visual tests for The idea being that first you visualise your data (`visdat`), then you run tests from `testdat` to fix them.
-
-There are currently three main commands: `vis_dat`, `vis_miss`, and `vis_guess`
-
-- `vis_dat` visualises a dataframe showing you what the classes of the columns are, and also displaying the missing data.
-
-- `vis_miss` visualises just the missing data, and allows for missingness to be clustered and columns rearranged. `vis_miss` is similar to `missing.pattern.plot` from the `mi` package. Unfortunately `missing.pattern.plot` is no longer in the `mi` package (well, as of 14/02/2016).
-
--  `vis_guess` has a guess at what the value of each cell. So "10.1" will return "double", and `10.1` will return "double", and `01/01/01` will return "date". Keep in mind that it is a **guess** at what each cell is, so you can't trust this fully. `vis_guess` is made possible thanks to Hadley Wickham's `readr` package - thanks mate!
-
-
-# How to install
-
-```{r eval = FALSE}
-# install.packages("devtools")
-
-library(devtools)
-
-install_github("njtierney/visdat")
-
-```
-
-# Examples
 
 ## Using `vis_dat`
 
@@ -100,7 +84,7 @@ The classes are represented on the legend, and missing data represented by grey.
 
 by default, `vis_dat` sorts the columns according to the type of the data in the vectors. You can turn this off by setting `sort_type == FALSE`. This feature is better illustrated using the `typical_data` dataset, created using [wakefield](github.com/trinker/wakefield) and contained within visdat
 
-```{r}
+```{r visdat-typical}
 
 vis_dat(typical_data)
 
@@ -134,7 +118,7 @@ vis_miss(airquality,
 
 The columns can also just be arranged by columns with most missingness, by setting `sort_miss = TRUE`.
 
-```{r}
+```{r vismiss}
 
 vis_miss(airquality,
          sort_miss = TRUE)
@@ -143,7 +127,7 @@ vis_miss(airquality,
 
 When there is <0.1% of missingness, `vis_miss` indicates that there is >1% missingness.
 
-```{r}
+```{r vismiss-new-data}
 
 test_miss_df <- data.frame(x1 = 1:10000,
                            x2 = rep("A", 10000),
@@ -155,7 +139,7 @@ vis_miss(test_miss_df)
 
 `vis_miss` will also indicate when there is no missing data at all
 
-```{r}
+```{r vismiss-mtcars}
 
 vis_miss(mtcars)
 
@@ -165,7 +149,7 @@ vis_miss(mtcars)
 
 `vis_guess` takes a guess at what each cell is. It's best illustrated using some messy data, which we'll make here.
 
-```{r}
+```{r create-messy-vector}
 
 messy_vector <- c(TRUE,
                   T,
@@ -192,7 +176,7 @@ messy_df <- data.frame(var1 = messy_vector,
 ```
 
 
-```{r}
+```{r messy-vis-guess}
 
 vis_guess(messy_df)
 
@@ -200,7 +184,7 @@ vis_guess(messy_df)
 
 So here we see that there are many different kinds of data in your dataframe. As an analyst this might be a depressing finding. Compare this to `vis_dat`.
 
-```{r}
+```{r visdat-messy}
 
 vis_dat(messy_df)
 
@@ -214,25 +198,10 @@ At the moment `vis_guess` is very slow. Please take this into consideration when
 
 Thanks to Carson Sievert, you can now add some really nifty interactivity into visdat by using `plotly::ggplotly`, allowing for information to be revealed upon mouseover of a cell. The code to do this can be seen below, but is not shown as the github README doesn't support HTML interactive graphics...yet.
 
-```{r eval = FALSE}
+```{r plotly-example}
 
 library(plotly)
 
 vis_dat(airquality) %>% ggplotly()
 
 ```
-
-# Road Map
-
-**visualising expectations**
-
-The idea here is to pass expectations into `vis_dat` or `vis_miss`, along the lines of the `expectation` command in `assertr`. For example, you could ask `vis_dat` to identify those cells with values of -1 with something like this:
-
-```{r eval = FALSE}
-
-data %>% 
-  expect(value == -1) %>%
-  vis_dat
-
-```
-
