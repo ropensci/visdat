@@ -27,6 +27,7 @@ vis_miss <- function(x,
                      show_perc = TRUE){
   # make a TRUE/FALSE matrix of the data.
   # This tells us whether it is missing (true) or not (false)
+  x = airquality
   x.na <- is.na(x)
 
   # switch for creating the missing clustering
@@ -92,24 +93,6 @@ vis_miss <- function(x,
 
     p_pres_lab <- temp$p_pres_lab
 
-    # # x <- example2
-    # p_miss <- (mean(is.na(x)) * 100)
-    # p_miss <- round(p_miss, 1)
-    #
-    # # calculate % present
-    # p_pres <- 100-p_miss
-    #
-    # # create the labels
-    # p_miss_lab <- paste("Missing (",
-    #                     p_miss,
-    #                     "%)",
-    #                     sep = "")
-    #
-    # p_pres_lab <- paste("Present (",
-    #                     p_pres,
-    #                     "%)",
-    #                     sep = "")
-
     # else if show_perc FALSE
   } else {
 
@@ -127,16 +110,24 @@ vis_miss <- function(x,
                       text = "value")) +
       geom_raster(aes_string(fill = "valueType")) +
       # change the colour, so that missing is grey, present is black
-      scale_fill_grey(name = "",
-                      labels = c(p_pres_lab,
-                                 p_miss_lab)) +
+      # 2016/12/15: Change the colour AGAIN, so that missing is black
+      #
+      scale_fill_manual(name = "",
+                        values = c("grey80",
+                                   "grey20"),
+                        labels = c(p_pres_lab,
+                                     p_miss_lab)) +
+      # scale_fill_grey(name = "",
+      #                 labels = c(p_pres_lab,
+      #                            p_miss_lab)) +
       theme_minimal() +
       theme(axis.text.x = element_text(angle = 45,
                                        vjust = 1,
                                        hjust = 1)) +
       labs(x = "Variables in Data",
            y = "Observations") +
-      scale_x_discrete(limits = col_order_index)
+      scale_x_discrete(limits = col_order_index) +
+      guides(fill = guide_legend(reverse = TRUE))
       # guides(fill = guide_legend(title = "Type"))
   # Thanks to http://www.markhneedham.com/blog/2015/02/27/rggplot-controlling-x-axis-order/
   # For the tip on using scale_x_discrete

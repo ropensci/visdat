@@ -200,8 +200,8 @@ Thanks to Carson Sievert, you can now add some really nifty interactivity into v
 
 ```{r plotly-example}
 
-library(plotly)
+# library(plotly)
 
-vis_dat(airquality) %>% ggplotly()
-
+# vis_dat(airquality) %>% ggplotly()
+# 
 ```
