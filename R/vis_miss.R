@@ -27,7 +27,7 @@ vis_miss <- function(x,
                      show_perc = TRUE){
   # make a TRUE/FALSE matrix of the data.
   # This tells us whether it is missing (true) or not (false)
-  x = airquality
+  # x = airquality
   x.na <- is.na(x)
 
   # switch for creating the missing clustering
