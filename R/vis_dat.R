@@ -47,7 +47,7 @@ vis_dat <- function(x,
   d <- x %>%
     # mutate_each_(funs(fingerprint), tbl_vars(.)) %>%
     purrr::dmap(fingerprint) %>%
-    dplyr::mutate(rows = row_number()) %>%
+    dplyr::mutate(rows = 1:nrow(.)) %>%
     tidyr::gather_(key_col = "variables",
                    value_col = "valueType",
                    gather_cols = names(.)[-length(.)])

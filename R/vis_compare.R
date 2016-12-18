@@ -36,13 +36,14 @@ vis_compare <- function(df1,
 
   v_identical <- Vectorize(identical)
 
-  df_diff <- purrr::map2(df1, df2, v_identical) %>% as_data_frame
+  df_diff <- purrr::map2(df1, df2, v_identical) %>%
+    dplyr::as_data_frame()
 
   d <-
   df_diff %>%
     as.data.frame() %>%
     purrr::dmap(compare_print) %>%
-    dplyr::mutate(rows = dplyr::row_number()) %>%
+    dplyr::mutate(rows = 1:nrow(.)) %>%
     # gather the variables together for plotting
     # here we now have a column of the row number (row),
     # then the variable(variables),

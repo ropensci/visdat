@@ -34,8 +34,8 @@ vis_miss <- function(x,
 
     # this retrieves a row order of the clustered missingness
     row_order_index <-
-      dist(x.na*1) %>%
-      hclust(method = "mcquitty") %>%
+      stats::dist(x.na*1) %>%
+      stats::hclust(method = "mcquitty") %>%
       as.dendrogram %>%
       order.dendrogram
 
@@ -71,7 +71,7 @@ vis_miss <- function(x,
 
   d <- x.na[row_order_index , ] %>%
     as.data.frame %>%
-    dplyr::mutate(rows = row_number()) %>%
+    dplyr::mutate(rows = 1:nrow(.)) %>%
     # gather the variables together for plotting
     # here we now have a column of the row number (row),
     # then the variable(variables),
