@@ -8,7 +8,6 @@
 #'
 #' @param palette character "default", "qual" or "cb_safe". "default" (the default) provides the stock ggplot scale for separating the colours. "qual" uses an experimental qualitative colour scheme for providing distinct colours for each Type. "cb_safe" is a set of colours that are appropriate for those with colourblindness. "qual" and "cb_safe" are drawn from http://colorbrewer2.org/.
 #'
-#'
 #' @examples
 #'
 #' library(visdat)
@@ -48,7 +47,7 @@ vis_dat <- function(x,
   d <- x %>%
     # mutate_each_(funs(fingerprint), tbl_vars(.)) %>%
     purrr::dmap(fingerprint) %>%
-    mutate(rows = row_number()) %>%
+    dplyr::mutate(rows = row_number()) %>%
     tidyr::gather_(key_col = "variables",
                    value_col = "valueType",
                    gather_cols = names(.)[-length(.)])
@@ -58,20 +57,20 @@ vis_dat <- function(x,
 
   # do the plotting
   vis_dat_plot <-
-  ggplot(data = d,
-         aes_string(x = "variables",
+    ggplot2::ggplot(data = d,
+                    ggplot2::aes_string(x = "variables",
                     y = "rows",
                     # text assists with plotly mouseover
                     text = "value")) +
-    geom_raster(aes_string(fill = "valueType")) +
-    theme_minimal() +
-    theme(axis.text.x = element_text(angle = 45,
+    ggplot2::geom_raster(ggplot2::aes_string(fill = "valueType")) +
+    ggplot2::theme_minimal() +
+    ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45,
                                      vjust = 1,
                                      hjust = 1)) +
-    labs(x = "Variables in Dataset",
+    ggplot2::labs(x = "Variables in Dataset",
          y = "Observations") +
-    scale_x_discrete(limits = type_order_index) +
-    guides(fill = guide_legend(title = "Type"))
+    ggplot2::scale_x_discrete(limits = type_order_index) +
+    ggplot2::guides(fill = ggplot2::guide_legend(title = "Type"))
 
    if (palette == "qual"){
 
@@ -84,7 +83,7 @@ vis_dat <- function(x,
                             "#984ea3") # Purple
 
        vis_dat_plot +
-         scale_fill_manual(limits = c("character",
+         ggplot2::scale_fill_manual(limits = c("character",
                                       "date",
                                       "factor",
                                       "integer",
@@ -112,7 +111,7 @@ vis_dat <- function(x,
                             '#4575b4') # dark blue
 
      vis_dat_plot +
-       scale_fill_manual(limits = c("character",
+       ggplot2::scale_fill_manual(limits = c("character",
                                     "date",
                                     "factor",
                                     "integer",

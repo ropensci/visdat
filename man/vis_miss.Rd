@@ -27,6 +27,5 @@ vis_miss(airquality)
 vis_miss(airquality, cluster = TRUE)
 
 vis_miss(airquality, sort_miss = TRUE)
-
 }
 

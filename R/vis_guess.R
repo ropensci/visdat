@@ -32,38 +32,37 @@
 #'                        var2 = sample(messy_vector),
 #'                        var3 = sample(messy_vector))
 #' vis_guess(messy_df)
-#'
 #' @export
 vis_guess <- function(x){
 
   warning("vis_guess is still in BETA! If you have suggestions or errors, post an issue at https://github.com/njtierney/visdat/issues")
 
-
+# x = messy_df
   d <- x %>%
-    mutate(rows = row_number()) %>%
+    dplyr::mutate(rows = 1:nrow(.)) %>%
     tidyr::gather_(key_col = "variables",
                    value_col = "valueGuess",
                    gather_cols = names(.)[-length(.)]) %>%
-    mutate(guess = guess_type(valueGuess)) %>%
+    dplyr::mutate(guess = guess_type(valueGuess)) %>%
     # drop Valueguess....
-    select(-valueGuess)
+    dplyr::select(-valueGuess)
 
   # value for plotly mouseover
   d$value <- tidyr::gather_(x, "variables", "value", names(x))$value
 
-    ggplot(data = d,
-           aes_string(x = "variables",
+    ggplot2::ggplot(data = d,
+                    ggplot2::aes_string(x = "variables",
                       y = "rows",
                       # text assist with plotly mouseover
                       text = "value")) +
-      geom_raster(aes_string(fill = "guess")) +
-      theme_minimal() +
-      theme(axis.text.x = element_text(angle = 45,
-                                       vjust = 1,
-                                       hjust = 1)) +
-      labs(x = "Variables in Dataset",
-           y = "Observations") +
-      scale_x_discrete(limits = names(x))  +
-      guides(fill = guide_legend(title = "Type"))
+      ggplot2::geom_raster(ggplot2::aes_string(fill = "guess")) +
+      ggplot2::theme_minimal() +
+      ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45,
+                                                         vjust = 1,
+                                                         hjust = 1)) +
+      ggplot2::labs(x = "Variables in Dataset",
+                    y = "Observations") +
+      ggplot2::scale_x_discrete(limits = names(x))  +
+      ggplot2::guides(fill = ggplot2::guide_legend(title = "Type"))
 
 } #end function

@@ -6,7 +6,6 @@
 #'
 #' @param df2 the second dataframe to compare to
 #'
-#'
 #' @examples
 #'
 #' # make a new dataset of iris that contains some NA values
@@ -16,6 +15,7 @@
 #' library(visdat)
 #'
 #' vis_compare(iris, iris_diff)
+#'
 #' @export
 
 vis_compare <- function(df1,
@@ -42,7 +42,7 @@ vis_compare <- function(df1,
   df_diff %>%
     as.data.frame() %>%
     purrr::dmap(compare_print) %>%
-    mutate(rows = row_number()) %>%
+    dplyr::mutate(rows = dplyr::row_number()) %>%
     # gather the variables together for plotting
     # here we now have a column of the row number (row),
     # then the variable(variables),
@@ -55,26 +55,26 @@ vis_compare <- function(df1,
   d$value_df2 <- tidyr::gather_(df2, "variables", "value", names(df2))$value
 
   # then we plot it
-  ggplot(data = d,
-         aes_string(x = "variables",
+  ggplot2::ggplot(data = d,
+                  ggplot2::aes_string(x = "variables",
                     y = "rows",
                     # text assists with plotly mouseover
                     text = c("value_df1", "value_df2"))) +
-    geom_raster(aes_string(fill = "valueType")) +
+    ggplot2::geom_raster(ggplot2::aes_string(fill = "valueType")) +
     # change the colour, so that missing is grey, present is black
     # scale_fill_discrete(name = "",
     #                     labels = c("Different",
     #                                "Missing",
     #                                "Same")) +
-    theme_minimal() +
-    theme(axis.text.x = element_text(angle = 45,
+    ggplot2::theme_minimal() +
+    ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45,
                                      vjust = 1,
                                      hjust = 1)) +
-    labs(x = "Variables in Data",
+    ggplot2::labs(x = "Variables in Data",
          y = "Observations",
          fill = "Cell Type") +
-    scale_x_discrete(limits = names(df_diff)) +
-    scale_fill_manual(limits = c("same",
+    ggplot2::scale_x_discrete(limits = names(df_diff)) +
+    ggplot2::scale_fill_manual(limits = c("same",
                                  "different"),
                       breaks = c("same", # red
                                  "different"), # dark blue

@@ -4,8 +4,8 @@
 \name{visdat}
 \alias{visdat}
 \alias{visdat-package}
-\title{visdat.}
+\title{visdat}
 \description{
-visdat.
+visdat
 }
 
