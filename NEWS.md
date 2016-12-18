@@ -1,6 +1,12 @@
-# visdat 0.0.4.9800 (2016/11/09)
+# visdat 0.0.4.9900 (2016/12/18)
 =========================
 
+## Minor Improvements
+
+- Removed a lot of unnecessary @importFrom tags, included magrittr in this, and added magrittr to Imports
+
+# visdat 0.0.4.9800 (2016/11/09)
+=========================
 ## Minor Improvements
 
 - Changes ALL CAPS Headers in news to Title Case
