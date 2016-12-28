@@ -9,17 +9,26 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+```{r setup, echo = FALSE}
+
+knitr::opts_chunk$set(fig.width = 5,
+                      fig.height = 4)
+
+```
+
+
 # visdat
 
 # What does visdat do?
 
 Initially inspired by [`csv-fingerprint`](https://github.com/setosa/csv-fingerprint), `vis_dat` helps visualise a dataframe in a heatmap-like fashion, allowing you to "get a look at the data", by displaying the variable classes in a dataframe as a plot with `vis_dat`, and getting a brief look into missing data patterns `vis_miss`.
 
-There have been 6 phases of data science [1](http://r4ds.had.co.nz/introduction.html) described, being:
+In his [R for Data Science book](http://r4ds.had.co.nz/), Wickham describes 6 phases of data science:
 
-[image from this datascience page with reference]()
+![Process of Data Science](http://r4ds.had.co.nz/diagrams/data-science.png)
 
-Where Wickham describes that you can get insight into your data by modelling, visualising, and transforming, which he describes as "Understanding" or "knowledge generation". There is some overlap here, as in this process it wouldn't be surprising that you might uncover some feature of your dataset that you would need to clean up - you might discover that some strings were indeed factors, or that gender was considered numeric in your regression, warranting you to re-visit the Tidying phase.
+
+You can get insight into your data by modelling, visualising, and transforming, which Wickham describes as "Understanding" or "knowledge generation". There is some overlap here, as in this process it wouldn't be surprising that you might uncover some feature of your dataset that you would need to clean up - you might discover that some strings were indeed factors, or that gender was considered numeric in your regression, warranting you to re-visit the Tidying phase.
 
 In the same way, I think that this process gets applied in the Tidying step of data science. You read in your data, but you then need to look at it to understand what you need to do to "fix it". And that's a key phrase here "looking at the data" - what does that mean?
 
@@ -31,17 +40,17 @@ head(iris)
 
 ```
 
-Or you can have a `glimpse` at it through `tibble`/`dplyr`
+Or you can have a `glimpse` at it through `dplyr::glimpse`
 
 ```{r glimpse}
 
-tibble::glimpse(iris)
+dplyr::glimpse(iris)
 
 ```
 
-And we can see we have doubles, and a factor. And we get a little insight into the data.
+Here we see that we have doubles, and a factor. We get some insight into the data.
 
-But we don't always have data like iris, let's take a look at some data that might be a bit more typical of "messy" data.
+But we don't always have data like the canonical iris dataset. :et's take a look at some data that might be a bit more typical of "messy" data.
 
 ```{r visdat-glimpse}
 library(visdat)
@@ -49,17 +58,23 @@ dplyr::glimpse(typical_data)
 
 ```
 
-And you might then ask:
+Looking at this, you might then ask:
 
 > Isn't it odd that Income is a factor? And Age is a character? 
 
-And then you can use `vis_dat()` and `vis_miss()` to explore this
+And you might start to wonder what else is different, what else changed? 
 
+the `visdat` package provides the functions `vis_dat()` to help explore the data class structure and missingness:
 
 ```{r load-data}
 
-
 vis_dat(typical_data)
+
+```
+
+And the separate `vis_miss` function to provide specialised insight into missing data
+
+```{r}
 
 vis_miss(typical_data)
 
@@ -80,9 +95,7 @@ vis_dat(airquality)
 
 ```
 
-The classes are represented on the legend, and missing data represented by grey. 
-
-by default, `vis_dat` sorts the columns according to the type of the data in the vectors. You can turn this off by setting `sort_type == FALSE`. This feature is better illustrated using the `typical_data` dataset, created using [wakefield](github.com/trinker/wakefield) and contained within visdat
+The classes are represented on the legend, and missing data represented by black. By default, `vis_dat` sorts the columns according to the type of the data in the vectors. You can turn this off by setting `sort_type == FALSE`. This feature is better illustrated using the `typical_data` dataset, created using [wakefield](github.com/trinker/wakefield) and contained within visdat
 
 ```{r visdat-typical}
 
@@ -137,13 +150,15 @@ vis_miss(test_miss_df)
 
 ```
 
-`vis_miss` will also indicate when there is no missing data at all
+`vis_miss` will also indicate when there is no missing data at all. For example the `mtcars` dataset has no missing data.
 
 ```{r vismiss-mtcars}
 
 vis_miss(mtcars)
 
 ```
+
+To explore the missingness structure in a dataset, I recommend the [`naniar`](https://github.com/njtierney/naniar) package, which provides more general tools for graphical and numerical exploration of missing values.
 
 ## using `vis_guess`
 
@@ -175,6 +190,15 @@ messy_df <- data.frame(var1 = messy_vector,
 
 ```
 
+Here if we just glimpse `messy_df`, we get 
+
+```{r}
+
+dplyr::glimpse(messy_df)
+
+```
+
+It looks like we have 3 factors. But this seems a bit strange. `vis_guess` takes a guess at what each element is, visualising it for you:
 
 ```{r messy-vis-guess}
 
@@ -200,8 +224,7 @@ Thanks to Carson Sievert, you can now add some really nifty interactivity into v
 
 ```{r plotly-example}
 
-# library(plotly)
+library(plotly)
 
-# vis_dat(airquality) %>% ggplotly()
-# 
+vis_dat(airquality) %>% ggplotly()
 ```
