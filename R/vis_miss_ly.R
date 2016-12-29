@@ -1,8 +1,10 @@
-#' vis_miss_ly
+#' Interactive plot of missingness in plotly
 #'
-#' basic implementation of vis_miss in plotly. Still need to fix the legend. this is handy when you want to interactively explore your data.
+#' This is a basic implementation of vis_miss in plotly, some work is still needed to fix the legend, but it is several (read, about 3000x) faster than doing \code{ggplotly(vis_miss(data))}.
 #'
 #' @param x a dataframe
+#'
+#' @seealso vis_miss
 #'
 #' @return a plotly interactive plot.
 #' @export
@@ -27,7 +29,8 @@ vis_miss_ly <- function(x){
           text = txt,
           hoverinfo = "text",
           type = "heatmap",
-          colorbar = list(ticktext = categories,
+          colors = c("grey80", "grey20"),
+          colorbar = list(ticktext = c("Present","Missing"),
                           tickvals = seq_along(categories))
   ) %>% plotly::layout(xaxis = list(title = ""))
 

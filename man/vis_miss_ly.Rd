@@ -2,7 +2,7 @@
 % Please edit documentation in R/vis_miss_ly.R
 \name{vis_miss_ly}
 \alias{vis_miss_ly}
-\title{vis_miss_ly}
+\title{Interactive plot of missingness in plotly}
 \usage{
 vis_miss_ly(x)
 }
@@ -13,12 +13,15 @@ vis_miss_ly(x)
 a plotly interactive plot.
 }
 \description{
-basic implementation of vis_miss in plotly. Still need to fix the legend. this is handy when you want to interactively explore your data.
+This is a basic implementation of vis_miss in plotly, some work is still needed to fix the legend, but it is several (read, about 3000x) faster than doing \code{ggplotly(vis_miss(data))}.
 }
 \examples{
 
 library(visdat)
 vis_miss_ly(airquality)
 
+}
+\seealso{
+vis_miss
 }
 
