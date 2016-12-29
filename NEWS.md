@@ -1,3 +1,10 @@
+# visdat 0.0.4.9990 (2016/12/29)
+
+## Minor Improvements
+
+- Updated documentation, improved legend and colours for `vis_miss_ly`.
+- removed export for `vis_dat_ly`, as it currently does not work.
+
 # visdat 0.0.4.9900 (2016/12/18)
 =========================
 
