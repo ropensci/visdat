@@ -1,0 +1,45 @@
+---
+title: "Experimental Features of visdat"
+author: "Nicholas Tierney"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+Shipped with visdat are some experimental features that are still a bit temperamental - `vis_compare()`, `vis_dat_ly()`, and `vis_miss_ly`  This vignette describes these features in a bit more detail.
+  
+## using `vis_compare()`
+
+Sometimes you want to see what has changed in your data. `vis_compare()` helps with that. It is currently only just barely working, so keep in mind that this is very much in its beta stages.
+
+For the sake of simplicity, lets make some changes to `iris`, and compare this new dataset
+
+```{r vis-compare-iris}
+library(visdat)
+iris_diff <- iris
+iris_diff[sample(1:150, 30),sample(1:4, 2)] <- NA
+
+vis_compare(iris_diff, iris)
+
+```
+
+Here the differences are marked in blue.
+
+If you try and compare differences when the dimensions are different, you get an ugly error.
+
+```{r vis-compare-error, eval = FALSE}
+
+iris_diff_2 <- iris
+iris_diff_2$new_col <- iris$Sepal.Length + iris$Sepal.Width
+
+vis_compare(iris, iris_diff_2)
+#> vis_compare is still in BETA! If you have suggestions or errors, post an issue at https://github.com/njtierney/visdat/issuesthe condition has length > 1 and only the first element will be usedError: `.x` (5) and `.y` (6) are different lengths
+```
+
+In the future I'm hoping to create some way of representing the added columns and rows as an additional facet-like part of the plot, perhaps using something from [gridExtra](https://cran.r-project.org/web/packages/gridExtra/vignettes/arrangeGrob.html).
+
+
+
