@@ -3,7 +3,6 @@
 export(guess_type)
 export(vis_compare)
 export(vis_dat)
-export(vis_dat_ly)
 export(vis_guess)
 export(vis_miss)
 export(vis_miss_ly)
