@@ -150,7 +150,7 @@ vis_miss(mtcars)
 
 ```
 
-## Experimental features
+# Experimental features
 
 ## using `vis_compare()`
 
@@ -274,7 +274,7 @@ data %>%
 
 # Thank yous
 
-Thank you to Jenny Bryan, whose [tweet](https://twitter.com/JennyBryan/status/679011378414268416) got me thinking about vis_dat, and for her code contributions that remove a lot of testing errors.
+Thank you to Ivan Hanigan who [first commented](http://www.njtierney.com/r/missing%20data/rbloggers/2015/12/01/ggplot-missing-data/#comment-2388263747) this suggestion after I made a blog post about an initial prototype `ggplot_missing`, and Jenny Bryan, whose [tweet](https://twitter.com/JennyBryan/status/679011378414268416) got me thinking about vis_dat, and for her code contributions that removed a lot of errors.
 
 Thank you to Hadley Wickham for suggesting the use of the internals of `readr` to make `vis_guess` work.
 
