@@ -6,6 +6,16 @@
 #'
 #' @return a character vector that describes the suspected class. e.g., "10" is an integer, "20.11" is a double, "text" is character, etc.
 #'
+#' @examples
+#'
+#' guess_type(1)
+#'
+#' guess_type("x")
+#'
+#' guess_type(c("1", "0L"))
+#'
+#' purrr::map_df(iris, guess_type)
+#'
 #' @export
 #'
 guess_type <- function(x){
@@ -19,10 +29,8 @@ guess_type <- function(x){
   # Basically, this is fast way to check individual elements of a vector
   # I'd like to use purrr::map for this but I couldn't get it to work without
   # writing more function calls, which slowed it down, by a factor of about 3.
-  # So this is faster, for the moment. Thanks Miles!
-  # look into using a vectorised function.
-  # e.g.,
-  #
+  # So this is faster, for the moment.
+
   output <- character(length(x))
   nas <- is.na(x)
 

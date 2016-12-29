@@ -15,4 +15,15 @@ a character vector that describes the suspected class. e.g., "10" is an integer,
 \description{
 \code{guess_type} is used in vis_guess as a utility function. Similar to \code{fingerprint}.
 }
+\examples{
+
+guess_type(1)
+
+guess_type("x")
+
+guess_type(c("1", "0L"))
+
+purrr::map_df(iris, guess_type)
+
+}
 

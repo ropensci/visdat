@@ -6,8 +6,19 @@
 #'
 #' @return a \code{plotly} object
 #'
-#' @export
+#' @examples
+#'
+#' \dontrun{
+#' # currently does not work, some problems with palletes and other weird messages.
+#' vis_dat_ly(airquality)
+#'
+#'}
+#'
 vis_dat_ly <- function(x) {
+
+  # x = data.frame(x = 1L:10L,
+  #                y = letters[1:10],
+  #                z = runif(10))
 
   # apply the fingerprint function to get the class
   d <- x %>% purrr::dmap(fingerprint) %>% as.matrix()
@@ -18,37 +29,6 @@ vis_dat_ly <- function(x) {
   # plotly fails due to the number of colours being too many?
   plotly::plot_ly(z = d,
                   type = "heatmap")
-
-# note: currently removed the sort_type function
-# note: old code
-  # x <- example2
-  # # reshape the dataframe ready for geom_raster
-  # d <- x %>%
-  #   # mutate_each_(funs(fingerprint), tbl_vars(.)) %>%
-  #   purrr::dmap(fingerprint) %>%
-  #   mutate(rows = row_number()) %>%
-  #   tidyr::gather_(key_col = "variables",
-  #                  value_col = "valueType",
-  #                  gather_cols = names(.)[-length(.)])
-  #
-  # # get the values here so plotly can make them visible
-  # d$value <- tidyr::gather_(x, "variables", "value", names(x))$value
-  #
-  # # do the plotly plotting
-  # # d_ly <- as.matrix(d[,c("rows", "variables", "valueType")])
-#
-#
-#   d %>%
-#     select(rows,
-#            variables,
-#            valueType) %>%
-#     tidyr::spread(key = variables,
-#                   value = valueType) %>%
-#     as.matrix() %>%
-#   plotly::plot_ly(z = ., type="heatmap")
-
-  # x <- example2
-  # reshape the dataframe for heatmapping
 
 
 }

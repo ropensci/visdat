@@ -15,4 +15,13 @@ a \code{plotly} object
 \description{
 \code{vis_dat_ly} uses plotly to provide an interactive version of vis_dat, providing an at-a-glance plotly object of what is inside a dataframe. Cells are coloured according to what class they are and whether the values are missing.
 }
+\examples{
+
+\dontrun{
+# currently does not work, some problems with palletes and other weird messages.
+vis_dat_ly(airquality)
+
+}
+
+}
 
