@@ -9,5 +9,5 @@
 #
 #
 # test_that("vis_dat works on dataframes with irregular variable names", {
-#   expect_success(vis_dat(messy_names))
+#   expect_error(vis_dat(messy_names))
 # })
