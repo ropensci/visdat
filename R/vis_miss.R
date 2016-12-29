@@ -36,8 +36,8 @@ vis_miss <- function(x,
     row_order_index <-
       stats::dist(x.na*1) %>%
       stats::hclust(method = "mcquitty") %>%
-      as.dendrogram %>%
-      order.dendrogram
+      stats::as.dendrogram() %>%
+      stats::order.dendrogram()
 
   } else {
     row_order_index <- 1:nrow(x)
