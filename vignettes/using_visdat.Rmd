@@ -17,16 +17,9 @@ knitr::opts_chunk$set(fig.width = 5,
 ```
 
 
-# visdat
-
-# What does visdat do?
-
-Initially inspired by [`csv-fingerprint`](https://github.com/setosa/csv-fingerprint), `vis_dat` helps visualise a dataframe in a heatmap-like fashion, allowing you to "get a look at the data", by displaying the variable classes in a dataframe as a plot with `vis_dat`, and getting a brief look into missing data patterns `vis_miss`.
-
 In his [R for Data Science book](http://r4ds.had.co.nz/), Wickham describes 6 phases of data science:
 
 ![Process of Data Science](http://r4ds.had.co.nz/diagrams/data-science.png)
-
 
 You can get insight into your data by modelling, visualising, and transforming, which Wickham describes as "Understanding" or "knowledge generation". There is some overlap here, as in this process it wouldn't be surprising that you might uncover some feature of your dataset that you would need to clean up - you might discover that some strings were indeed factors, or that gender was considered numeric in your regression, warranting you to re-visit the Tidying phase.
 
@@ -50,7 +43,7 @@ dplyr::glimpse(iris)
 
 Here we see that we have doubles, and a factor. We get some insight into the data.
 
-But we don't always have data like the canonical iris dataset. :et's take a look at some data that might be a bit more typical of "messy" data.
+But we don't always have data like the canonical iris dataset. let's take a look at some data that might be a bit more typical of "messy" data.
 
 ```{r visdat-glimpse}
 library(visdat)
@@ -64,7 +57,9 @@ Looking at this, you might then ask:
 
 And you might start to wonder what else is different, what else changed? 
 
-the `visdat` package provides the functions `vis_dat()` to help explore the data class structure and missingness:
+And it might be a bit unclear where to go from there. Do you plot the data? Why does my plot look wierd? What are these other strange features in the data? The `visdat` package provides visualisations of an entire dataframe at once. Initially inspired by [`csv-fingerprint`](https://github.com/setosa/csv-fingerprint), `visdat` provides tools to create heatmap-like visualisations of an entire dataframe. `visdat` provides 2 main functions `vis_dat` and `vis_miss`.
+
+`vis_dat()` helps explore the data class structure and missingness:
 
 ```{r load-data}
 
@@ -72,7 +67,7 @@ vis_dat(typical_data)
 
 ```
 
-And the separate `vis_miss` function to provide specialised insight into missing data
+And the `vis_miss` function provides a custom plot for missing data.
 
 ```{r}
 
@@ -80,8 +75,7 @@ vis_miss(typical_data)
 
 ```
 
-
-The name `visdat` was chosen as it borrows from the idea of [`testdat`](https://github.com/ropensci/testdat), which provides unit testing for your data.  In a similar way, `visdat` provides visual tests for The idea being that first you visualise your data (`visdat`), then you run tests from `testdat` to fix them.
+The name `visdat` was chosen as it borrows from the idea of [`testdat`](https://github.com/ropensci/testdat), which provides unit testing for your data.  In a similar way, `visdat` provides visual tests, the idea being that first you visualise your data (`visdat`), then you run tests from `testdat`, or a package like `assertr`, to fix these errors.
 
 ## Using `vis_dat`
 
@@ -95,7 +89,9 @@ vis_dat(airquality)
 
 ```
 
-The classes are represented on the legend, and missing data represented by black. By default, `vis_dat` sorts the columns according to the type of the data in the vectors. You can turn this off by setting `sort_type == FALSE`. This feature is better illustrated using the `typical_data` dataset, created using [wakefield](github.com/trinker/wakefield) and contained within visdat
+The plot above tells us that R reads this dataset as having numeric and integer values, along with some missing data in `Ozone` and `Solar.R`. The classes are represented on the legend, and missing data represented by black. 
+
+By default, `vis_dat` sorts the columns according to the type of the data in the vectors. You can turn this off by setting `sort_type == FALSE`. This feature is better illustrated using the `typical_data` dataset, created using [wakefield](github.com/trinker/wakefield) and contained within visdat
 
 ```{r visdat-typical}
 
@@ -105,8 +101,6 @@ vis_dat(typical_data,
         sort_type = FALSE)
 
 ```
-
-The plot above tells us that R reads this dataset as having numeric and integer values, along with some missing data in `Ozone` and `Solar.R`.
 
 ## using `vis_miss`
 
@@ -118,18 +112,31 @@ vis_miss(airquality)
 
 ```
 
-The percentages of missing/complete in `vis_miss` are accurate to 1 decimal place.
+Notice that the percentages of missingness are provided in the data. These are accurate to 1 decimal place. When there is <0.1% of missingness, `vis_miss` indicates that there is >1% missingness.
 
-You can cluster the missingness by setting `cluster = TRUE`
+```{r vismiss-new-data}
 
-```{r vis_miss-cluster}
+df_test <- data.frame(x1 = 1:10000,
+                      x2 = rep("A", 10000),
+                      x3 = c(rep(1L, 9999), NA))
 
-vis_miss(airquality, 
-         cluster = TRUE)
+vis_miss(df_test)
 
 ```
 
-The columns can also just be arranged by columns with most missingness, by setting `sort_miss = TRUE`.
+`vis_miss` will also indicate when there is no missing data at all. 
+
+```{r vismiss-mtcars}
+
+df_test <- data.frame(x1 = 1:10000,
+                      x2 = rep("tidy", 10000),
+                      x3 = rep("data", 10000))
+
+vis_miss(df_test)
+
+```
+
+Columns can be arranged by columns with most missingness, by setting `sort_miss = TRUE`.
 
 ```{r vismiss}
 
@@ -138,27 +145,38 @@ vis_miss(airquality,
 
 ```
 
-When there is <0.1% of missingness, `vis_miss` indicates that there is >1% missingness.
+And missingness can be clustered by setting `cluster = TRUE`
 
-```{r vismiss-new-data}
+```{r vis_miss-cluster}
 
-test_miss_df <- data.frame(x1 = 1:10000,
-                           x2 = rep("A", 10000),
-                           x3 = c(rep(1L, 9999), NA))
-
-vis_miss(test_miss_df)
+vis_miss(airquality, 
+         cluster = TRUE)
 
 ```
 
-`vis_miss` will also indicate when there is no missing data at all. For example the `mtcars` dataset has no missing data.
+To further explore the missingness structure in a dataset, I recommend the [`naniar`](https://github.com/njtierney/naniar) package, which provides more general tools for graphical and numerical exploration of missing values.
 
-```{r vismiss-mtcars}
+## Interactivity
 
-vis_miss(mtcars)
+Thanks to Carson Sievert, you can now add some really nifty interactivity into visdat by using `plotly::ggplotly`, allowing for information to be revealed upon mouseover of a cell.
+
+```{r plotly-example}
+
+library(plotly)
+
+vis_dat(airquality) %>% ggplotly()
 
 ```
 
-To explore the missingness structure in a dataset, I recommend the [`naniar`](https://github.com/njtierney/naniar) package, which provides more general tools for graphical and numerical exploration of missing values.
+There is also an in-development feature, `vis_miss_ly`, which directly uses plotly's code, which is faster than calling ggplotly(vis_dat(df)).
+
+```{r}
+
+vis_miss_ly(airquality)
+
+```
+
+Although some work is needed still to fix the legend and fill, and add percentages to the legend.
 
 ## using `vis_guess`
 
@@ -216,15 +234,20 @@ vis_dat(messy_df)
 
 Where you'd just assume your data is wierd because it's all factors - or worse, not notice that this is a problem.
 
-At the moment `vis_guess` is very slow. Please take this into consideration when you are using it on data with more than 1000 rows. We're looking into ways of making it faster, potentially using methods from the `parallel` package, or extending the c++ code from `readr:::collectorGuess`.
+At the moment `vis_guess` is slow. Please take this into consideration when you are using it on data with more than 1000 rows. We're looking into ways of making it faster, potentially using methods from the `parallel` package, or extending the c++ code from `readr::parse_guess`.
 
-# Interactivity
 
-Thanks to Carson Sievert, you can now add some really nifty interactivity into visdat by using `plotly::ggplotly`, allowing for information to be revealed upon mouseover of a cell. The code to do this can be seen below, but is not shown as the github README doesn't support HTML interactive graphics...yet.
+# Future work and experimental features
 
-```{r plotly-example}
+**visualising expectations**
 
-library(plotly)
+The idea is to pass expectations into `vis_dat` or `vis_miss`, along the lines of the `expectation` command in `assertr`. For example, you could ask `vis_dat` to identify those cells with values of -1 with something like this:
 
-vis_dat(airquality) %>% ggplotly()
+```{r eval = FALSE}
+
+data %>% 
+  expect(value == -1) %>%
+  vis_dat
+
 ```
+
