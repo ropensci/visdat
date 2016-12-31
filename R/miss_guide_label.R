@@ -1,4 +1,4 @@
-#' miss_guide_label
+#' Label the legend with the percent of missing data
 #'
 #' \code{miss_guide_label} is an internal function for vis_miss to label the legend.
 #'

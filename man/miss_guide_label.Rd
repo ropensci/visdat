@@ -2,7 +2,7 @@
 % Please edit documentation in R/miss_guide_label.R
 \name{miss_guide_label}
 \alias{miss_guide_label}
-\title{miss_guide_label}
+\title{Label the legend with the percent of missing data}
 \usage{
 miss_guide_label(x)
 }
