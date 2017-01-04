@@ -1,32 +1,27 @@
-#
-# This is currently commented out as I'm still working out how to do tests!!
-#
-# context("Guess type")
-#
-#
-# test_that("guess_element correctly identifies individual elements", {
-#   expect_equal(guess_type(TRUE), "logical")
-#   expect_equal(guess_type(T), "logical")
-#   expect_equal(guess_type("TRUE"), "logical")
-#   expect_equal(guess_type("T"), "logical")
-#   expect_equal(guess_type("01/01/01"), "date")
-#   expect_equal(guess_type("01/01/2001"), "date")
-#   expect_equal(guess_type(NA), NA)
-#   expect_equal(guess_type("NA"), NA)
-#   expect_equal(guess_type("10"), "integer")
-#   expect_equal(guess_type(10), "integer")
-#   expect_equal(guess_type("10.1"), "double")
-#   expect_equal(guess_type(10.1), "double")
-#   expect_equal(guess_type("abc"), "character")
-#   expect_equal(guess_type("$%TG"), "character")
-# })
+context("Guess type")
+
+
+test_that("guess_element correctly identifies individual elements", {
+  expect_equal(guess_type(TRUE), "logical")
+  expect_equal(guess_type(T), "logical")
+  expect_equal(guess_type("TRUE"), "logical")
+  expect_equal(guess_type("T"), "logical")
+  expect_equal(guess_type("10"), "integer")
+  expect_equal(guess_type(10), "integer")
+  expect_equal(guess_type("10.1"), "double")
+  expect_equal(guess_type(10.1), "double")
+  expect_equal(guess_type("abc"), "character")
+  expect_equal(guess_type("$%TG"), "character")
+  # expect_equal(guess_type(NA), NA)
+  # expect_equal(guess_type("NA"), NA)
+  # expect_equal(guess_type("01/01/01"), "date")
+  # expect_equal(guess_type("01/01/2001"), "date")
+})
 #
 # messy_vector <- c(TRUE,
 #                   T,
 #                   "TRUE",
 #                   "T",
-#                   "01/01/01",
-#                   "01/01/2001",
 #                   NA,
 #                   NaN,
 #                   "NA",
@@ -43,8 +38,6 @@
 #                      "logical",
 #                      "logical",
 #                      "logical",
-#                      "date",
-#                      "date",
 #                      NA,
 #                      NA,
 #                      NA,
@@ -57,29 +50,11 @@
 #                      "character",
 #                      "character")
 #
-# messy_list <- list(TRUE,
-#                    T,
-#                    "TRUE",
-#                    "T",
-#                    "01/01/01",
-#                    "01/01/2001",
-#                    NA,
-#                    NaN,
-#                    "NA",
-#                    "Na",
-#                    "na",
-#                    "10",
-#                    10,
-#                    "10.1",
-#                    10.1,
-#                    "abc",
-#                    "$%TG")
-#
 # test_that("guess_vector correctly identifies a single vector", {
 #   expect_equal(guess_vector(messy_vector),
 #                expected_vector)
 # })
-#
+
 # # #
 # # # don't need to get this to work on dataframes anymore.
 # # #

@@ -4,6 +4,7 @@
 #'
 #' @param x a vector
 #'
+#'
 compare_print <- function(x){
 
   dplyr::if_else(x == "TRUE",

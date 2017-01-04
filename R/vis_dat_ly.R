@@ -14,6 +14,7 @@
 #'
 #'}
 #'
+#'
 vis_dat_ly <- function(x) {
 
   # x = data.frame(x = 1L:10L,

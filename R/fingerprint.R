@@ -4,6 +4,7 @@
 #'
 #' @param x a vector
 #'
+#'
 fingerprint <- function(x){
 
   # is the data missing?

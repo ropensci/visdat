@@ -1,6 +1,6 @@
 #' Visualise a data.frame to display missingness.
 #'
-#' \code{vis_miss} provides an at-a-glance ggplot of the missingness inside a dataframe, colouring cells according to missingness, where black indicates a present cell and grey indicates a missing cell. As it returns a ggplot object, it is very easy to customize and change labels, and so on.
+#' \code{vis_miss} provides an at-a-glance ggplot of the missingness inside a dataframe, colouring cells according to missingness, where black indicates a missing cell and grey indicates a present cell. As it returns a ggplot object, it is very easy to customize and change labels, and so on.
 #'
 #' @param x a data.frame
 #'
