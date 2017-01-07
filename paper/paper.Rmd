@@ -1,0 +1,81 @@
+---
+title: 'visdat: Visualising whole data frames'
+tags:
+  - visualisation
+  - R
+  - exporatory data analysis
+authors:
+ - name: Nicholas Tierney
+   orcid: 0000-0003-1460-8722
+   affiliation: 1
+affiliations:
+ - name: Queensland University of Technology
+   index: 1
+date: 06 January 2017
+bibliography: paper.bib
+---
+
+# Summary
+
+In his [R for Data Science book](http://r4ds.had.co.nz/), Wickham describes 6 phases of data science:
+
+![Process of Data Science](http://r4ds.had.co.nz/diagrams/data-science.png)
+
+You can get insight into your data by modelling, visualising, and transforming, which Wickham describes as "Understanding" or "knowledge generation". There is some overlap here, as in this process it wouldn't be surprising that you might uncover some feature of your dataset that you would need to clean up - you might discover that some strings were indeed factors, or that gender was considered numeric in your regression, warranting you to re-visit the Tidying phase.
+
+In the same way, I think that this process gets applied in the Tidying step of data science. You read in your data, but you then need to look at it to understand what you need to do to "fix it". And that's a key phrase here "looking at the data" - what does that mean?
+
+On one hand, you can look at the head of the data:
+
+```{r head-iris}
+
+head(iris)
+
+```
+
+Or you can have a `glimpse` at it through `dplyr::glimpse`
+
+```{r glimpse}
+
+dplyr::glimpse(iris)
+
+```
+
+Here we see that we have doubles, and a factor. We get some insight into the data.
+
+But we don't always have data like the canonical iris dataset. let's take a look at some data that might be a bit more typical of "messy" data.
+
+```{r visdat-glimpse}
+
+library(visdat)
+dplyr::glimpse(typical_data)
+
+```
+
+Looking at this, you might then ask:
+
+> Isn't it odd that Income is a factor? And Age is a character? 
+
+And you might start to wonder what else is different, what else changed? 
+
+And it might be a bit unclear where to go from there. Do you plot the data? Why does my plot look wierd? What are these other strange features in the data? The `visdat` package provides visualisations of an entire dataframe at once. Initially inspired by [`csv-fingerprint`](https://github.com/setosa/csv-fingerprint), `visdat` provides tools to create heatmap-like visualisations of an entire dataframe. `visdat` provides 2 main functions `vis_dat` and `vis_miss`.
+
+`vis_dat()` helps explore the data class structure and missingness:
+
+```{r load-data}
+
+vis_dat(typical_data)
+
+```
+
+And the `vis_miss` function provides a custom plot for missing data.
+
+```{r}
+
+vis_miss(typical_data)
+
+```
+
+The name `visdat` was chosen as it borrows from the idea of [`testdat`](https://github.com/ropensci/testdat), which provides unit testing for your data.  In a similar way, `visdat` provides visual tests, the idea being that first you visualise your data (`visdat`), then you run tests from `testdat`, or a package like [`assertr`](https://cran.r-project.org/web/packages/assertr/index.html), to fix these errors.
+
+# References
