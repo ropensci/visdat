@@ -4,7 +4,8 @@
 \alias{vis_miss}
 \title{Visualise a data.frame to display missingness.}
 \usage{
-vis_miss(x, cluster = FALSE, sort_miss = FALSE, show_perc = TRUE)
+vis_miss(x, cluster = FALSE, sort_miss = FALSE, show_perc = TRUE,
+  flip = FALSE)
 }
 \arguments{
 \item{x}{a data.frame}
@@ -14,6 +15,8 @@ vis_miss(x, cluster = FALSE, sort_miss = FALSE, show_perc = TRUE)
 \item{sort_miss}{logical TRUE/FALSE. TRUE arranges the columns in order of missingness}
 
 \item{show_perc}{logical TRUE/FALSE. TRUE now adds in the \% of missing/complete data in the whole dataset into the legend. Default value is TRUE}
+
+\item{flip}{logical if TRUE, will flip the axis labels to be on top, resembling a dataframe}
 }
 \description{
 \code{vis_miss} provides an at-a-glance ggplot of the missingness inside a dataframe, colouring cells according to missingness, where black indicates a missing cell and grey indicates a present cell. As it returns a ggplot object, it is very easy to customize and change labels, and so on.
@@ -27,5 +30,8 @@ vis_miss(airquality)
 vis_miss(airquality, cluster = TRUE)
 
 vis_miss(airquality, sort_miss = TRUE)
-}
 
+# flip the axis to look more like a dataframe
+vis_miss(airquality, flip = TRUE)
+
+}

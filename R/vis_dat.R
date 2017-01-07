@@ -8,11 +8,16 @@
 #'
 #' @param palette character "default", "qual" or "cb_safe". "default" (the default) provides the stock ggplot scale for separating the colours. "qual" uses an experimental qualitative colour scheme for providing distinct colours for each Type. "cb_safe" is a set of colours that are appropriate for those with colourblindness. "qual" and "cb_safe" are drawn from http://colorbrewer2.org/.
 #'
+#' @param flip logical if TRUE, will flip the axis labels to be on top, resembling a dataframe
+#'
 #' @examples
 #'
 #' library(visdat)
 #'
 #' vis_dat(airquality)
+#'
+#' # flip the axis to look more like a dataframe
+#' vis_dat(airquality, flip = TRUE)
 #'
 #' # experimental colourblind safe pallete
 #' vis_dat(airquality, palette = "cb_safe")
@@ -20,7 +25,8 @@
 #' @export
 vis_dat <- function(x,
                     sort_type = TRUE,
-                    palette = "default") {
+                    palette = "default",
+                    flip = FALSE) {
 
   # x  = airquality
   if (sort_type == TRUE) {
@@ -134,5 +140,17 @@ vis_dat <- function(x,
      vis_dat_plot
 
    }
+  if (flip == TRUE){
+    suppressMessages({
+      vis_dat_plot +
+        ggplot2::scale_y_reverse() +
+        ggplot2::scale_x_discrete(position = "top",
+                                  limits = type_order_index) +
+        ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0.5)) +
+        ggplot2::labs(x = "")
+    })
+  } else if (flip == FALSE){
+    vis_dat_plot
+  }
 
 }
