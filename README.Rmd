@@ -38,17 +38,12 @@ Initially inspired by [`csv-fingerprint`](https://github.com/setosa/csv-fingerpr
 The name `visdat` was chosen as I think in the future it could be integrated with [`testdat`](https://github.com/ropensci/testdat). The idea being that first you visualise your data (`visdat`), then you run tests from `testdat` to fix them.
 
 There are two main commands in the `visdat` package: 
-- `vis_dat()` 
-- `vis_miss()`
 
 - `vis_dat()` visualises a dataframe showing you what the classes of the columns are, and also displaying the missing data.
 
 - `vis_miss()` visualises just the missing data, and allows for missingness to be clustered and columns rearranged. `vis_miss()` is similar to `missing.pattern.plot` from the `mi` package. Unfortunately `missing.pattern.plot` is no longer in the `mi` package (well, as of 14/02/2016).
 
-There are two some experimental functions:
-
-- `vis_guess()`
-- `vis_compare()`
+There are two experimental functions:
 
 -  `vis_guess()` has a guess at what the value of each cell, using `readr::parse_guess`. This means that "10.1" will return "double", and `10.1` will return "double", and `01/01/01` will return "date". Keep in mind that it is a **guess** at what each cell is, so you can't trust this fully.
 
@@ -70,7 +65,7 @@ vis_dat(airquality)
 
 The classes are represented on the legend, and missing data represented by grey. 
 
-by default, `vis_dat` sorts the columns according to the type of the data in the vectors. You can turn this off by setting `sort_type == FALSE`. This feature is better illustrated using the `airquality` dataset from base R.
+by default, `vis_dat` sorts the columns according to the type of the data in the vectors. You can turn this off by setting `sort_type = FALSE`. This feature is better illustrated using the `airquality` dataset from base R.
 
 ```{r vis-dat-aq-sort-type}
 
@@ -79,11 +74,11 @@ vis_dat(airquality,
 
 ```
 
-The plot above tells us that R reads this dataset as having characters, and integer values, along with some missing data in `Ozone` and `Solar.R`.
+The plot above tells us that R reads this dataset as having characters and integer values, along with some missing data in `Ozone` and `Solar.R`.
 
-### with different data
+### With many kinds of data
 
-To demonstrate what visdat looks like when you have different kinds of data, we can look at the `typical_data` from within visdat, created using the excellent [`wakefield package`](https://github.com/trinker/wakefield).
+To demonstrate what visdat looks like when you have different kinds of data, we can use `visdat` to look at the dataset `typical_data`, which is from the excellent [`wakefield package`](https://github.com/trinker/wakefield).
 
 ```{r vis-dat-typical-data}
 
@@ -100,7 +95,7 @@ vis_dat(typical_larger_data)
 ```
 
 
-## using `vis_miss()`
+## Using `vis_miss()`
 
 We can explore the missing data further using `vis_miss()`
 
@@ -152,7 +147,7 @@ vis_miss(mtcars)
 
 # Experimental features
 
-## using `vis_compare()`
+## Using `vis_compare()`
 
 Sometimes you want to see what has changed in your data. `vis_compare()` helps with that. It is currently only just barely working, so keep in mind that this is very much in its beta stages.
 
@@ -167,7 +162,7 @@ vis_compare(iris_diff, iris)
 
 ```
 
-Here the differences are marked in red.
+Here the differences are marked in blue.
 
 If you try and compare differences when the dimensions are different, you get an ugly error.
 
@@ -180,7 +175,7 @@ vis_compare(iris, iris_diff_2)
 #> vis_compare is still in BETA! If you have suggestions or errors, post an issue at https://github.com/njtierney/visdat/issuesthe condition has length > 1 and only the first element will be usedError: `.x` (5) and `.y` (6) are different lengths
 ```
 
-## using `vis_guess()`
+## Using `vis_guess()`
 
 `vis_guess()` takes a guess at what each cell is. It's best illustrated using some messy data, which we'll make here.
 
@@ -226,7 +221,7 @@ vis_dat(messy_df)
 
 ```
 
-Where you'd just assume your data is wierd because it's all factors - or worse, not notice that this is a problem.
+Where you'd just assume your data is weird because it's all factors - or worse, not notice that this is a problem.
 
 At the moment `vis_guess` is very slow. Please take this into consideration when you are using it on data with more than 1000 rows. We're looking into ways of making it faster, potentially using methods from the `parallel` package, or extending the c++ code from `readr:::collectorGuess`.
 
@@ -259,7 +254,7 @@ vis_miss_ly(airquality)
 
 # Road Map
 
-**visualising expectations**
+**Visualising expectations**
 
 The idea here is to pass expectations into `vis_dat` or `vis_miss`, along the lines of the `expectation` command in `assertr`. For example, you could ask `vis_dat` to identify those cells with values of -1 with something like this:
 
@@ -274,10 +269,10 @@ data %>%
 
 # Thank yous
 
-Thank you to Ivan Hanigan who [first commented](http://www.njtierney.com/r/missing%20data/rbloggers/2015/12/01/ggplot-missing-data/#comment-2388263747) this suggestion after I made a blog post about an initial prototype `ggplot_missing`, and Jenny Bryan, whose [tweet](https://twitter.com/JennyBryan/status/679011378414268416) got me thinking about vis_dat, and for her code contributions that removed a lot of errors.
+Thank you to Ivan Hanigan who [first commented](http://www.njtierney.com/r/missing%20data/rbloggers/2015/12/01/ggplot-missing-data/#comment-2388263747) this suggestion after I made a blog post about an initial prototype `ggplot_missing`, and Jenny Bryan, whose [tweet](https://twitter.com/JennyBryan/status/679011378414268416) got me thinking about `vis_dat`, and for her code contributions that removed a lot of errors.
 
 Thank you to Hadley Wickham for suggesting the use of the internals of `readr` to make `vis_guess` work.
 
-Thank you to Miles McBain for his suggestions on how to improve vis guess. This resulted in making it at least 2-3 times faster.
+Thank you to Miles McBain for his suggestions on how to improve `vis_guess`. This resulted in making it at least 2-3 times faster.
 
-Thanks also to Carson Sievert for writing the code that combined plotly with visdat, and for Noam Ross for suggesting this in the first place.
+Thanks also to Carson Sievert for writing the code that combined `plotly` with `visdat`, and for Noam Ross for suggesting this in the first place.
