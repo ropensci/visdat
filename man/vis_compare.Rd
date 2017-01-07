@@ -25,4 +25,3 @@ library(visdat)
 vis_compare(iris, iris_diff)
 
 }
-

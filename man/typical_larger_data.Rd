@@ -71,4 +71,3 @@ set.seed(1214)
 typical_larger_data <- r_data_theme(n = 300, data_theme = "the_works")
 }
 \keyword{datasets}
-

@@ -40,4 +40,3 @@ typical_data <- r_data_frame(n = 5000,
                              died)
 }
 \keyword{datasets}
-

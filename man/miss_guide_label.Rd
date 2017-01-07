@@ -15,4 +15,3 @@ a data_frame with two columns \code{p_miss_lab} and \code{p_pres_lab}, containin
 \description{
 \code{miss_guide_label} is an internal function for vis_miss to label the legend.
 }
-

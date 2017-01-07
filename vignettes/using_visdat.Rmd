@@ -164,7 +164,8 @@ Thanks to Carson Sievert, you can now add some really nifty interactivity into v
 
 library(plotly)
 
-vis_dat(airquality) %>% ggplotly()
+vis_dat(airquality, flip = TRUE) %>% ggplotly()
+vis_miss(airquality) %>% ggplotly()
 
 ```
 

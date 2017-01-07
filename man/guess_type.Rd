@@ -26,4 +26,3 @@ guess_type(c("1", "0L"))
 purrr::map_df(iris, guess_type)
 
 }
-

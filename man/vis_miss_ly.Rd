@@ -24,4 +24,3 @@ vis_miss_ly(airquality)
 \seealso{
 vis_miss
 }
-

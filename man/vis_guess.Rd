@@ -41,4 +41,3 @@ messy_df <- data.frame(var1 = messy_vector,
                        var3 = sample(messy_vector))
 vis_guess(messy_df)
 }
-
