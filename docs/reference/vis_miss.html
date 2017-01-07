@@ -76,10 +76,11 @@
     </div>
 
     
-    <p><code>vis_miss</code> provides an at-a-glance ggplot of the missingness inside a dataframe, colouring cells according to missingness, where black indicates a present cell and grey indicates a missing cell. As it returns a ggplot object, it is very easy to customize and change labels, and so on.</p>
+    <p><code>vis_miss</code> provides an at-a-glance ggplot of the missingness inside a dataframe, colouring cells according to missingness, where black indicates a missing cell and grey indicates a present cell. As it returns a ggplot object, it is very easy to customize and change labels, and so on.</p>
     
 
-    <pre><span class='fu'>vis_miss</span>(<span class='no'>x</span>, <span class='kw'>cluster</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>sort_miss</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>show_perc</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre><span class='fu'>vis_miss</span>(<span class='no'>x</span>, <span class='kw'>cluster</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>sort_miss</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>show_perc</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>flip</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
@@ -91,6 +92,8 @@
       <dd>logical TRUE/FALSE. TRUE arranges the columns in order of missingness</dd>
       <dt>show_perc</dt>
       <dd>logical TRUE/FALSE. TRUE now adds in the % of missing/complete data in the whole dataset into the legend. Default value is TRUE</dd>
+      <dt>flip</dt>
+      <dd>logical if TRUE, will flip the axis labels to be on top, resembling a dataframe</dd>
     </dl>
     
 
@@ -100,7 +103,10 @@
 
 <span class='fu'>vis_miss</span>(<span class='no'>airquality</span>)</div><img src='vis_miss-2.png' alt='' width='540' height='400' /><div class='input'>
 <span class='fu'>vis_miss</span>(<span class='no'>airquality</span>, <span class='kw'>cluster</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><img src='vis_miss-4.png' alt='' width='540' height='400' /><div class='input'>
-<span class='fu'>vis_miss</span>(<span class='no'>airquality</span>, <span class='kw'>sort_miss</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><img src='vis_miss-6.png' alt='' width='540' height='400' /></pre>
+<span class='fu'>vis_miss</span>(<span class='no'>airquality</span>, <span class='kw'>sort_miss</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><img src='vis_miss-6.png' alt='' width='540' height='400' /><div class='input'>
+<span class='co'># flip the axis to look more like a dataframe</span>
+<span class='fu'>vis_miss</span>(<span class='no'>airquality</span>, <span class='kw'>flip</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><img src='vis_miss-8.png' alt='' width='540' height='400' /><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

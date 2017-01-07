@@ -79,7 +79,7 @@
     <p><code>vis_dat</code> gives you an at-a-glance ggplot object of what is inside a dataframe. Cells are coloured according to what class they are and whether the values are missing. As <code>vis_dat</code> returns a ggplot object, it is very easy to customize and change labels, and customize the plot</p>
     
 
-    <pre><span class='fu'>vis_dat</span>(<span class='no'>x</span>, <span class='kw'>sort_type</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>palette</span> <span class='kw'>=</span> <span class='st'>"default"</span>)</pre>
+    <pre><span class='fu'>vis_dat</span>(<span class='no'>x</span>, <span class='kw'>sort_type</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>palette</span> <span class='kw'>=</span> <span class='st'>"default"</span>, <span class='kw'>flip</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
@@ -89,6 +89,8 @@
       <dd>logical TRUE/FALSE. When TRUE (default), it sorts by the type in the column to make it easier to see what is in the data</dd>
       <dt>palette</dt>
       <dd>character &quot;default&quot;, &quot;qual&quot; or &quot;cb_safe&quot;. &quot;default&quot; (the default) provides the stock ggplot scale for separating the colours. &quot;qual&quot; uses an experimental qualitative colour scheme for providing distinct colours for each Type. &quot;cb_safe&quot; is a set of colours that are appropriate for those with colourblindness. &quot;qual&quot; and &quot;cb_safe&quot; are drawn from http://colorbrewer2.org/.</dd>
+      <dt>flip</dt>
+      <dd>logical if TRUE, will flip the axis labels to be on top, resembling a dataframe</dd>
     </dl>
     
 
@@ -97,8 +99,10 @@
 <span class='fu'>library</span>(<span class='no'>visdat</span>)
 
 <span class='fu'>vis_dat</span>(<span class='no'>airquality</span>)</div><img src='vis_dat-2.png' alt='' width='540' height='400' /><div class='input'>
+<span class='co'># flip the axis to look more like a dataframe</span>
+<span class='fu'>vis_dat</span>(<span class='no'>airquality</span>, <span class='kw'>flip</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><img src='vis_dat-4.png' alt='' width='540' height='400' /><div class='input'>
 <span class='co'># experimental colourblind safe pallete</span>
-<span class='fu'>vis_dat</span>(<span class='no'>airquality</span>, <span class='kw'>palette</span> <span class='kw'>=</span> <span class='st'>"cb_safe"</span>)</div><img src='vis_dat-4.png' alt='' width='540' height='400' /><div class='input'>
+<span class='fu'>vis_dat</span>(<span class='no'>airquality</span>, <span class='kw'>palette</span> <span class='kw'>=</span> <span class='st'>"cb_safe"</span>)</div><img src='vis_dat-6.png' alt='' width='540' height='400' /><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

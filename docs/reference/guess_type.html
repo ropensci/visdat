@@ -92,6 +92,26 @@
     <p>a character vector that describes the suspected class. e.g., &quot;10&quot; is an integer, &quot;20.11&quot; is a double, &quot;text&quot; is character, etc.</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='fu'>guess_type</span>(<span class='fl'>1</span>)</div><div class='output co'>#&gt; [1] &quot;integer&quot;</div><div class='input'>
+<span class='fu'>guess_type</span>(<span class='st'>"x"</span>)</div><div class='output co'>#&gt; [1] &quot;character&quot;</div><div class='input'>
+<span class='fu'>guess_type</span>(<span class='fu'>c</span>(<span class='st'>"1"</span>, <span class='st'>"0L"</span>))</div><div class='output co'>#&gt; [1] &quot;integer&quot;   &quot;character&quot;</div><div class='input'>
+<span class='kw'>purrr</span><span class='kw'>::</span><span class='fu'>map_df</span>(<span class='no'>iris</span>, <span class='no'>guess_type</span>)</div><div class='output co'>#&gt; # A tibble: 150 × 5
+#&gt;    Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
+#&gt;           &lt;chr&gt;       &lt;chr&gt;        &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt;
+#&gt; 1        double      double       double      double character
+#&gt; 2        double     integer       double      double character
+#&gt; 3        double      double       double      double character
+#&gt; 4        double      double       double      double character
+#&gt; 5       integer      double       double      double character
+#&gt; 6        double      double       double      double character
+#&gt; 7        double      double       double      double character
+#&gt; 8       integer      double       double      double character
+#&gt; 9        double      double       double      double character
+#&gt; 10       double      double       double      double character
+#&gt; # ... with 140 more rows</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -99,7 +119,9 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

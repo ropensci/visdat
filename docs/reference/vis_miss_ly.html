@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>vis_miss_ly — vis_miss_ly • visdat</title>
+<title>Interactive plot of missingness in plotly — vis_miss_ly • visdat</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -72,11 +72,11 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>vis_miss_ly</h1>
+    <h1>Interactive plot of missingness in plotly</h1>
     </div>
 
     
-    <p>basic implementation of vis_miss in plotly. Still need to fix the legend. this is handy when you want to interactively explore your data.</p>
+    <p>This is a basic implementation of vis_miss in plotly, some work is still needed to fix the legend, but it is several (read, about 3000x) faster than doing <code>ggplotly(vis_miss(data))</code>.</p>
     
 
     <pre><span class='fu'>vis_miss_ly</span>(<span class='no'>x</span>)</pre>
@@ -91,6 +91,10 @@
 
     <p>a plotly interactive plot.</p>
     
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <p>vis_miss</p>
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
@@ -103,6 +107,8 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
