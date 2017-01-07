@@ -1,3 +1,9 @@
+# visdat 0.0.4.9999 (2017/01/07)
+
+## New Feature
+
+- Added feature `flip = TRUE`, to `vis_dat` and `vis_miss`. This flips the x axis and the ordering of the rows. This more closely resembles a dataframe.
+
 # visdat 0.0.4.9990 (2016/12/29)
 
 ## Minor Improvements
