@@ -3,7 +3,7 @@
 
 # Summary
 
-As described by Hadley Wickham, there are 6 phases of data science:
+As described by Hadley Wickham [@wickham2016], there are 6 phases of data science:
 
 ![Process of Data Science](http://r4ds.had.co.nz/diagrams/data-science.png)
 
@@ -26,7 +26,7 @@ head(iris)
 ## 6          5.4         3.9          1.7         0.4  setosa
 ```
 
-Another alterantive is `dplyr::glimpse`
+Another alterantive is `glimpse`, from the `dplyr` package [@dplyr]
 
 
 ```r
@@ -71,7 +71,7 @@ Looking at this, you might then ask:
 
 And you might start to wonder what else is different, what else changed? 
 
-And it might be a bit unclear where to go from there. Do you plot the data? Why does my plot look wierd? What are these other strange features in the data? The `visdat` package provides visualisations of an entire dataframe at once. Initially inspired by [`csv-fingerprint`](https://github.com/setosa/csv-fingerprint), `visdat` provides tools to create heatmap-like visualisations of an entire dataframe. `visdat` [@Tierney2017] is an R [@Rcore] package provides 2 main functions `vis_dat` and `vis_miss`.
+And it might be a bit unclear where to go from there. Do you plot the data? Why does my plot look wierd? What are these other strange features in the data? The `visdat` package provides visualisations of an entire dataframe at once. Initially inspired by [`csv-fingerprint`](https://github.com/setosa/csv-fingerprint), `visdat` provides tools to create heatmap-like visualisations of an entire dataframe. `visdat` is an R [@Rcore] package provides 2 main functions `vis_dat` and `vis_miss`.
 
 `vis_dat()` helps explore the data class structure and missingness:
 
@@ -101,6 +101,6 @@ vis_miss(typical_data)
 
 ![](paper_files/figure-html/unnamed-chunk-1-1.png)<!-- -->
 
-These functions provide useful tools to help "get a look at the data", using principled visualisation techniques. The plots are built using ggplot2 [@ggplot2], which provides a consistent and powerful framework for visualisations. Which means that users can customise and extend graphics from visdat very easily.
+These functions provide useful tools to help "get a look at the data", using principled visualisation techniques. The plots are built using ggplot2 [@ggplot2], which provides a consistent and powerful framework for visualisations. This means that users can customise and extend graphics from visdat very easily.
 
 # References
