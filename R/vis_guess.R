@@ -40,7 +40,7 @@ vis_guess <- function(x){
 
 # x = messy_df
   d <- x %>%
-    dplyr::mutate(rows = seq_len(nrow(x))) %>%
+    dplyr::mutate(rows = seq_len(nrow(.))) %>%
     tidyr::gather_(key_col = "variables",
                    value_col = "valueGuess",
                    gather_cols = names(.)[-length(.)]) %>%

@@ -23,5 +23,6 @@ BugReports: https://github.com/njtierney/visdat/issues
 Suggests:
     testthat,
     knitr,
-    rmarkdown
+    rmarkdown,
+    vdiffr
 VignetteBuilder: knitr
