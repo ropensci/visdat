@@ -1,3 +1,12 @@
+# visdat 0.0.5.9000 (2017/01/09)
+
+## Minor Improvements
+
+- Added testing for visualisations with `vdiffr`. Code coverage is now at 99%
+- Fixed up suggestions from `goodpractice::gp()`
+- Submitted to rOpenSci onboarding
+- `paper.md` written and submitted to JOSS
+
 # visdat 0.0.4.9999 (2017/01/08)
 
 ## New Feature
