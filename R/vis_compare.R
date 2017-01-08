@@ -46,7 +46,7 @@ vis_compare <- function(df1,
   df_diff %>%
     as.data.frame() %>%
     purrr::dmap(compare_print) %>%
-    dplyr::mutate(rows = 1:nrow(.)) %>%
+    dplyr::mutate(rows = seq_len(nrow(.))) %>%
     # gather the variables together for plotting
     # here we now have a column of the row number (row),
     # then the variable(variables),

@@ -47,7 +47,7 @@ vis_miss <- function(x,
       stats::order.dendrogram()
 
   } else {
-    row_order_index <- 1:nrow(x)
+    row_order_index <- seq_len(nrow(x))
   } # end else
 
   if (sort_miss == TRUE) {
@@ -79,7 +79,7 @@ vis_miss <- function(x,
 
   d <- x.na[row_order_index , ] %>%
     as.data.frame %>%
-    dplyr::mutate(rows = 1:nrow(.)) %>%
+    dplyr::mutate(rows = seq_len(nrow(x))) %>%
     # gather the variables together for plotting
     # here we now have a column of the row number (row),
     # then the variable(variables),
