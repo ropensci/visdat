@@ -6,6 +6,14 @@ cache: packages
 
 r_github_packages:
   - jimhester/covr
+  - lionel-/vdiffr
 
 after_success:
   - Rscript -e 'library(covr); codecov()'
+
+addons:
+  apt:
+    sources:
+      - debian-sid
+    packages:
+      - libfreetype6
