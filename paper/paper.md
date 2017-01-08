@@ -43,7 +43,7 @@ dplyr::glimpse(iris)
 ## $ Species      <fctr> setosa, setosa, setosa, setosa, setosa, setosa, ...
 ```
 
-Which has a better printing method that gives us more insight into the data, displaying doubles and a factor. We get some insight into the data. But we don't always have data like the canonical iris dataset. let's take a look at some data that might be a bit more typical of "messy" data.
+This has a better printing method that gives us more information about the data, displaying doubles and a factor. However, we don't always have data like the canonical iris dataset. Let's take a look at some data that might be a bit more typical of "messy" data.
 
 
 ```r
@@ -100,26 +100,6 @@ vis_miss(typical_data)
 ```
 
 ![](paper_files/figure-html/unnamed-chunk-1-1.png)<!-- -->
-
-The name `visdat` was chosen as it borrows from the idea of [`testdat`](https://github.com/ropensci/testdat), which provides unit testing for your data.  In a similar way, `visdat` provides visual tests, the idea being that first you visualise your data (`visdat`), then you run tests from `testdat`, or a package like [`assertr`](https://cran.r-project.org/web/packages/assertr/index.html), to fix these errors.
-
-There are two main commands in the `visdat` package: 
-
-- `vis_dat()` 
-- `vis_miss()`
-
-- `vis_dat()` visualises a dataframe showing you what the classes of the columns are, and also displaying the missing data.
-
-- `vis_miss()` visualises just the missing data, and allows for missingness to be clustered and columns rearranged. `vis_miss()` is similar to `missing.pattern.plot` from the `mi` package. Unfortunately `missing.pattern.plot` is no longer in the `mi` package (well, as of 14/02/2016).
-
-There are two some experimental functions:
-
-- `vis_guess()`
-- `vis_compare()`
-
--  `vis_guess()` has a guess at what the value of each cell, using `readr::parse_guess`. This means that "10.1" will return "double", and `10.1` will return "double", and `01/01/01` will return "date". Keep in mind that it is a **guess** at what each cell is, so you can't trust this fully.
-
-- `vis_compare()` compares two dataframes, displaying the differences.
 
 These functions provide useful tools to help "get a look at the data", using principled visualisation techniques. The plots are built using ggplot2 [@ggplot2], which provides a consistent and powerful framework for visualisations. Which means that users can customise and extend graphics from visdat very easily.
 
