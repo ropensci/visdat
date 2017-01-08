@@ -53,7 +53,8 @@ vis_miss <- function(x,
   if (sort_miss == TRUE) {
 
     # arrange by the columns with the highest missingness
-    # code inspired from https://r-forge.r-project.org/scm/viewvc.php/pkg/R/missing.pattern.plot.R?view=markup&root=mi-dev
+    # code inspired from https://r-forge.r-project.org/scm/viewvc.php/ ...
+    # pkg/R/missing.pattern.plot.R?view=markup&root=mi-dev
     # get the order of columns with highest missingness
     na_sort <- order(colSums(is.na(x)), decreasing = TRUE)
 
@@ -136,7 +137,8 @@ vis_miss <- function(x,
       ggplot2::scale_x_discrete(limits = col_order_index) +
       ggplot2::guides(fill = ggplot2::guide_legend(reverse = TRUE))
       # guides(fill = guide_legend(title = "Type"))
-  # Thanks to http://www.markhneedham.com/blog/2015/02/27/rggplot-controlling-x-axis-order/
+  # Thanks to
+# http://www.markhneedham.com/blog/2015/02/27/rggplot-controlling-x-axis-order/
   # For the tip on using scale_x_discrete
 
   if(flip == FALSE){

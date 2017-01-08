@@ -8,7 +8,7 @@
 #'
 #' @param palette character "default", "qual" or "cb_safe". "default" (the default) provides the stock ggplot scale for separating the colours. "qual" uses an experimental qualitative colour scheme for providing distinct colours for each Type. "cb_safe" is a set of colours that are appropriate for those with colourblindness. "qual" and "cb_safe" are drawn from http://colorbrewer2.org/.
 #'
-#' @param flip logical if TRUE, will flip the axis labels to be on top, resembling a dataframe
+#' @param flip logical TRUE, will flip the axis labels to be on top, resembling a dataframe
 #'
 #' @examples
 #'
@@ -32,7 +32,9 @@ vis_dat <- function(x,
   if (sort_type == TRUE) {
 
     # arrange by the columns with the highest missingness
-    # code inspired from https://r-forge.r-project.org/scm/viewvc.php/pkg/R/missing.pattern.plot.R?view=markup&root=mi-dev
+    # code inspired from
+    # https://r-forge.r-project.org/scm/viewvc.php/pkg/R/...
+    # ...missing.pattern.plot.R?view=markup&root=mi-dev
     # get the order of columns with highest missingness
 
     type_sort <- order(
