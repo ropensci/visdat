@@ -9,13 +9,13 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-Shipped with visdat are some experimental features that are still a bit temperamental - `vis_compare()`, `vis_dat_ly()`, and `vis_miss_ly`  This vignette describes these features in a bit more detail.
+Shipped with visdat are some experimental features that are still a bit temperamental - `vis_compare()`, `vis_dat_ly()`, and `vis_miss_ly`. This vignette describes these features in a bit more detail.
   
 ## using `vis_compare()`
 
 Sometimes you want to see what has changed in your data. `vis_compare()` helps with that. It is currently only just barely working, so keep in mind that this is very much in its beta stages.
 
-For the sake of simplicity, lets make some changes to `iris`, and compare this new dataset
+For the sake of simplicity, let's make some changes to `iris`, and compare this new dataset.
 
 ```{r vis-compare-iris}
 library(visdat)

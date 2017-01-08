@@ -25,7 +25,7 @@ You can get insight into your data by modelling, visualising, and transforming, 
 
 In the same way, I think that this process gets applied in the Tidying step of data science. You read in your data, but you then need to look at it to understand what you need to do to "fix it". And that's a key phrase here "looking at the data" - what does that mean?
 
-On one hand, you can look at the head of the data:
+On the one hand, you can look at the head of the data:
 
 ```{r head-iris}
 
@@ -57,7 +57,7 @@ Looking at this, you might then ask:
 
 And you might start to wonder what else is different, what else changed? 
 
-And it might be a bit unclear where to go from there. Do you plot the data? Why does my plot look wierd? What are these other strange features in the data? The `visdat` package provides visualisations of an entire dataframe at once. Initially inspired by [`csv-fingerprint`](https://github.com/setosa/csv-fingerprint), `visdat` provides tools to create heatmap-like visualisations of an entire dataframe. `visdat` provides 2 main functions `vis_dat` and `vis_miss`.
+And it might be a bit unclear where to go from there. Do you plot the data? Why does my plot look weird? What are these other strange features in the data? The `visdat` package provides visualisations of an entire dataframe at once. Initially inspired by [`csv-fingerprint`](https://github.com/setosa/csv-fingerprint), `visdat` provides tools to create heatmap-like visualisations of an entire dataframe. `visdat` provides 2 main functions: `vis_dat` and `vis_miss`.
 
 `vis_dat()` helps explore the data class structure and missingness:
 
@@ -79,7 +79,7 @@ The name `visdat` was chosen as it borrows from the idea of [`testdat`](https://
 
 ## Using `vis_dat`
 
-Let's see what's inside the dataset `airquality`
+Let's see what's inside the dataset `airquality`.
 
 ```{r vis_dat}
 
@@ -91,7 +91,7 @@ vis_dat(airquality)
 
 The plot above tells us that R reads this dataset as having numeric and integer values, along with some missing data in `Ozone` and `Solar.R`. The classes are represented on the legend, and missing data represented by black. 
 
-By default, `vis_dat` sorts the columns according to the type of the data in the vectors. You can turn this off by setting `sort_type == FALSE`. This feature is better illustrated using the `typical_data` dataset, created using [wakefield](github.com/trinker/wakefield) and contained within visdat
+By default, `vis_dat` sorts the columns according to the type of the data in the vectors. You can turn this off by setting `sort_type = FALSE`. This feature is better illustrated using the `typical_data` dataset, created using [wakefield](github.com/trinker/wakefield) and contained within `visdat`.
 
 ```{r visdat-typical}
 
@@ -102,9 +102,9 @@ vis_dat(typical_data,
 
 ```
 
-## using `vis_miss`
+## Using `vis_miss`
 
-We can explore the missing data further using `vis_miss`
+We can explore the missing data further using `vis_miss`.
 
 ```{r vis_miss}
 
@@ -233,7 +233,7 @@ vis_dat(messy_df)
 
 ```
 
-Where you'd just assume your data is wierd because it's all factors - or worse, not notice that this is a problem.
+Where you'd just assume your data is weird because it's all factors - or worse, not notice that this is a problem.
 
 At the moment `vis_guess` is slow. Please take this into consideration when you are using it on data with more than 1000 rows. We're looking into ways of making it faster, potentially using methods from the `parallel` package, or extending the c++ code from `readr::parse_guess`.
 
