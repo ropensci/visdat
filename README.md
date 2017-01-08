@@ -22,7 +22,10 @@ Initially inspired by [`csv-fingerprint`](https://github.com/setosa/csv-fingerpr
 
 The name `visdat` was chosen as I think in the future it could be integrated with [`testdat`](https://github.com/ropensci/testdat). The idea being that first you visualise your data (`visdat`), then you run tests from `testdat` to fix them.
 
-There are two main commands in the `visdat` package: - `vis_dat()` - `vis_miss()`
+There are two main commands in the `visdat` package:
+
+-   `vis_dat()`
+-   `vis_miss()`
 
 -   `vis_dat()` visualises a dataframe showing you what the classes of the columns are, and also displaying the missing data.
 
@@ -166,9 +169,8 @@ iris_diff <- iris
 iris_diff[sample(1:150, 30),sample(1:4, 2)] <- NA
 
 vis_compare(iris_diff, iris)
-#> Warning in vis_compare(iris_diff, iris): vis_compare is still in BETA!
-#> If you have suggestions or errors, post an issue at https://github.com/
-#> njtierney/visdat/issues
+#> vis_compare is still in BETA! If you have suggestions or errors,
+#>           post an issue at https://github.com/njtierney/visdat/issues
 #> Warning in if (dim(df1) != dim(df2)) {: the condition has length > 1 and
 #> only the first element will be used
 #> Warning: attributes are not identical across measure variables; they will
@@ -180,7 +182,7 @@ vis_compare(iris_diff, iris)
 
 ![](README-vis-compare-iris-1.png)
 
-Here the differences are marked in red.
+Here the differences are marked in blue.
 
 If you try and compare differences when the dimensions are different, you get an ugly error.
 
@@ -227,9 +229,8 @@ messy_df <- data.frame(var1 = messy_vector,
 ``` r
 
 vis_guess(messy_df)
-#> Warning in vis_guess(messy_df): vis_guess is still in BETA! If you have
-#> suggestions or errors, post an issue at https://github.com/njtierney/
-#> visdat/issues
+#> vis_guess is still in BETA! If you have suggestions or errors,
+#>           post an issue at https://github.com/njtierney/visdat/issues
 ```
 
 ![](README-vis-guess-messy-df-1.png)
@@ -245,7 +246,7 @@ vis_dat(messy_df)
 
 Where you'd just assume your data is wierd because it's all factors - or worse, not notice that this is a problem.
 
-At the moment `vis_guess` is very slow. Please take this into consideration when you are using it on data with more than 1000 rows. We're looking into ways of making it faster, potentially using methods from the `parallel` package, or extending the c++ code from `readr:::collectorGuess`.
+At the moment `vis_guess` is very slow. Please take this into consideration when you are using it on data with more than 1000 rows. We're looking into ways of making it faster, potentially using methods from the `parallel` package, or extending the c++ code from `readr::parse_guess`.
 
 Interactivity
 =============
@@ -267,12 +268,14 @@ This is still under development, but it is basically a faster version of doing a
 vis\_miss\_ly
 -------------
 
-This is also just brand new under development, but should prove interesting once I fix up the legend, etc.
+This is also under development, and still needs some more work on the legend, etc.
 
 ``` r
 
 vis_miss_ly(airquality)
 ```
+
+![](README-vis-miss-ly-1.png)
 
 Road Map
 ========

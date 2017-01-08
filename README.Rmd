@@ -38,6 +38,7 @@ Initially inspired by [`csv-fingerprint`](https://github.com/setosa/csv-fingerpr
 The name `visdat` was chosen as I think in the future it could be integrated with [`testdat`](https://github.com/ropensci/testdat). The idea being that first you visualise your data (`visdat`), then you run tests from `testdat` to fix them.
 
 There are two main commands in the `visdat` package: 
+
 - `vis_dat()` 
 - `vis_miss()`
 
@@ -167,7 +168,7 @@ vis_compare(iris_diff, iris)
 
 ```
 
-Here the differences are marked in red.
+Here the differences are marked in blue.
 
 If you try and compare differences when the dimensions are different, you get an ugly error.
 
@@ -228,7 +229,7 @@ vis_dat(messy_df)
 
 Where you'd just assume your data is wierd because it's all factors - or worse, not notice that this is a problem.
 
-At the moment `vis_guess` is very slow. Please take this into consideration when you are using it on data with more than 1000 rows. We're looking into ways of making it faster, potentially using methods from the `parallel` package, or extending the c++ code from `readr:::collectorGuess`.
+At the moment `vis_guess` is very slow. Please take this into consideration when you are using it on data with more than 1000 rows. We're looking into ways of making it faster, potentially using methods from the `parallel` package, or extending the c++ code from `readr::parse_guess`.
 
 # Interactivity
 
@@ -248,9 +249,9 @@ This is still under development, but it is basically a faster version of doing a
 
 ## vis_miss_ly
 
-This is also just brand new under development, but should prove interesting once I fix up the legend, etc.
+This is also under development, and still needs some more work on the legend, etc.
 
-```{r eval = FALSE, echo = TRUE}
+```{r vis-miss-ly}
 
 vis_miss_ly(airquality)
 
