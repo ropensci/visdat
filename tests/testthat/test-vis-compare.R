@@ -9,9 +9,13 @@ vis_compare_plot <- vis_compare(iris, iris_diff)
 
 vdiffr::expect_doppelganger("vis_compare vanilla", vis_compare_plot)
 
-# for some ... very strange reason I cannot load visdat when I have the above
-# code uncommented. Very strange!
-# maybe it is because of all the warnings that vis_compare drops...
-# > devtools::load_all(".")
-# Loading visdat
-# Error: 'vis_compare' is not an exported object from 'namespace:visdat'
+iris_add <- iris
+iris_add$extra <- 1
+
+test_that("vis_compare will not accept two dataframes of differing dims",{
+  expect_error(
+    vis_compare(iris, iris_add))
+})
+
+  # stop("Dimensions of df1 and df2 are not the same. Unfortunately vis_compare
+  #      does not handles dataframes of the exact same dimension.")
