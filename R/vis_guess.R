@@ -35,7 +35,7 @@
 #' @export
 vis_guess <- function(x){
 
-  warning("vis_guess is still in BETA! If you have suggestions or errors,
+  message("vis_guess is still in BETA! If you have suggestions or errors,
           post an issue at https://github.com/njtierney/visdat/issues")
 
 # x = messy_df

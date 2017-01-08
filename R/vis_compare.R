@@ -15,13 +15,11 @@
 #' library(visdat)
 #'
 #' vis_compare(iris, iris_diff)
-#'
 #' @export
-
 vis_compare <- function(df1,
                         df2){
 
-  warning("vis_compare is still in BETA! If you have suggestions or errors,
+  message("vis_compare is still in BETA! If you have suggestions or errors,
           post an issue at https://github.com/njtierney/visdat/issues")
 
   # could add a parameter, "sort_match", to help with
