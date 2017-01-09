@@ -1,3 +1,20 @@
+---
+title: 'visdat: Visualising whole data frames'
+tags:
+  - visualisation
+  - R
+  - exporatory data analysis
+authors:
+ - name: Nicholas Tierney
+   orcid: 0000-0003-1460-8722
+   affiliation: 1
+affiliations:
+ - name: Queensland University of Technology
+   index: 1
+date: 09 January 2017
+bibliography: paper.bib
+---
+
 # visdat: Visualising whole data frames
 09 January 2017  
 
