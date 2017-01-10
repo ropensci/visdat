@@ -6,3 +6,4 @@
 ^appveyor\.yml$
 ^docs$
 ^paper$
+^README-figs$
