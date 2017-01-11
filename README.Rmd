@@ -11,7 +11,7 @@ output:
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "README-"
+  fig.path = "README-figs/README-"
 )
 
 ```
@@ -38,6 +38,8 @@ Initially inspired by [`csv-fingerprint`](https://github.com/setosa/csv-fingerpr
 The name `visdat` was chosen as I think in the future it could be integrated with [`testdat`](https://github.com/ropensci/testdat). The idea being that first you visualise your data (`visdat`), then you run tests from `testdat` to fix them.
 
 There are two main commands in the `visdat` package: 
+- `vis_dat()` 
+- `vis_miss()`
 
 - `vis_dat()` visualises a dataframe showing you what the classes of the columns are, and also displaying the missing data.
 
@@ -243,9 +245,9 @@ This is still under development, but it is basically a faster version of doing a
 
 ## vis_miss_ly
 
-This is also just brand new under development, but should prove interesting once I fix up the legend, etc.
+This is also under development, and still needs some more work on the legend, etc.
 
-```{r eval = FALSE, echo = TRUE}
+```{r vis-miss-ly}
 
 vis_miss_ly(airquality)
 

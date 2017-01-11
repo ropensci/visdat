@@ -22,7 +22,10 @@ Initially inspired by [`csv-fingerprint`](https://github.com/setosa/csv-fingerpr
 
 The name `visdat` was chosen as I think in the future it could be integrated with [`testdat`](https://github.com/ropensci/testdat). The idea being that first you visualise your data (`visdat`), then you run tests from `testdat` to fix them.
 
-There are two main commands in the `visdat` package: - `vis_dat()` - `vis_miss()`
+There are two main commands in the `visdat` package:
+
+-   `vis_dat()`
+-   `vis_miss()`
 
 -   `vis_dat()` visualises a dataframe showing you what the classes of the columns are, and also displaying the missing data.
 
@@ -52,7 +55,7 @@ library(visdat)
 vis_dat(airquality)
 ```
 
-![](README-vis-dat-aq-1.png)
+![](README-figs/README-vis-dat-aq-1.png)
 
 The classes are represented on the legend, and missing data represented by grey.
 
@@ -64,7 +67,7 @@ vis_dat(airquality,
         sort_type = FALSE)
 ```
 
-![](README-vis-dat-aq-sort-type-1.png)
+![](README-figs/README-vis-dat-aq-sort-type-1.png)
 
 The plot above tells us that R reads this dataset as having characters, and integer values, along with some missing data in `Ozone` and `Solar.R`.
 
@@ -79,7 +82,7 @@ vis_dat(typical_data)
 #> be dropped
 ```
 
-![](README-vis-dat-typical-data-1.png)
+![](README-figs/README-vis-dat-typical-data-1.png)
 
 We can also look into using even wider data, looking at `typical_larger_data`
 
@@ -90,7 +93,7 @@ vis_dat(typical_larger_data)
 #> be dropped
 ```
 
-![](README-vis-dat-typical-larger-data-1.png)
+![](README-figs/README-vis-dat-typical-larger-data-1.png)
 
 using `vis_miss()`
 ------------------
@@ -102,7 +105,7 @@ We can explore the missing data further using `vis_miss()`
 vis_miss(airquality)
 ```
 
-![](README-vis-miss-aq-1.png)
+![](README-figs/README-vis-miss-aq-1.png)
 
 The percentages of missing/complete in `vis_miss` are accurate to 1 decimal place.
 
@@ -114,7 +117,7 @@ vis_miss(airquality,
          cluster = TRUE)
 ```
 
-![](README-vis-miss-aq-cluster-1.png)
+![](README-figs/README-vis-miss-aq-cluster-1.png)
 
 The columns can also just be arranged by columns with most missingness, by setting `sort_miss = TRUE`.
 
@@ -124,7 +127,7 @@ vis_miss(airquality,
          sort_miss = TRUE)
 ```
 
-![](README-vis-miss-aq-sort-miss-1.png)
+![](README-figs/README-vis-miss-aq-sort-miss-1.png)
 
 When there is &lt;0.1% of missingness, `vis_miss` indicates that there is &gt;1% missingness.
 
@@ -139,7 +142,7 @@ vis_miss(test_miss_df)
 #> be dropped
 ```
 
-![](README-vis-miss-test-1.png)
+![](README-figs/README-vis-miss-test-1.png)
 
 `vis_miss` will also indicate when there is no missing data at all
 
@@ -148,7 +151,7 @@ vis_miss(test_miss_df)
 vis_miss(mtcars)
 ```
 
-![](README-vis-miss-mtcars-1.png)
+![](README-figs/README-vis-miss-mtcars-1.png)
 
 Experimental features
 =====================
@@ -166,9 +169,8 @@ iris_diff <- iris
 iris_diff[sample(1:150, 30),sample(1:4, 2)] <- NA
 
 vis_compare(iris_diff, iris)
-#> Warning in vis_compare(iris_diff, iris): vis_compare is still in BETA!
-#> If you have suggestions or errors, post an issue at https://github.com/
-#> njtierney/visdat/issues
+#> vis_compare is still in BETA! If you have suggestions or errors,
+#>           post an issue at https://github.com/njtierney/visdat/issues
 #> Warning in if (dim(df1) != dim(df2)) {: the condition has length > 1 and
 #> only the first element will be used
 #> Warning: attributes are not identical across measure variables; they will
@@ -178,9 +180,9 @@ vis_compare(iris_diff, iris)
 #> be dropped
 ```
 
-![](README-vis-compare-iris-1.png)
+![](README-figs/README-vis-compare-iris-1.png)
 
-Here the differences are marked in red.
+Here the differences are marked in blue.
 
 If you try and compare differences when the dimensions are different, you get an ugly error.
 
@@ -227,12 +229,11 @@ messy_df <- data.frame(var1 = messy_vector,
 ``` r
 
 vis_guess(messy_df)
-#> Warning in vis_guess(messy_df): vis_guess is still in BETA! If you have
-#> suggestions or errors, post an issue at https://github.com/njtierney/
-#> visdat/issues
+#> vis_guess is still in BETA! If you have suggestions or errors,
+#>           post an issue at https://github.com/njtierney/visdat/issues
 ```
 
-![](README-vis-guess-messy-df-1.png)
+![](README-figs/README-vis-guess-messy-df-1.png)
 
 So here we see that there are many different kinds of data in your dataframe. As an analyst this might be a depressing finding. Compare this to `vis_dat`.
 
@@ -241,11 +242,11 @@ So here we see that there are many different kinds of data in your dataframe. As
 vis_dat(messy_df)
 ```
 
-![](README-visdat-messy-df-1.png)
+![](README-figs/README-visdat-messy-df-1.png)
 
 Where you'd just assume your data is wierd because it's all factors - or worse, not notice that this is a problem.
 
-At the moment `vis_guess` is very slow. Please take this into consideration when you are using it on data with more than 1000 rows. We're looking into ways of making it faster, potentially using methods from the `parallel` package, or extending the c++ code from `readr:::collectorGuess`.
+At the moment `vis_guess` is very slow. Please take this into consideration when you are using it on data with more than 1000 rows. We're looking into ways of making it faster, potentially using methods from the `parallel` package, or extending the c++ code from `readr::parse_guess`.
 
 Interactivity
 =============
@@ -267,12 +268,14 @@ This is still under development, but it is basically a faster version of doing a
 vis\_miss\_ly
 -------------
 
-This is also just brand new under development, but should prove interesting once I fix up the legend, etc.
+This is also under development, and still needs some more work on the legend, etc.
 
 ``` r
 
 vis_miss_ly(airquality)
 ```
+
+![](README-figs/README-vis-miss-ly-1.png)
 
 Road Map
 ========

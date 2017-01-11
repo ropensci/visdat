@@ -1,6 +1,6 @@
 Package: visdat
 Title: Preliminary Visualisation of Data
-Version: 0.0.4.9999
+Version: 0.0.5.9000
 Authors@R: person("Nicholas", "Tierney", email = "nicholas.tierney@gmail.com", role = c("aut", "cre"))
 Description: visdat makes it easy to visualise your whole dataset so that you
     can visually identify problems.
@@ -23,5 +23,6 @@ BugReports: https://github.com/njtierney/visdat/issues
 Suggests:
     testthat,
     knitr,
-    rmarkdown
+    rmarkdown,
+    vdiffr
 VignetteBuilder: knitr

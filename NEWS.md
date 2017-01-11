@@ -1,8 +1,22 @@
-# visdat 0.0.4.9999 (2017/01/07)
+# visdat 0.0.5.9000 (2017/01/09)
+
+## Minor Improvements
+
+- Added testing for visualisations with `vdiffr`. Code coverage is now at 99%
+- Fixed up suggestions from `goodpractice::gp()`
+- Submitted to rOpenSci onboarding
+- `paper.md` written and submitted to JOSS
+
+# visdat 0.0.4.9999 (2017/01/08)
 
 ## New Feature
 
 - Added feature `flip = TRUE`, to `vis_dat` and `vis_miss`. This flips the x axis and the ordering of the rows. This more closely resembles a dataframe.
+
+## Minor Improvements
+
+- All lines are < 80 characters long
+- removed all instances of `1:rnow(x)` and replaced with `seq_along(nrow(x))`.
 
 # visdat 0.0.4.9990 (2016/12/29)
 
