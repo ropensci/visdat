@@ -38,8 +38,6 @@ Initially inspired by [`csv-fingerprint`](https://github.com/setosa/csv-fingerpr
 The name `visdat` was chosen as I think in the future it could be integrated with [`testdat`](https://github.com/ropensci/testdat). The idea being that first you visualise your data (`visdat`), then you run tests from `testdat` to fix them.
 
 There are two main commands in the `visdat` package: 
-- `vis_dat()` 
-- `vis_miss()`
 
 - `vis_dat()` visualises a dataframe showing you what the classes of the columns are, and also displaying the missing data.
 
@@ -80,7 +78,7 @@ The plot above tells us that R reads this dataset as having characters and integ
 
 ### With many kinds of data
 
-To demonstrate what visdat looks like when you have different kinds of data, we can use `visdat` to look at the dataset `typical_data`, which is from the excellent [`wakefield package`](https://github.com/trinker/wakefield).
+To demonstrate what visdat looks like when you have different kinds of data, we can look at the dataset `typical_data`, provided within `visdat`, and created with the excellent [`wakefield` package](https://github.com/trinker/wakefield).
 
 ```{r vis-dat-typical-data}
 
