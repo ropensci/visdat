@@ -53,27 +53,26 @@
       <h1>Experimental Features of visdat</h1>
                         <h4 class="author">Nicholas Tierney</h4>
             
-            <h4 class="date">2017-01-07</h4>
+            <h4 class="date">2017-01-15</h4>
           </div>
 
     
     
 <div class="contents">
-<p>Shipped with visdat are some experimental features that are still a bit temperamental - <code><a href="../reference/vis_compare.html">vis_compare()</a></code>, <code><a href="../reference/vis_dat_ly.html">vis_dat_ly()</a></code>, and <code>vis_miss_ly</code> This vignette describes these features in a bit more detail.</p>
+<p>Shipped with visdat are some experimental features that are still a bit temperamental - <code><a href="../reference/vis_compare.html">vis_compare()</a></code>, <code>vis_dat_ly()</code>, and <code>vis_miss_ly</code>. This vignette describes these features in a bit more detail.</p>
 <div id="using-vis_compare" class="section level2">
 <h2 class="hasAnchor">
 <html><body><a href="#using-vis_compare" class="anchor"> </a></body></html>using <code><a href="../reference/vis_compare.html">vis_compare()</a></code>
 </h2>
 <p>Sometimes you want to see what has changed in your data. <code><a href="../reference/vis_compare.html">vis_compare()</a></code> helps with that. It is currently only just barely working, so keep in mind that this is very much in its beta stages.</p>
-<p>For the sake of simplicity, lets make some changes to <code>iris</code>, and compare this new dataset</p>
+<p>For the sake of simplicity, let’s make some changes to <code>iris</code>, and compare this new dataset.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(visdat)
 iris_diff &lt;-<span class="st"> </span>iris
 iris_diff[<span class="kw">sample</span>(<span class="dv">1</span>:<span class="dv">150</span>, <span class="dv">30</span>),<span class="kw">sample</span>(<span class="dv">1</span>:<span class="dv">4</span>, <span class="dv">2</span>)] &lt;-<span class="st"> </span><span class="ot">NA</span>
 
 <span class="kw"><a href="../reference/vis_compare.html">vis_compare</a></span>(iris_diff, iris)</code></pre></div>
-<pre><code>## Warning in vis_compare(iris_diff, iris): vis_compare is still in BETA!
-## If you have suggestions or errors, post an issue at https://github.com/
-## njtierney/visdat/issues</code></pre>
+<pre><code>## vis_compare is still in BETA! If you have suggestions or errors,
+##           post an issue at https://github.com/njtierney/visdat/issues</code></pre>
 <pre><code>## Warning in if (dim(df1) != dim(df2)) {: the condition has length &gt; 1 and
 ## only the first element will be used</code></pre>
 <pre><code>## Warning: attributes are not identical across measure variables; they will

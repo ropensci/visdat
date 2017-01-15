@@ -47,7 +47,8 @@
 <!--/.navbar -->
 
       
-      </header><div class="row">
+      </header><script src="index_files/htmlwidgets-0.8/htmlwidgets.js"></script><link href="index_files/plotlyjs-1.16.3/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="index_files/plotlyjs-1.16.3/plotly-latest.min.js"></script><script src="index_files/plotly-binding-4.5.6/plotly.js"></script><div class="row">
   <div class="col-md-9">
     
 
@@ -74,15 +75,13 @@ devtools::<span class="kw">install_github</span>(<span class="st">"njtierney/vis
 <a href="#what-does-visdat-do" class="anchor"> </a>What does visdat do?</h1>
 <p>Initially inspired by <a href="https://github.com/setosa/csv-fingerprint"><code>csv-fingerprint</code></a>, <code>vis_dat</code> helps you visualise a dataframe and “get a look at the data” by displaying the variable classes in a dataframe as a plot with <code>vis_dat</code>, and getting a brief look into missing data patterns <code>vis_miss</code>.</p>
 <p>The name <code>visdat</code> was chosen as I think in the future it could be integrated with <a href="https://github.com/ropensci/testdat"><code>testdat</code></a>. The idea being that first you visualise your data (<code>visdat</code>), then you run tests from <code>testdat</code> to fix them.</p>
-<p>There are two main commands in the <code>visdat</code> package: - <code><a href="reference/vis_dat.html">vis_dat()</a></code> - <code><a href="reference/vis_miss.html">vis_miss()</a></code></p>
+<p>There are two main commands in the <code>visdat</code> package:</p>
 <ul>
 <li><p><code><a href="reference/vis_dat.html">vis_dat()</a></code> visualises a dataframe showing you what the classes of the columns are, and also displaying the missing data.</p></li>
 <li><p><code><a href="reference/vis_miss.html">vis_miss()</a></code> visualises just the missing data, and allows for missingness to be clustered and columns rearranged. <code><a href="reference/vis_miss.html">vis_miss()</a></code> is similar to <code>missing.pattern.plot</code> from the <code>mi</code> package. Unfortunately <code>missing.pattern.plot</code> is no longer in the <code>mi</code> package (well, as of 14/02/2016).</p></li>
 </ul>
-<p>There are two some experimental functions:</p>
+<p>There are two experimental functions:</p>
 <ul>
-<li><code><a href="reference/vis_guess.html">vis_guess()</a></code></li>
-<li><p><code><a href="reference/vis_compare.html">vis_compare()</a></code></p></li>
 <li><p><code><a href="reference/vis_guess.html">vis_guess()</a></code> has a guess at what the value of each cell, using <code>readr::parse_guess</code>. This means that “10.1” will return “double”, and <code>10.1</code> will return “double”, and <code>01/01/01</code> will return “date”. Keep in mind that it is a <strong>guess</strong> at what each cell is, so you can’t trust this fully.</p></li>
 <li><p><code><a href="reference/vis_compare.html">vis_compare()</a></code> compares two dataframes, displaying the differences.</p></li>
 </ul>
@@ -99,50 +98,50 @@ devtools::<span class="kw">install_github</span>(<span class="st">"njtierney/vis
 <span class="kw">library</span>(visdat)
 
 <span class="kw"><a href="reference/vis_dat.html">vis_dat</a></span>(airquality)</code></pre></div>
-<p><img src="README-vis-dat-aq-1.png" width="672"></p>
+<p><img src="README-figs/README-vis-dat-aq-1.png" width="672"></p>
 <p>The classes are represented on the legend, and missing data represented by grey.</p>
-<p>by default, <code>vis_dat</code> sorts the columns according to the type of the data in the vectors. You can turn this off by setting <code>sort_type == FALSE</code>. This feature is better illustrated using the <code>airquality</code> dataset from base R.</p>
+<p>by default, <code>vis_dat</code> sorts the columns according to the type of the data in the vectors. You can turn this off by setting <code>sort_type = FALSE</code>. This feature is better illustrated using the <code>airquality</code> dataset from base R.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw"><a href="reference/vis_dat.html">vis_dat</a></span>(airquality, 
         <span class="dt">sort_type =</span> <span class="ot">FALSE</span>)</code></pre></div>
-<p><img src="README-vis-dat-aq-sort-type-1.png" width="672"></p>
-<p>The plot above tells us that R reads this dataset as having characters, and integer values, along with some missing data in <code>Ozone</code> and <code>Solar.R</code>.</p>
-<div id="with-different-data" class="section level3">
+<p><img src="README-figs/README-vis-dat-aq-sort-type-1.png" width="672"></p>
+<p>The plot above tells us that R reads this dataset as having characters and integer values, along with some missing data in <code>Ozone</code> and <code>Solar.R</code>.</p>
+<div id="with-many-kinds-of-data" class="section level3">
 <h3 class="hasAnchor">
-<a href="#with-different-data" class="anchor"> </a>with different data</h3>
-<p>To demonstrate what visdat looks like when you have different kinds of data, we can look at the <code>typical_data</code> from within visdat, created using the excellent <a href="https://github.com/trinker/wakefield"><code>wakefield package</code></a>.</p>
+<a href="#with-many-kinds-of-data" class="anchor"> </a>With many kinds of data</h3>
+<p>To demonstrate what visdat looks like when you have different kinds of data, we can look at the dataset <code>typical_data</code>, provided within <code>visdat</code>, and created with the excellent <a href="https://github.com/trinker/wakefield"><code>wakefield</code> package</a>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw"><a href="reference/vis_dat.html">vis_dat</a></span>(typical_data)
 <span class="co">#&gt; Warning: attributes are not identical across measure variables; they will</span>
 <span class="co">#&gt; be dropped</span></code></pre></div>
-<p><img src="README-vis-dat-typical-data-1.png" width="672"></p>
+<p><img src="README-figs/README-vis-dat-typical-data-1.png" width="672"></p>
 <p>We can also look into using even wider data, looking at <code>typical_larger_data</code></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw"><a href="reference/vis_dat.html">vis_dat</a></span>(typical_larger_data)
 <span class="co">#&gt; Warning: attributes are not identical across measure variables; they will</span>
 <span class="co">#&gt; be dropped</span></code></pre></div>
-<p><img src="README-vis-dat-typical-larger-data-1.png" width="672"></p>
+<p><img src="README-figs/README-vis-dat-typical-larger-data-1.png" width="672"></p>
 </div>
 </div>
 <div id="using-vis_miss" class="section level2">
 <h2 class="hasAnchor">
-<a href="#using-vis_miss" class="anchor"> </a>using <code><a href="reference/vis_miss.html">vis_miss()</a></code>
+<a href="#using-vis_miss" class="anchor"> </a>Using <code><a href="reference/vis_miss.html">vis_miss()</a></code>
 </h2>
 <p>We can explore the missing data further using <code><a href="reference/vis_miss.html">vis_miss()</a></code></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw"><a href="reference/vis_miss.html">vis_miss</a></span>(airquality)</code></pre></div>
-<p><img src="README-vis-miss-aq-1.png" width="672"></p>
+<p><img src="README-figs/README-vis-miss-aq-1.png" width="672"></p>
 <p>The percentages of missing/complete in <code>vis_miss</code> are accurate to 1 decimal place.</p>
 <p>You can cluster the missingness by setting <code>cluster = TRUE</code></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw"><a href="reference/vis_miss.html">vis_miss</a></span>(airquality, 
          <span class="dt">cluster =</span> <span class="ot">TRUE</span>)</code></pre></div>
-<p><img src="README-vis-miss-aq-cluster-1.png" width="672"></p>
+<p><img src="README-figs/README-vis-miss-aq-cluster-1.png" width="672"></p>
 <p>The columns can also just be arranged by columns with most missingness, by setting <code>sort_miss = TRUE</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw"><a href="reference/vis_miss.html">vis_miss</a></span>(airquality,
          <span class="dt">sort_miss =</span> <span class="ot">TRUE</span>)</code></pre></div>
-<p><img src="README-vis-miss-aq-sort-miss-1.png" width="672"></p>
+<p><img src="README-figs/README-vis-miss-aq-sort-miss-1.png" width="672"></p>
 <p>When there is &lt;0.1% of missingness, <code>vis_miss</code> indicates that there is &gt;1% missingness.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 test_miss_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x1 =</span> <span class="dv">1</span>:<span class="dv">10000</span>,
@@ -152,11 +151,11 @@ test_miss_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<s
 <span class="kw"><a href="reference/vis_miss.html">vis_miss</a></span>(test_miss_df)
 <span class="co">#&gt; Warning: attributes are not identical across measure variables; they will</span>
 <span class="co">#&gt; be dropped</span></code></pre></div>
-<p><img src="README-vis-miss-test-1.png" width="672"></p>
+<p><img src="README-figs/README-vis-miss-test-1.png" width="672"></p>
 <p><code>vis_miss</code> will also indicate when there is no missing data at all</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw"><a href="reference/vis_miss.html">vis_miss</a></span>(mtcars)</code></pre></div>
-<p><img src="README-vis-miss-mtcars-1.png" width="672"></p>
+<p><img src="README-figs/README-vis-miss-mtcars-1.png" width="672"></p>
 </div>
 </div>
 <div id="experimental-features" class="section level1">
@@ -164,7 +163,7 @@ test_miss_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<s
 <a href="#experimental-features" class="anchor"> </a>Experimental features</h1>
 <div id="using-vis_compare" class="section level2">
 <h2 class="hasAnchor">
-<a href="#using-vis_compare" class="anchor"> </a>using <code><a href="reference/vis_compare.html">vis_compare()</a></code>
+<a href="#using-vis_compare" class="anchor"> </a>Using <code><a href="reference/vis_compare.html">vis_compare()</a></code>
 </h2>
 <p>Sometimes you want to see what has changed in your data. <code><a href="reference/vis_compare.html">vis_compare()</a></code> helps with that. It is currently only just barely working, so keep in mind that this is very much in its beta stages.</p>
 <p>For the sake of simplicity, lets make some changes to <code>iris</code>, and compare this new dataset</p>
@@ -173,9 +172,8 @@ iris_diff &lt;-<span class="st"> </span>iris
 iris_diff[<span class="kw">sample</span>(<span class="dv">1</span>:<span class="dv">150</span>, <span class="dv">30</span>),<span class="kw">sample</span>(<span class="dv">1</span>:<span class="dv">4</span>, <span class="dv">2</span>)] &lt;-<span class="st"> </span><span class="ot">NA</span>
 
 <span class="kw"><a href="reference/vis_compare.html">vis_compare</a></span>(iris_diff, iris)
-<span class="co">#&gt; Warning in vis_compare(iris_diff, iris): vis_compare is still in BETA!</span>
-<span class="co">#&gt; If you have suggestions or errors, post an issue at https://github.com/</span>
-<span class="co">#&gt; njtierney/visdat/issues</span>
+<span class="co">#&gt; vis_compare is still in BETA! If you have suggestions or errors,</span>
+<span class="co">#&gt;           post an issue at https://github.com/njtierney/visdat/issues</span>
 <span class="co">#&gt; Warning in if (dim(df1) != dim(df2)) {: the condition has length &gt; 1 and</span>
 <span class="co">#&gt; only the first element will be used</span>
 <span class="co">#&gt; Warning: attributes are not identical across measure variables; they will</span>
@@ -183,8 +181,8 @@ iris_diff[<span class="kw">sample</span>(<span class="dv">1</span>:<span class="
 
 <span class="co">#&gt; Warning: attributes are not identical across measure variables; they will</span>
 <span class="co">#&gt; be dropped</span></code></pre></div>
-<p><img src="README-vis-compare-iris-1.png" width="672"></p>
-<p>Here the differences are marked in red.</p>
+<p><img src="README-figs/README-vis-compare-iris-1.png" width="672"></p>
+<p>Here the differences are marked in blue.</p>
 <p>If you try and compare differences when the dimensions are different, you get an ugly error.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 iris_diff_2 &lt;-<span class="st"> </span>iris
@@ -195,7 +193,7 @@ iris_diff_2$new_col &lt;-<span class="st"> </span>iris$Sepal.Length +<span class
 </div>
 <div id="using-vis_guess" class="section level2">
 <h2 class="hasAnchor">
-<a href="#using-vis_guess" class="anchor"> </a>using <code><a href="reference/vis_guess.html">vis_guess()</a></code>
+<a href="#using-vis_guess" class="anchor"> </a>Using <code><a href="reference/vis_guess.html">vis_guess()</a></code>
 </h2>
 <p><code><a href="reference/vis_guess.html">vis_guess()</a></code> takes a guess at what each cell is. It’s best illustrated using some messy data, which we’ll make here.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
@@ -223,15 +221,14 @@ messy_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span 
                        <span class="dt">var3 =</span> <span class="kw">sample</span>(messy_vector))</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw"><a href="reference/vis_guess.html">vis_guess</a></span>(messy_df)
-<span class="co">#&gt; Warning in vis_guess(messy_df): vis_guess is still in BETA! If you have</span>
-<span class="co">#&gt; suggestions or errors, post an issue at https://github.com/njtierney/</span>
-<span class="co">#&gt; visdat/issues</span></code></pre></div>
-<p><img src="README-vis-guess-messy-df-1.png" width="672"></p>
+<span class="co">#&gt; vis_guess is still in BETA! If you have suggestions or errors,</span>
+<span class="co">#&gt;           post an issue at https://github.com/njtierney/visdat/issues</span></code></pre></div>
+<p><img src="README-figs/README-vis-guess-messy-df-1.png" width="672"></p>
 <p>So here we see that there are many different kinds of data in your dataframe. As an analyst this might be a depressing finding. Compare this to <code>vis_dat</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw"><a href="reference/vis_dat.html">vis_dat</a></span>(messy_df)</code></pre></div>
-<p><img src="README-visdat-messy-df-1.png" width="672"></p>
-<p>Where you’d just assume your data is wierd because it’s all factors - or worse, not notice that this is a problem.</p>
+<p><img src="README-figs/README-visdat-messy-df-1.png" width="672"></p>
+<p>Where you’d just assume your data is weird because it’s all factors - or worse, not notice that this is a problem.</p>
 <p>At the moment <code>vis_guess</code> is very slow. Please take this into consideration when you are using it on data with more than 1000 rows. We’re looking into ways of making it faster, potentially using methods from the <code>parallel</code> package, or extending the c++ code from <code>readr:::collectorGuess</code>.</p>
 </div>
 </div>
@@ -251,15 +248,17 @@ messy_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span 
 <div id="vis_miss_ly" class="section level2">
 <h2 class="hasAnchor">
 <a href="#vis_miss_ly" class="anchor"> </a>vis_miss_ly</h2>
-<p>This is also just brand new under development, but should prove interesting once I fix up the legend, etc.</p>
+<p>This is also under development, and still needs some more work on the legend, etc.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw"><a href="reference/vis_miss_ly.html">vis_miss_ly</a></span>(airquality)</code></pre></div>
+<div id="htmlwidget-ca686e137c3dbdfa1df6" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ca686e137c3dbdfa1df6">{"x":{"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"title":"","type":"category","categoryorder":"array","categoryarray":["Day","Month","Ozone","Solar.R","Temp","Wind"]},"showlegend":false,"yaxis":{"domain":[0,1]}},"source":"A","config":{"modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"modeBarButtonsToRemove":["sendDataToCloud"]},"data":[{"colorbar":{"title":"","ticklen":2,"ticktext":["Present","Missing"],"tickvals":[1,2]},"colorscale":[["0","rgba(204,204,204,1)"],["0","rgba(204,204,204,1)"],["0","rgba(204,204,204,1)"],["0","rgba(204,204,204,1)"],["0","rgba(204,204,204,1)"],["0","rgba(204,204,204,1)"],["0","rgba(204,204,204,1)"],["0","rgba(204,204,204,1)"],["0","rgba(204,204,204,1)"],["0","rgba(204,204,204,1)"],["0","rgba(204,204,204,1)"],["0","rgba(204,204,204,1)"],["0","rgba(204,204,204,1)"],["0","rgba(204,204,204,1)"],["0","rgba(204,204,204,1)"],["0","rgba(204,204,204,1)"],["0","rgba(204,204,204,1)"],["0","rgba(204,204,204,1)"],["0","rgba(204,204,204,1)"],["0","rgba(204,204,204,1)"],["0","rgba(204,204,204,1)"],["0","rgba(204,204,204,1)"],["0","rgba(204,204,204,1)"],["1","rgba(51,51,51,1)"],["1","rgba(51,51,51,1)"]],"showscale":true,"z":[[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[2,2,1,1,1,1],[1,2,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[2,1,1,1,1,1],[1,2,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[2,1,1,1,1,1],[2,1,1,1,1,1],[2,2,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[2,1,1,1,1,1],[2,1,1,1,1,1],[2,1,1,1,1,1],[2,1,1,1,1,1],[2,1,1,1,1,1],[2,1,1,1,1,1],[1,1,1,1,1,1],[2,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[2,1,1,1,1,1],[2,1,1,1,1,1],[1,1,1,1,1,1],[2,1,1,1,1,1],[2,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[2,1,1,1,1,1],[2,1,1,1,1,1],[2,1,1,1,1,1],[2,1,1,1,1,1],[2,1,1,1,1,1],[2,1,1,1,1,1],[2,1,1,1,1,1],[2,1,1,1,1,1],[2,1,1,1,1,1],[2,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[2,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[2,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[2,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[2,1,1,1,1,1],[2,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,2,1,1,1,1],[1,2,1,1,1,1],[1,2,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[2,1,1,1,1,1],[2,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[2,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[2,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[2,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[2,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1]],"x":["Ozone","Solar.R","Wind","Temp","Month","Day"],"text":[["41 <br /> FALSE","190 <br /> FALSE","7.4 <br /> FALSE","67 <br /> FALSE","5 <br /> FALSE","1 <br /> FALSE"],["36 <br /> FALSE","118 <br /> FALSE","8 <br /> FALSE","72 <br /> FALSE","5 <br /> FALSE","2 <br /> FALSE"],["12 <br /> FALSE","149 <br /> FALSE","12.6 <br /> FALSE","74 <br /> FALSE","5 <br /> FALSE","3 <br /> FALSE"],["18 <br /> FALSE","313 <br /> FALSE","11.5 <br /> FALSE","62 <br /> FALSE","5 <br /> FALSE","4 <br /> FALSE"],["NA <br /> TRUE","NA <br /> TRUE","14.3 <br /> FALSE","56 <br /> FALSE","5 <br /> FALSE","5 <br /> FALSE"],["28 <br /> FALSE","NA <br /> TRUE","14.9 <br /> FALSE","66 <br /> FALSE","5 <br /> FALSE","6 <br /> FALSE"],["23 <br /> FALSE","299 <br /> FALSE","8.6 <br /> FALSE","65 <br /> FALSE","5 <br /> FALSE","7 <br /> FALSE"],["19 <br /> FALSE","99 <br /> FALSE","13.8 <br /> FALSE","59 <br /> FALSE","5 <br /> FALSE","8 <br /> FALSE"],["8 <br /> FALSE","19 <br /> FALSE","20.1 <br /> FALSE","61 <br /> FALSE","5 <br /> FALSE","9 <br /> FALSE"],["NA <br /> TRUE","194 <br /> FALSE","8.6 <br /> FALSE","69 <br /> FALSE","5 <br /> FALSE","10 <br /> FALSE"],["7 <br /> FALSE","NA <br /> TRUE","6.9 <br /> FALSE","74 <br /> FALSE","5 <br /> FALSE","11 <br /> FALSE"],["16 <br /> FALSE","256 <br /> FALSE","9.7 <br /> FALSE","69 <br /> FALSE","5 <br /> FALSE","12 <br /> FALSE"],["11 <br /> FALSE","290 <br /> FALSE","9.2 <br /> FALSE","66 <br /> FALSE","5 <br /> FALSE","13 <br /> FALSE"],["14 <br /> FALSE","274 <br /> FALSE","10.9 <br /> FALSE","68 <br /> FALSE","5 <br /> FALSE","14 <br /> FALSE"],["18 <br /> FALSE","65 <br /> FALSE","13.2 <br /> FALSE","58 <br /> FALSE","5 <br /> FALSE","15 <br /> FALSE"],["14 <br /> FALSE","334 <br /> FALSE","11.5 <br /> FALSE","64 <br /> FALSE","5 <br /> FALSE","16 <br /> FALSE"],["34 <br /> FALSE","307 <br /> FALSE","12 <br /> FALSE","66 <br /> FALSE","5 <br /> FALSE","17 <br /> FALSE"],["6 <br /> FALSE","78 <br /> FALSE","18.4 <br /> FALSE","57 <br /> FALSE","5 <br /> FALSE","18 <br /> FALSE"],["30 <br /> FALSE","322 <br /> FALSE","11.5 <br /> FALSE","68 <br /> FALSE","5 <br /> FALSE","19 <br /> FALSE"],["11 <br /> FALSE","44 <br /> FALSE","9.7 <br /> FALSE","62 <br /> FALSE","5 <br /> FALSE","20 <br /> FALSE"],["1 <br /> FALSE","8 <br /> FALSE","9.7 <br /> FALSE","59 <br /> FALSE","5 <br /> FALSE","21 <br /> FALSE"],["11 <br /> FALSE","320 <br /> FALSE","16.6 <br /> FALSE","73 <br /> FALSE","5 <br /> FALSE","22 <br /> FALSE"],["4 <br /> FALSE","25 <br /> FALSE","9.7 <br /> FALSE","61 <br /> FALSE","5 <br /> FALSE","23 <br /> FALSE"],["32 <br /> FALSE","92 <br /> FALSE","12 <br /> FALSE","61 <br /> FALSE","5 <br /> FALSE","24 <br /> FALSE"],["NA <br /> TRUE","66 <br /> FALSE","16.6 <br /> FALSE","57 <br /> FALSE","5 <br /> FALSE","25 <br /> FALSE"],["NA <br /> TRUE","266 <br /> FALSE","14.9 <br /> FALSE","58 <br /> FALSE","5 <br /> FALSE","26 <br /> FALSE"],["NA <br /> TRUE","NA <br /> TRUE","8 <br /> FALSE","57 <br /> FALSE","5 <br /> FALSE","27 <br /> FALSE"],["23 <br /> FALSE","13 <br /> FALSE","12 <br /> FALSE","67 <br /> FALSE","5 <br /> FALSE","28 <br /> FALSE"],["45 <br /> FALSE","252 <br /> FALSE","14.9 <br /> FALSE","81 <br /> FALSE","5 <br /> FALSE","29 <br /> FALSE"],["115 <br /> FALSE","223 <br /> FALSE","5.7 <br /> FALSE","79 <br /> FALSE","5 <br /> FALSE","30 <br /> FALSE"],["37 <br /> FALSE","279 <br /> FALSE","7.4 <br /> FALSE","76 <br /> FALSE","5 <br /> FALSE","31 <br /> FALSE"],["NA <br /> TRUE","286 <br /> FALSE","8.6 <br /> FALSE","78 <br /> FALSE","6 <br /> FALSE","1 <br /> FALSE"],["NA <br /> TRUE","287 <br /> FALSE","9.7 <br /> FALSE","74 <br /> FALSE","6 <br /> FALSE","2 <br /> FALSE"],["NA <br /> TRUE","242 <br /> FALSE","16.1 <br /> FALSE","67 <br /> FALSE","6 <br /> FALSE","3 <br /> FALSE"],["NA <br /> TRUE","186 <br /> FALSE","9.2 <br /> FALSE","84 <br /> FALSE","6 <br /> FALSE","4 <br /> FALSE"],["NA <br /> TRUE","220 <br /> FALSE","8.6 <br /> FALSE","85 <br /> FALSE","6 <br /> FALSE","5 <br /> FALSE"],["NA <br /> TRUE","264 <br /> FALSE","14.3 <br /> FALSE","79 <br /> FALSE","6 <br /> FALSE","6 <br /> FALSE"],["29 <br /> FALSE","127 <br /> FALSE","9.7 <br /> FALSE","82 <br /> FALSE","6 <br /> FALSE","7 <br /> FALSE"],["NA <br /> TRUE","273 <br /> FALSE","6.9 <br /> FALSE","87 <br /> FALSE","6 <br /> FALSE","8 <br /> FALSE"],["71 <br /> FALSE","291 <br /> FALSE","13.8 <br /> FALSE","90 <br /> FALSE","6 <br /> FALSE","9 <br /> FALSE"],["39 <br /> FALSE","323 <br /> FALSE","11.5 <br /> FALSE","87 <br /> FALSE","6 <br /> FALSE","10 <br /> FALSE"],["NA <br /> TRUE","259 <br /> FALSE","10.9 <br /> FALSE","93 <br /> FALSE","6 <br /> FALSE","11 <br /> FALSE"],["NA <br /> TRUE","250 <br /> FALSE","9.2 <br /> FALSE","92 <br /> FALSE","6 <br /> FALSE","12 <br /> FALSE"],["23 <br /> FALSE","148 <br /> FALSE","8 <br /> FALSE","82 <br /> FALSE","6 <br /> FALSE","13 <br /> FALSE"],["NA <br /> TRUE","332 <br /> FALSE","13.8 <br /> FALSE","80 <br /> FALSE","6 <br /> FALSE","14 <br /> FALSE"],["NA <br /> TRUE","322 <br /> FALSE","11.5 <br /> FALSE","79 <br /> FALSE","6 <br /> FALSE","15 <br /> FALSE"],["21 <br /> FALSE","191 <br /> FALSE","14.9 <br /> FALSE","77 <br /> FALSE","6 <br /> FALSE","16 <br /> FALSE"],["37 <br /> FALSE","284 <br /> FALSE","20.7 <br /> FALSE","72 <br /> FALSE","6 <br /> FALSE","17 <br /> FALSE"],["20 <br /> FALSE","37 <br /> FALSE","9.2 <br /> FALSE","65 <br /> FALSE","6 <br /> FALSE","18 <br /> FALSE"],["12 <br /> FALSE","120 <br /> FALSE","11.5 <br /> FALSE","73 <br /> FALSE","6 <br /> FALSE","19 <br /> FALSE"],["13 <br /> FALSE","137 <br /> FALSE","10.3 <br /> FALSE","76 <br /> FALSE","6 <br /> FALSE","20 <br /> FALSE"],["NA <br /> TRUE","150 <br /> FALSE","6.3 <br /> FALSE","77 <br /> FALSE","6 <br /> FALSE","21 <br /> FALSE"],["NA <br /> TRUE","59 <br /> FALSE","1.7 <br /> FALSE","76 <br /> FALSE","6 <br /> FALSE","22 <br /> FALSE"],["NA <br /> TRUE","91 <br /> FALSE","4.6 <br /> FALSE","76 <br /> FALSE","6 <br /> FALSE","23 <br /> FALSE"],["NA <br /> TRUE","250 <br /> FALSE","6.3 <br /> FALSE","76 <br /> FALSE","6 <br /> FALSE","24 <br /> FALSE"],["NA <br /> TRUE","135 <br /> FALSE","8 <br /> FALSE","75 <br /> FALSE","6 <br /> FALSE","25 <br /> FALSE"],["NA <br /> TRUE","127 <br /> FALSE","8 <br /> FALSE","78 <br /> FALSE","6 <br /> FALSE","26 <br /> FALSE"],["NA <br /> TRUE","47 <br /> FALSE","10.3 <br /> FALSE","73 <br /> FALSE","6 <br /> FALSE","27 <br /> FALSE"],["NA <br /> TRUE","98 <br /> FALSE","11.5 <br /> FALSE","80 <br /> FALSE","6 <br /> FALSE","28 <br /> FALSE"],["NA <br /> TRUE","31 <br /> FALSE","14.9 <br /> FALSE","77 <br /> FALSE","6 <br /> FALSE","29 <br /> FALSE"],["NA <br /> TRUE","138 <br /> FALSE","8 <br /> FALSE","83 <br /> FALSE","6 <br /> FALSE","30 <br /> FALSE"],["135 <br /> FALSE","269 <br /> FALSE","4.1 <br /> FALSE","84 <br /> FALSE","7 <br /> FALSE","1 <br /> FALSE"],["49 <br /> FALSE","248 <br /> FALSE","9.2 <br /> FALSE","85 <br /> FALSE","7 <br /> FALSE","2 <br /> FALSE"],["32 <br /> FALSE","236 <br /> FALSE","9.2 <br /> FALSE","81 <br /> FALSE","7 <br /> FALSE","3 <br /> FALSE"],["NA <br /> TRUE","101 <br /> FALSE","10.9 <br /> FALSE","84 <br /> FALSE","7 <br /> FALSE","4 <br /> FALSE"],["64 <br /> FALSE","175 <br /> FALSE","4.6 <br /> FALSE","83 <br /> FALSE","7 <br /> FALSE","5 <br /> FALSE"],["40 <br /> FALSE","314 <br /> FALSE","10.9 <br /> FALSE","83 <br /> FALSE","7 <br /> FALSE","6 <br /> FALSE"],["77 <br /> FALSE","276 <br /> FALSE","5.1 <br /> FALSE","88 <br /> FALSE","7 <br /> FALSE","7 <br /> FALSE"],["97 <br /> FALSE","267 <br /> FALSE","6.3 <br /> FALSE","92 <br /> FALSE","7 <br /> FALSE","8 <br /> FALSE"],["97 <br /> FALSE","272 <br /> FALSE","5.7 <br /> FALSE","92 <br /> FALSE","7 <br /> FALSE","9 <br /> FALSE"],["85 <br /> FALSE","175 <br /> FALSE","7.4 <br /> FALSE","89 <br /> FALSE","7 <br /> FALSE","10 <br /> FALSE"],["NA <br /> TRUE","139 <br /> FALSE","8.6 <br /> FALSE","82 <br /> FALSE","7 <br /> FALSE","11 <br /> FALSE"],["10 <br /> FALSE","264 <br /> FALSE","14.3 <br /> FALSE","73 <br /> FALSE","7 <br /> FALSE","12 <br /> FALSE"],["27 <br /> FALSE","175 <br /> FALSE","14.9 <br /> FALSE","81 <br /> FALSE","7 <br /> FALSE","13 <br /> FALSE"],["NA <br /> TRUE","291 <br /> FALSE","14.9 <br /> FALSE","91 <br /> FALSE","7 <br /> FALSE","14 <br /> FALSE"],["7 <br /> FALSE","48 <br /> FALSE","14.3 <br /> FALSE","80 <br /> FALSE","7 <br /> FALSE","15 <br /> FALSE"],["48 <br /> FALSE","260 <br /> FALSE","6.9 <br /> FALSE","81 <br /> FALSE","7 <br /> FALSE","16 <br /> FALSE"],["35 <br /> FALSE","274 <br /> FALSE","10.3 <br /> FALSE","82 <br /> FALSE","7 <br /> FALSE","17 <br /> FALSE"],["61 <br /> FALSE","285 <br /> FALSE","6.3 <br /> FALSE","84 <br /> FALSE","7 <br /> FALSE","18 <br /> FALSE"],["79 <br /> FALSE","187 <br /> FALSE","5.1 <br /> FALSE","87 <br /> FALSE","7 <br /> FALSE","19 <br /> FALSE"],["63 <br /> FALSE","220 <br /> FALSE","11.5 <br /> FALSE","85 <br /> FALSE","7 <br /> FALSE","20 <br /> FALSE"],["16 <br /> FALSE","7 <br /> FALSE","6.9 <br /> FALSE","74 <br /> FALSE","7 <br /> FALSE","21 <br /> FALSE"],["NA <br /> TRUE","258 <br /> FALSE","9.7 <br /> FALSE","81 <br /> FALSE","7 <br /> FALSE","22 <br /> FALSE"],["NA <br /> TRUE","295 <br /> FALSE","11.5 <br /> FALSE","82 <br /> FALSE","7 <br /> FALSE","23 <br /> FALSE"],["80 <br /> FALSE","294 <br /> FALSE","8.6 <br /> FALSE","86 <br /> FALSE","7 <br /> FALSE","24 <br /> FALSE"],["108 <br /> FALSE","223 <br /> FALSE","8 <br /> FALSE","85 <br /> FALSE","7 <br /> FALSE","25 <br /> FALSE"],["20 <br /> FALSE","81 <br /> FALSE","8.6 <br /> FALSE","82 <br /> FALSE","7 <br /> FALSE","26 <br /> FALSE"],["52 <br /> FALSE","82 <br /> FALSE","12 <br /> FALSE","86 <br /> FALSE","7 <br /> FALSE","27 <br /> FALSE"],["82 <br /> FALSE","213 <br /> FALSE","7.4 <br /> FALSE","88 <br /> FALSE","7 <br /> FALSE","28 <br /> FALSE"],["50 <br /> FALSE","275 <br /> FALSE","7.4 <br /> FALSE","86 <br /> FALSE","7 <br /> FALSE","29 <br /> FALSE"],["64 <br /> FALSE","253 <br /> FALSE","7.4 <br /> FALSE","83 <br /> FALSE","7 <br /> FALSE","30 <br /> FALSE"],["59 <br /> FALSE","254 <br /> FALSE","9.2 <br /> FALSE","81 <br /> FALSE","7 <br /> FALSE","31 <br /> FALSE"],["39 <br /> FALSE","83 <br /> FALSE","6.9 <br /> FALSE","81 <br /> FALSE","8 <br /> FALSE","1 <br /> FALSE"],["9 <br /> FALSE","24 <br /> FALSE","13.8 <br /> FALSE","81 <br /> FALSE","8 <br /> FALSE","2 <br /> FALSE"],["16 <br /> FALSE","77 <br /> FALSE","7.4 <br /> FALSE","82 <br /> FALSE","8 <br /> FALSE","3 <br /> FALSE"],["78 <br /> FALSE","NA <br /> TRUE","6.9 <br /> FALSE","86 <br /> FALSE","8 <br /> FALSE","4 <br /> FALSE"],["35 <br /> FALSE","NA <br /> TRUE","7.4 <br /> FALSE","85 <br /> FALSE","8 <br /> FALSE","5 <br /> FALSE"],["66 <br /> FALSE","NA <br /> TRUE","4.6 <br /> FALSE","87 <br /> FALSE","8 <br /> FALSE","6 <br /> FALSE"],["122 <br /> FALSE","255 <br /> FALSE","4 <br /> FALSE","89 <br /> FALSE","8 <br /> FALSE","7 <br /> FALSE"],["89 <br /> FALSE","229 <br /> FALSE","10.3 <br /> FALSE","90 <br /> FALSE","8 <br /> FALSE","8 <br /> FALSE"],["110 <br /> FALSE","207 <br /> FALSE","8 <br /> FALSE","90 <br /> FALSE","8 <br /> FALSE","9 <br /> FALSE"],["NA <br /> TRUE","222 <br /> FALSE","8.6 <br /> FALSE","92 <br /> FALSE","8 <br /> FALSE","10 <br /> FALSE"],["NA <br /> TRUE","137 <br /> FALSE","11.5 <br /> FALSE","86 <br /> FALSE","8 <br /> FALSE","11 <br /> FALSE"],["44 <br /> FALSE","192 <br /> FALSE","11.5 <br /> FALSE","86 <br /> FALSE","8 <br /> FALSE","12 <br /> FALSE"],["28 <br /> FALSE","273 <br /> FALSE","11.5 <br /> FALSE","82 <br /> FALSE","8 <br /> FALSE","13 <br /> FALSE"],["65 <br /> FALSE","157 <br /> FALSE","9.7 <br /> FALSE","80 <br /> FALSE","8 <br /> FALSE","14 <br /> FALSE"],["NA <br /> TRUE","64 <br /> FALSE","11.5 <br /> FALSE","79 <br /> FALSE","8 <br /> FALSE","15 <br /> FALSE"],["22 <br /> FALSE","71 <br /> FALSE","10.3 <br /> FALSE","77 <br /> FALSE","8 <br /> FALSE","16 <br /> FALSE"],["59 <br /> FALSE","51 <br /> FALSE","6.3 <br /> FALSE","79 <br /> FALSE","8 <br /> FALSE","17 <br /> FALSE"],["23 <br /> FALSE","115 <br /> FALSE","7.4 <br /> FALSE","76 <br /> FALSE","8 <br /> FALSE","18 <br /> FALSE"],["31 <br /> FALSE","244 <br /> FALSE","10.9 <br /> FALSE","78 <br /> FALSE","8 <br /> FALSE","19 <br /> FALSE"],["44 <br /> FALSE","190 <br /> FALSE","10.3 <br /> FALSE","78 <br /> FALSE","8 <br /> FALSE","20 <br /> FALSE"],["21 <br /> FALSE","259 <br /> FALSE","15.5 <br /> FALSE","77 <br /> FALSE","8 <br /> FALSE","21 <br /> FALSE"],["9 <br /> FALSE","36 <br /> FALSE","14.3 <br /> FALSE","72 <br /> FALSE","8 <br /> FALSE","22 <br /> FALSE"],["NA <br /> TRUE","255 <br /> FALSE","12.6 <br /> FALSE","75 <br /> FALSE","8 <br /> FALSE","23 <br /> FALSE"],["45 <br /> FALSE","212 <br /> FALSE","9.7 <br /> FALSE","79 <br /> FALSE","8 <br /> FALSE","24 <br /> FALSE"],["168 <br /> FALSE","238 <br /> FALSE","3.4 <br /> FALSE","81 <br /> FALSE","8 <br /> FALSE","25 <br /> FALSE"],["73 <br /> FALSE","215 <br /> FALSE","8 <br /> FALSE","86 <br /> FALSE","8 <br /> FALSE","26 <br /> FALSE"],["NA <br /> TRUE","153 <br /> FALSE","5.7 <br /> FALSE","88 <br /> FALSE","8 <br /> FALSE","27 <br /> FALSE"],["76 <br /> FALSE","203 <br /> FALSE","9.7 <br /> FALSE","97 <br /> FALSE","8 <br /> FALSE","28 <br /> FALSE"],["118 <br /> FALSE","225 <br /> FALSE","2.3 <br /> FALSE","94 <br /> FALSE","8 <br /> FALSE","29 <br /> FALSE"],["84 <br /> FALSE","237 <br /> FALSE","6.3 <br /> FALSE","96 <br /> FALSE","8 <br /> FALSE","30 <br /> FALSE"],["85 <br /> FALSE","188 <br /> FALSE","6.3 <br /> FALSE","94 <br /> FALSE","8 <br /> FALSE","31 <br /> FALSE"],["96 <br /> FALSE","167 <br /> FALSE","6.9 <br /> FALSE","91 <br /> FALSE","9 <br /> FALSE","1 <br /> FALSE"],["78 <br /> FALSE","197 <br /> FALSE","5.1 <br /> FALSE","92 <br /> FALSE","9 <br /> FALSE","2 <br /> FALSE"],["73 <br /> FALSE","183 <br /> FALSE","2.8 <br /> FALSE","93 <br /> FALSE","9 <br /> FALSE","3 <br /> FALSE"],["91 <br /> FALSE","189 <br /> FALSE","4.6 <br /> FALSE","93 <br /> FALSE","9 <br /> FALSE","4 <br /> FALSE"],["47 <br /> FALSE","95 <br /> FALSE","7.4 <br /> FALSE","87 <br /> FALSE","9 <br /> FALSE","5 <br /> FALSE"],["32 <br /> FALSE","92 <br /> FALSE","15.5 <br /> FALSE","84 <br /> FALSE","9 <br /> FALSE","6 <br /> FALSE"],["20 <br /> FALSE","252 <br /> FALSE","10.9 <br /> FALSE","80 <br /> FALSE","9 <br /> FALSE","7 <br /> FALSE"],["23 <br /> FALSE","220 <br /> FALSE","10.3 <br /> FALSE","78 <br /> FALSE","9 <br /> FALSE","8 <br /> FALSE"],["21 <br /> FALSE","230 <br /> FALSE","10.9 <br /> FALSE","75 <br /> FALSE","9 <br /> FALSE","9 <br /> FALSE"],["24 <br /> FALSE","259 <br /> FALSE","9.7 <br /> FALSE","73 <br /> FALSE","9 <br /> FALSE","10 <br /> FALSE"],["44 <br /> FALSE","236 <br /> FALSE","14.9 <br /> FALSE","81 <br /> FALSE","9 <br /> FALSE","11 <br /> FALSE"],["21 <br /> FALSE","259 <br /> FALSE","15.5 <br /> FALSE","76 <br /> FALSE","9 <br /> FALSE","12 <br /> FALSE"],["28 <br /> FALSE","238 <br /> FALSE","6.3 <br /> FALSE","77 <br /> FALSE","9 <br /> FALSE","13 <br /> FALSE"],["9 <br /> FALSE","24 <br /> FALSE","10.9 <br /> FALSE","71 <br /> FALSE","9 <br /> FALSE","14 <br /> FALSE"],["13 <br /> FALSE","112 <br /> FALSE","11.5 <br /> FALSE","71 <br /> FALSE","9 <br /> FALSE","15 <br /> FALSE"],["46 <br /> FALSE","237 <br /> FALSE","6.9 <br /> FALSE","78 <br /> FALSE","9 <br /> FALSE","16 <br /> FALSE"],["18 <br /> FALSE","224 <br /> FALSE","13.8 <br /> FALSE","67 <br /> FALSE","9 <br /> FALSE","17 <br /> FALSE"],["13 <br /> FALSE","27 <br /> FALSE","10.3 <br /> FALSE","76 <br /> FALSE","9 <br /> FALSE","18 <br /> FALSE"],["24 <br /> FALSE","238 <br /> FALSE","10.3 <br /> FALSE","68 <br /> FALSE","9 <br /> FALSE","19 <br /> FALSE"],["16 <br /> FALSE","201 <br /> FALSE","8 <br /> FALSE","82 <br /> FALSE","9 <br /> FALSE","20 <br /> FALSE"],["13 <br /> FALSE","238 <br /> FALSE","12.6 <br /> FALSE","64 <br /> FALSE","9 <br /> FALSE","21 <br /> FALSE"],["23 <br /> FALSE","14 <br /> FALSE","9.2 <br /> FALSE","71 <br /> FALSE","9 <br /> FALSE","22 <br /> FALSE"],["36 <br /> FALSE","139 <br /> FALSE","10.3 <br /> FALSE","81 <br /> FALSE","9 <br /> FALSE","23 <br /> FALSE"],["7 <br /> FALSE","49 <br /> FALSE","10.3 <br /> FALSE","69 <br /> FALSE","9 <br /> FALSE","24 <br /> FALSE"],["14 <br /> FALSE","20 <br /> FALSE","16.6 <br /> FALSE","63 <br /> FALSE","9 <br /> FALSE","25 <br /> FALSE"],["30 <br /> FALSE","193 <br /> FALSE","6.9 <br /> FALSE","70 <br /> FALSE","9 <br /> FALSE","26 <br /> FALSE"],["NA <br /> TRUE","145 <br /> FALSE","13.2 <br /> FALSE","77 <br /> FALSE","9 <br /> FALSE","27 <br /> FALSE"],["14 <br /> FALSE","191 <br /> FALSE","14.3 <br /> FALSE","75 <br /> FALSE","9 <br /> FALSE","28 <br /> FALSE"],["18 <br /> FALSE","131 <br /> FALSE","8 <br /> FALSE","76 <br /> FALSE","9 <br /> FALSE","29 <br /> FALSE"],["20 <br /> FALSE","223 <br /> FALSE","11.5 <br /> FALSE","68 <br /> FALSE","9 <br /> FALSE","30 <br /> FALSE"]],"hoverinfo":"text","type":"heatmap","xaxis":"x","yaxis":"y"}],"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":[]}</script>
 </div>
 </div>
 <div id="road-map" class="section level1">
 <h1 class="hasAnchor">
 <a href="#road-map" class="anchor"> </a>Road Map</h1>
-<p><strong>visualising expectations</strong></p>
+<p><strong>Visualising expectations</strong></p>
 <p>The idea here is to pass expectations into <code>vis_dat</code> or <code>vis_miss</code>, along the lines of the <code>expectation</code> command in <code>assertr</code>. For example, you could ask <code>vis_dat</code> to identify those cells with values of -1 with something like this:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 data %&gt;%<span class="st"> </span>
@@ -269,10 +268,10 @@ data %&gt;%<span class="st"> </span>
 <div id="thank-yous" class="section level1">
 <h1 class="hasAnchor">
 <a href="#thank-yous" class="anchor"> </a>Thank yous</h1>
-<p>Thank you to Ivan Hanigan who <a href="http://www.njtierney.com/r/missing%20data/rbloggers/2015/12/01/ggplot-missing-data/#comment-2388263747">first commented</a> this suggestion after I made a blog post about an initial prototype <code>ggplot_missing</code>, and Jenny Bryan, whose <a href="https://twitter.com/JennyBryan/status/679011378414268416">tweet</a> got me thinking about vis_dat, and for her code contributions that removed a lot of errors.</p>
+<p>Thank you to Ivan Hanigan who <a href="http://www.njtierney.com/r/missing%20data/rbloggers/2015/12/01/ggplot-missing-data/#comment-2388263747">first commented</a> this suggestion after I made a blog post about an initial prototype <code>ggplot_missing</code>, and Jenny Bryan, whose <a href="https://twitter.com/JennyBryan/status/679011378414268416">tweet</a> got me thinking about <code>vis_dat</code>, and for her code contributions that removed a lot of errors.</p>
 <p>Thank you to Hadley Wickham for suggesting the use of the internals of <code>readr</code> to make <code>vis_guess</code> work.</p>
-<p>Thank you to Miles McBain for his suggestions on how to improve vis guess. This resulted in making it at least 2-3 times faster.</p>
-<p>Thanks also to Carson Sievert for writing the code that combined plotly with visdat, and for Noam Ross for suggesting this in the first place.</p>
+<p>Thank you to Miles McBain for his suggestions on how to improve <code>vis_guess</code>. This resulted in making it at least 2-3 times faster.</p>
+<p>Thanks also to Carson Sievert for writing the code that combined <code>plotly</code> with <code>visdat</code>, and for Noam Ross for suggesting this in the first place.</p>
 </div>
 </div>
   </div>
@@ -292,12 +291,9 @@ data %&gt;%<span class="st"> </span>
 <html><body>
 <h2>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://travis-ci.org/njtierney/visdat">
-  <img src="https://travis-ci.org/njtierney/visdat.svg?branch=master" alt="Travis-CI Build Status"></a></li>
-<li><a href="https://ci.appveyor.com/project/njtierney/visdat">
-  <img src="https://ci.appveyor.com/api/projects/status/github/njtierney/visdat?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a></li>
-<li><a href="https://codecov.io/github/njtierney/visdat?branch=master">
-  <img src="https://img.shields.io/codecov/c/github/njtierney/visdat/master.svg" alt="Coverage Status"></a></li>
+<li><a href="https://travis-ci.org/njtierney/visdat"><img src="https://travis-ci.org/njtierney/visdat.svg?branch=master" alt="Travis-CI Build Status"></a></li>
+<li><a href="https://ci.appveyor.com/project/njtierney/visdat"><img src="https://ci.appveyor.com/api/projects/status/github/njtierney/visdat?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a></li>
+<li><a href="https://codecov.io/github/njtierney/visdat?branch=master"><img src="https://img.shields.io/codecov/c/github/njtierney/visdat/master.svg" alt="Coverage Status"></a></li>
 </ul>
 </body></html>
 </div>
