@@ -18,7 +18,7 @@ devtools::install_github("njtierney/visdat")
 What does visdat do?
 ====================
 
-Initially inspired by [`csv-fingerprint`](https://github.com/setosa/csv-fingerprint), `vis_dat` helps you visualise a dataframe and "get a look at the data" by displaying the variable classes in a dataframe as a plot with `vis_dat`, and getting a brief look into missing data patterns `vis_miss`.
+Initially inspired by [`csv-fingerprint`](https://github.com/setosa/csv-fingerprint), `vis_dat` helps you visualise a dataframe and "get a look at the data" by displaying the variable classes in a dataframe as a plot with `vis_dat`, and getting a brief look into missing data patterns using `vis_miss`.
 
 The name `visdat` was chosen as I think in the future it could be integrated with [`testdat`](https://github.com/ropensci/testdat). The idea being that first you visualise your data (`visdat`), then you run tests from `testdat` to fix them.
 
@@ -26,7 +26,7 @@ There are two main commands in the `visdat` package:
 
 -   `vis_dat()` visualises a dataframe showing you what the classes of the columns are, and also displaying the missing data.
 
--   `vis_miss()` visualises just the missing data, and allows for missingness to be clustered and columns rearranged. `vis_miss()` is similar to `missing.pattern.plot` from the `mi` package. Unfortunately `missing.pattern.plot` is no longer in the `mi` package (well, as of 14/02/2016).
+-   `vis_miss()` visualises just the missing data, and allows for missingness to be clustered and columns rearranged. `vis_miss()` is similar to `missing.pattern.plot` from the [`mi`](https://cran.r-project.org/web/packages/mi/index.html) package. Unfortunately `missing.pattern.plot` is no longer in the `mi` package (well, as of 14/02/2016).
 
 There are two experimental functions:
 
@@ -40,30 +40,34 @@ Examples
 Using `vis_dat()`
 -----------------
 
-Let's see what's inside the dataset `airquality`
+Let's see what's inside the `airquality` dataset from base R.
 
 ``` r
 
 library(visdat)
 
 vis_dat(airquality)
+#> dmap() is deprecated. Please use the new colwise family in dplyr.
+#> E.g., summarise_all(), mutate_all(), etc.
 ```
 
 ![](README-figs/README-vis-dat-aq-1.png)
 
-The classes are represented on the legend, and missing data represented by grey.
+The classes are represented on the legend, and missing data represented by grey. The column/variable names are listed on the x axis.
 
-by default, `vis_dat` sorts the columns according to the type of the data in the vectors. You can turn this off by setting `sort_type = FALSE`. This feature is better illustrated using the `airquality` dataset from base R.
+By default, `vis_dat` sorts the columns according to the type of the data in the vectors. You can turn this off by setting `sort_type = FALSE`.
 
 ``` r
 
 vis_dat(airquality, 
         sort_type = FALSE)
+#> dmap() is deprecated. Please use the new colwise family in dplyr.
+#> E.g., summarise_all(), mutate_all(), etc.
 ```
 
 ![](README-figs/README-vis-dat-aq-sort-type-1.png)
 
-The plot above tells us that R reads this dataset as having characters and integer values, along with some missing data in `Ozone` and `Solar.R`.
+The plot above tells us that R reads this dataset as having numeric and integer values, with some missing data in `Ozone` and `Solar.R`.
 
 ### With many kinds of data
 
@@ -72,6 +76,8 @@ To demonstrate what visdat looks like when you have different kinds of data, we 
 ``` r
 
 vis_dat(typical_data)
+#> dmap() is deprecated. Please use the new colwise family in dplyr.
+#> E.g., summarise_all(), mutate_all(), etc.
 #> Warning: attributes are not identical across measure variables; they will
 #> be dropped
 ```
@@ -83,6 +89,8 @@ We can also look into using even wider data, looking at `typical_larger_data`
 ``` r
 
 vis_dat(typical_larger_data)
+#> dmap() is deprecated. Please use the new colwise family in dplyr.
+#> E.g., summarise_all(), mutate_all(), etc.
 #> Warning: attributes are not identical across measure variables; they will
 #> be dropped
 ```
@@ -92,7 +100,7 @@ vis_dat(typical_larger_data)
 Using `vis_miss()`
 ------------------
 
-We can explore the missing data further using `vis_miss()`
+We can explore the missing data further using `vis_miss()`.
 
 ``` r
 
@@ -103,7 +111,7 @@ vis_miss(airquality)
 
 The percentages of missing/complete in `vis_miss` are accurate to 1 decimal place.
 
-You can cluster the missingness by setting `cluster = TRUE`
+You can cluster the missingness by setting `cluster = TRUE`.
 
 ``` r
 
@@ -138,7 +146,7 @@ vis_miss(test_miss_df)
 
 ![](README-figs/README-vis-miss-test-1.png)
 
-`vis_miss` will also indicate when there is no missing data at all
+`vis_miss` will also indicate when there is no missing data at all.
 
 ``` r
 
@@ -167,9 +175,10 @@ vis_compare(iris_diff, iris)
 #>           post an issue at https://github.com/njtierney/visdat/issues
 #> Warning in if (dim(df1) != dim(df2)) {: the condition has length > 1 and
 #> only the first element will be used
+#> dmap() is deprecated. Please use the new colwise family in dplyr.
+#> E.g., summarise_all(), mutate_all(), etc.
 #> Warning: attributes are not identical across measure variables; they will
 #> be dropped
-
 #> Warning: attributes are not identical across measure variables; they will
 #> be dropped
 ```
@@ -234,18 +243,20 @@ So here we see that there are many different kinds of data in your dataframe. As
 ``` r
 
 vis_dat(messy_df)
+#> dmap() is deprecated. Please use the new colwise family in dplyr.
+#> E.g., summarise_all(), mutate_all(), etc.
 ```
 
 ![](README-figs/README-visdat-messy-df-1.png)
 
-Where you'd just assume your data is weird because it's all factors - or worse, not notice that this is a problem.
+Here, you might just assume your data is weird because it's all factors - or worse, not notice that this is a problem.
 
 At the moment `vis_guess` is very slow. Please take this into consideration when you are using it on data with more than 1000 rows. We're looking into ways of making it faster, potentially using methods from the `parallel` package, or extending the c++ code from `readr:::collectorGuess`.
 
 Interactivity
 =============
 
-Thanks to Carson Sievert, you can now add some really nifty interactivity into visdat by using `plotly::ggplotly`, allowing for information to be revealed upon mouseover of a cell. The code to do this can be seen below, but is not shown as the github README doesn't support HTML interactive graphics...yet.
+Thanks to Carson Sievert, you can now add some really nifty interactivity into `visdat` by using `plotly::ggplotly`, allowing for information to be revealed upon mouseover of a cell. The code to do this can be seen below, but is not shown as the github README doesn't support HTML interactive graphics...yet.
 
 ``` r
 
