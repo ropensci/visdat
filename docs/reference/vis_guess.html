@@ -92,14 +92,8 @@
     <pre class="examples"><div class='input'>
 <span class='fu'>library</span>(<span class='no'>tidyr</span>)
 <span class='fu'>library</span>(<span class='no'>readr</span>) <span class='co'># to load the `readr:::collectorGuess` function</span>
-<span class='fu'>library</span>(<span class='no'>dplyr</span>)</div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: ‘dplyr’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:stats’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    filter, lag</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:testthat’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    matches</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:base’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='input'><span class='fu'>library</span>(<span class='no'>visdat</span>)
+<span class='fu'>library</span>(<span class='no'>dplyr</span>)
+<span class='fu'>library</span>(<span class='no'>visdat</span>)
 
 <span class='no'>messy_vector</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='fl'>TRUE</span>,
                  <span class='st'>"TRUE"</span>,
@@ -122,7 +116,7 @@
                        <span class='kw'>var2</span> <span class='kw'>=</span> <span class='fu'>sample</span>(<span class='no'>messy_vector</span>),
                        <span class='kw'>var3</span> <span class='kw'>=</span> <span class='fu'>sample</span>(<span class='no'>messy_vector</span>))
 <span class='fu'>vis_guess</span>(<span class='no'>messy_df</span>)</div><div class='output co'>#&gt; <span class='message'>vis_guess is still in BETA! If you have suggestions or errors,</span>
-#&gt; <span class='message'>          post an issue at https://github.com/njtierney/visdat/issues</span></div><img src='vis_guess-8.png' alt='' width='540' height='400' /></pre>
+#&gt; <span class='message'>          post an issue at https://github.com/njtierney/visdat/issues</span></div><img src='vis_guess-3.png' alt='' width='540' height='400' /></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

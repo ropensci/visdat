@@ -109,11 +109,11 @@ vis_dat(airquality) %>% ggplotly()
 
 ## vis_dat_ly
 
-This is still under development, but it is basically a faster version of calling `vis_dat()` and then `ggplotly()`.
+`vis_dat_ly(airquality)` is a faster version of calling `ggplotly(vis_dat(airquality))`. When hovering the cursor over a cell, it will display information about each each cell, the type of data, the value, the row number, and the variable.
 
 ## vis_miss_ly
 
-This is also under development, and still needs some more work on the legend.
+`vis_miss_ly(airquality)` is similar to `vis_dat_ly` - a faster version of calling `ggplotly(vis_miss(airquality))`. When hovering the cursor over a cell, it will display information about each each cell, the type of data, the number of missings in that case, and the number of missings in that variable.
 
 ```{r vis-miss-ly}
 
@@ -131,6 +131,16 @@ The idea here is to pass expectations into `vis_dat` or `vis_miss`, along the li
 
 data %>% 
   expect(value == -1) %>%
-  vis_dat
+  vis_dat()
 
 ```
+
+In reality, the mechanics might looks something like this:
+
+```{r eval = FALSE}
+airquality %>%
+  mutate_if(is.numeric, .funs = function(x) x <= 10) %>%
+  vis_logical()
+```
+
+Where the `expectation` would get captured and passed to `mutate_if`, which would need to have a way of dispatching different `is.` arguments.
