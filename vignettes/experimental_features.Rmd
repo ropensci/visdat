@@ -140,7 +140,23 @@ In reality, the mechanics might looks something like this:
 ```{r eval = FALSE}
 airquality %>%
   mutate_if(is.numeric, .funs = function(x) x <= 10) %>%
-  vis_logical()
+    dplyr::mutate(rows = seq_len(nrow(.))) %>%
+    tidyr::gather_(key_col = "variables",
+                   value_col = "valueType",
+                   gather_cols = names(.)[-length(.)]) %>%
+  ggplot2::ggplot(ggplot2::aes_string(x = "variables",
+                                      y = "rows")) +
+    ggplot2::geom_raster(ggplot2::aes_string(fill = "valueType")) +
+    ggplot2::theme_minimal() +
+    ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45,
+                                     vjust = 1,
+                                     hjust = 1)) +
+    ggplot2::labs(x = "Variables in Dataset",
+         y = "Observations") +
+    # ggplot2::scale_x_discrete(limits = type_order_index) +
+    ggplot2::guides(fill = ggplot2::guide_legend(title = "Expectation"))
 ```
 
-Where the `expectation` would get captured and passed to `mutate_if`, which would need to have a way of dispatching different `is.` arguments.
+Where the `expectation` would get captured and passed to `mutate_if`, which would need to have a way of dispatching different `is.` arguments for different classes. E.g., if you wanted to do a search for a character, `mutate_if` would perform an `is.character` filter.
+
+Additionally, there will need to be a clever way to pass the expression along to the legend.
