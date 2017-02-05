@@ -53,7 +53,7 @@ vis_dat(airquality)
 
 ![](README-figs/README-vis-dat-aq-1.png)
 
-The classes are represented on the legend, and missing data represented by grey. The column/variable names are listed on the x axis.
+The plot above tells us that R reads this dataset as having numeric and integer values, with some missing data in `Ozone` and `Solar.R`. The classes are represented on the legend, and missing data represented by grey. The column/variable names are listed on the x axis.
 
 By default, `vis_dat` sorts the columns according to the type of the data in the vectors. You can turn this off by setting `sort_type = FALSE`.
 
@@ -66,8 +66,6 @@ vis_dat(airquality,
 ```
 
 ![](README-figs/README-vis-dat-aq-sort-type-1.png)
-
-The plot above tells us that R reads this dataset as having numeric and integer values, with some missing data in `Ozone` and `Solar.R`.
 
 ### With many kinds of data
 
@@ -131,7 +129,7 @@ vis_miss(airquality,
 
 ![](README-figs/README-vis-miss-aq-sort-miss-1.png)
 
-When there is &lt;0.1% of missingness, `vis_miss` indicates that there is &gt;1% missingness.
+`vis_miss` indicates when there is a very small amount of missing data at &lt;0.1% missingness.
 
 ``` r
 
@@ -154,147 +152,6 @@ vis_miss(mtcars)
 ```
 
 ![](README-figs/README-vis-miss-mtcars-1.png)
-
-Experimental features
-=====================
-
-Using `vis_compare()`
----------------------
-
-Sometimes you want to see what has changed in your data. `vis_compare()` helps with that. It is currently only just barely working, so keep in mind that this is very much in its beta stages.
-
-For the sake of simplicity, lets make some changes to `iris`, and compare this new dataset
-
-``` r
-
-iris_diff <- iris
-iris_diff[sample(1:150, 30),sample(1:4, 2)] <- NA
-
-vis_compare(iris_diff, iris)
-#> vis_compare is still in BETA! If you have suggestions or errors,
-#>           post an issue at https://github.com/njtierney/visdat/issues
-#> Warning in if (dim(df1) != dim(df2)) {: the condition has length > 1 and
-#> only the first element will be used
-#> dmap() is deprecated. Please use the new colwise family in dplyr.
-#> E.g., summarise_all(), mutate_all(), etc.
-#> Warning: attributes are not identical across measure variables; they will
-#> be dropped
-#> Warning: attributes are not identical across measure variables; they will
-#> be dropped
-```
-
-![](README-figs/README-vis-compare-iris-1.png)
-
-Here the differences are marked in blue.
-
-If you try and compare differences when the dimensions are different, you get an ugly error.
-
-``` r
-
-iris_diff_2 <- iris
-iris_diff_2$new_col <- iris$Sepal.Length + iris$Sepal.Width
-
-vis_compare(iris, iris_diff_2)
-#> vis_compare is still in BETA! If you have suggestions or errors, post an issue at https://github.com/njtierney/visdat/issuesthe condition has length > 1 and only the first element will be usedError: `.x` (5) and `.y` (6) are different lengths
-```
-
-Using `vis_guess()`
--------------------
-
-`vis_guess()` takes a guess at what each cell is. It's best illustrated using some messy data, which we'll make here.
-
-``` r
-
-messy_vector <- c(TRUE,
-                  T,
-                  "TRUE",
-                  "T",
-                  "01/01/01",
-                  "01/01/2001",
-                  NA,
-                  NaN,
-                  "NA",
-                  "Na",
-                  "na",
-                  "10",
-                  10,
-                  "10.1",
-                  10.1,
-                  "abc",
-                  "$%TG")
-
-set.seed(1114)
-messy_df <- data.frame(var1 = messy_vector,
-                       var2 = sample(messy_vector),
-                       var3 = sample(messy_vector))
-```
-
-``` r
-
-vis_guess(messy_df)
-#> vis_guess is still in BETA! If you have suggestions or errors,
-#>           post an issue at https://github.com/njtierney/visdat/issues
-```
-
-![](README-figs/README-vis-guess-messy-df-1.png)
-
-So here we see that there are many different kinds of data in your dataframe. As an analyst this might be a depressing finding. Compare this to `vis_dat`.
-
-``` r
-
-vis_dat(messy_df)
-#> dmap() is deprecated. Please use the new colwise family in dplyr.
-#> E.g., summarise_all(), mutate_all(), etc.
-```
-
-![](README-figs/README-visdat-messy-df-1.png)
-
-Here, you might just assume your data is weird because it's all factors - or worse, not notice that this is a problem.
-
-At the moment `vis_guess` is very slow. Please take this into consideration when you are using it on data with more than 1000 rows. We're looking into ways of making it faster, potentially using methods from the `parallel` package, or extending the c++ code from `readr:::collectorGuess`.
-
-Interactivity
-=============
-
-Thanks to Carson Sievert, you can now add some really nifty interactivity into `visdat` by using `plotly::ggplotly`, allowing for information to be revealed upon mouseover of a cell. The code to do this can be seen below, but is not shown as the github README doesn't support HTML interactive graphics...yet.
-
-``` r
-
-library(plotly)
-
-vis_dat(airquality) %>% ggplotly()
-```
-
-vis\_dat\_ly
-------------
-
-This is still under development, but it is basically a faster version of doing a ggplot and then calling ggplotly.
-
-vis\_miss\_ly
--------------
-
-This is also under development, and still needs some more work on the legend, etc.
-
-``` r
-
-vis_miss_ly(airquality)
-```
-
-![](README-figs/README-vis-miss-ly-1.png)
-
-Road Map
-========
-
-**Visualising expectations**
-
-The idea here is to pass expectations into `vis_dat` or `vis_miss`, along the lines of the `expectation` command in `assertr`. For example, you could ask `vis_dat` to identify those cells with values of -1 with something like this:
-
-``` r
-
-data %>% 
-  expect(value == -1) %>%
-  vis_dat
-```
 
 Thank yous
 ==========

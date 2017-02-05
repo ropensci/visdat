@@ -8,7 +8,7 @@ Depends:
     R (>= 3.2.2)
 License: MIT + file LICENSE
 LazyData: true
-RoxygenNote: 5.0.1.9000
+RoxygenNote: 6.0.0
 Imports:
     ggplot2,
     tidyr,
