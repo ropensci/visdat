@@ -34,6 +34,8 @@ There are two experimental functions:
 
 -   `vis_compare()` compares two dataframes, displaying the differences.
 
+Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
+
 Examples
 ========
 
