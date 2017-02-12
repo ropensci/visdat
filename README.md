@@ -38,7 +38,7 @@ Examples
 Using `vis_dat()`
 -----------------
 
-Let's see what's inside the `airquality` dataset from base R.
+Let's see what's inside the `airquality` dataset from base R, which contains information about daily air quality measurements in New York from May to September 1973. More information about the dataset can be found with `?airquality`.
 
 ``` r
 
