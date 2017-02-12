@@ -79,7 +79,7 @@ The name `visdat` was chosen as it borrows from the idea of [`testdat`](https://
 
 ## Using `vis_dat`
 
-Let's see what's inside the dataset `airquality`.
+Let's see what's inside the dataset `airquality`, which contains information about daily air quality measurements in New York from May to September 1973. More information about the dataset can be found with `?airquality`.
 
 ```{r vis_dat}
 
@@ -88,8 +88,7 @@ library(visdat)
 vis_dat(airquality)
 
 ```
-
-The plot above tells us that R reads this dataset as having numeric and integer values, along with some missing data in `Ozone` and `Solar.R`. The classes are represented on the legend, and missing data represented by black. 
+The plot above tells us that R reads this dataset as having numeric and integer values, with some missing data in `Ozone` and `Solar.R`. The classes are represented on the legend, and missing data represented by grey. The column/variable names are listed on the x axis. 
 
 By default, `vis_dat` sorts the columns according to the type of the data in the vectors. You can turn this off by setting `sort_type = FALSE`. This feature is better illustrated using the `typical_data` dataset, created using [wakefield](github.com/trinker/wakefield) and contained within `visdat`.
 
@@ -112,7 +111,8 @@ vis_miss(airquality)
 
 ```
 
-Notice that the percentages of missingness are provided in the data. These are accurate to 1 decimal place. When there is <0.1% of missingness, `vis_miss` indicates that there is >1% missingness.
+Notice that the percentages of missingness are provided in the data. These are accurate to 1 decimal place. `vis_miss` indicates when there is a very small amount of missing data at <0.1% missingness.
+
 
 ```{r vismiss-new-data}
 
