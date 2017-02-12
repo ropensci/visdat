@@ -9,6 +9,11 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+```{r}
+knitr::opts_chunk$set(fig.width = 5, 
+                      fig.height = 4)
+```
+
 
 Shipped with visdat are some experimental features that are still a bit temperamental:
 
