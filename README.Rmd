@@ -43,11 +43,7 @@ There are two main commands in the `visdat` package:
 
 - `vis_miss()` visualises just the missing data, and allows for missingness to be clustered and columns rearranged. `vis_miss()` is similar to `missing.pattern.plot` from the [`mi`](https://cran.r-project.org/web/packages/mi/index.html) package. Unfortunately `missing.pattern.plot` is no longer in the `mi` package (well, as of 14/02/2016).
 
-There are two experimental functions:
-
--  `vis_guess()` has a guess at what the value of each cell, using `readr::parse_guess`. This means that "10.1" will return "double", and `10.1` will return "double", and `01/01/01` will return "date". Keep in mind that it is a **guess** at what each cell is, so you can't trust this fully.
-
-- `vis_compare()` compares two dataframes, displaying the differences.
+There are also experimental which are described in more detail in the [vignette: "Experimental Features of visdat](http://www.njtierney.com/visdat/articles/experimental_features.html).
 
 Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
 
