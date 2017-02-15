@@ -12,8 +12,6 @@ And
 
 >
 
-...
-
 
 I will now respond to suggsted changes and other constructive criticisms.
 
@@ -23,19 +21,23 @@ I will now respond to suggsted changes and other constructive criticisms.
 
 > The README is very good! It gives a helpful overview of everything in the package and is clearly written, with good examples. All of the code examples worked on my computer. You might consider breaking the "experimental" parts of the package into a separate README like you do with the vignettes.
 
-- 
+- Agreed, but I would prefer to keep the README as a whole piece, so I think instead I will just link to the experimental vignette as in the README. This has been logged in [issue 39]() and fixed in commit 
 
 > Link to the vignettes from the README.
 
+- Agreed, this has been address in commit ..., issue ...
+
 > The title of the github project is "A package to assist in visually testing a dataset", which doesn't describe the project that well. I suggest changing it to be the same title as on the DESCRIPTION file, which is effective in quickly summarizing what the package does.
 
-- 
+- Agreed, this makes more sense - changed!
 
 > You don't introduce the airquality data set at first usage, but you do introduce it after the second plot. Move the introduction to first use.
 
+Fixed in ...
+
 > I don't understand this sentence: "When there is <0.1% of missingness, vis_miss indicates that there is >1% missingness."
 
-- Agreed, this 
+- Agreed, this has been changed in issue ....
 
 2. Vignettes:
 
@@ -47,27 +49,29 @@ I will now respond to suggsted changes and other constructive criticisms.
 
 > In the "Using visdat" vignette, it says "missing data represented by black", but it shows up as gray on my computer.
 
-- Interesting, it should be showing up as black, as this is what the [code and README reflect]() (well, grey50). Perhaps th
+- Interesting, it should be showing up as black, as this is what the [code and README reflect]() (well, grey50). Does it still happen now?
 
 > I don't know why, but in the plotly section, a vis_dat() (non-interactive) plot of df_test appears between the first two interactive plots. I can't explain it, hopefully it's just a weird quirk on my computer.
 
-- I can't seem to replicate this
+- I can't seem to replicate this, can you maybe take a screenshot of this?
 
 > There is a "future work and experimental features" section in the "Using visdat" vignette -- I suggest transferring that to the experimental vignette and just linking to it from the "Using visdat" vignette. Perhaps move the vis_guess() and the interactive plots to the experimental features vignette as well, since they seem to be evolving.
 
-- 
+- Agreed, this has been done in commit ... , issue ...
 
 > The plot in the experimental features vignette shows up small, I think you need to add knitr::opts_chunk$set(fig.width = 5, fig.height = 4) to the first chunk like you have in the other vignette.
 
-- Agreed, this has been completed in this commit ...
+- Agreed, this has been completed in this commit ..., issue...
 
 # Function documentation
 
 > Did you mean to export guess_type()?
 
-- Yes, as I thought that it might be a useful function for users, but I can appreciate that perhaps it shoudl stay internal
+- Yes, as I thought that it might be a useful function for users, although I can't think of a good usecase outside of `vis_guess` right now. Perhaps it might be best for `guess_type` to be unexported?
 
 > Formatting: links, code, and other formatting need to be done with .Rd syntax. For example, for code, use \code{}, not backticks. For bold, use \strong{} instead of asterisks. See guidelines here.
+
+
 
 > Return values: The documentation doesn't include the "Value" section which is typically used to say what a function returns. I would add this. E.g. @return A \code{ggplot} object displaying the type of values in the data frame and the position of any missing values.
 
@@ -150,11 +154,15 @@ I will now respond to suggsted changes and other constructive criticisms.
 
 > vis_compare and vis_guess are indicated as being in beta, which seems also to apply to the plotly versions of the functions. The message that they emit is a helpful indication that they may change in the future. Before submitting to CRAN, however, you might consider moving those functions to the development version of the package and only uploading the functions with a stable API, then adding the beta version later once they stabilize. This is a judgment call; I think I tend towards being conservative on this issue personally.
 
+- Agreed, these will be added to a dev branch
+
 > This is a minor issue, but was so thoroughly drummed into me by CS professors that I have to mention it. In calls like if (sort_type == TRUE), the == TRUE is redundant, so it's equivalent to just write if (sort_type). Similarly, if (x == FALSE) is equivalent to if (!x). There are a number of these in the code for various functions.
 
 # vis_dat()
 
 > Maximum data frame size: the heatmaps stop working on my computer with very large data sets. E.g. library(nycflights13); vis_dat(flights) hangs for a minute or so and then displays an empty grid. It works with 10000 rows, but not 100000. Similar issue with many columns. Especially because this package is designed for people to get a sense of new data sets, where users may not have realized how big the data are, I think it makes sense to prevent this issue. Possibilities: (1) max_rows = 10000 parameter, which stops if nrow(data) > max_rows and gives a descriptive error message. Then the user can increase the maximum or subset their data frame. Might also need to consider max_cols because 10000 rows and 2 cols is very different from 10000 rows and 500 cols. (2) Downsample the non-missing rows somehow and indicate to the user where omissions were made. (3) ???
+
+- This is an interesting one! It was brought to my attention [here](), by @MilesMcBain, but I couldn't replicate this issue. Similarly, I can actually display the nycflights data. So it seems that this is to do with the fact that computations power has a bit to do with it. I think that option 1 is the best case here, but option 2 actually gets a little bit difficult, because this leads to another issue of effectively downsampling a dataset whilst maintaining key characteristics. This could a problem, say, if I did perform down-sampling and then the user looked at the data with visdat and plotly, they might get a mis-represented sample. Likewise, if there is a very large proportion of missing data, this might be difficult to preserve exactly. Ways around this might include some very explicit warning messages, or perhaps even a note directly on the plot that the data have been downsampled.
 
 > The palette argument doesn't cause color changes, as far as I can tell. I think you need to do vis_dat_plot <- vis_dat_plot + <palette>, whereas currently the value of vis_dat_plot isn't being updated in the blocks related to color palettes. Additionally, you could do ggplot2::scale_color_brewer(type = "qual", palette = "Set1") rather than explicitly writing out the color names, although the colors would be in a slightly different order than you have now.
 
@@ -189,7 +197,12 @@ l <- readr::locale()
 
 output[!nas] <- vapply(FUN = function(y) readr:::collectorGuess(y, locale_ = l),
                        X = x[!nas], FUN.VALUE = character(1))
-If you're interested in converting to C++ for speed, I played around a little bit with implementing a vectorized version for guess_parser in readr. It's about 20X faster. Basically, I wrote a wrapper around collectorGuess that operates on a vector instead of single elements. This is faster because it does the looping in C++ rather than repeatedly transitioning from R to C++ and because it does some initial code once per vector instead of once per element. It is currently written as a modification of readr because that was more convenient, but I imagine it is possible to implement in your package as well. Let me know if you want to discuss that, but I'm definitely not an expert. To get it up and running, clone readr and then put this in readr/src/collectorGuess.cpp:
+                       
+```
+
+> If you're interested in converting to C++ for speed, I played around a little bit with implementing a vectorized version for guess_parser in readr. It's about 20X faster. Basically, I wrote a wrapper around collectorGuess that operates on a vector instead of single elements. This is faster because it does the looping in C++ rather than repeatedly transitioning from R to C++ and because it does some initial code once per vector instead of once per element. It is currently written as a modification of readr because that was more convenient, but I imagine it is possible to implement in your package as well. Let me know if you want to discuss that, but I'm definitely not an expert. To get it up and running, clone readr and then put this in readr/src/collectorGuess.cpp:
+
+```
 std::string collectorGuess2(const std::string& input, LocaleInfo locale) {
 
   // Work from strictest to most flexible
@@ -261,12 +274,19 @@ guess_parser_vector <- function(x, locale = default_locale()) {
 
 > Cool use of vdiffr and generally good coverage. The tests don't all pass on my machine (they are mostly skipped), which I think is because I don't have the .svg reference files on my computer.
 
+- I think that this is the default behaviour of `vdiffr`? It states [here](https://github.com/lionel-/vdiffr#running-tests) that "New cases for which you just wrote an expectation will be skipped. Failed tests will show as an error."
+
 > I suggest adding a test for each function using typical_data, because that currently emits a warning message. That way once you stop the error message from occurring, you'll have a regression test for the future.
+
+- This is a great suggestion!
 
 > Maybe I don't understand how vdiffr works, but I'm confused about test-vis-dat.R where in the calls to vdiffr you always provide vis_dat_plot, never any of the other plots you created. Additionally, both of the plots you create using non-default palettes are given the same name, so you're overwriting one of them.
 
+- Oops, error on my part, thanks for picking that up! :)
+
 > On my computer, the palette argument doesn't change the appearance of the vis_dat output, but the tests seem to pass, so can you check that you have a test that catches that issue? When I run vdiffr, vis-dat-qualitative-palette.svg and vis-dat-vanilla.svg appear to be the same.
 
+- Yes, thank you for picking up on this!
 
 # @batpigandme's review
 
@@ -274,16 +294,17 @@ guess_parser_vector <- function(x, locale = default_locale()) {
 
 ## Documentation: README
 
-
 > I have made some minor changes to the wording in README and submitted them as a pull request here, most of which I think are self-explanatory. 
 
-- Pull request was merged [here]()
+- Thank you! Pull request was merged [here](https://github.com/njtierney/visdat/commit/868140da16fbfc9150d8359731f4e9eb3e817675)
 
 > vis_dat(airquality) is numeric and integer values, when I run it. Thus, I've swapped numeric in for character as it was described.
 
+- Thank you!
 
 > Added canonical link to the mi package, since you do so for wakefield
 
+- Thank you!
 
 > Though the README suggests that when less than one percent is missing, "vis_miss indicates that there is >1%", the chart that results from vis_miss(test_miss_df) reads Missing (<0.1%) in the legend
 
@@ -296,7 +317,7 @@ guess_parser_vector <- function(x, locale = default_locale()) {
 #> E.g., summarise_all(), mutate_all(), etc.
 ```
 
-- Thank you for finding this, 
+- Thank you for finding this, I have addressed this in issue ..., and close that [here]().
 
 > Minor suggestion (which may or may not work comply with the actual vignette formatting) the purpose of demonstrating the difference between vis_guess() and vis_dat, you might consider showing the two side by side (perhaps have the vis_guess() example alone and then side by side). For this you could just add fig.show='hold', out.width='50%' to the chunk options in the Rmd.
 
