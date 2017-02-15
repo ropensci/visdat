@@ -13,7 +13,7 @@ vis_guess(x)
 \code{ggplot2} object displaying the guess of the type of values in the data frame and the position of any missing values.
 }
 \description{
-\code{vis_guess} just provides you an at-a-glance ggplot object of what is inside a dataframe like \code{vis_dat}, but it estimates the class of individual elements using \code{readr::guess_parser}. Cells are coloured according to what class they are and whether the values are missing. As \code{vis_guess} returns a ggplot object, it is very easy to customize. Currently it may be slow on larger datasets.
+\code{vis_guess} visualises the class of every single individual cell in a dataframe and displays it as ggplot object, similar to \code{vis_dat}. Cells are coloured according to what class they are and whether the values are missing. \code{vis_guess} estimates the class of individual elements using \code{readr::guess_parser}.  Currently it may be slow on larger datasets.
 }
 \examples{
 
