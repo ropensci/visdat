@@ -6,5 +6,12 @@
 \alias{visdat-package}
 \title{visdat}
 \description{
-visdat
+visdat is a package that helps with the preliminary visualisation of data. visdat makes it easy to visualise your whole dataset so that you can visually identify problems. It's main functions are:
+\itemize{
+\item \code{\link[=vis_dat]{vis_dat()}}
+\item \code{\link[=vis_miss]{vis_miss()}}
+\item \code{\link[=vis_guess]{vis_guess()}}
+\item \code{\link[=vis_compare]{vis_compare()}}
+\item \code{\link[=vis_miss_ly]{vis_miss_ly()}}
+}
 }
