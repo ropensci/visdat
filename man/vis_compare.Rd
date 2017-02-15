@@ -2,17 +2,20 @@
 % Please edit documentation in R/vis_compare.R
 \name{vis_compare}
 \alias{vis_compare}
-\title{compare two dataframes and see where they are different.}
+\title{Visually compare two dataframes and see where they are different.}
 \usage{
 vis_compare(df1, df2)
 }
 \arguments{
-\item{df1}{the first dataframe to compare to}
+\item{df1}{The first dataframe to compare}
 
-\item{df2}{the second dataframe to compare to}
+\item{df2}{The second dataframe to compare to the first.}
+}
+\value{
+\code{ggplot2} object displaying which values in each data frame are present in each other.
 }
 \description{
-\code{vis_compare}, like the other vis_* families, gives an at-a-glance ggplot of a dataset, but in this case hones in on visualising \strong{two} different dataframes, which currently need to be exactly the same dimension. This function has not been implemented yet, but this serves as a note of how it might work. It would be very similar to vis_miss, where you basically colouring cells according to "match" and "non-match". The code for this would be pretty crazy simple. \code{x <- 1:10; y <- c(1:5, 10:14) ;x == y} returns \code{[1] TRUE TRUE TRUE TRUE TRUE FALSE FALSE FALSE FALSE FALSE} Here black could indicate a match, and white a non match. One of the challenges with this would be cases where the datasets are different dimensions. One option could be to return as a message the columns that are not in the same dataset. Matching rows could be done by row number, and just lopping off the trailing ones and spitting out a note. Then, if the user wants, it could use an ID/key to match by.
+\code{vis_compare}, like the other \code{vis_*} families, gives an at-a-glance ggplot of a dataset, but in this case, hones in on visualising \strong{two} different dataframes of the same dimension.
 }
 \examples{
 
@@ -20,7 +23,8 @@ vis_compare(df1, df2)
 iris_diff <- iris
 iris_diff[1:10, 1:2] <- NA
 
-library(visdat)
-
 vis_compare(iris, iris_diff)
+}
+\seealso{
+\code{\link[=vis_miss]{vis_miss()}} \code{\link[=vis_dat]{vis_dat()}} \code{\link[=vis_miss_ly]{vis_miss_ly()}} \code{\link[=vis_compare]{vis_compare()}}
 }
