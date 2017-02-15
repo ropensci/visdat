@@ -18,6 +18,9 @@ vis_miss(x, cluster = FALSE, sort_miss = FALSE, show_perc = TRUE,
 
 \item{flip}{logical if TRUE, will flip the axis labels to be on top, resembling a dataframe}
 }
+\value{
+\code{ggplot2} object displaying the position of missing values in the dataframe, and the percentage of values missing and present.
+}
 \description{
 \code{vis_miss} provides an at-a-glance ggplot of the missingness inside a dataframe, colouring cells according to missingness, where black indicates a missing cell and grey indicates a present cell. As it returns a ggplot object, it is very easy to customize and change labels, and so on.
 }
@@ -34,4 +37,7 @@ vis_miss(airquality, sort_miss = TRUE)
 # flip the axis to look more like a dataframe
 vis_miss(airquality, flip = TRUE)
 
+}
+\seealso{
+\code{\link[=vis_miss_ly]{vis_miss_ly()}} \code{\link[=vis_dat]{vis_dat()}} \code{\link[=vis_guess]{vis_guess()}} \code{\link[=vis_compare]{vis_compare()}}
 }

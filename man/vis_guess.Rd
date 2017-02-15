@@ -2,15 +2,18 @@
 % Please edit documentation in R/vis_guess.R
 \name{vis_guess}
 \alias{vis_guess}
-\title{Visualise a data.frame like vis_dat, but takes a guess at to telling you what it contains.}
+\title{Visualise type guess in a data.frame}
 \usage{
 vis_guess(x)
 }
 \arguments{
 \item{x}{a data.frame object}
 }
+\value{
+\code{ggplot2} object displaying the guess of the type of values in the data frame and the position of any missing values.
+}
 \description{
-\code{vis_guess} just like vis_dat, vis_guess gives you an at-a-glance ggplot object of what is inside a dataframe. Except this time, vis_guess uses \code{readr} to help it guess what the individual cells are. These cells are coloured according to what class they are and whether the values are missing. As \code{vis_guess} returns a ggplot object, it is very easy to customize. Currently very slow.
+\code{vis_guess} just provides you an at-a-glance ggplot object of what is inside a dataframe like \code{vis_dat}, but it estimates the class of individual elements using \code{readr::guess_parser}. Cells are coloured according to what class they are and whether the values are missing. As \code{vis_guess} returns a ggplot object, it is very easy to customize. Currently it may be slow on larger datasets.
 }
 \examples{
 
@@ -40,4 +43,7 @@ messy_df <- data.frame(var1 = messy_vector,
                        var2 = sample(messy_vector),
                        var3 = sample(messy_vector))
 vis_guess(messy_df)
+}
+\seealso{
+\code{\link[=vis_miss]{vis_miss()}} \code{\link[=vis_dat]{vis_dat()}} \code{\link[=vis_miss_ly]{vis_miss_ly()}} \code{\link[=vis_compare]{vis_compare()}}
 }

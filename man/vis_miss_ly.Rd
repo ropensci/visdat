@@ -10,7 +10,7 @@ vis_miss_ly(x)
 \item{x}{a dataframe}
 }
 \value{
-a plotly interactive plot.
+\code{plotly} interactive plot, similar in appearance to \code{vis_miss}
 }
 \description{
 This is a basic implementation of vis_miss in plotly, some work is still needed to fix the legend, but it is several (read, about 3000x) faster than doing \code{ggplotly(vis_miss(data))}.
@@ -22,5 +22,5 @@ vis_miss_ly(airquality)
 
 }
 \seealso{
-vis_miss
+\code{\link[=vis_miss]{vis_miss()}} \code{\link[=vis_dat]{vis_dat()}} \code{\link[=vis_guess]{vis_guess()}} \code{\link[=vis_compare]{vis_compare()}}
 }

@@ -10,6 +10,10 @@
 #'
 #' @param flip logical TRUE, will flip the axis labels to be on top, resembling a dataframe
 #'
+#' @return `ggplot2` object displaying the type of values in the data frame and the position of any missing values.
+#'
+#' @seealso [vis_miss()] [vis_miss_ly()] [vis_guess()] [vis_compare()]
+#'
 #' @examples
 #'
 #' library(visdat)

@@ -4,9 +4,10 @@
 #'
 #' @param x a dataframe
 #'
-#' @seealso vis_miss
+#' @return `plotly` interactive plot, similar in appearance to `vis_miss`
 #'
-#' @return a plotly interactive plot.
+#' @seealso [vis_miss()] [vis_dat()] [vis_guess()] [vis_compare()]
+#'
 #' @export
 #'
 #' @examples

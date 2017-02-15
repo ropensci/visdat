@@ -12,7 +12,9 @@
 #'
 #' @param flip logical if TRUE, will flip the axis labels to be on top, resembling a dataframe
 #'
+#' @return `ggplot2` object displaying the position of missing values in the dataframe, and the percentage of values missing and present.
 #'
+#' @seealso [vis_miss_ly()] [vis_dat()] [vis_guess()] [vis_compare()]
 #'
 #' @examples
 #'
