@@ -10,7 +10,7 @@ vis_guess(x)
 \item{x}{a data.frame object}
 }
 \description{
-\code{vis_guess} just like vis_dat, vis_guess gives you an at-a-glance ggplot object of what is inside a dataframe. Except this time, vis_guess uses `readr` to help it guess what the individual cells are. These cells are coloured according to what class they are and whether the values are missing. As \code{vis_guess} returns a ggplot object, it is very easy to customize. Currently very slow.
+\code{vis_guess} just like vis_dat, vis_guess gives you an at-a-glance ggplot object of what is inside a dataframe. Except this time, vis_guess uses \code{readr} to help it guess what the individual cells are. These cells are coloured according to what class they are and whether the values are missing. As \code{vis_guess} returns a ggplot object, it is very easy to customize. Currently very slow.
 }
 \examples{
 

@@ -1,6 +1,6 @@
 #' A small toy dataset of imaginary people
 #'
-#' A wider dataset than \code{typical_data} containing information about some randomly generated people, created using the excellent \code{wakefield} package. It is created as deliberately odd / eclectic dataset.
+#' A wider dataset than `typical_data` containing information about some randomly generated people, created using the excellent `wakefield` package. It is created as deliberately odd / eclectic dataset.
 #'
 #' @format A data frame with 300 rows and 49 variables:
 #' \describe{

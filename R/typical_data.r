@@ -1,6 +1,6 @@
 #' A small toy dataset of imaginary people
 #'
-#' A dataset containing information about some randomly generated people, created using the excellent \code{wakefield} package. It is created as deliberately messy dataset.
+#' A dataset containing information about some randomly generated people, created using the excellent `wakefield` package. It is created as deliberately messy dataset.
 #'
 #' @format A data frame with 5000 rows and 11 variables:
 #' \describe{
