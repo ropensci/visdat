@@ -15,6 +15,9 @@ vis_dat(x, sort_type = TRUE, palette = "default", flip = FALSE)
 
 \item{flip}{logical TRUE, will flip the axis labels to be on top, resembling a dataframe}
 }
+\value{
+\code{ggplot2} object displaying the type of values in the data frame and the position of any missing values.
+}
 \description{
 \code{vis_dat} gives you an at-a-glance ggplot object of what is inside a dataframe. Cells are coloured according to what class they are and whether the values are missing. As \code{vis_dat} returns a ggplot object, it is very easy to customize and change labels, and customize the plot
 }
@@ -30,4 +33,7 @@ vis_dat(airquality, flip = TRUE)
 # experimental colourblind safe pallete
 vis_dat(airquality, palette = "cb_safe")
 
+}
+\seealso{
+\code{\link[=vis_miss]{vis_miss()}} \code{\link[=vis_miss_ly]{vis_miss_ly()}} \code{\link[=vis_guess]{vis_guess()}} \code{\link[=vis_compare]{vis_compare()}}
 }

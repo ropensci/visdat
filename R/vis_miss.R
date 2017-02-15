@@ -1,6 +1,6 @@
 #' Visualise a data.frame to display missingness.
 #'
-#' \code{vis_miss} provides an at-a-glance ggplot of the missingness inside a dataframe, colouring cells according to missingness, where black indicates a missing cell and grey indicates a present cell. As it returns a ggplot object, it is very easy to customize and change labels, and so on.
+#' `vis_miss` provides an at-a-glance ggplot of the missingness inside a dataframe, colouring cells according to missingness, where black indicates a missing cell and grey indicates a present cell. As it returns a ggplot object, it is very easy to customize and change labels, and so on.
 #'
 #' @param x a data.frame
 #'
@@ -11,6 +11,10 @@
 #' @param show_perc logical TRUE/FALSE. TRUE now adds in the \% of missing/complete data in the whole dataset into the legend. Default value is TRUE
 #'
 #' @param flip logical if TRUE, will flip the axis labels to be on top, resembling a dataframe
+#'
+#' @return `ggplot2` object displaying the position of missing values in the dataframe, and the percentage of values missing and present.
+#'
+#' @seealso [vis_miss_ly()] [vis_dat()] [vis_guess()] [vis_compare()]
 #'
 #' @examples
 #'

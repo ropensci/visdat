@@ -1,8 +1,12 @@
-#' Visualise a data.frame like vis_dat, but takes a guess at to telling you what it contains.
+#' Visualise type guess in a data.frame
 #'
-#' \code{vis_guess} just like vis_dat, vis_guess gives you an at-a-glance ggplot object of what is inside a dataframe. Except this time, vis_guess uses `readr` to help it guess what the individual cells are. These cells are coloured according to what class they are and whether the values are missing. As \code{vis_guess} returns a ggplot object, it is very easy to customize. Currently very slow.
+#' `vis_guess` visualises the class of every single individual cell in a dataframe and displays it as ggplot object, similar to `vis_dat`. Cells are coloured according to what class they are and whether the values are missing. `vis_guess` estimates the class of individual elements using `readr::guess_parser`.  Currently it may be slow on larger datasets.
 #'
 #' @param x a data.frame object
+#'
+#' @return `ggplot2` object displaying the guess of the type of values in the data frame and the position of any missing values.
+#'
+#' @seealso [vis_miss()] [vis_dat()] [vis_miss_ly()] [vis_compare()]
 #'
 #' @examples
 #'

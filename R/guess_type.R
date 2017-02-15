@@ -1,6 +1,6 @@
 #' Guess the type of each individual cell in a dataframe
 #'
-#' \code{guess_type} is used in vis_guess as a utility function. Similar to \code{fingerprint}.
+#' `guess_type` is used in vis_guess as a utility function. Similar to `fingerprint`.
 #'
 #' @param x is a vector of values you want to guess
 #'

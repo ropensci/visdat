@@ -1,6 +1,6 @@
 #' Visualises a data.frame to tell you what it contains.
 #'
-#' \code{vis_dat} gives you an at-a-glance ggplot object of what is inside a dataframe. Cells are coloured according to what class they are and whether the values are missing. As \code{vis_dat} returns a ggplot object, it is very easy to customize and change labels, and customize the plot
+#' `vis_dat` gives you an at-a-glance ggplot object of what is inside a dataframe. Cells are coloured according to what class they are and whether the values are missing. As `vis_dat` returns a ggplot object, it is very easy to customize and change labels, and customize the plot
 #'
 #' @param x a data.frame object
 #'
@@ -9,6 +9,10 @@
 #' @param palette character "default", "qual" or "cb_safe". "default" (the default) provides the stock ggplot scale for separating the colours. "qual" uses an experimental qualitative colour scheme for providing distinct colours for each Type. "cb_safe" is a set of colours that are appropriate for those with colourblindness. "qual" and "cb_safe" are drawn from http://colorbrewer2.org/.
 #'
 #' @param flip logical TRUE, will flip the axis labels to be on top, resembling a dataframe
+#'
+#' @return `ggplot2` object displaying the type of values in the data frame and the position of any missing values.
+#'
+#' @seealso [vis_miss()] [vis_miss_ly()] [vis_guess()] [vis_compare()]
 #'
 #' @examples
 #'
