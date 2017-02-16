@@ -17,7 +17,6 @@ This is a basic implementation of vis_miss in plotly, some work is still needed 
 }
 \examples{
 
-library(visdat)
 vis_miss_ly(airquality)
 
 }

@@ -23,8 +23,6 @@ vis_dat(x, sort_type = TRUE, palette = "default", flip = FALSE)
 }
 \examples{
 
-library(visdat)
-
 vis_dat(airquality)
 
 # flip the axis to look more like a dataframe

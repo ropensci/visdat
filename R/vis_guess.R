@@ -11,9 +11,7 @@
 #' @examples
 #'
 #' library(tidyr)
-#' library(readr) # to load the `readr:::collectorGuess` function
 #' library(dplyr)
-#' library(visdat)
 #'
 #' messy_vector <- c(TRUE,
 #'                  "TRUE",
