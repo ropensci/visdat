@@ -21,7 +21,7 @@
 #' # flip the axis to look more like a dataframe
 #' vis_dat(airquality, flip = TRUE)
 #'
-#' # experimental colourblind safe pallete
+#' # experimental colourblind safe palette
 #' vis_dat(airquality, palette = "cb_safe")
 #'
 #' @export
