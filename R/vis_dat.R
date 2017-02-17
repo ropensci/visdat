@@ -30,7 +30,6 @@ vis_dat <- function(x,
                     palette = "default",
                     flip = FALSE) {
 
-  x  = airquality
   if (sort_type == TRUE) {
 
     # arrange by the columns with the highest missingness
