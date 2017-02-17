@@ -41,14 +41,12 @@ vis_guess <- function(x){
           post an issue at https://github.com/njtierney/visdat/issues")
 
 # x = messy_df
-  d <- x %>%
-    dplyr::mutate(rows = seq_len(nrow(.))) %>%
-    tidyr::gather_(key_col = "variables",
-                   value_col = "valueGuess",
-                   gather_cols = names(.)[-length(.)]) %>%
-    dplyr::mutate(guess = guess_type(valueGuess)) %>%
+  d <-
+    x %>%
+    vis_gather_() %>%
+    dplyr::mutate(guess = guess_type(valueType)) %>%
     # drop Valueguess....
-    dplyr::select(-valueGuess)
+    dplyr::select(-valueType)
 
   # value for plotly mouseover
   d$value <- tidyr::gather_(x, "variables", "value", names(x))$value

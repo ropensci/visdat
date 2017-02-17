@@ -79,16 +79,13 @@ vis_miss <- function(x,
 
   # Arranged data by dendrogram order index
 
-  d <- x.na[row_order_index , ] %>%
-    as.data.frame %>%
-    dplyr::mutate(rows = seq_len(nrow(x))) %>%
     # gather the variables together for plotting
     # here we now have a column of the row number (row),
     # then the variable(variables),
     # then the contents of that variable (value)
-    tidyr::gather_(key_col = "variables",
-                   value_col = "valueType",
-                   gather_cols = names(.)[-length(.)])
+  d <- x.na[row_order_index , ] %>%
+    as.data.frame %>%
+    vis_gather_()
 
   d$value <- tidyr::gather_(x, "variables", "value", names(x))$value
 

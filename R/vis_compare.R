@@ -35,7 +35,6 @@ vis_compare <- function(df1,
           does not handles dataframes of the exact same dimension.")
   }
 
-
   v_identical <- Vectorize(identical)
 
   df_diff <- purrr::map2(df1, df2, v_identical) %>%
@@ -53,6 +52,8 @@ vis_compare <- function(df1,
     tidyr::gather_(key_col = "variables",
                    value_col = "valueType",
                    gather_cols = names(.)[-length(.)])
+    purrr::map_df(compare_print) %>%
+    vis_gather_()
 
   d$value_df1 <- tidyr::gather_(df1, "variables", "value", names(df1))$value
   d$value_df2 <- tidyr::gather_(df2, "variables", "value", names(df2))$value

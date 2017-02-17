@@ -61,6 +61,8 @@ vis_dat <- function(x,
     tidyr::gather_(key_col = "variables",
                    value_col = "valueType",
                    gather_cols = names(.)[-length(.)])
+    purrr::map_df(fingerprint) %>%
+    vis_gather_()
 
   # get the values here so plotly can make them visible
   d$value <- tidyr::gather_(x, "variables", "value", names(x))$value
