@@ -44,15 +44,6 @@ vis_compare <- function(df1,
   df_diff %>%
     as.data.frame() %>%
     purrr::map_df(compare_print) %>%
-    dplyr::mutate(rows = seq_len(nrow(.))) %>%
-    # gather the variables together for plotting
-    # here we now have a column of the row number (row),
-    # then the variable(variables),
-    # then the contents of that variable (value)
-    tidyr::gather_(key_col = "variables",
-                   value_col = "valueType",
-                   gather_cols = names(.)[-length(.)])
-    purrr::map_df(compare_print) %>%
     vis_gather_()
 
   d$value_df1 <- tidyr::gather_(df1, "variables", "value", names(df1))$value

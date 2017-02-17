@@ -57,11 +57,6 @@ vis_dat <- function(x,
   d <- x %>%
     # mutate_each_(funs(fingerprint), tbl_vars(.)) %>%
     purrr::map_df(fingerprint) %>%
-    dplyr::mutate(rows = seq_len(nrow(.))) %>%
-    tidyr::gather_(key_col = "variables",
-                   value_col = "valueType",
-                   gather_cols = names(.)[-length(.)])
-    purrr::map_df(fingerprint) %>%
     vis_gather_()
 
   # get the values here so plotly can make them visible
