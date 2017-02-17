@@ -30,7 +30,7 @@ vis_dat <- function(x,
                     palette = "default",
                     flip = FALSE) {
 
-  # x  = airquality
+  x  = airquality
   if (sort_type == TRUE) {
 
     # arrange by the columns with the highest missingness
@@ -57,10 +57,11 @@ vis_dat <- function(x,
   d <- x %>%
     # mutate_each_(funs(fingerprint), tbl_vars(.)) %>%
     purrr::map_df(fingerprint) %>%
-    vis_gather_()
-
+    vis_gather_() %>%
   # get the values here so plotly can make them visible
-  d$value <- tidyr::gather_(x, "variables", "value", names(x))$value
+    dplyr::mutate(value = vis_extract_value_(x))
+
+  # d$value <- tidyr::gather_(x, "variables", "value", names(x))$value
 
   # do the plotting
   vis_dat_plot <-

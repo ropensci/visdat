@@ -46,10 +46,11 @@ vis_guess <- function(x){
     vis_gather_() %>%
     dplyr::mutate(guess = guess_type(valueType)) %>%
     # drop Valueguess....
-    dplyr::select(-valueType)
-
+    dplyr::select(-valueType) %>%
   # value for plotly mouseover
-  d$value <- tidyr::gather_(x, "variables", "value", names(x))$value
+    dplyr::mutate(value = vis_extract_value_(x))
+
+  # d$value <- tidyr::gather_(x, "variables", "value", names(x))$value
 
     ggplot2::ggplot(data = d,
                     ggplot2::aes_string(x = "variables",

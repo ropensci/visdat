@@ -83,11 +83,17 @@ vis_miss <- function(x,
     # here we now have a column of the row number (row),
     # then the variable(variables),
     # then the contents of that variable (value)
-  d <- x.na[row_order_index , ] %>%
-    as.data.frame %>%
-    vis_gather_()
+  dat_pre_vis <- as.data.frame(x.na[row_order_index , ])
 
-  d$value <- tidyr::gather_(x, "variables", "value", names(x))$value
+  d <-
+    # x.na[row_order_index , ] %>%
+    # as.data.frame %>%
+    dat_pre_vis %>%
+    vis_gather_() %>%
+    # add info for plotly mousover
+    dplyr::mutate(value = vis_extract_value_(dat_pre_vis))
+
+  # d$value <- tidyr::gather_(x, "variables", "value", names(x))$value
 
   # calculate the overall % missingness to display in legend ------------
 

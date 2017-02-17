@@ -44,14 +44,17 @@ vis_compare <- function(df1,
   df_diff %>%
     as.data.frame() %>%
     purrr::map_df(compare_print) %>%
-    vis_gather_()
+    vis_gather_() %>%
+    dplyr::mutate(value_df1 = vis_extract_value_(df1),
+                  value_df2 = vis_extract_value_(df2))
 
-  d$value_df1 <- tidyr::gather_(df1, "variables", "value", names(df1))$value
-  d$value_df2 <- tidyr::gather_(df2, "variables", "value", names(df2))$value
+  # d$value_df1 <- tidyr::gather_(df1, "variables", "value", names(df1))$value
+  # d$value_df2 <- tidyr::gather_(df2, "variables", "value", names(df2))$value
 
   # then we plot it
   ggplot2::ggplot(data = d,
-                  ggplot2::aes_string(x = "variables",
+                  ggplot2::aes_string(
+                    x = "variables",
                     y = "rows",
                     # text assists with plotly mouseover
                     text = c("value_df1", "value_df2"))) +
