@@ -16,14 +16,12 @@
 #'
 #' @examples
 #'
-#' library(visdat)
-#'
 #' vis_dat(airquality)
 #'
 #' # flip the axis to look more like a dataframe
 #' vis_dat(airquality, flip = TRUE)
 #'
-#' # experimental colourblind safe pallete
+#' # experimental colourblind safe palette
 #' vis_dat(airquality, palette = "cb_safe")
 #'
 #' @export
@@ -58,7 +56,7 @@ vis_dat <- function(x,
   # reshape the dataframe ready for geom_raster
   d <- x %>%
     # mutate_each_(funs(fingerprint), tbl_vars(.)) %>%
-    purrr::dmap(fingerprint) %>%
+    purrr::map_df(fingerprint) %>%
     dplyr::mutate(rows = seq_len(nrow(.))) %>%
     tidyr::gather_(key_col = "variables",
                    value_col = "valueType",

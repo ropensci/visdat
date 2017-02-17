@@ -26,8 +26,6 @@ vis_miss(x, cluster = FALSE, sort_miss = FALSE, show_perc = TRUE,
 }
 \examples{
 
-library(visdat)
-
 vis_miss(airquality)
 
 vis_miss(airquality, cluster = TRUE)

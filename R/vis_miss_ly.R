@@ -12,7 +12,6 @@
 #'
 #' @examples
 #'
-#' library(visdat)
 #' vis_miss_ly(airquality)
 #'
 vis_miss_ly <- function(x){

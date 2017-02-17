@@ -21,8 +21,7 @@
 vis_compare <- function(df1,
                         df2){
 
-  message("vis_compare is still in BETA! If you have suggestions or errors,
-          post an issue at https://github.com/njtierney/visdat/issues")
+  message("vis_compare is in BETA! If you have suggestions or errors\npost an issue at https://github.com/njtierney/visdat/issues")
 
   # could add a parameter, "sort_match", to help with
   # sort_match logical TRUE/FALSE.
@@ -31,7 +30,7 @@ vis_compare <- function(df1,
   # make a TRUE/FALSE matrix of the data.
   # Tells us whether it is the same (true) as the other dataset, or not (false)
 
-  if (dim(df1) != dim(df2)){
+  if (!identical(dim(df1), dim(df2))){
     stop("Dimensions of df1 and df2 are not the same. Unfortunately vis_compare
           does not handles dataframes of the exact same dimension.")
   }
@@ -45,7 +44,7 @@ vis_compare <- function(df1,
   d <-
   df_diff %>%
     as.data.frame() %>%
-    purrr::dmap(compare_print) %>%
+    purrr::map_df(compare_print) %>%
     dplyr::mutate(rows = seq_len(nrow(.))) %>%
     # gather the variables together for plotting
     # here we now have a column of the row number (row),
