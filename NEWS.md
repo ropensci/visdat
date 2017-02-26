@@ -3,6 +3,7 @@
 ## New Features
 
 - axes in `vis_` family are now flipped by default
+- `vis_miss` now shows the % missingness in a column, can be disabled by setting `show_perc_col` argument to FALSE
 
 ## Minor Improvements
 
