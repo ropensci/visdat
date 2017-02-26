@@ -8,8 +8,6 @@
 #'
 #' @param palette character "default", "qual" or "cb_safe". "default" (the default) provides the stock ggplot scale for separating the colours. "qual" uses an experimental qualitative colour scheme for providing distinct colours for each Type. "cb_safe" is a set of colours that are appropriate for those with colourblindness. "qual" and "cb_safe" are drawn from http://colorbrewer2.org/.
 #'
-#' @param flip logical TRUE, will flip the axis labels to be on top, resembling a dataframe
-#'
 #' @return `ggplot2` object displaying the type of values in the data frame and the position of any missing values.
 #'
 #' @seealso [vis_miss()] [vis_miss_ly()] [vis_guess()] [vis_compare()]
@@ -18,17 +16,13 @@
 #'
 #' vis_dat(airquality)
 #'
-#' # flip the axis to look more like a dataframe
-#' vis_dat(airquality, flip = TRUE)
-#'
 #' # experimental colourblind safe palette
 #' vis_dat(airquality, palette = "cb_safe")
 #'
 #' @export
 vis_dat <- function(x,
                     sort_type = TRUE,
-                    palette = "default",
-                    flip = FALSE) {
+                    palette = "default") {
 
   if (sort_type == TRUE) {
 
@@ -67,8 +61,13 @@ vis_dat <- function(x,
     # add the boilerplate
     vis_create_(d) +
     # change the limits etc.
-    ggplot2::scale_x_discrete(limits = type_order_index) +
-    ggplot2::guides(fill = ggplot2::guide_legend(title = "Type"))
+    ggplot2::guides(fill = ggplot2::guide_legend(title = "Type")) +
+  # flip the axes
+    ggplot2::scale_y_reverse() +
+    ggplot2::scale_x_discrete(limits = type_order_index,
+                              position = "top") +
+    ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0.5))
+
 
    if (palette == "qual"){
 
@@ -132,17 +131,6 @@ vis_dat <- function(x,
      vis_dat_plot
 
    }
-  if (flip == TRUE){
-    suppressMessages({
-      vis_dat_plot +
-        ggplot2::scale_y_reverse() +
-        ggplot2::scale_x_discrete(position = "top",
-                                  limits = type_order_index) +
-        ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0.5)) +
-        ggplot2::labs(x = "")
-    })
-  } else if (flip == FALSE){
-    vis_dat_plot
-  }
+
 
 }

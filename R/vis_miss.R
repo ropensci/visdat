@@ -1,6 +1,6 @@
 #' Visualise a data.frame to display missingness.
 #'
-#' `vis_miss` provides an at-a-glance ggplot of the missingness inside a dataframe, colouring cells according to missingness, where black indicates a missing cell and grey indicates a present cell. As it returns a ggplot object, it is very easy to customize and change labels, and so on.
+#' `vis_miss` provides an at-a-glance ggplot of the missingness inside a dataframe, colouring cells according to missingness, where black indicates a missing cell and grey indicates a present cell. As it returns a ggplot object, it is very easy to customize and change labels.
 #'
 #' @param x a data.frame
 #'
@@ -10,7 +10,6 @@
 #'
 #' @param show_perc logical TRUE/FALSE. TRUE now adds in the \% of missing/complete data in the whole dataset into the legend. Default value is TRUE
 #'
-#' @param flip logical if TRUE, will flip the axis labels to be on top, resembling a dataframe
 #'
 #' @return `ggplot2` object displaying the position of missing values in the dataframe, and the percentage of values missing and present.
 #'
@@ -24,15 +23,11 @@
 #'
 #' vis_miss(airquality, sort_miss = TRUE)
 #'
-#' # flip the axis to look more like a dataframe
-#' vis_miss(airquality, flip = TRUE)
-#'
 #' @export
 vis_miss <- function(x,
                      cluster = FALSE,
                      sort_miss = FALSE,
-                     show_perc = TRUE,
-                     flip = FALSE){
+                     show_perc = TRUE){
   # make a TRUE/FALSE matrix of the data.
   # This tells us whether it is missing (true) or not (false)
   # x = airquality
@@ -121,24 +116,16 @@ vis_miss <- function(x,
                                    "grey20"),
                         labels = c(p_pres_lab,
                                      p_miss_lab)) +
-      ggplot2::scale_x_discrete(limits = col_order_index) +
-      ggplot2::guides(fill = ggplot2::guide_legend(reverse = TRUE))
+      ggplot2::guides(fill = ggplot2::guide_legend(reverse = TRUE)) +
+    # flip the axes
+    ggplot2::scale_y_reverse() +
+    ggplot2::scale_x_discrete(position = "top",
+                              limits = col_order_index) +
+    ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0.5))
+
       # guides(fill = guide_legend(title = "Type"))
   # Thanks to
 # http://www.markhneedham.com/blog/2015/02/27/rggplot-controlling-x-axis-order/
   # For the tip on using scale_x_discrete
-
-  if(flip == FALSE){
-    return(vis_miss_plot)
-  } else if(flip == TRUE){
-      suppressMessages({
-        vis_miss_plot +
-          ggplot2::scale_y_reverse() +
-          ggplot2::scale_x_discrete(position = "top",
-                                    limits = col_order_index) +
-          ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0.5)) +
-          ggplot2::labs(x = "")
-      })
-  }
 
 } # end of function

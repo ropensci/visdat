@@ -44,16 +44,18 @@ vis_guess <- function(x){
   d <-
     x %>%
     vis_gather_() %>%
-    dplyr::mutate(guess = guess_type(valueType)) %>%
-    # drop Valueguess....
-    dplyr::select(-valueType) %>%
+    dplyr::mutate(valueType = guess_type(valueType)) %>%
   # value for plotly mouseover
     dplyr::mutate(value = vis_extract_value_(x))
 
   # add the boilerplate information
     vis_create_(d) +
       #
-      ggplot2::scale_x_discrete(limits = names(x))  +
-      ggplot2::guides(fill = ggplot2::guide_legend(title = "Type"))
+      ggplot2::guides(fill = ggplot2::guide_legend(title = "Type")) +
+      # flip the axes
+      ggplot2::scale_y_reverse() +
+      ggplot2::scale_x_discrete(position = "top",
+                                limits = names(x)) +
+      ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0.5))
 
 } #end function

@@ -74,12 +74,17 @@ vis_compare <- function(df1,
          y = "Observations",
          # this prevents it from being used in the boilerplate
          fill = "Cell Type") +
-    ggplot2::scale_x_discrete(limits = names(df_diff)) +
+    # ggplot2::scale_x_discrete(limits = names(df_diff)) +
     ggplot2::scale_fill_manual(limits = c("same",
                                  "different"),
                       breaks = c("same", # red
                                  "different"), # dark blue
                       values = c("#ff7f00", # Orange
                                  "#377eb8"), # blue
-                      na.value = "grey")
+                      na.value = "grey") +
+  # flip the axes
+  ggplot2::scale_y_reverse() +
+    ggplot2::scale_x_discrete(position = "top",
+                              limits = names(df_diff)) +
+    ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0.25))
 }

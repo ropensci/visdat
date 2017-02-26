@@ -4,7 +4,7 @@
 \alias{vis_dat}
 \title{Visualises a data.frame to tell you what it contains.}
 \usage{
-vis_dat(x, sort_type = TRUE, palette = "default", flip = FALSE)
+vis_dat(x, sort_type = TRUE, palette = "default")
 }
 \arguments{
 \item{x}{a data.frame object}
@@ -12,8 +12,6 @@ vis_dat(x, sort_type = TRUE, palette = "default", flip = FALSE)
 \item{sort_type}{logical TRUE/FALSE. When TRUE (default), it sorts by the type in the column to make it easier to see what is in the data}
 
 \item{palette}{character "default", "qual" or "cb_safe". "default" (the default) provides the stock ggplot scale for separating the colours. "qual" uses an experimental qualitative colour scheme for providing distinct colours for each Type. "cb_safe" is a set of colours that are appropriate for those with colourblindness. "qual" and "cb_safe" are drawn from http://colorbrewer2.org/.}
-
-\item{flip}{logical TRUE, will flip the axis labels to be on top, resembling a dataframe}
 }
 \value{
 \code{ggplot2} object displaying the type of values in the data frame and the position of any missing values.
@@ -24,9 +22,6 @@ vis_dat(x, sort_type = TRUE, palette = "default", flip = FALSE)
 \examples{
 
 vis_dat(airquality)
-
-# flip the axis to look more like a dataframe
-vis_dat(airquality, flip = TRUE)
 
 # experimental colourblind safe palette
 vis_dat(airquality, palette = "cb_safe")
