@@ -30,14 +30,14 @@ miss_guide_label <- function(x) {
       p_pres <- 100 - p_miss
 
     # create the labels
-    p_miss_lab <- paste("Missing (",
+    p_miss_lab <- paste("Missing \n(",
                         p_miss,
-                        "%)",
+                        "%)\n",
                         sep = "")
 
-    p_pres_lab <- paste("Present (",
+    p_pres_lab <- paste("Present \n(",
                         p_pres,
-                        "%)",
+                        "%)\n",
                         sep = "")
     }
 
