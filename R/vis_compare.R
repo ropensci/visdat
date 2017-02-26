@@ -57,6 +57,8 @@ vis_compare <- function(df1,
                     x = "variables",
                     y = "rows",
                     # text assists with plotly mouseover
+                    # currently this text argument prevents it from being used
+                    # in the boilerplate
                     text = c("value_df1", "value_df2"))) +
     ggplot2::geom_raster(ggplot2::aes_string(fill = "valueType")) +
     # change the colour, so that missing is grey, present is black
@@ -70,6 +72,7 @@ vis_compare <- function(df1,
                                      hjust = 1)) +
     ggplot2::labs(x = "Variables in Data",
          y = "Observations",
+         # this prevents it from being used in the boilerplate
          fill = "Cell Type") +
     ggplot2::scale_x_discrete(limits = names(df_diff)) +
     ggplot2::scale_fill_manual(limits = c("same",
