@@ -4,16 +4,19 @@
 \alias{vis_miss}
 \title{Visualise a data.frame to display missingness.}
 \usage{
-vis_miss(x, cluster = FALSE, sort_miss = FALSE, show_perc = TRUE)
+vis_miss(x, cluster = FALSE, sort_miss = FALSE, show_perc = TRUE,
+  show_perc_col = TRUE)
 }
 \arguments{
 \item{x}{a data.frame}
 
-\item{cluster}{logical TRUE/FALSE. TRUE specifies that you want to use hierarchical clustering (mcquitty method) to arrange rows according to missingness. FALSE specifies that you want to leave it as is}
+\item{cluster}{logical. TRUE specifies that you want to use hierarchical clustering (mcquitty method) to arrange rows according to missingness. FALSE specifies that you want to leave it as is}
 
-\item{sort_miss}{logical TRUE/FALSE. TRUE arranges the columns in order of missingness}
+\item{sort_miss}{logical. TRUE arranges the columns in order of missingness}
 
-\item{show_perc}{logical TRUE/FALSE. TRUE now adds in the \% of missing/complete data in the whole dataset into the legend. Default value is TRUE}
+\item{show_perc}{logical. TRUE now adds in the \% of missing/complete data in the whole dataset into the legend. Default value is TRUE}
+
+\item{show_perc_col}{logical. TRUE adds in the \% missing data in a given column into the x axis. Can be disabled if}
 }
 \value{
 \code{ggplot2} object displaying the position of missing values in the dataframe, and the percentage of values missing and present.
