@@ -52,10 +52,8 @@ vis_guess <- function(x){
     vis_create_(d) +
       #
       ggplot2::guides(fill = ggplot2::guide_legend(title = "Type")) +
-      # flip the axes
-      ggplot2::scale_y_reverse() +
+      # flip the axes, add info for axes
       ggplot2::scale_x_discrete(position = "top",
-                                limits = names(x)) +
-      ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0.5))
+                                limits = names(x))
 
 } #end function

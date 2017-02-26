@@ -84,7 +84,7 @@ vis_compare <- function(df1,
                       na.value = "grey") +
   # flip the axes
   ggplot2::scale_y_reverse() +
+  ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0.25)) +
     ggplot2::scale_x_discrete(position = "top",
-                              limits = names(df_diff)) +
-    ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0.25))
+                              limits = names(df_diff))
 }

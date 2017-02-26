@@ -110,18 +110,16 @@ vis_miss <- function(x,
   }
 
     # then we plot it
-  vis_miss_plot <- vis_create_(d) +
+  vis_create_(d) +
       ggplot2::scale_fill_manual(name = "",
                         values = c("grey80",
                                    "grey20"),
                         labels = c(p_pres_lab,
                                      p_miss_lab)) +
       ggplot2::guides(fill = ggplot2::guide_legend(reverse = TRUE)) +
-    # flip the axes
-    ggplot2::scale_y_reverse() +
+    # flip the axes, add the info about limits
     ggplot2::scale_x_discrete(position = "top",
-                              limits = col_order_index) +
-    ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0.5))
+                              limits = col_order_index)
 
       # guides(fill = guide_legend(title = "Type"))
   # Thanks to

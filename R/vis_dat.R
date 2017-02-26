@@ -63,10 +63,9 @@ vis_dat <- function(x,
     # change the limits etc.
     ggplot2::guides(fill = ggplot2::guide_legend(title = "Type")) +
   # flip the axes
-    ggplot2::scale_y_reverse() +
+    # add info about the axes
     ggplot2::scale_x_discrete(limits = type_order_index,
-                              position = "top") +
-    ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0.5))
+                              position = "top")
 
 
    if (palette == "qual"){
