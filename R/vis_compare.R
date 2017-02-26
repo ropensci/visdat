@@ -31,8 +31,7 @@ vis_compare <- function(df1,
   # Tells us whether it is the same (true) as the other dataset, or not (false)
 
   if (!identical(dim(df1), dim(df2))){
-    stop("Dimensions of df1 and df2 are not the same. Unfortunately vis_compare
-          does not handles dataframes of the exact same dimension.")
+    stop("Dimensions of df1 and df2 are not the same. vis_compare currently only handles dataframes of identical dimensions.")
   }
 
   v_identical <- Vectorize(identical)
