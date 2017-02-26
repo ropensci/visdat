@@ -115,30 +115,12 @@ vis_miss <- function(x,
   }
 
     # then we plot it
-  vis_miss_plot <-
-    ggplot2::ggplot(data = d,
-           ggplot2::aes_string(x = "variables",
-                      y = "rows",
-                      # text assists with plotly mouseover
-                      text = "value")) +
-      ggplot2::geom_raster(ggplot2::aes_string(fill = "valueType")) +
-      # change the colour, so that missing is grey, present is black
-      # 2016/12/15: Change the colour AGAIN, so that missing is black
-      #
+  vis_miss_plot <- vis_create_(d) +
       ggplot2::scale_fill_manual(name = "",
                         values = c("grey80",
                                    "grey20"),
                         labels = c(p_pres_lab,
                                      p_miss_lab)) +
-      # scale_fill_grey(name = "",
-      #                 labels = c(p_pres_lab,
-      #                            p_miss_lab)) +
-      ggplot2::theme_minimal() +
-      ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45,
-                                                         vjust = 1,
-                                                         hjust = 1)) +
-      ggplot2::labs(x = "Variables in Data",
-                    y = "Observations") +
       ggplot2::scale_x_discrete(limits = col_order_index) +
       ggplot2::guides(fill = ggplot2::guide_legend(reverse = TRUE))
       # guides(fill = guide_legend(title = "Type"))

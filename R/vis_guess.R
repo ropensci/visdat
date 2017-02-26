@@ -50,20 +50,9 @@ vis_guess <- function(x){
   # value for plotly mouseover
     dplyr::mutate(value = vis_extract_value_(x))
 
-  # d$value <- tidyr::gather_(x, "variables", "value", names(x))$value
-
-    ggplot2::ggplot(data = d,
-                    ggplot2::aes_string(x = "variables",
-                      y = "rows",
-                      # text assist with plotly mouseover
-                      text = "value")) +
-      ggplot2::geom_raster(ggplot2::aes_string(fill = "guess")) +
-      ggplot2::theme_minimal() +
-      ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45,
-                                                         vjust = 1,
-                                                         hjust = 1)) +
-      ggplot2::labs(x = "Variables in Dataset",
-                    y = "Observations") +
+  # add the boilerplate information
+    vis_create_(d) +
+      #
       ggplot2::scale_x_discrete(limits = names(x))  +
       ggplot2::guides(fill = ggplot2::guide_legend(title = "Type"))
 
