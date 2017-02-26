@@ -1,3 +1,14 @@
+# visdat 0.0.6.9000 (2017/02/26)
+
+## New Features
+
+- axes in `vis_` family are now flipped by default
+
+## Minor Improvements
+
+- added internal functions to improve extensibility and debugging - `vis_create_`, `vis_gather_` and `vis_extract_value_`.
+- suppress unneeded warnings arising from compiling factors
+
 # visdat 0.0.5.9000 (2017/01/09)
 
 ## Minor Improvements
