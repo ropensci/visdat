@@ -34,7 +34,7 @@ vis_miss <- function(x,
   x.na <- is.na(x)
 
   # switch for creating the missing clustering
-  if (cluster == TRUE){
+  if (cluster){
 
     # this retrieves a row order of the clustered missingness
     row_order_index <-
@@ -47,7 +47,7 @@ vis_miss <- function(x,
     row_order_index <- seq_len(nrow(x))
   } # end else
 
-  if (sort_miss == TRUE) {
+  if (sort_miss) {
 
     # arrange by the columns with the highest missingness
     # code inspired from https://r-forge.r-project.org/scm/viewvc.php/ ...
@@ -92,7 +92,7 @@ vis_miss <- function(x,
 
   # calculate the overall % missingness to display in legend ------------
 
-  if (show_perc == TRUE){
+  if (show_perc){
 
     temp <- miss_guide_label(x)
 

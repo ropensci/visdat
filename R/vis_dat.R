@@ -24,7 +24,7 @@ vis_dat <- function(x,
                     sort_type = TRUE,
                     palette = "default") {
 
-  if (sort_type == TRUE) {
+  if (sort_type) {
 
     # arrange by the columns with the highest missingness
     # code inspired from
