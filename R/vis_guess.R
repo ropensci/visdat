@@ -10,9 +10,6 @@
 #'
 #' @examples
 #'
-#' library(tidyr)
-#' library(dplyr)
-#'
 #' messy_vector <- c(TRUE,
 #'                  "TRUE",
 #'                  "T",
