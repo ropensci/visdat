@@ -9,7 +9,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r}
+```{r knitr-setup}
 knitr::opts_chunk$set(fig.width = 5, 
                       fig.height = 4)
 ```
@@ -122,7 +122,7 @@ vis_miss_ly(airquality)
 
 The idea here is to pass expectations into `vis_dat` or `vis_miss`, along the lines of the `expectation` command in `assertr`. For example, you could ask `vis_dat` to identify those cells with values of -1 with something like this:
 
-```{r eval = FALSE}
+```{r example-expectation, eval = FALSE}
 
 data %>% 
   expect(value == -1) %>%
@@ -132,7 +132,7 @@ data %>%
 
 In reality, the mechanics might looks something like this:
 
-```{r eval = FALSE}
+```{r example-expectation-mech, eval = FALSE}
 airquality %>%
   mutate_if(is.numeric, .funs = function(x) x <= 10) %>%
     dplyr::mutate(rows = seq_len(nrow(.))) %>%
