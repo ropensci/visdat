@@ -16,14 +16,7 @@ knitr::opts_chunk$set(fig.width = 5,
 
 ```
 
-
-In his [R for Data Science book](http://r4ds.had.co.nz/), Wickham describes 6 phases of data science:
-
-![Process of Data Science](http://r4ds.had.co.nz/diagrams/data-science.png)
-
-You can get insight into your data by modelling, visualising, and transforming, which Wickham describes as "Understanding" or "knowledge generation". There is some overlap here, as in this process it wouldn't be surprising that you might uncover some feature of your dataset that you would need to clean up - you might discover that some strings were indeed factors, or that gender was considered numeric in your regression, warranting you to re-visit the Tidying phase.
-
-In the same way, I think that this process gets applied in the Tidying step of data science. You read in your data, but you then need to look at it to understand what you need to do to "fix it". And that's a key phrase here "looking at the data" - what does that mean?
+When you get a new data set, you need to look at the data to get a sense of what it contains and potential problems with it. That's a key phrase here "looking at the data" - what does that mean?
 
 On the one hand, you can look at the head of the data:
 
@@ -69,7 +62,7 @@ vis_dat(typical_data)
 
 And the `vis_miss` function provides a custom plot for missing data.
 
-```{r}
+```{r example-vis-miss}
 
 vis_miss(typical_data)
 
