@@ -26,9 +26,11 @@ There are two main commands in the `visdat` package:
 
 -   `vis_dat()` visualises a dataframe showing you what the classes of the columns are, and also displaying the missing data.
 
--   `vis_miss()` visualises just the missing data, and allows for missingness to be clustered and columns rearranged. `vis_miss()` is similar to `missing.pattern.plot` from the [`mi`](https://cran.r-project.org/web/packages/mi/index.html) package. Unfortunately `missing.pattern.plot` is no longer in the `mi` package (well, as of 14/02/2016).
+-   `vis_miss()` visualises just the missing data, and allows for missingness to be clustered and columns rearranged. `vis_miss()` is similar to `missing.pattern.plot` from the [`mi`](https://cran.r-project.org/web/packages/mi/index.html) package. Unfortunately `missing.pattern.plot` is no longer in the `mi` package (as of 14/02/2016).
 
-There are also experimental which are described in more detail in the [vignette: "Experimental Features of visdat](http://www.njtierney.com/visdat/articles/experimental_features.html).
+You can read more about visdat in the vignette, ["using visdat""](http://www.njtierney.com/visdat/articles/using_visdat.html).
+
+There are also experimental which are described in more detail in the vignette ["Experimental Features of visdat](http://www.njtierney.com/visdat/articles/experimental_features.html).
 
 Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
 
@@ -45,8 +47,6 @@ Let's see what's inside the `airquality` dataset from base R, which contains inf
 library(visdat)
 
 vis_dat(airquality)
-#> dmap() is deprecated. Please use the new colwise family in dplyr.
-#> E.g., summarise_all(), mutate_all(), etc.
 ```
 
 ![](README-figs/README-vis-dat-aq-1.png)
@@ -59,8 +59,6 @@ By default, `vis_dat` sorts the columns according to the type of the data in the
 
 vis_dat(airquality, 
         sort_type = FALSE)
-#> dmap() is deprecated. Please use the new colwise family in dplyr.
-#> E.g., summarise_all(), mutate_all(), etc.
 ```
 
 ![](README-figs/README-vis-dat-aq-sort-type-1.png)
@@ -72,8 +70,6 @@ To demonstrate what visdat looks like when you have different kinds of data, we 
 ``` r
 
 vis_dat(typical_data)
-#> dmap() is deprecated. Please use the new colwise family in dplyr.
-#> E.g., summarise_all(), mutate_all(), etc.
 #> Warning: attributes are not identical across measure variables; they will
 #> be dropped
 ```
@@ -85,8 +81,6 @@ We can also look into using even wider data, looking at `typical_larger_data`
 ``` r
 
 vis_dat(typical_larger_data)
-#> dmap() is deprecated. Please use the new colwise family in dplyr.
-#> E.g., summarise_all(), mutate_all(), etc.
 #> Warning: attributes are not identical across measure variables; they will
 #> be dropped
 ```
