@@ -70,8 +70,6 @@ To demonstrate what visdat looks like when you have different kinds of data, we 
 ``` r
 
 vis_dat(typical_data)
-#> Warning: attributes are not identical across measure variables; they will
-#> be dropped
 ```
 
 ![](README-figs/README-vis-dat-typical-data-1.png)
@@ -81,8 +79,6 @@ We can also look into using even wider data, looking at `typical_larger_data`
 ``` r
 
 vis_dat(typical_larger_data)
-#> Warning: attributes are not identical across measure variables; they will
-#> be dropped
 ```
 
 ![](README-figs/README-vis-dat-typical-larger-data-1.png)
@@ -130,8 +126,6 @@ test_miss_df <- data.frame(x1 = 1:10000,
                            x3 = c(rep(1L, 9999), NA))
 
 vis_miss(test_miss_df)
-#> Warning: attributes are not identical across measure variables; they will
-#> be dropped
 ```
 
 ![](README-figs/README-vis-miss-test-1.png)
