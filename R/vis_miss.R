@@ -130,7 +130,7 @@ vis_miss <- function(x,
                                 labels = label_col_missing_pct(x,
                                                                col_order_index)) +
       # fix up the location of the text
-      ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0.2))
+      ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0))
   } else {
     vis_miss_plot +
     ggplot2::scale_x_discrete(position = "top",
