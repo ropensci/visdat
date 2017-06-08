@@ -79,7 +79,8 @@ label_col_missing_pct <- function(x,
       )
     }) %>%
     paste0(col_order_index,
-           "\n",
-           .)
+           " (",
+           .,
+           ")")
 
 }
