@@ -91,10 +91,9 @@ Below I respond to suggested changes and other constructive criticisms.
 - Thank for you picking up on this, this was fixed [here](https://github.com/njtierney/visdat/commit/31909e241c1e1cc1b640c55edaea9c228f92976e)
 
 > example(vis_compare) is a good example but gives a bunch of warning messages.
-
 > example(vis_guess): gives warning message
 
-- These now gives the message: 
+- These now both give warning messages like: 
 
 ```
 vis_compare / (vis_guess) is in BETA! If you have suggestions or errors
@@ -116,11 +115,11 @@ Do you think this is OK?
 
 > The paper doesn't have any references in the "References" section, but does have inline references.
 
-- These references are provided in the yaml, and in a .bib file - hopefully these get compiled with the JOSS paper, but perhaps @arfon can chime in here.
+- These references are provided in the yaml, and in a .bib file - hopefully these get compiled with the JOSS paper perhaps @arfon can chime in here?
 
 > If you keep it, make sure you have permission to reproduce the image from R4DS.
 
-- I have removed the figure now, in favour of your earlier suggestion to keep things simpler - thank you for this suggestion!
+- I have removed the figure now, in favour of your earlier suggestion to keep things simpler - thank you for this suggestion! :)
 
 # Functionality
 
@@ -130,14 +129,15 @@ Do you think this is OK?
 
 > The flip argument should be available for all of the functions if you provide it for any, for the sake of consistency. Possibly also the palette argument.
 
-- I agree that the rows should be in the order that you see the dataframes. I would also prefer for the column names to be on top of the visualisation, but I cannot seem to get the column names to present nicely here.
+- I agree that the rows should be in the order that you see the dataframes. I would also prefer for the column names to be on top of the visualisation - I have now implemented this, although I think that the presentation of the column names is perhaps not ahs nice.
 
-- The flip argument was placed there to experiment with this idea of flipping the plot - as you suggested, to have row 1 at the top. Personally, I think that now the flip argument should be removed, as I cannot now really think of any times where I would prefer the old arrangement of rows.
+- The flip argument was placed there to experiment with this idea of flipping the plot - as you suggested, to have row 1 at the top. The flip argument has now been removed, as I cannot now really think of any times where I would prefer the old arrangement of rows.
 
-- I agree with you re the palette, although I'm not sure how this could work for vis_miss. But perhaps I should allow for users to insert their own pallete for this.
+- I think that the default sort_type option should be to put all of the similar columns together - to me this makes it easier to identify what is similar, and what is different; when I start looking at a dataset I usually want to know what variables are what class. I am willing to change this, but would be interested to see what others think.
+
+- I agree with you re the palette argument being provided for all plots, although I'm not sure how this could work for vis_miss. But perhaps I should allow for users to insert their own pallete for this. Personally I think that there should be a standard palette where the common classes (character, factor, integer, numeric, datetime, etc) each have their own distinct colour, and other classes are given different factors.
 
 > A number of the functions emit warning messages ("Warning message: attributes are not identical across measure variables; they will be dropped"), specifically when they are called with a data frame that has >1 factor column with different levels. This arises from the call tidyr::gather_(x, "variables", "value", names(x))$value. This message is not relevant to the end user and should be suppressed.
-
 
 > There is some code duplication across some of the functions, where you could replace it with a helper function. The code creating the plots is generally similar across functions. In addition, the following code blocks appear in essentially identical form in >1 function:
 
@@ -157,7 +157,7 @@ Do you think this is OK?
 ```
 
 
-- Thank you very much for this, I have created a helper function as you suggested, and suppressed the message in that way.
+- Thank you very much for this, this has bothered me for a while! I have created a helper function as you suggested, and suppressed the message in that way.
 
 > The code for flipping the rows is also duplicated:
 
@@ -185,7 +185,7 @@ Do you think this is OK?
 
 > This is a minor issue, but was so thoroughly drummed into me by CS professors that I have to mention it. In calls like if (sort_type == TRUE), the == TRUE is redundant, so it's equivalent to just write if (sort_type). Similarly, if (x == FALSE) is equivalent to if (!x). There are a number of these in the code for various functions.
 
-- I've actually not heard this before, but I can certainly understand why you would want to avoid called such as if(x == TRUE) over if(x). Personally, however, I think I actually prefer to be really explicit.
+- I've actually not heard this before, but I can certainly understand why you would want to avoid called such as if(x == TRUE) over if(x). This has now been changed
 
 # vis_dat()
 
