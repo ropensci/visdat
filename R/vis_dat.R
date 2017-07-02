@@ -18,6 +18,7 @@
 #'
 #' # experimental colourblind safe palette
 #' vis_dat(airquality, palette = "cb_safe")
+#' vis_dat(airquality, palette = "qual")
 #'
 #' @export
 vis_dat <- function(x,
@@ -25,12 +26,6 @@ vis_dat <- function(x,
                     palette = "default") {
 
   if (sort_type) {
-
-    # arrange by the columns with the highest missingness
-    # code inspired from
-    # https://r-forge.r-project.org/scm/viewvc.php/pkg/R/...
-    # ...missing.pattern.plot.R?view=markup&root=mi-dev
-    # get the order of columns with highest missingness
 
     type_sort <- order(
       # get the class, if there are multiple classes, combine them together
@@ -48,13 +43,10 @@ vis_dat <- function(x,
 
   # reshape the dataframe ready for geom_raster
   d <- x %>%
-    # mutate_each_(funs(fingerprint), tbl_vars(.)) %>%
     purrr::map_df(fingerprint) %>%
     vis_gather_() %>%
   # get the values here so plotly can make them visible
     dplyr::mutate(value = vis_extract_value_(x))
-
-  # d$value <- tidyr::gather_(x, "variables", "value", names(x))$value
 
   # do the plotting
   vis_dat_plot <-
@@ -62,74 +54,13 @@ vis_dat <- function(x,
     vis_create_(d) +
     # change the limits etc.
     ggplot2::guides(fill = ggplot2::guide_legend(title = "Type")) +
-  # flip the axes
     # add info about the axes
     ggplot2::scale_x_discrete(limits = type_order_index,
                               position = "top")
 
-
-   if (palette == "qual"){
-
-     # qualitative, 6 colours
-       vis_dat_palette <- c("#e41a1c", # red
-                            "#ffff33", # yellow
-                            "#ff7f00", # Orange
-                            "#377eb8", # blue
-                            "#4daf4a", # Green
-                            "#984ea3") # Purple
-
-       vis_dat_plot +
-         ggplot2::scale_fill_manual(limits = c("character",
-                                      "date",
-                                      "factor",
-                                      "integer",
-                                      "logical",
-                                      "numeric"),
-                           breaks = c("character", # red
-                                      "date", # orange
-                                      "factor", # yellow
-                                      "integer", # light blue
-                                      "logical", # mid blue
-                                      "numeric"), # dark blue
-                           values = vis_dat_palette,
-                           na.value = "grey")
-       # continue reading here:
-       # http://docs.ggplot2.org/current/discrete_scale.html
-
-   } else if (palette == "cb_safe"){
-
-       # # diverging, 6 colours, colour-blind safe
-       vis_dat_palette <- c('#d73027', # red
-                            '#fc8d59', # orange
-                            '#fee090', # yellow
-                            '#e0f3f8', # light blue
-                            '#91bfdb', # mid blue
-                            '#4575b4') # dark blue
-
-     vis_dat_plot +
-       ggplot2::scale_fill_manual(limits = c("character",
-                                    "date",
-                                    "factor",
-                                    "integer",
-                                    "logical",
-                                    "numeric"),
-                         breaks = c("character", # red
-                                    "date", # orange
-                                    "factor", # yellow
-                                    "integer", # light blue
-                                    "logical", # mid blue
-                                    "numeric"), # dark blue
-                         values = vis_dat_palette,
-                         na.value = "grey")
-     # continue reading here:
-     # http://docs.ggplot2.org/current/discrete_scale.html
-
-   } else if (palette == "default"){
-
-     # regular palette
-     vis_dat_plot
-
-   }
+  # specify a palette ----------------------------------------------------------
+  add_vis_dat_pal(vis_dat_plot, palette)
 
 
-}
+
+} # close function

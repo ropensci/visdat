@@ -25,6 +25,7 @@ vis_dat(airquality)
 
 # experimental colourblind safe palette
 vis_dat(airquality, palette = "cb_safe")
+vis_dat(airquality, palette = "qual")
 
 }
 \seealso{
