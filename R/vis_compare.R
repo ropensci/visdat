@@ -1,12 +1,15 @@
 #' Visually compare two dataframes and see where they are different.
 #'
-#' `vis_compare`, like the other `vis_*` families, gives an at-a-glance ggplot of a dataset, but in this case, hones in on visualising **two** different dataframes of the same dimension.
+#' `vis_compare`, like the other `vis_*` families, gives an at-a-glance ggplot
+#'   of a dataset, but in this case, hones in on visualising **two** different
+#'   dataframes of the same dimension.
 #'
 #' @param df1 The first dataframe to compare
 #'
 #' @param df2 The second dataframe to compare to the first.
 #'
-#' @return `ggplot2` object displaying which values in each data frame are present in each other.
+#' @return `ggplot2` object displaying which values in each data frame are
+#'   present in each other.
 #'
 #' @seealso [vis_miss()] [vis_dat()] [vis_miss_ly()] [vis_compare()]
 #'

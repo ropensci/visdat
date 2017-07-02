@@ -13,5 +13,7 @@ vis_extract_value_(x)
 the x dataframe with the added column \code{value}.
 }
 \description{
-This adds information about each row, so that when called by plotly, the values are made visible on hover. Warnings are suppressed because tidyr gives a warning about type coercion, which is fine.
+This adds information about each row, so that when called by plotly, the
+values are made visible on hover. Warnings are suppressed because tidyr
+gives a warning about type coercion, which is fine.
 }

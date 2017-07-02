@@ -10,7 +10,8 @@ vis_gather_(x)
 \item{x}{a dataframe}
 }
 \value{
-data.frame gathered to have columns "variables", "valueType", and a row id called "rows".
+data.frame gathered to have columns "variables", "valueType", and a
+row id called "rows".
 }
 \description{
 (Internal) Gather rows into a format appropriate for grid visualisation

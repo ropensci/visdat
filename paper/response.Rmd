@@ -99,6 +99,7 @@ Below I respond to suggested changes and other constructive criticisms.
 vis_compare / (vis_guess) is in BETA! If you have suggestions or errors
 post an issue at https://github.com/njtierney/visdat/issues
 ```
+
 Do you think this is OK?
 
 # Community guidelines
@@ -156,9 +157,6 @@ Do you think this is OK?
   d$value <- tidyr::gather_(x, "variables", "value", names(x))$value
 ```
 
-
-- Thank you very much for this, this has bothered me for a while! I have created a helper function as you suggested, and suppressed the message in that way.
-
 > The code for flipping the rows is also duplicated:
 
 ```
@@ -185,17 +183,31 @@ Do you think this is OK?
 
 > This is a minor issue, but was so thoroughly drummed into me by CS professors that I have to mention it. In calls like if (sort_type == TRUE), the == TRUE is redundant, so it's equivalent to just write if (sort_type). Similarly, if (x == FALSE) is equivalent to if (!x). There are a number of these in the code for various functions.
 
-- I've actually not heard this before, but I can certainly understand why you would want to avoid called such as if(x == TRUE) over if(x). This has now been changed
+<!-- - I've actually not heard this before, but I can certainly understand why you would want to avoid called such as if(x == TRUE) over if(x). This has now been changed. -->
 
 # vis_dat()
 
 > Maximum data frame size: the heatmaps stop working on my computer with very large data sets. E.g. library(nycflights13); vis_dat(flights) hangs for a minute or so and then displays an empty grid. It works with 10000 rows, but not 100000. Similar issue with many columns. Especially because this package is designed for people to get a sense of new data sets, where users may not have realized how big the data are, I think it makes sense to prevent this issue. Possibilities: (1) max_rows = 10000 parameter, which stops if nrow(data) > max_rows and gives a descriptive error message. Then the user can increase the maximum or subset their data frame. Might also need to consider max_cols because 10000 rows and 2 cols is very different from 10000 rows and 500 cols. (2) Downsample the non-missing rows somehow and indicate to the user where omissions were made. (3) ???
 
-- This is an interesting one! It was brought to my attention [here](), by @MilesMcBain, but I couldn't replicate this issue. Similarly, I can actually display the nycflights data. So it seems that this is to do with the fact that computations power has a bit to do with it. I think that option 1 is the best case here, but option 2 actually gets a little bit difficult, because this leads to another issue of effectively downsampling a dataset whilst maintaining key characteristics. This could a problem, say, if I did perform down-sampling and then the user looked at the data with visdat and plotly, they might get a mis-represented sample. Likewise, if there is a very large proportion of missing data, this might be difficult to preserve exactly. Ways around this might include some very explicit warning messages, or perhaps even a note directly on the plot that the data have been downsampled.
+- This is an interesting one! It was brought to my attention [here](https://github.com/njtierney/visdat/issues/32), by @MilesMcBain, but I couldn't replicate this issue. Similarly, I can actually display the nycflights data. So it seems that this is to do with the fact that computations power has a bit to do with it. I think that option 1 is the best case here, but option 2 actually gets a little bit difficult, because this leads to another issue of effectively downsampling a dataset whilst maintaining data structure. This could be a problem, say, if I did perform down-sampling and then the user looked at the data with visdat and plotly, they might get a mis-represented sample. Likewise, if there is a very large proportion of missing data, this might be difficult to preserve exactly. Ways around this might include some very explicit warning messages, or perhaps even a note directly on the plot that the data have been downsampled.
 
 > The palette argument doesn't cause color changes, as far as I can tell. I think you need to do vis_dat_plot <- vis_dat_plot + <palette>, whereas currently the value of vis_dat_plot isn't being updated in the blocks related to color palettes. Additionally, you could do ggplot2::scale_color_brewer(type = "qual", palette = "Set1") rather than explicitly writing out the color names, although the colors would be in a slightly different order than you have now.
 
+- 
+
 > If the user provides a palette name, you should check that it's valid. If not, throw an error with a message. Currently, if you misspell a palette name, it just goes ahead with the default palette.
+
+- Great point! I have fixed this now with:
+
+```r
+
+     } else  {
+       warning("palette arguments need to be either 'qual' 'cb_safe' or 'default'")
+     } # close else brace
+
+```
+
+at the end of `vis_dat.R`
 
 # Minor comments
 
@@ -203,27 +215,40 @@ Do you think this is OK?
 
 > Inside of the first if-block, there are some comments about arranging columns in order of missingness, but as far as I can tell, that is not done.
 
+- Thank you for picking up on these comments, they are now removed!
+
 ## vis_miss()
 
 > It would be cool to indicate the % missing for each column individually (maybe in column labels?) like how you indicate the % missing for the data overall.
 
-- great suggestion, this has been added! And can be turned off in the options with `show_perc_col == FALSE`
+- great suggestion, this has been added! And can be turned off in the options with `show_perc_col == FALSE`.
 
 ## vis_compare()
 
 > This is a neat function! It would be cool if you could generalize it to also handle data frames of unequal dimensions, perhaps by showing which rows/columns are only in one data frame or the other. Just an idea I had though, not a requirement at all!
 
-- I am glad you like this! It is a difficult problem that I cannot work outk, re the rows/cols matching when they are out of the dimension. I'm not quite sure what to do here.
+- I am glad you like this! It is a difficult problem that I cannot work out, re the rows/cols matching when they are out of the dimension. I'm not quite sure what to do here to make this possible, I think that this should be tackled in a future release of `visdat`.
 
 > Warning message: "1: In if (dim(df1) != dim(df2)) { : the condition has length > 1 and only the first element will be used". This is a consequence of calling dim(df1) != dim(df2). The dim function returns a two element vector in this case, but the != only compares the first element of each vector. (I.e. it's only comparing the number of rows). Instead, use !identical(dim(df1), dim(df2)).
 
 > In the error message about data frames of unequal dimensions, you mean to say "vis_compare only handles dataframes of identical dimensions", not "does not handle".
 
+
+```r
+
+  if (!identical(dim(df1), dim(df2))){
+    stop("Dimensions of df1 and df2 are not the same. vis_compare currently only handles dataframes of identical dimensions.")
+  }
+
+```
+
+- Thank you for both of these comments! These have been changed in `vis_compare.R`.
+
 ## vis_guess
 
 > vis_guess lacks some of the parameters that vis_dat has, but should have the same options (except maybe not sort_type?)
 
-- Agree, this is a good idea.
+- Agree, this is a good idea, I have added a helper palette function now so that `vis_guess` and `vis_dat` can share the same palette
 
 > Performance: Setting the locale once and then calling collectorGuess instead of guess_parser is about 33% faster on my computer. I think the savings is by avoiding repeatedly calling the locale function and avoiding repeatedly calling stopifnot (inside the readr code).
 
@@ -293,7 +318,7 @@ guess_parser_vector <- function(x, locale = default_locale()) {
 
 > Then rebuild readr. Back in visdat, call guess_parser_vector once with the whole vector of unknowns instead of calling guess_parser repeatedly.
 
-- OK, so I think that this is a fantastic 
+- OK, so I think that this is a fantastic idea! But I'm not sure on the best way to move this into production of `visdat`, since it sounds like we would need to borrow a chunk of code from readr and then modify it. I wonder if perhaps the solution here is to do a pull request for this specific feature in `readr`?
 
 ## vis_miss_ly
 
@@ -301,15 +326,17 @@ guess_parser_vector <- function(x, locale = default_locale()) {
 
 > Why not have the same arguments for this function as for vis_miss?
 
-- I will see what I can whip up in plotly, I do not know much about it at the moment, but @carson has a free book, so I'll get onto that.
-
 ## vis_dat_ly()
 
 > With vis_dat(airquality) %>% ggplotly(), the window that appears on mouseover should say "type" instead of "valueType", "variable" instead of "variables" and "row" instead of "rows"
 
-- OK, I'm pretty sure that this is an easy fix, I just specify these things in the arguments of ggplot, which plotly reads in. The problem is then that I need to change the names of things inside of ggplot
 
 > If you provide vis_miss_ly, it makes sense to me to also provide vis_dat_ly, and possibly also vis_compare_ly and vis_guess_ly. An initial implementation could just be vis_dat(x) %>% ggplotly(), but then you have the API in place at least.
+
+
+- I will see what I can whip up in plotly, I do not know much about it at the moment, but @carson has a free book, so I'll get onto that.
+
+- OK, I'm pretty sure that this is an easy fix, I just specify these things in the arguments of ggplot, which plotly reads in. The problem is then that I need to change the names of things inside of ggplot
 
 - I would prefer to build it in straight plotly, as plotly is really fast, and the process of converting ggplot plots into plotly is actually quite computationally intense
 
@@ -317,7 +344,7 @@ guess_parser_vector <- function(x, locale = default_locale()) {
 
 > Cool use of vdiffr and generally good coverage. The tests don't all pass on my machine (they are mostly skipped), which I think is because I don't have the .svg reference files on my computer.
 
-- I think that this is the default behaviour of `vdiffr`? It states [here](https://github.com/lionel-/vdiffr#running-tests) that "New cases for which you just wrote an expectation will be skipped. Failed tests will show as an error."
+- Yes, the 
 
 > I suggest adding a test for each function using typical_data, because that currently emits a warning message. That way once you stop the error message from occurring, you'll have a regression test for the future.
 
@@ -388,17 +415,17 @@ guess_parser_vector <- function(x, locale = default_locale()) {
 
 > vis_dat_ly(), and vis_miss_ly() aren't in the experimental vignette, though the opening paragraph suggests that they will be
 
-- Thank you for picking that up, they have been added in commit ...
+- Thank you for picking that up, they have been added now.
 
 ## Documentation: Help
 
 > The vis_guess description is a bit hard to follow. I'd start by stating what it does do, before making the comparison to vis_dat, just so it's a bit more self-contained.
 
-- 
+- done, great suggestion!
 
 > The visdat and visdat-package sections are empty, when, I assume, you'll want the description to be included (right now description just says "visdat").
 
-- Thank you for picking up on this, I've added ... in commit ...
+- Thank you for picking up on this, I've updated the main descriotion file now
 
 ## Examples
 
@@ -417,15 +444,15 @@ e.g. example("vis_compare") results in
 
 - Agreed, this error message for vis_compare has been addressed in commit ...
 
-vis_compare example also seems to cluster by default (all different data is shown at the bottom, of the two columns)
+> vis_compare example also seems to cluster by default (all different data is shown at the bottom, of the two columns)
 
 - 
 
 ## Community guidelines
 
-I don't believe these are currently in the package.
+> I don't believe these are currently in the package.
 
-- Thank you for picking up on this, I've added them in commit ... 
+- Thank you for picking up on this, I've added them now, :)
 
 ## Paper
 
@@ -469,7 +496,7 @@ I don't believe these are currently in the package.
 
 > vis_guess is where the cell-to-row visual disparity becomes most confusing. I think this is a fantastic function, especially for beginners, and so the ability to essentially "read" the visual, as one would a table (top to bottom), would be invaluable.
 
-- Agreed, this has been addressed by making the "flip" argument become the hard set default. I cannot honestly see
+- Agreed, this has been addressed by making the "flip" argument become the hard set default. I cannot honestly see a good reason to use the old print method, so I have removed it to make it read top down first.
 
 > vis_dat with plotly / interactive functions are great, and, again, here it would be even more helpful if one could "read" the charts as one would a table.
 
@@ -479,18 +506,31 @@ This has been a fantastic process to be a part of. To summarise, the main change
 
 - re-orienting the vis_* family to read in the way that one reads a dataframe
 - removing many of the error messages that occur due to some tidy/dplyr collation of factors
-- 
+- refactoring repeated code into internal functions to more clearly express what
 
 Still remaining to do is:
 
 - complete vis_guess() for release
     - Adding the fast Rcpp code for guess_type
     - remove message regarding BETA
-- create `vis_dat_ly`, `vis_miss_ly`, and `vis_guess_ly` functions
+- Add interactivity
+  - create `vis_dat_ly`, `vis_miss_ly`, and `vis_guess_ly` functions
 - Ensure that all of the `vis_*` family functions have the same internal arguments where appropriate:
   - E.g., vis_dat, doesn't need to same clustering missingness options (or...does it?)
 - move vis_compare into a "dev" branch on github
 - should I export vis_guess? - Yes, as I thought that it might be a useful function for users, although I can't think of a good usecase outside of `vis_guess` right now. Perhaps it might be best for `guess_type` to be unexported?
+
+- For the moment I have decided to put visdat onto CRAN, with the main functions
+being: 
+  - vis_dat
+  - vis_miss
+  - vis_guess
+- Then, in a subsequent release, I will add the interactive functions:
+  - vis_dat_ly
+  - vis_miss_ly
+  - vis_guess_ly
+  - vis_compare
+- And also look into speed improvements for `vis_guess`
 
 > example(vis_guess) / example(vis_compare) : gives warning message
 

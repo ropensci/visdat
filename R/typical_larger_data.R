@@ -1,6 +1,8 @@
 #' A small toy dataset of imaginary people
 #'
-#' A wider dataset than `typical_data` containing information about some randomly generated people, created using the excellent `wakefield` package. It is created as deliberately odd / eclectic dataset.
+#' A wider dataset than `typical_data` containing information about some
+#' randomly generated people, created using the excellent `wakefield` package.
+#' It is created as deliberately odd / eclectic dataset.
 #'
 #' @format A data frame with 300 rows and 49 variables:
 #' \describe{
@@ -33,7 +35,8 @@
 #'   \item{Level}{levels between 1 and 4}
 #'   \item{Likert}{likert response - "strongly agree", "agree", and so on}
 #'   \item{Lorem_Ipsum}{lorem ipsum text}
-#'   \item{Marital}{marital status- "married", "divorced", "widowed", "separated", etc}
+#'   \item{Marital}{marital status- "married", "divorced", "widowed",
+#'     "separated", etc}
 #'   \item{Military}{miliary branch they are in}
 #'   \item{Month}{their favorite month}
 #'   \item{Name}{their name}

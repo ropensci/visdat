@@ -1,3 +1,16 @@
+# visdat 0.0.7.9000 (2017/07/01)
+
+## New Features
+
+- `add_vis_dat_pal()` (internal) to add a palette for `vis_dat` and `vis_guess`
+- `vis_guess` now gets a palette argument like `vis_dat`
+
+## Minor improvements
+
+- corrected testing for `vis_*` family
+- added .svg graphics for correct vdiffr testing
+  
+
 # visdat 0.0.6.9000 (2017/02/26)
 
 ## New Features

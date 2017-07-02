@@ -1,10 +1,11 @@
 #' Guess the type of each individual cell in a dataframe
 #'
-#' `guess_type` is used in vis_guess as a utility function. Similar to `fingerprint`.
+#' `guess_type` is used by vis_guess to guess cell elements, like `fingerprint`.
 #'
 #' @param x is a vector of values you want to guess
 #'
-#' @return a character vector that describes the suspected class. e.g., "10" is an integer, "20.11" is a double, "text" is character, etc.
+#' @return a character vector that describes the suspected class. e.g., "10" is
+#'   an integer, "20.11" is a double, "text" is character, etc.
 #'
 #' @examples
 #'
@@ -49,8 +50,6 @@ guess_type <- function(x){
 #'   guess_vector()
 #'
 #' messy_df %>%
-#'
-#'
 #'
 #' mb_df <-
 #' microbenchmark::microbenchmark(

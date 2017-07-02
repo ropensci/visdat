@@ -1,6 +1,8 @@
 #' Interactive plot of missingness in plotly
 #'
-#' This is a basic implementation of vis_miss in plotly, some work is still needed to fix the legend, but it is several (read, about 3000x) faster than doing `ggplotly(vis_miss(data))`.
+#' This is a basic implementation of vis_miss in plotly, some work is still
+#'   needed to fix the legend, but it is several (read, about 3000x) faster
+#'   than doing `ggplotly(vis_miss(data))`.
 #'
 #' @param x a dataframe
 #'

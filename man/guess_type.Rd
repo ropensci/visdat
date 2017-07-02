@@ -10,10 +10,11 @@ guess_type(x)
 \item{x}{is a vector of values you want to guess}
 }
 \value{
-a character vector that describes the suspected class. e.g., "10" is an integer, "20.11" is a double, "text" is character, etc.
+a character vector that describes the suspected class. e.g., "10" is
+an integer, "20.11" is a double, "text" is character, etc.
 }
 \description{
-\code{guess_type} is used in vis_guess as a utility function. Similar to \code{fingerprint}.
+\code{guess_type} is used by vis_guess to guess cell elements, like \code{fingerprint}.
 }
 \examples{
 

@@ -12,10 +12,13 @@ vis_compare(df1, df2)
 \item{df2}{The second dataframe to compare to the first.}
 }
 \value{
-\code{ggplot2} object displaying which values in each data frame are present in each other.
+\code{ggplot2} object displaying which values in each data frame are
+present in each other.
 }
 \description{
-\code{vis_compare}, like the other \code{vis_*} families, gives an at-a-glance ggplot of a dataset, but in this case, hones in on visualising \strong{two} different dataframes of the same dimension.
+\code{vis_compare}, like the other \code{vis_*} families, gives an at-a-glance ggplot
+of a dataset, but in this case, hones in on visualising \strong{two} different
+dataframes of the same dimension.
 }
 \examples{
 
