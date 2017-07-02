@@ -2,7 +2,8 @@
 #'
 #' @param x a dataframe
 #'
-#' @return data.frame gathered to have columns "variables", "valueType", and a row id called "rows".
+#' @return data.frame gathered to have columns "variables", "valueType", and a
+#'   row id called "rows".
 #'
 vis_gather_ <- function(x){
   x %>%
@@ -15,7 +16,9 @@ vis_gather_ <- function(x){
 
 #' (Internal) Add values of each row as a column
 #'
-#' This adds information about each row, so that when called by plotly, the values are made visible on hover. Warnings are suppressed because tidyr gives a warning about type coercion, which is fine.
+#' This adds information about each row, so that when called by plotly, the
+#'   values are made visible on hover. Warnings are suppressed because tidyr
+#'   gives a warning about type coercion, which is fine.
 #'
 #' @param x dataframe created from `vis_gather_`
 #'
@@ -34,7 +37,8 @@ vis_extract_value_ <- function(x){
 
 #' (Internal) Create a boilerploate for visualisations of the vis_ family
 #'
-#' @param x a dataframe in longformat as transformed by `vis_gather_` and `vis_extract_value`.
+#' @param x a dataframe in longformat as transformed by `vis_gather_` and
+#'   `vis_extract_value`.
 #'
 #' @return a ggplot object
 #'
@@ -84,3 +88,89 @@ label_col_missing_pct <- function(x,
            ")")
 
 }
+
+#' Add a specific palette to a visdat plot
+#'
+#'
+#'
+#' @param vis_plot visdat plot created using vis_gather_, vis_extract_value
+#'   and vis_create_
+#' @param palette character "default", "qual" or "cb_safe". "default" (the default)
+#'   provides the stock ggplot scale for separating the colours. "qual" uses an experimen
+#'   al qualitative colour scheme for providing distinct colours for each Type. "cb_safe"
+#'   is a set of colours that are appropriate for those with colourblindness. "qual" and
+#'   "cb_safe" are drawn from http://colorbrewer2.org/.
+#'
+#' @return a visdat plot with a particular palette
+#'
+#' @examples
+#'
+#' \dontrun{
+#' # see internal use inside vis_guess and vis_dat
+#' }
+#'
+add_vis_dat_pal <- function(vis_plot, palette){
+
+  # palette options: http://docs.ggplot2.org/current/discrete_scale.html
+# qualitative, 6 colours --------------------------------------------------
+vis_pal_qual <- c("#e41a1c", # red
+                      "#ffff33", # yellow
+                      "#ff7f00", # Orange
+                      "#377eb8", # blue
+                      "#4daf4a", # Green
+                      "#984ea3") # Purple
+
+# diverging, 6 colours, colour-blind safe -------------------------------
+vis_pal_cb_safe <- c('#d73027', # red
+                         '#fc8d59', # orange
+                         '#fee090', # yellow
+                         '#e0f3f8', # light blue
+                         '#91bfdb', # mid blue
+                         '#4575b4') # dark blue
+
+if (palette == "default"){
+
+  vis_plot
+
+} else if (palette == "qual") {
+
+  vis_plot +
+    ggplot2::scale_fill_manual(limits = c("character",
+                                          "date",
+                                          "factor",
+                                          "integer",
+                                          "logical",
+                                          "numeric"),
+                               breaks = c("character", # red
+                                          "date", # orange
+                                          "factor", # yellow
+                                          "integer", # light blue
+                                          "logical", # mid blue
+                                          "numeric"), # dark blue
+                               values = vis_pal_qual,
+                               na.value = "grey")
+
+
+} else if (palette == "cb_safe") {
+
+  vis_plot +
+    ggplot2::scale_fill_manual(limits = c("character",
+                                          "date",
+                                          "factor",
+                                          "integer",
+                                          "logical",
+                                          "numeric"),
+                               breaks = c("character", # red
+                                          "date", # orange
+                                          "factor", # yellow
+                                          "integer", # light blue
+                                          "logical", # mid blue
+                                          "numeric"), # dark blue
+                               values = vis_pal_cb_safe,
+                               na.value = "grey")
+
+} else  {
+  stop("palette arguments need to be either 'qual' 'cb_safe' or 'default'")
+} # close else brace
+
+} # close the function

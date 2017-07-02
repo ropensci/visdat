@@ -7,7 +7,8 @@
 vis_create_(x)
 }
 \arguments{
-\item{x}{a dataframe in longformat as transformed by \code{vis_gather_} and \code{vis_extract_value}.}
+\item{x}{a dataframe in longformat as transformed by \code{vis_gather_} and
+\code{vis_extract_value}.}
 }
 \value{
 a ggplot object
