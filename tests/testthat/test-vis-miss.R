@@ -1,10 +1,10 @@
 context("vis_miss")
 
 # try out all the options
-vis_miss_plot <- vis_miss(airquality)
-vis_miss_plot_cluster <- vis_miss(airquality, cluster = TRUE)
-vis_miss_plot_sort_rows <- vis_miss(airquality, sort_miss = TRUE)
-vis_miss_plot_show_perc <- vis_miss(airquality, show_perc = FALSE)
+vis_miss_plot <- vis_miss(typical_data)
+vis_miss_plot_cluster <- vis_miss(typical_data, cluster = TRUE)
+vis_miss_plot_sort_rows <- vis_miss(typical_data, sort_miss = TRUE)
+vis_miss_plot_show_perc <- vis_miss(typical_data, show_perc = FALSE)
 
 test_that("vis_miss creates the right plot",{
   vdiffr::expect_doppelganger("vis_miss vanilla", vis_miss_plot)
