@@ -63,7 +63,7 @@ vis_dat(typical_data)
 
 And the `vis_miss` function provides a custom plot for missing data.
 
-```{r}
+```{r vis-miss}
 
 vis_miss(typical_data)
 

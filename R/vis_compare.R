@@ -1,12 +1,15 @@
 #' Visually compare two dataframes and see where they are different.
 #'
-#' `vis_compare`, like the other `vis_*` families, gives an at-a-glance ggplot of a dataset, but in this case, hones in on visualising **two** different dataframes of the same dimension.
+#' `vis_compare`, like the other `vis_*` families, gives an at-a-glance ggplot
+#'   of a dataset, but in this case, hones in on visualising **two** different
+#'   dataframes of the same dimension, and so takes two dataframes as arguments.
 #'
 #' @param df1 The first dataframe to compare
 #'
 #' @param df2 The second dataframe to compare to the first.
 #'
-#' @return `ggplot2` object displaying which values in each data frame are present in each other.
+#' @return `ggplot2` object displaying which values in each data frame are
+#'   present in each other, and which are not.
 #'
 #' @seealso [vis_miss()] [vis_dat()] [vis_miss_ly()] [vis_compare()]
 #'
@@ -31,10 +34,8 @@ vis_compare <- function(df1,
   # Tells us whether it is the same (true) as the other dataset, or not (false)
 
   if (!identical(dim(df1), dim(df2))){
-    stop("Dimensions of df1 and df2 are not the same. Unfortunately vis_compare
-          does not handles dataframes of the exact same dimension.")
+    stop("Dimensions of df1 and df2 are not the same. vis_compare currently only handles dataframes of identical dimensions.")
   }
-
 
   v_identical <- Vectorize(identical)
 
@@ -45,23 +46,21 @@ vis_compare <- function(df1,
   df_diff %>%
     as.data.frame() %>%
     purrr::map_df(compare_print) %>%
-    dplyr::mutate(rows = seq_len(nrow(.))) %>%
-    # gather the variables together for plotting
-    # here we now have a column of the row number (row),
-    # then the variable(variables),
-    # then the contents of that variable (value)
-    tidyr::gather_(key_col = "variables",
-                   value_col = "valueType",
-                   gather_cols = names(.)[-length(.)])
+    vis_gather_() %>%
+    dplyr::mutate(value_df1 = vis_extract_value_(df1),
+                  value_df2 = vis_extract_value_(df2))
 
-  d$value_df1 <- tidyr::gather_(df1, "variables", "value", names(df1))$value
-  d$value_df2 <- tidyr::gather_(df2, "variables", "value", names(df2))$value
+  # d$value_df1 <- tidyr::gather_(df1, "variables", "value", names(df1))$value
+  # d$value_df2 <- tidyr::gather_(df2, "variables", "value", names(df2))$value
 
   # then we plot it
   ggplot2::ggplot(data = d,
-                  ggplot2::aes_string(x = "variables",
+                  ggplot2::aes_string(
+                    x = "variable",
                     y = "rows",
                     # text assists with plotly mouseover
+                    # currently this text argument prevents it from being used
+                    # in the boilerplate
                     text = c("value_df1", "value_df2"))) +
     ggplot2::geom_raster(ggplot2::aes_string(fill = "valueType")) +
     # change the colour, so that missing is grey, present is black
@@ -75,13 +74,19 @@ vis_compare <- function(df1,
                                      hjust = 1)) +
     ggplot2::labs(x = "Variables in Data",
          y = "Observations",
+         # this prevents it from being used in the boilerplate
          fill = "Cell Type") +
-    ggplot2::scale_x_discrete(limits = names(df_diff)) +
+    # ggplot2::scale_x_discrete(limits = names(df_diff)) +
     ggplot2::scale_fill_manual(limits = c("same",
                                  "different"),
                       breaks = c("same", # red
                                  "different"), # dark blue
                       values = c("#ff7f00", # Orange
                                  "#377eb8"), # blue
-                      na.value = "grey")
+                      na.value = "grey") +
+  # flip the axes
+  ggplot2::scale_y_reverse() +
+  ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0.25)) +
+    ggplot2::scale_x_discrete(position = "top",
+                              limits = names(df_diff))
 }

@@ -4,16 +4,28 @@
 \alias{vis_guess}
 \title{Visualise type guess in a data.frame}
 \usage{
-vis_guess(x)
+vis_guess(x, palette = "default")
 }
 \arguments{
 \item{x}{a data.frame object}
+
+\item{palette}{character "default", "qual" or "cb_safe". "default" (the
+default) provides the stock ggplot scale for separating the colours.
+"qual" uses an experimental qualitative colour scheme for providing
+distinct colours for each Type. "cb_safe" is a set of colours that are
+appropriate for those with colourblindness. "qual" and "cb_safe" are drawn
+from http://colorbrewer2.org/.}
 }
 \value{
-\code{ggplot2} object displaying the guess of the type of values in the data frame and the position of any missing values.
+\code{ggplot2} object displaying the guess of the type of values in the
+data frame and the position of any missing values.
 }
 \description{
-\code{vis_guess} visualises the class of every single individual cell in a dataframe and displays it as ggplot object, similar to \code{vis_dat}. Cells are coloured according to what class they are and whether the values are missing. \code{vis_guess} estimates the class of individual elements using \code{readr::guess_parser}.  Currently it may be slow on larger datasets.
+\code{vis_guess} visualises the class of every single individual cell in a
+dataframe and displays it as ggplot object, similar to \code{vis_dat}. Cells
+are coloured according to what class they are and whether the values are
+missing. \code{vis_guess} estimates the class of individual elements using
+\code{readr::guess_parser}.  It may be currently slow on larger datasets.
 }
 \examples{
 

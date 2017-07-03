@@ -6,7 +6,9 @@
 \alias{visdat-package}
 \title{visdat}
 \description{
-visdat is a package that helps with the preliminary visualisation of data. visdat makes it easy to visualise your whole dataset so that you can visually identify problems.
+visdat is a package that helps with the preliminary visualisation of data.
+visdat makes it easy to visualise your whole dataset so that you can
+visually identify problems.
 }
 \seealso{
 It's main functions are:
@@ -18,5 +20,5 @@ It's main functions are:
 \item \code{\link[=vis_miss_ly]{vis_miss_ly()}}
 }
 
-To learn more about visdat, see the vignette at \url{www.njtierney.com/visdat/articles/using_visdat.html}
+Learn more about visdat at \url{www.njtierney.com/visdat/articles/using_visdat.html}
 }

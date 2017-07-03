@@ -8,3 +8,6 @@
 ^paper$
 ^README-figs$
 ^CONDUCT\.md$
+^data-raw$
+^cran-comments\.md$
+^LICENSE\.md$

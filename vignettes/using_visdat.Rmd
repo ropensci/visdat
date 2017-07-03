@@ -4,12 +4,12 @@ author: "Nicholas Tierney"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{Using visdat}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r setup, echo = FALSE}
+```{r setup, echo = FALSE, include = FALSE}
 
 knitr::opts_chunk$set(fig.width = 5,
                       fig.height = 4)
@@ -157,7 +157,7 @@ Thanks to Carson Sievert, you can now add some really nifty interactivity into v
 
 library(plotly)
 
-vis_dat(airquality, flip = TRUE) %>% ggplotly()
+vis_dat(airquality) %>% ggplotly()
 vis_miss(airquality) %>% ggplotly()
 
 ```
