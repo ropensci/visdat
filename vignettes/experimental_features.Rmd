@@ -4,7 +4,7 @@ author: "Nicholas Tierney"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{Experimental Features of visdat}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -17,42 +17,15 @@ knitr::opts_chunk$set(fig.width = 5,
 
 Shipped with visdat are some experimental features that are still a bit temperamental:
 
+- `vis_guess()`,
 - `vis_compare()`
-- `vis_guess`,
 - `vis_dat_ly()`,
-- `vis_miss_ly`.
+- `vis_dat_ly()`.
+- `vis_miss_ly()`.
+- `vis_guess_ly()`.
+- `vis_compare_ly()`.
 
 This vignette describes these features in more detail, along with some of the plans for future work.
-
-## Using `vis_compare()`
-
-Sometimes you want to see what has changed in your data. `vis_compare()` helps with that. It is currently only just barely working, so keep in mind that this is very much in its beta stages.
-
-For the sake of simplicity, let's make some changes to `iris`, and compare this new dataset.
-
-```{r vis-compare-iris}
-library(visdat)
-iris_diff <- iris
-iris_diff[sample(1:150, 30),sample(1:4, 2)] <- NA
-
-vis_compare(iris_diff, iris)
-
-```
-
-Here the differences are marked in blue.
-
-If you try and compare differences when the dimensions are different, you get an ugly error.
-
-```{r vis-compare-error, eval = FALSE}
-
-iris_diff_2 <- iris
-iris_diff_2$new_col <- iris$Sepal.Length + iris$Sepal.Width
-
-vis_compare(iris, iris_diff_2)
-#> vis_compare is still in BETA! If you have suggestions or errors, post an issue at https://github.com/njtierney/visdat/issuesthe condition has length > 1 and only the first element will be usedError: `.x` (5) and `.y` (6) are different lengths
-```
-
-In the future I'm hoping to create some way of representing the added columns and rows as an additional facet-like part of the plot, perhaps using something from [gridExtra](https://cran.r-project.org/web/packages/gridExtra/vignettes/arrangeGrob.html).
 
 
 ## Using `vis_guess()`
@@ -100,21 +73,69 @@ Here, you might just assume your data is weird because it's all factors - or wor
 
 At the moment `vis_guess` is very slow. Please take this into consideration when you are using it on data with more than 1000 rows. We're looking into ways of making it faster, potentially using methods from the `parallel` package, or extending the c++ code from `readr:::collectorGuess`.
 
+## Using `vis_compare()`
+
+Sometimes you want to see what has changed in your data. `vis_compare()` helps with that. It is currently only just barely working, so keep in mind that this is very much in its beta stages.
+
+For the sake of simplicity, let's make some changes to `iris`, and compare this new dataset.
+
+```{r vis-compare-iris}
+library(visdat)
+iris_diff <- iris
+iris_diff[sample(1:150, 30),sample(1:4, 2)] <- NA
+
+vis_compare(iris_diff, iris)
+
+```
+
+Here the differences are marked in blue.
+
+If you try and compare differences when the dimensions are different, you get an ugly error.
+
+```{r vis-compare-error, eval = FALSE}
+
+iris_diff_2 <- iris
+iris_diff_2$new_col <- iris$Sepal.Length + iris$Sepal.Width
+
+vis_compare(iris, iris_diff_2)
+#> vis_compare is still in BETA! If you have suggestions or errors, post an issue at https://github.com/njtierney/visdat/issuesthe condition has length > 1 and only the first element will be usedError: `.x` (5) and `.y` (6) are different lengths
+```
+
+In the future I'm hoping to create some way of representing the added columns and rows as an additional facet-like part of the plot, perhaps using something from [gridExtra](https://cran.r-project.org/web/packages/gridExtra/vignettes/arrangeGrob.html).
+
 # Interactivity
 
 ## vis_dat_ly
 
-`vis_dat_ly(airquality)` is a faster version of calling `ggplotly(vis_dat(airquality))`. When hovering the cursor over a cell, it will display information about each each cell, the type of data, the value, the row number, and the variable.
+`vis_dat_ly(airquality)` is shorthand to call `ggplotly(vis_dat(airquality))`. When hovering the cursor over a cell, it will display information about each each cell, the type of data, the value, the row number, and the variable.
+
+At the moment the current implementation can be slow, as `plotly` has to work hard to translate the ggplot calls into plotly.
+
+```{r vis-dat-ly}
+vis_dat_ly(airquality)
+```
+
 
 ## vis_miss_ly
 
-`vis_miss_ly(airquality)` is similar to `vis_dat_ly` - a faster version of calling `ggplotly(vis_miss(airquality))`. When hovering the cursor over a cell, it will display information about each each cell, the type of data, the number of missings in that case, and the number of missings in that variable.
+`vis_miss_ly(airquality)` is similar to `vis_dat_ly`, a shorthand call to `ggplotly(vis_miss(airquality))` with one important difference: it is written in pure plotly, so it is very fast!
+
+When hovering the cursor over a cell, it will display information about each each cell, the type of data, the number of missings in that case, and the number of missings in that variable.
 
 ```{r vis-miss-ly}
 
 vis_miss_ly(airquality)
 
 ```
+
+## vis_guess_ly
+
+This is again similar to the other `vis_*_ly()` family calls, requiring 
+
+```{r}
+
+```
+
 
 # Road Map
 
