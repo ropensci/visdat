@@ -8,7 +8,7 @@
 vis_gather_ <- function(x){
   x %>%
   dplyr::mutate(rows = seq_len(nrow(x))) %>%
-    tidyr::gather_(key_col = "variables",
+    tidyr::gather_(key_col = "variable",
                    value_col = "valueType",
                    gather_cols = names(.)[-length(.)])
 }
@@ -28,7 +28,7 @@ vis_extract_value_ <- function(x){
 
   suppressWarnings(
     tidyr::gather_(x,
-                   "variables",
+                   "variable",
                    "value",
                    names(x))$value
   )
@@ -45,7 +45,7 @@ vis_extract_value_ <- function(x){
 vis_create_ <- function(x){
 
   ggplot2::ggplot(data = x,
-                  ggplot2::aes_string(x = "variables",
+                  ggplot2::aes_string(x = "variable",
                                       y = "rows",
                                     # text assists with plotly mouseover
                                     text = "value")) +

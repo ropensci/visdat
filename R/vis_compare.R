@@ -2,14 +2,14 @@
 #'
 #' `vis_compare`, like the other `vis_*` families, gives an at-a-glance ggplot
 #'   of a dataset, but in this case, hones in on visualising **two** different
-#'   dataframes of the same dimension.
+#'   dataframes of the same dimension, and so takes two dataframes as arguments.
 #'
 #' @param df1 The first dataframe to compare
 #'
 #' @param df2 The second dataframe to compare to the first.
 #'
 #' @return `ggplot2` object displaying which values in each data frame are
-#'   present in each other.
+#'   present in each other, and which are not.
 #'
 #' @seealso [vis_miss()] [vis_dat()] [vis_miss_ly()] [vis_compare()]
 #'
@@ -56,7 +56,7 @@ vis_compare <- function(df1,
   # then we plot it
   ggplot2::ggplot(data = d,
                   ggplot2::aes_string(
-                    x = "variables",
+                    x = "variable",
                     y = "rows",
                     # text assists with plotly mouseover
                     # currently this text argument prevents it from being used

@@ -40,6 +40,8 @@
 #'                        var2 = sample(messy_vector),
 #'                        var3 = sample(messy_vector))
 #' vis_guess_ly(messy_df)
+#'
+#' @export
 
 vis_guess_ly <- function(x, palette = "default"){
 

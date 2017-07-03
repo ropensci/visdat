@@ -1,13 +1,10 @@
 context("Internals")
 
-test_vis_gather_ <- airquality %>%
-  as.data.frame %>%
-  vis_gather_()
+test_vis_gather_ <- suppressWarnings(vis_gather_(typical_data))
 
-test_old_gather <- airquality %>%
-  as.data.frame %>%
+test_old_gather <- typical_data %>%
   dplyr::mutate(rows = seq_len(nrow(.))) %>%
-  tidyr::gather_(key_col = "variables",
+  tidyr::gather_(key_col = "variable",
                  value_col = "valueType",
                  gather_cols = names(.)[-length(.)])
 
@@ -18,20 +15,19 @@ test_that("vis_gather_ returns the same as previous",{
 
 })
 
-d_old <-
-  airquality %>%
+d_old <- typical_data %>%
   purrr::map_df(fingerprint) %>%
   vis_gather_()
 
-d_old$value <-  tidyr::gather_(airquality,
+d_old$value <-  tidyr::gather_(typical_data,
                                "variables",
-                               "value", names(airquality))$value
+                               "value", names(typical_data))$value
 
 d_new <-
-  airquality %>%
+  typical_data %>%
   purrr::map_df(fingerprint) %>%
   vis_gather_() %>%
-  dplyr::mutate(value = vis_extract_value_(airquality))
+  dplyr::mutate(value = vis_extract_value_(typical_data))
 # get the values here so plotly can make them visible
 
 test_that("vis_extract_value performs the same as old method",{
