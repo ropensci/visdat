@@ -10,11 +10,12 @@ add_vis_dat_pal(vis_plot, palette)
 \item{vis_plot}{visdat plot created using vis_gather_, vis_extract_value
 and vis_create_}
 
-\item{palette}{character "default", "qual" or "cb_safe". "default" (the default)
-provides the stock ggplot scale for separating the colours. "qual" uses an experimen
-al qualitative colour scheme for providing distinct colours for each Type. "cb_safe"
-is a set of colours that are appropriate for those with colourblindness. "qual" and
-"cb_safe" are drawn from http://colorbrewer2.org/.}
+\item{palette}{character "default", "qual" or "cb_safe". "default" (the
+default) provides the stock ggplot scale for separating the colours. "qual"
+uses an experimental qualitative colour scheme for providing distinct
+colours for each Type. "cb_safe" is a set of colours that are appropriate
+for those with colourblindness. "qual" and "cb_safe" are drawn from
+http://colorbrewer2.org/.}
 }
 \value{
 a visdat plot with a particular palette

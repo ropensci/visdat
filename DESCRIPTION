@@ -1,9 +1,8 @@
 Package: visdat
 Title: Preliminary Visualisation of Data
-Version: 0.0.7.9000
+Version: 0.1.0
 Authors@R: person("Nicholas", "Tierney", email = "nicholas.tierney@gmail.com", role = c("aut", "cre"))
-Description: visdat makes it easy to visualise your whole dataset so that you
-    can visually identify problems.
+Description: Pre-exploratory data visualisation of an entire dataset to identify problems.
 Depends:
     R (>= 3.2.2)
 License: MIT + file LICENSE
@@ -14,13 +13,12 @@ Imports:
     tidyr,
     dplyr,
     purrr,
-    readr,
-    plotly (>= 4.5.6),
     magrittr,
     stats
-URL: https://njtierney.com/visdat
+URL: http://www.njtierney.com/visdat/
 BugReports: https://github.com/njtierney/visdat/issues
 Suggests:
+    plotly (>= 4.5.6),
     testthat,
     knitr,
     rmarkdown,

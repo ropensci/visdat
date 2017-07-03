@@ -30,8 +30,6 @@ There are two main commands in the `visdat` package:
 
 You can read more about visdat in the vignette, ["using visdat""](http://www.njtierney.com/visdat/articles/using_visdat.html).
 
-There are also experimental which are described in more detail in the vignette ["Experimental Features of visdat](http://www.njtierney.com/visdat/articles/experimental_features.html).
-
 Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
 
 Examples
@@ -78,7 +76,7 @@ We can also look into using even wider data, looking at `typical_larger_data`
 
 ``` r
 
-vis_dat(typical_larger_data)
+vis_dat(typical_data_large)
 ```
 
 ![](README-figs/README-vis-dat-typical-larger-data-1.png)

@@ -35,7 +35,7 @@ vis_extract_value_ <- function(x){
 
 }
 
-#' (Internal) Create a boilerploate for visualisations of the vis_ family
+#' (Internal) Create a boilerplate for visualisations of the vis_ family
 #'
 #' @param x a dataframe in longformat as transformed by `vis_gather_` and
 #'   `vis_extract_value`.
@@ -91,15 +91,14 @@ label_col_missing_pct <- function(x,
 
 #' Add a specific palette to a visdat plot
 #'
-#'
-#'
 #' @param vis_plot visdat plot created using vis_gather_, vis_extract_value
 #'   and vis_create_
-#' @param palette character "default", "qual" or "cb_safe". "default" (the default)
-#'   provides the stock ggplot scale for separating the colours. "qual" uses an experimen
-#'   al qualitative colour scheme for providing distinct colours for each Type. "cb_safe"
-#'   is a set of colours that are appropriate for those with colourblindness. "qual" and
-#'   "cb_safe" are drawn from http://colorbrewer2.org/.
+#' @param palette character "default", "qual" or "cb_safe". "default" (the
+#'   default) provides the stock ggplot scale for separating the colours. "qual"
+#'   uses an experimental qualitative colour scheme for providing distinct
+#'   colours for each Type. "cb_safe" is a set of colours that are appropriate
+#'   for those with colourblindness. "qual" and "cb_safe" are drawn from
+#'   http://colorbrewer2.org/.
 #'
 #' @return a visdat plot with a particular palette
 #'

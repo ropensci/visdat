@@ -39,5 +39,5 @@ vis_dat(airquality, palette = "qual")
 
 }
 \seealso{
-\code{\link[=vis_miss]{vis_miss()}} \code{\link[=vis_miss_ly]{vis_miss_ly()}} \code{\link[=vis_guess]{vis_guess()}} \code{\link[=vis_compare]{vis_compare()}}
+\code{\link[=vis_miss]{vis_miss()}}
 }

@@ -58,4 +58,4 @@
 #'   \item{Zip}{a zip code they have visited}
 #' }
 #'
-"typical_larger_data"
+"typical_data_large"

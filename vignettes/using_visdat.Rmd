@@ -147,7 +147,7 @@ vis_miss(airquality,
 
 ```
 
-To further explore the missingness structure in a dataset, I recommend the [`naniar`](https://github.com/njtierney/naniar) package, which provides more general tools for graphical and numerical exploration of missing values.
+To further explore the missingness structure in a dataset, I recommend the [`narnia`](https://github.com/njtierney/narnia) package, which provides more general tools for graphical and numerical exploration of missing values.
 
 ## Interactivity
 
@@ -164,5 +164,5 @@ vis_miss(airquality) %>% ggplotly()
 
 # Future work
 
-There are some other features in development for interactivity, guessing types of data, and comparing datasets. You read more about these in the vignette, ["Experimental Features of visdat"](http://www.njtierney.com/visdat/articles/experimental_features.html).
+There are some other features in development for interactivity, guessing types of data, and comparing datasets.
 

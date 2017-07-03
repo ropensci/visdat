@@ -10,9 +10,6 @@
 #' \itemize{
 #'   \item [vis_dat()]
 #'   \item [vis_miss()]
-#'   \item [vis_guess()]
-#'   \item [vis_compare()]
-#'   \item [vis_miss_ly()]
 #' }
 #'
 #' Learn more about visdat at \url{www.njtierney.com/visdat/articles/using_visdat.html}
