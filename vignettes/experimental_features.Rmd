@@ -61,7 +61,7 @@ messy_df <- data.frame(var1 = messy_vector,
 
 
 ```{r vis-guess-messy-df, fig.show='hold', out.width='50%'}
-
+library(visdat)
 vis_guess(messy_df)
 vis_dat(messy_df)
 
@@ -80,7 +80,6 @@ Sometimes you want to see what has changed in your data. `vis_compare()` helps w
 For the sake of simplicity, let's make some changes to `iris`, and compare this new dataset.
 
 ```{r vis-compare-iris}
-library(visdat)
 iris_diff <- iris
 iris_diff[sample(1:150, 30),sample(1:4, 2)] <- NA
 
@@ -132,8 +131,8 @@ vis_miss_ly(airquality)
 
 This is again similar to the other `vis_*_ly()` family calls, requiring 
 
-```{r}
-
+```{r vis-guess-ly}
+vis_guess_ly(typical_data)
 ```
 
 

@@ -136,7 +136,7 @@ Do you think this is OK?
 
 - I think that the default sort_type option should be to put all of the similar columns together - to me this makes it easier to identify what is similar, and what is different; when I start looking at a dataset I usually want to know what variables are what class. I am willing to change this, however.^
 
-- I agree with you re the palette argument being provided for all plots, although I'm not sure how this could work for vis_miss. But perhaps I should allow for users to insert their own pallete for this. Personally I think that there should be a standard palette where the common classes (character, factor, integer, numeric, datetime, etc) each have their own distinct colour, and other classes are given different factors.
+- I agree with you re the palette argument being provided for all plots, although I'm not sure how this could work for vis_miss. But perhaps I should allow for users to insert their own palette for this. Personally I think that there should be a standard palette where the common classes (character, factor, integer, numeric, datetime, etc) each have their own distinct colour, and other classes are given different factors.
 
 > A number of the functions emit warning messages ("Warning message: attributes are not identical across measure variables; they will be dropped"), specifically when they are called with a data frame that has >1 factor column with different levels. This arises from the call tidyr::gather_(x, "variables", "value", names(x))$value. This message is not relevant to the end user and should be suppressed.
 
@@ -441,7 +441,7 @@ guess_parser_vector <- function(x, locale = default_locale()) {
 
 > The visdat and visdat-package sections are empty, when, I assume, you'll want the description to be included (right now description just says "visdat").
 
-- Thank you for picking up on this, I've updated the main descriotion file now
+- Thank you for picking up on this, I've updated the main description file now
 
 ## Examples
 
@@ -529,42 +529,49 @@ This has been a fantastic process to be a part of. To summarise, the main change
 
 - re-orienting the vis_* family to read in the way that one reads a dataframe
 - removing many of the error messages that occur due to some tidy/dplyr collation of factors
-- refactoring repeated code into internal functions to more clearly express what was happening, and avoiding repetition.
-- 
+- refactoring repeated code into internal functions to more clearly express what was happening, and avoiding repetition. This resulted in the creation of internal functions `vis_gather_`, `vis_extract_value`, and `vis_create_`
+- adding percentage missing to the column names in `vis_miss`
 
-Still remaining to do is:
-
-- Make a separate branch for the experimental features.
+- For the moment I have decided to submit visdat to CRAN, with the main functions: 
+  - vis_dat
+  - vis_miss
+  
+Then, in a separate branch, there will be all of the features:
   - vis_compare()
   - vis_guess()
   - vis_*_ly() family
-- complete vis_guess() for release
-    - Adding the fast Rcpp code for guess_type
-- Add interactivity using pure plotly
-  - create `vis_dat_ly`, `vis_miss_ly`, and `vis_guess_ly` functions in plotly
-- Ensure that all of the `vis_*` family functions have the same internal arguments where appropriate:
+  
+There is still more work to be done on these functions. Specifically:
 
-- For the moment I have decided to put visdat onto CRAN, with the main functions
-being: 
-  - vis_dat
-  - vis_miss
-- Then, in a subsequent release, I will add the functions:
-  - vis_guess (speed improvements required)
-  - vis_compare
-  - vis_dat_ly
-  - vis_miss_ly
-  - vis_guess_ly
-  - vis_compare_ly
+- vis_guess. This needs to be made much faster, and will incorporate the C code from @seaaan to do so.
+- vis_*_ly() family will be written in pure plotly, for speed.
 
-> example(vis_guess) / example(vis_compare) : gives warning message
+I now summarise some of the changes that I wanted to confirm with the reviewers, @seaaan and @batpigandme:
 
-- These now gives the message: 
+1. Is the warning message for vis_guess/vis_compare code OK? `example(vis_guess) / example(vis_compare)`
 
 ```
 vis_compare / (vis_guess) is in BETA! If you have suggestions or errors
 post an issue at https://github.com/njtierney/visdat/issues
 ```
-Do you think this is OK?
 
-- note, find all "?" "..." and "^", and paste them down here.
+2. The default sort option. I think that the default sort_type option should be to put all of the similar columns together - to me this makes it easier to identify what is similar, and what is different; when I start looking at a dataset I usually want to know what variables are what class. I am willing to change this, however.
 
+3. Maximum row size issue. This is an interesting one! It was brought to my attention [here](https://github.com/njtierney/visdat/issues/32), by @MilesMcBain, but I couldn't replicate this issue. Similarly, I can actually display the nycflights data. So it seems that this is to do with the fact that computations power has a bit to do with it. I think that option 1 is the best case here, but option 2 actually gets a little bit difficult, because this leads to another issue of effectively downsampling a dataset whilst maintaining data structure. This could be a problem, say, if I did perform down-sampling and then the user looked at the data with visdat and plotly, they might get a mis-represented sample. Likewise, if there is a very large proportion of missing data, this might be difficult to preserve exactly. Ways around this might include some very explicit warning messages, or perhaps even a note directly on the plot that the data have been downsampled. ^At the moment one solution forward is to have a check first, something like:
+
+```r
+vis_dat(really_large_data)
+
+Warning: This dataset contains over 10,000 rows, which may take a while to render. Are you sure that you want to continue?
+
+1: Yes
+2. No (You should use a sample of your data)
+```
+
+4. Speed for vis_guess. @seaaan wrote some nice code to make this work much much faster, and I think that this is a fantastic idea! But I'm not sure on the best way to move this into production of `visdat`, since it sounds like we would need to borrow a chunk of code from readr and then modify it. I wonder if perhaps the solution here is to do a pull request for this specific feature in `readr`?
+
+5. Can the two issues below be replicated?
+
+> I don't know why, but in the plotly section, a vis_dat() (non-interactive) plot of df_test appears between the first two interactive plots. I can't explain it, hopefully it's just a weird quirk on my computer.
+
+> I'm getting an error 83 because pandoc-citeproc is missing. I believe this is something I'm missing on my machine, and, thus you don't need to worry about. But, just in case, I'm letting you know!
