@@ -1,8 +1,8 @@
 #' A small toy dataset of imaginary people
 #'
 #' A wider dataset than `typical_data` containing information about some
-#' randomly generated people, created using the excellent `wakefield` package.
-#' It is created as deliberately odd / eclectic dataset.
+#'   randomly generated people, created using the excellent `wakefield` package.
+#'   It is created as deliberately odd / eclectic dataset.
 #'
 #' @format A data frame with 300 rows and 49 variables:
 #' \describe{
@@ -57,13 +57,5 @@
 #'   \item{Year}{significant year to that individuals}
 #'   \item{Zip}{a zip code they have visited}
 #' }
-#'
-#' @note the following code was used to create this data
-#'
-#' library(wakefield)
-#'
-#' set.seed(1214)
-#' typical_larger_data <- r_data_theme(n = 300, data_theme = "the_works")
-#'
 #'
 "typical_larger_data"

@@ -65,12 +65,4 @@ A wider dataset than \code{typical_data} containing information about some
 randomly generated people, created using the excellent \code{wakefield} package.
 It is created as deliberately odd / eclectic dataset.
 }
-\note{
-the following code was used to create this data
-
-library(wakefield)
-
-set.seed(1214)
-typical_larger_data <- r_data_theme(n = 300, data_theme = "the_works")
-}
 \keyword{datasets}

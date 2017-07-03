@@ -25,7 +25,7 @@ data frame and the position of any missing values.
 dataframe and displays it as ggplot object, similar to \code{vis_dat}. Cells
 are coloured according to what class they are and whether the values are
 missing. \code{vis_guess} estimates the class of individual elements using
-\code{readr::guess_parser}.  Currently it may be slow on larger datasets.
+\code{readr::guess_parser}.  It may be currently slow on larger datasets.
 }
 \examples{
 

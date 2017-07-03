@@ -13,12 +13,12 @@ vis_compare(df1, df2)
 }
 \value{
 \code{ggplot2} object displaying which values in each data frame are
-present in each other.
+present in each other, and which are not.
 }
 \description{
 \code{vis_compare}, like the other \code{vis_*} families, gives an at-a-glance ggplot
 of a dataset, but in this case, hones in on visualising \strong{two} different
-dataframes of the same dimension.
+dataframes of the same dimension, and so takes two dataframes as arguments.
 }
 \examples{
 

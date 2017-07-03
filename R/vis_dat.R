@@ -71,6 +71,4 @@ vis_dat <- function(x,
   # specify a palette ----------------------------------------------------------
   add_vis_dat_pal(vis_dat_plot, palette)
 
-
-
 } # close function

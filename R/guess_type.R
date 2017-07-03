@@ -8,7 +8,7 @@
 #'   an integer, "20.11" is a double, "text" is character, etc.
 #'
 #' @examples
-#'
+#' \dontrun{
 #' guess_type(1)
 #'
 #' guess_type("x")
@@ -16,9 +16,7 @@
 #' guess_type(c("1", "0L"))
 #'
 #' purrr::map_df(iris, guess_type)
-#'
-#' @export
-#'
+#' }
 guess_type <- function(x){
 
   # since

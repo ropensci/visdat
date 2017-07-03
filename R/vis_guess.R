@@ -4,7 +4,7 @@
 #'   dataframe and displays it as ggplot object, similar to `vis_dat`. Cells
 #'   are coloured according to what class they are and whether the values are
 #'   missing. `vis_guess` estimates the class of individual elements using
-#'   `readr::guess_parser`.  Currently it may be slow on larger datasets.
+#'   `readr::guess_parser`.  It may be currently slow on larger datasets.
 #'
 #' @param x a data.frame object
 #' @param palette character "default", "qual" or "cb_safe". "default" (the
