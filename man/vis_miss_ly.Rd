@@ -20,6 +20,7 @@ than doing \code{ggplotly(vis_miss(data))}.
 \examples{
 
 vis_miss_ly(airquality)
+plotly::ggplotly(vis_dat(airquality))
 
 }
 \seealso{

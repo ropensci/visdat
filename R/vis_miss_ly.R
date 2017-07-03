@@ -15,16 +15,24 @@
 #' @examples
 #'
 #' vis_miss_ly(airquality)
+#' plotly::ggplotly(vis_dat(airquality))
 #'
 vis_miss_ly <- function(x){
 
   x.na <- is.na(x)
   d <- x.na
   n <- nrow(x)
+  # printing for row numbers and column names
+  rows <- rep(1:nrow(x),ncol(x))
+  vars <- rep(colnames(x), each = nrow(x))
 
   categories <- sort(unique(c(d)))
   m <- matrix(match(d, categories), nrow = n)
-  txt <- matrix(paste(as.matrix(x), "<br />", d), nrow = n)
+  txt <- matrix(paste(sprintf("value = %s", as.matrix(x)),
+                      sprintf("variables = %s", vars),
+                      sprintf("rows = %s", rows),
+                      sep = "<br />"),
+                nrow = n)
 
   plotly::plot_ly(z = m,
           x = names(x),

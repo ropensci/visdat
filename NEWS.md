@@ -1,15 +1,21 @@
-# visdat 0.0.7.9000 (2017/07/01)
+# visdat 0.0.7.9100 (2017/07/03)
 
 ## New Features
 
 - `add_vis_dat_pal()` (internal) to add a palette for `vis_dat` and `vis_guess`
 - `vis_guess` now gets a palette argument like `vis_dat`
+- Added protoype/placeholder functions for `plotly` vis_*_ly interactive graphs:
+  - `vis_guess_ly()`
+  - `vis_dat_ly()`
+  - `vis_compare_ly()`
+  These simply wrap `plotly::ggplotly(vis_*(data))`. In the future they will
+  be written in `plotly` so that they can be generated much faster
 
 ## Minor improvements
 
 - corrected testing for `vis_*` family
 - added .svg graphics for correct vdiffr testing
-  
+- improved hover print method for plotly.
 
 # visdat 0.0.6.9000 (2017/02/26)
 
