@@ -2,7 +2,7 @@ Package: visdat
 Title: Preliminary Visualisation of Data
 Version: 0.1.0
 Authors@R: person("Nicholas", "Tierney", email = "nicholas.tierney@gmail.com", role = c("aut", "cre"))
-Description: Pre-exploratory data visualisation of an entire dataset to 
+Description: Preliminary exploratory data visualisation of an entire dataset to 
   identify problems or unexpected features.
 Depends:
     R (>= 3.2.2)
