@@ -4,6 +4,7 @@
 ^README-.*\.png$
 ^\.travis\.yml$
 ^appveyor\.yml$
+^_pkgdown\.yml$
 ^docs$
 ^paper$
 ^README-figs$
@@ -11,3 +12,4 @@
 ^data-raw$
 ^cran-comments\.md$
 ^LICENSE\.md$
+.Rprofile
