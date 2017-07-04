@@ -1,7 +1,5 @@
 ---
-output:
-  md_document:
-    variant: markdown_github
+output: github_document
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -11,7 +9,7 @@ output:
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "README-figs/README-"
+  fig.path = "man/figures/README-"
 )
 
 ```
@@ -20,7 +18,8 @@ knitr::opts_chunk$set(
 
 <!-- add a TravisCI badge -->
 <!-- Add an appVeyor badge -->
-[![Travis-CI Build Status](https://travis-ci.org/njtierney/visdat.svg?branch=master)](https://travis-ci.org/njtierney/visdat) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/njtierney/visdat?branch=master&svg=true)](https://ci.appveyor.com/project/njtierney/visdat)[![Coverage Status](https://img.shields.io/codecov/c/github/njtierney/visdat/master.svg)](https://codecov.io/github/njtierney/visdat?branch=master)
+
+[![Travis Build Status](https://travis-ci.org/njtierney/visdat.svg?branch=master)](https://travis-ci.org/njtierney/visdat)[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/njtierney/visdat?branch=master&svg=true)](https://ci.appveyor.com/project/njtierney/visdat)[![Coverage Status](https://img.shields.io/codecov/c/github/njtierney/visdat/master.svg)](https://codecov.io/github/njtierney/visdat?branch=master)
 
 
 # How to install
