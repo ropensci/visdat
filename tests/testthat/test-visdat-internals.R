@@ -2,11 +2,13 @@ context("Internals")
 
 test_vis_gather_ <- suppressWarnings(vis_gather_(typical_data))
 
+suppressWarnings(
 test_old_gather <- typical_data %>%
   dplyr::mutate(rows = seq_len(nrow(.))) %>%
   tidyr::gather_(key_col = "variable",
                  value_col = "valueType",
                  gather_cols = names(.)[-length(.)])
+)
 
 test_that("vis_gather_ returns the same as previous",{
 
@@ -19,9 +21,11 @@ d_old <- typical_data %>%
   purrr::map_df(fingerprint) %>%
   vis_gather_()
 
+suppressWarnings(
 d_old$value <-  tidyr::gather_(typical_data,
                                "variables",
                                "value", names(typical_data))$value
+)
 
 d_new <-
   typical_data %>%
