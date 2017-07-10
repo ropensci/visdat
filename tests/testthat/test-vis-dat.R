@@ -7,6 +7,8 @@ vis_dat_plot_pal_qual <- vis_dat(typical_data, palette = "qual")
 vis_dat_plot_pal_cb <- vis_dat(typical_data, palette = "cb_safe")
 
 test_that("vis_dat creates the right plot",{
+  ver <- as.character(gdtools::version_freetype())
+  cat(sprintf("FreeType version: %s\n", ver))
   vdiffr::expect_doppelganger("vis_dat vanilla",
                               vis_dat_plot)
   vdiffr::expect_doppelganger("vis_dat sort_type",
@@ -19,5 +21,7 @@ test_that("vis_dat creates the right plot",{
 
 
 test_that("vis_dat fails when the wrong palette is provided",{
+  ver <- as.character(gdtools::version_freetype())
+  cat(sprintf("FreeType version: %s\n", ver))
   testthat::expect_error(vis_dat(typical_data, palette = "wat"))
 })
