@@ -54,7 +54,7 @@ vis_create_ <- function(x){
   ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45,
                                                      vjust = 1,
                                                      hjust = 1)) +
-  ggplot2::labs(x = "Variables in Dataset",
+  ggplot2::labs(x = "",
                 y = "Observations") +
     # flip the axes
     ggplot2::scale_y_reverse() +
