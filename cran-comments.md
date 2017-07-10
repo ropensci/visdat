@@ -4,8 +4,12 @@
 * win-builder (devel and release)
 
 ## R CMD check results
-0 errors | 0 warnings | 0 notes
-There were no ERRORs or WARNINGs or NOTEs
+0 errors | 0 warnings | 1 notes
+There were no ERRORs or WARNINGs
+
+There was 1 note
+
+* This is a new release
 
 ## Reverse dependencies
 
