@@ -16,7 +16,7 @@ Imports:
     purrr,
     magrittr,
     stats
-URL: http://www.njtierney.com/visdat/
+URL: https://github.com/njtierney/visdat/
 BugReports: https://github.com/njtierney/visdat/issues
 Suggests:
     plotly (>= 4.5.6),
