@@ -7,6 +7,7 @@ vis_miss_plot_sort_rows <- vis_miss(typical_data, sort_miss = TRUE)
 vis_miss_plot_show_perc <- vis_miss(typical_data, show_perc = FALSE)
 
 test_that("vis_miss creates the right plot",{
+  skip_on_cran()
   ver <- as.character(gdtools::version_freetype())
   cat(sprintf("FreeType version: %s\n", ver))
   vdiffr::expect_doppelganger("vis_miss vanilla", vis_miss_plot)
