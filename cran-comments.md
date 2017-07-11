@@ -1,6 +1,6 @@
 ## Test environments
-* local OS X install, R 3.4.0
-* ubuntu 12.04 (on travis-ci), R 3.4.0
+* local OS X install, R 3.4.1
+* ubuntu 12.04 (on travis-ci), R 3.4.1
 * win-builder (devel and release)
 
 ## R CMD check results
@@ -10,6 +10,7 @@ There were no ERRORs or WARNINGs
 
 There was 1 note
 
+* Maintainer: 'Nicholas Tierney <nicholas.tierney@gmail.com>'
 * This is a new submission
 
 ## Reverse dependencies
