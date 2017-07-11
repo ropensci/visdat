@@ -5,7 +5,7 @@
 \title{Visualise a data.frame to display missingness.}
 \usage{
 vis_miss(x, cluster = FALSE, sort_miss = FALSE, show_perc = TRUE,
-  show_perc_col = TRUE)
+  show_perc_col = TRUE, large_data_size = 9e+05, warn_large_data = TRUE)
 }
 \arguments{
 \item{x}{a data.frame}
@@ -21,6 +21,10 @@ in the whole dataset into the legend. Default value is TRUE.}
 
 \item{show_perc_col}{logical. TRUE adds in the \% missing data in a given
 column into the x axis. Can be disabled with FALSE}
+
+\item{large_data_size}{integer default is 900000, this can be changed.}
+
+\item{warn_large_data}{logical default is TRUE}
 }
 \value{
 \code{ggplot2} object displaying the position of missing values in the

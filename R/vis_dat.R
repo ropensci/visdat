@@ -17,6 +17,10 @@
 #'   appropriate for those with colourblindness. "qual" and "cb_safe" are drawn
 #'   from http://colorbrewer2.org/.
 #'
+#' @param warn_large_data logical default is TRUE
+#'
+#' @param large_data_size integer default is 900000, this can be changed.
+#'
 #' @return `ggplot2` object displaying the type of values in the data frame and
 #'   the position of any missing values.
 #'
@@ -33,7 +37,15 @@
 #' @export
 vis_dat <- function(x,
                     sort_type = TRUE,
-                    palette = "default") {
+                    palette = "default",
+                    warn_large_data = TRUE,
+                    large_data_size = 900000) {
+
+  # add warning for large data
+  if (ncol(x) * nrow(x) > large_data_size && warn_large_data){
+    stop("Data exceeds recommended size for visualisation, please consider
+         downsampling your data, or set argument 'warn_large_data' to FALSE.")
+  }
 
   if (sort_type) {
 

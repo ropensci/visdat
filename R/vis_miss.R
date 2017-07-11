@@ -19,6 +19,10 @@
 #'@param show_perc_col logical. TRUE adds in the \% missing data in a given
 #'  column into the x axis. Can be disabled with FALSE
 #'
+#' @param warn_large_data logical default is TRUE
+#'
+#' @param large_data_size integer default is 900000, this can be changed.
+#'
 #' @return `ggplot2` object displaying the position of missing values in the
 #'   dataframe, and the percentage of values missing and present.
 #'
@@ -37,7 +41,16 @@ vis_miss <- function(x,
                      cluster = FALSE,
                      sort_miss = FALSE,
                      show_perc = TRUE,
-                     show_perc_col = TRUE){
+                     show_perc_col = TRUE,
+                     large_data_size = 900000,
+                     warn_large_data = TRUE){
+
+  # add warning for large data
+  if (ncol(x) * nrow(x) > large_data_size && warn_large_data) {
+    stop("Data exceeds recommended size for visualisation, please consider
+         downsampling your data, or set argument 'warn_large_data' to FALSE.")
+  }
+
   # make a TRUE/FALSE matrix of the data.
   # This tells us whether it is missing (true) or not (false)
   x.na <- is.na(x)

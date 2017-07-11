@@ -4,7 +4,8 @@
 \alias{vis_dat}
 \title{Visualises a data.frame to tell you what it contains.}
 \usage{
-vis_dat(x, sort_type = TRUE, palette = "default")
+vis_dat(x, sort_type = TRUE, palette = "default", warn_large_data = TRUE,
+  large_data_size = 9e+05)
 }
 \arguments{
 \item{x}{a data.frame object}
@@ -18,6 +19,10 @@ default) provides the stock ggplot scale for separating the colours.
 distinct colours for each Type. "cb_safe" is a set of colours that are
 appropriate for those with colourblindness. "qual" and "cb_safe" are drawn
 from http://colorbrewer2.org/.}
+
+\item{warn_large_data}{logical default is TRUE}
+
+\item{large_data_size}{integer default is 900000, this can be changed.}
 }
 \value{
 \code{ggplot2} object displaying the type of values in the data frame and
