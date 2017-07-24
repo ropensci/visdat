@@ -4,7 +4,9 @@
 #'
 #' @param x is a dataframe passed from vis_miss(x).
 #'
-#' @return a data_frame with two columns `p_miss_lab` and `p_pres_lab`, containing the labels to use for present and missing. A dataframe is returned because I think it is a good style habit compared to a list.
+#' @return a data_frame with two columns `p_miss_lab` and `p_pres_lab`,
+#'   containing the labels to use for present and missing. A dataframe is
+#'   returned because I think it is a good style habit compared to a list.
 #'
 #'
 miss_guide_label <- function(x) {
@@ -30,12 +32,12 @@ miss_guide_label <- function(x) {
       p_pres <- 100 - p_miss
 
     # create the labels
-    p_miss_lab <- paste("Missing (",
+    p_miss_lab <- paste("Missing \n(",
                         p_miss,
                         "%)",
                         sep = "")
 
-    p_pres_lab <- paste("Present (",
+    p_pres_lab <- paste("Present \n(",
                         p_pres,
                         "%)",
                         sep = "")

@@ -13,11 +13,14 @@ vis_miss_ly(x)
 \code{plotly} interactive plot, similar in appearance to \code{vis_miss}
 }
 \description{
-This is a basic implementation of vis_miss in plotly, some work is still needed to fix the legend, but it is several (read, about 3000x) faster than doing \code{ggplotly(vis_miss(data))}.
+This is a basic implementation of vis_miss in plotly, some work is still
+needed to fix the legend, but it is several (read, about 3000x) faster
+than doing \code{ggplotly(vis_miss(data))}.
 }
 \examples{
 
 vis_miss_ly(airquality)
+plotly::ggplotly(vis_dat(airquality))
 
 }
 \seealso{

@@ -10,7 +10,9 @@ miss_guide_label(x)
 \item{x}{is a dataframe passed from vis_miss(x).}
 }
 \value{
-a data_frame with two columns \code{p_miss_lab} and \code{p_pres_lab}, containing the labels to use for present and missing. A dataframe is returned because I think it is a good style habit compared to a list.
+a data_frame with two columns \code{p_miss_lab} and \code{p_pres_lab},
+containing the labels to use for present and missing. A dataframe is
+returned because I think it is a good style habit compared to a list.
 }
 \description{
 \code{miss_guide_label} is an internal function for vis_miss to label the legend.

@@ -10,5 +10,6 @@
 ^README-figs$
 ^CONDUCT\.md$
 ^data-raw$
-.Rprofile
 ^cran-comments\.md$
+^LICENSE\.md$
+.Rprofile
