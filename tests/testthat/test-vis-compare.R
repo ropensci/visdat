@@ -8,6 +8,7 @@ iris_diff[1:10, 1:2] <- NA
 vis_compare_plot <- vis_compare(iris, iris_diff)
 
 test_that("vis_compare works",{
+  skip_on_cran()
 vdiffr::expect_doppelganger("vis_compare vanilla", vis_compare_plot)
 })
 

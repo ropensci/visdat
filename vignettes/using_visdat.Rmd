@@ -157,12 +157,12 @@ Thanks to Carson Sievert, you can now add some really nifty interactivity into v
 
 library(plotly)
 
-vis_dat(airquality, flip = TRUE) %>% ggplotly()
+vis_dat(airquality) %>% ggplotly()
 vis_miss(airquality) %>% ggplotly()
 
 ```
 
 # Future work
 
-There are some other features in development for interactivity, guessing types of data, and comparing datasets. You read more about these in the vignette, ["Experimental Features of visdat"](http://www.njtierney.com/visdat/articles/experimental_features.html).
+There are some other features in development for interactivity, guessing types of data, and comparing datasets. You read more about these in the vignette, "Experimental Features of visdat".
 
