@@ -23,14 +23,17 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-
+  
+  
 <!-- mathjax -->
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -49,10 +52,28 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="..//index.html">
+    <span class="fa fa-home fa-lg"></span>
+     
+  </a>
 </li>
 <li>
-  <a href="../articles/index.html">Articles</a>
+  <a href="../reference/index.html">Reference</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/experimental_features.html">Experimental Features of visdat</a>
+    </li>
+    <li>
+      <a href="../articles/using_visdat.html">Using visdat</a>
+    </li>
+  </ul>
 </li>
 <li>
   <a href="../news/index.html">News</a>
@@ -60,7 +81,12 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/njtierney/visdat">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -77,15 +103,75 @@
     </div>
 
     <div class="contents">
-    <div id="visdat-0-0-5-9000-20170109" class="section level1">
+    <div id="visdat-0-1-0-20170703" class="section level1">
 <h1 class="hasAnchor">
-<a href="#visdat-0-0-5-9000-20170109" class="anchor"> </a>visdat 0.0.5.9000 (2017/01/09)</h1>
+<a href="#visdat-0-1-0-20170703" class="anchor"></a>visdat 0.1.0 (2017/07/03)</h1>
+<ul>
+<li>lightweight CRAN submission - will only contain functions <code>vis_dat</code> and <code>vis_miss</code>
+</li>
+</ul>
+</div>
+    <div id="visdat-0-0-7-9100-20170703" class="section level1">
+<h1 class="hasAnchor">
+<a href="#visdat-0-0-7-9100-20170703" class="anchor"></a>visdat 0.0.7.9100 (2017/07/03)</h1>
+<div id="new-features" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-features" class="anchor"></a>New Features</h2>
+<ul>
+<li>
+<code><a href="../reference/add_vis_dat_pal.html">add_vis_dat_pal()</a></code> (internal) to add a palette for <code>vis_dat</code> and <code>vis_guess</code>
+</li>
+<li>
+<code>vis_guess</code> now gets a palette argument like <code>vis_dat</code>
+</li>
+<li>Added protoype/placeholder functions for <code>plotly</code> vis_*_ly interactive graphs:</li>
+<li><code><a href="../reference/vis_guess_ly.html">vis_guess_ly()</a></code></li>
+<li><code><a href="../reference/vis_dat_ly.html">vis_dat_ly()</a></code></li>
+<li>
+<code><a href="../reference/vis_compare_ly.html">vis_compare_ly()</a></code> These simply wrap <code><a href="http://www.rdocumentation.org/packages/plotly/topics/ggplotly">plotly::ggplotly(vis_*(data))</a></code>. In the future they will be written in <code>plotly</code> so that they can be generated much faster</li>
+</ul>
+</div>
 <div id="minor-improvements" class="section level2">
 <h2 class="hasAnchor">
-<a href="#minor-improvements" class="anchor"> </a>Minor Improvements</h2>
+<a href="#minor-improvements" class="anchor"></a>Minor improvements</h2>
+<ul>
+<li>corrected testing for <code>vis_*</code> family</li>
+<li>added .svg graphics for correct vdiffr testing</li>
+<li>improved hover print method for plotly.</li>
+</ul>
+</div>
+</div>
+    <div id="visdat-0-0-6-9000-20170226" class="section level1">
+<h1 class="hasAnchor">
+<a href="#visdat-0-0-6-9000-20170226" class="anchor"></a>visdat 0.0.6.9000 (2017/02/26)</h1>
+<div id="new-features-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-features-1" class="anchor"></a>New Features</h2>
+<ul>
+<li>axes in <code>vis_</code> family are now flipped by default</li>
+<li>
+<code>vis_miss</code> now shows the % missingness in a column, can be disabled by setting <code>show_perc_col</code> argument to FALSE</li>
+<li>removed <code>flip</code> argument, as this should be the default</li>
+</ul>
+</div>
+<div id="minor-improvements-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#minor-improvements-1" class="anchor"></a>Minor Improvements</h2>
+<ul>
+<li>added internal functions to improve extensibility and debugging - <code>vis_create_</code>, <code>vis_gather_</code> and <code>vis_extract_value_</code>.</li>
+<li>suppress unneeded warnings arising from compiling factors</li>
+</ul>
+</div>
+</div>
+    <div id="visdat-0-0-5-9000-20170109" class="section level1">
+<h1 class="hasAnchor">
+<a href="#visdat-0-0-5-9000-20170109" class="anchor"></a>visdat 0.0.5.9000 (2017/01/09)</h1>
+<div id="minor-improvements-2" class="section level2">
+<h2 class="hasAnchor">
+<a href="#minor-improvements-2" class="anchor"></a>Minor Improvements</h2>
 <ul>
 <li>Added testing for visualisations with <code>vdiffr</code>. Code coverage is now at 99%</li>
-<li>Fixed up suggestions from <code>goodpractice::gp()</code>
+<li>Fixed up suggestions from <code><a href="http://www.rdocumentation.org/packages/goodpractice/topics/gp">goodpractice::gp()</a></code>
 </li>
 <li>Submitted to rOpenSci onboarding</li>
 <li>
@@ -95,32 +181,58 @@
 </div>
     <div id="visdat-0-0-4-9999-20170108" class="section level1">
 <h1 class="hasAnchor">
-<a href="#visdat-0-0-4-9999-20170108" class="anchor"> </a>visdat 0.0.4.9999 (2017/01/08)</h1>
+<a href="#visdat-0-0-4-9999-20170108" class="anchor"></a>visdat 0.0.4.9999 (2017/01/08)</h1>
 <div id="new-feature" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-feature" class="anchor"> </a>New Feature</h2>
+<a href="#new-feature" class="anchor"></a>New Feature</h2>
 <ul>
 <li>Added feature <code>flip = TRUE</code>, to <code>vis_dat</code> and <code>vis_miss</code>. This flips the x axis and the ordering of the rows. This more closely resembles a dataframe.</li>
+<li>
+<code>vis_miss_ly</code> is a new function that uses plotly to plot missing data, like <code>vis_miss</code>, but interactive, without the need to call <code><a href="http://www.rdocumentation.org/packages/plotly/topics/ggplotly">plotly::ggplotly</a></code> on it. It’s fast, but at the moment it needs a bit of love on the legend front to maintain the style and features (clustering, etc) of current <code>vis_miss</code>.</li>
+<li>
+<code>vis_miss</code> now gains a <code>show_perc</code> argument, which displays the % of missing and complete data. This is switched on by default and addresses issue #19.</li>
 </ul>
 </div>
-<div id="minor-improvements-1" class="section level2">
+<div id="new-feature-under-development" class="section level2">
 <h2 class="hasAnchor">
-<a href="#minor-improvements-1" class="anchor"> </a>Minor Improvements</h2>
+<a href="#new-feature-under-development" class="anchor"></a>New Feature (under development)</h2>
+<ul>
+<li>
+<code>vis_compare</code> is a new function that allows you to compare two dataframes of the same dimension. It gives a fairly ugly warning if they are not of the same dimension.</li>
+<li>
+<code>vis_dat</code> gains a “palette” argument in line with <a href="https://github.com/njtierney/visdat/issues/26">issue 26</a>, drawn from <a href="http://colorbrewer2.org/" class="uri">http://colorbrewer2.org/</a>, there are currently three arguments, “default”, “qual”, and “cb_safe”. “default” provides the ggplot defaults, “qual” uses some colour blind <strong>unfriendly</strong> colours, and “cb_safe” provides some colours friendly for colour blindness.</li>
+</ul>
+</div>
+<div id="minor-improvements-3" class="section level2">
+<h2 class="hasAnchor">
+<a href="#minor-improvements-3" class="anchor"></a>Minor Improvements</h2>
 <ul>
 <li>All lines are &lt; 80 characters long</li>
 <li>removed all instances of <code>1:rnow(x)</code> and replaced with <code>seq_along(nrow(x))</code>.</li>
-</ul>
-</div>
-</div>
-    <div id="visdat-0-0-4-9990-20161229" class="section level1">
-<h1 class="hasAnchor">
-<a href="#visdat-0-0-4-9990-20161229" class="anchor"> </a>visdat 0.0.4.9990 (2016/12/29)</h1>
-<div id="minor-improvements-2" class="section level2">
-<h2 class="hasAnchor">
-<a href="#minor-improvements-2" class="anchor"> </a>Minor Improvements</h2>
-<ul>
 <li>Updated documentation, improved legend and colours for <code>vis_miss_ly</code>.</li>
 <li>removed export for <code>vis_dat_ly</code>, as it currently does not work.</li>
+<li>Removed a lot of unnecessary @importFrom tags, included magrittr in this, and added magrittr to Imports</li>
+<li>Changes ALL CAPS Headers in news to Title Case</li>
+<li>Made it clear that <code><a href="../reference/vis_guess.html">vis_guess()</a></code> and <code>vis_compare</code> are very beta</li>
+<li>updated documentation in README and <code><a href="../reference/vis_dat.html">vis_dat()</a></code>, <code><a href="../reference/vis_miss.html">vis_miss()</a></code>, <code><a href="../reference/vis_compare.html">vis_compare()</a></code>, and <code><a href="../reference/vis_guess.html">vis_guess()</a></code>
+</li>
+<li>updated pkgdown docs</li>
+<li>updated DESCRIPTION URL and bug report</li>
+<li>Changed the default colours of <code>vis_compare</code> to be different to the ggplot2 standards.</li>
+<li>
+<code>vis_miss</code> legend labels are created using the internal function <code>miss_guide_label</code>. <code>miss_guide_label</code> will check if data is 100% missing or 100% present and display this in the figure. Additionally, if there is less than 0.1% missing data, “&lt;0.1% missingness” will also be displayed. This sort of gets around issue #18 for the moment.</li>
+<li>tests have been added for the <code>miss_guide_label</code> legend labels function.</li>
+<li>Changed legend label for <code>vis_miss</code>, <code>vis_dat</code>, and <code>vis_guess</code>.</li>
+<li>updated README</li>
+<li>Added vignette folder (but not vignettes added yet)</li>
+<li>Added appveyor-CI and travis-CI, addressing issues #22 and #23</li>
+</ul>
+</div>
+<div id="bug-fixes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#bug-fixes" class="anchor"></a>Bug Fixes</h2>
+<ul>
+<li>Update <code><a href="../reference/vis_dat.html">vis_dat()</a></code> to use <code>purrr::dmap(fingerprint)</code> instead of <code>mutate_each_()</code>. This solves issue #3 where <code>vis_dat</code> couldn’t take variables with spaces in their name.</li>
 </ul>
 </div>
 </div>
@@ -131,9 +243,11 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#visdat-0-1-0-20170703">0.1.0</a></li>
+        <li><a href="#visdat-0-0-7-9100-20170703">0.0.7.9100</a></li>
+        <li><a href="#visdat-0-0-6-9000-20170226">0.0.6.9000</a></li>
         <li><a href="#visdat-0-0-5-9000-20170109">0.0.5.9000</a></li>
         <li><a href="#visdat-0-0-4-9999-20170108">0.0.4.9999</a></li>
-        <li><a href="#visdat-0-0-4-9990-20161229">0.0.4.9990</a></li>
       </ul>
     </div>
   </div>

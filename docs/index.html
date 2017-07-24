@@ -9,7 +9,7 @@
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="jquery.sticky-kit.min.js"></script><script src="pkgdown.js"></script><!-- mathjax --><script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
+<script src="jquery.sticky-kit.min.js"></script><script src="pkgdown.js"></script><!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
@@ -29,16 +29,41 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="reference/index.html">Reference</a>
+  <a href="/index.html">
+    <span class="fa fa-home fa-lg"></span>
+     
+  </a>
 </li>
 <li>
-  <a href="articles/index.html">Articles</a>
+  <a href="reference/index.html">Reference</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="articles/experimental_features.html">Experimental Features of visdat</a>
+    </li>
+    <li>
+      <a href="articles/using_visdat.html">Using visdat</a>
+    </li>
+  </ul>
 </li>
 <li>
   <a href="news/index.html">News</a>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+  <a href="https://github.com/njtierney/visdat">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -57,116 +82,100 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <div id="visdat" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#visdat" class="anchor"> </a>visdat</h1></div>
+<a href="#visdat" class="anchor"></a>visdat</h1></div>
 <!-- add a TravisCI badge -->
 <!-- Add an appVeyor badge -->
 
 </div>
 <div id="how-to-install" class="section level1">
 <h1 class="hasAnchor">
-<a href="#how-to-install" class="anchor"> </a>How to install</h1>
+<a href="#how-to-install" class="anchor"></a>How to install</h1>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages("devtools")</span>
 
-devtools::<span class="kw">install_github</span>(<span class="st">"njtierney/visdat"</span>)</code></pre></div>
+devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"njtierney/visdat"</span>)</code></pre></div>
 </div>
 <div id="what-does-visdat-do" class="section level1">
 <h1 class="hasAnchor">
-<a href="#what-does-visdat-do" class="anchor"> </a>What does visdat do?</h1>
+<a href="#what-does-visdat-do" class="anchor"></a>What does visdat do?</h1>
 <p>Initially inspired by <a href="https://github.com/setosa/csv-fingerprint"><code>csv-fingerprint</code></a>, <code>vis_dat</code> helps you visualise a dataframe and “get a look at the data” by displaying the variable classes in a dataframe as a plot with <code>vis_dat</code>, and getting a brief look into missing data patterns using <code>vis_miss</code>.</p>
 <p>The name <code>visdat</code> was chosen as I think in the future it could be integrated with <a href="https://github.com/ropensci/testdat"><code>testdat</code></a>. The idea being that first you visualise your data (<code>visdat</code>), then you run tests from <code>testdat</code> to fix them.</p>
 <p>There are two main commands in the <code>visdat</code> package:</p>
 <ul>
 <li><p><code><a href="reference/vis_dat.html">vis_dat()</a></code> visualises a dataframe showing you what the classes of the columns are, and also displaying the missing data.</p></li>
-<li><p><code><a href="reference/vis_miss.html">vis_miss()</a></code> visualises just the missing data, and allows for missingness to be clustered and columns rearranged. <code><a href="reference/vis_miss.html">vis_miss()</a></code> is similar to <code>missing.pattern.plot</code> from the <a href="https://cran.r-project.org/web/packages/mi/index.html"><code>mi</code></a> package. Unfortunately <code>missing.pattern.plot</code> is no longer in the <code>mi</code> package (well, as of 14/02/2016).</p></li>
+<li><p><code><a href="reference/vis_miss.html">vis_miss()</a></code> visualises just the missing data, and allows for missingness to be clustered and columns rearranged. <code><a href="reference/vis_miss.html">vis_miss()</a></code> is similar to <code>missing.pattern.plot</code> from the <a href="https://cran.r-project.org/web/packages/mi/index.html"><code>mi</code></a> package. Unfortunately <code>missing.pattern.plot</code> is no longer in the <code>mi</code> package (as of 14/02/2016).</p></li>
 </ul>
-<p>There are two experimental functions:</p>
-<ul>
-<li><p><code><a href="reference/vis_guess.html">vis_guess()</a></code> has a guess at what the value of each cell, using <code>readr::parse_guess</code>. This means that “10.1” will return “double”, and <code>10.1</code> will return “double”, and <code>01/01/01</code> will return “date”. Keep in mind that it is a <strong>guess</strong> at what each cell is, so you can’t trust this fully.</p></li>
-<li><p><code><a href="reference/vis_compare.html">vis_compare()</a></code> compares two dataframes, displaying the differences.</p></li>
-</ul>
+<p>You can read more about visdat in the vignette, <a href="http://www.njtierney.com/visdat/articles/using_visdat.html">“using visdat”“</a>.</p>
+<p>There are also experimental functions, which include guessing values, comparing two dataframes, and adding interactivity. These are described in detail in the vignette <a href="http://www.njtierney.com/visdat/articles/experimental_features.html">“Experimental Features of visdat</a>.</p>
+<p>Please note that this project is released with a <a href="CONDUCT.md">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
 </div>
 <div id="examples" class="section level1">
 <h1 class="hasAnchor">
-<a href="#examples" class="anchor"> </a>Examples</h1>
+<a href="#examples" class="anchor"></a>Examples</h1>
 <div id="using-vis_dat" class="section level2">
 <h2 class="hasAnchor">
-<a href="#using-vis_dat" class="anchor"> </a>Using <code><a href="reference/vis_dat.html">vis_dat()</a></code>
+<a href="#using-vis_dat" class="anchor"></a>Using <code><a href="reference/vis_dat.html">vis_dat()</a></code>
 </h2>
-<p>Let’s see what’s inside the <code>airquality</code> dataset from base R.</p>
+<p>Let’s see what’s inside the <code>airquality</code> dataset from base R, which contains information about daily air quality measurements in New York from May to September 1973. More information about the dataset can be found with <code>?airquality</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw">library</span>(visdat)
 
-<span class="kw"><a href="reference/vis_dat.html">vis_dat</a></span>(airquality)
-<span class="co">#&gt; dmap() is deprecated. Please use the new colwise family in dplyr.</span>
-<span class="co">#&gt; E.g., summarise_all(), mutate_all(), etc.</span></code></pre></div>
-<p><img src="README-figs/README-vis-dat-aq-1.png" width="672"></p>
+<span class="kw"><a href="reference/vis_dat.html">vis_dat</a></span>(airquality)</code></pre></div>
+<p><img src="reference/figures/README-vis-dat-aq-1.png" width="672"></p>
 <p>The plot above tells us that R reads this dataset as having numeric and integer values, with some missing data in <code>Ozone</code> and <code>Solar.R</code>. The classes are represented on the legend, and missing data represented by grey. The column/variable names are listed on the x axis.</p>
 <p>By default, <code>vis_dat</code> sorts the columns according to the type of the data in the vectors. You can turn this off by setting <code>sort_type = FALSE</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw"><a href="reference/vis_dat.html">vis_dat</a></span>(airquality, 
-        <span class="dt">sort_type =</span> <span class="ot">FALSE</span>)
-<span class="co">#&gt; dmap() is deprecated. Please use the new colwise family in dplyr.</span>
-<span class="co">#&gt; E.g., summarise_all(), mutate_all(), etc.</span></code></pre></div>
-<p><img src="README-figs/README-vis-dat-aq-sort-type-1.png" width="672"></p>
+        <span class="dt">sort_type =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<p><img src="reference/figures/README-vis-dat-aq-sort-type-1.png" width="672"></p>
 <div id="with-many-kinds-of-data" class="section level3">
 <h3 class="hasAnchor">
-<a href="#with-many-kinds-of-data" class="anchor"> </a>With many kinds of data</h3>
+<a href="#with-many-kinds-of-data" class="anchor"></a>With many kinds of data</h3>
 <p>To demonstrate what visdat looks like when you have different kinds of data, we can look at the dataset <code>typical_data</code>, provided within <code>visdat</code>, and created with the excellent <a href="https://github.com/trinker/wakefield"><code>wakefield</code> package</a>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-<span class="kw"><a href="reference/vis_dat.html">vis_dat</a></span>(typical_data)
-<span class="co">#&gt; dmap() is deprecated. Please use the new colwise family in dplyr.</span>
-<span class="co">#&gt; E.g., summarise_all(), mutate_all(), etc.</span>
-<span class="co">#&gt; Warning: attributes are not identical across measure variables; they will</span>
-<span class="co">#&gt; be dropped</span></code></pre></div>
-<p><img src="README-figs/README-vis-dat-typical-data-1.png" width="672"></p>
+<span class="kw"><a href="reference/vis_dat.html">vis_dat</a></span>(typical_data)</code></pre></div>
+<p><img src="reference/figures/README-vis-dat-typical-data-1.png" width="672"></p>
 <p>We can also look into using even wider data, looking at <code>typical_larger_data</code></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-<span class="kw"><a href="reference/vis_dat.html">vis_dat</a></span>(typical_larger_data)
-<span class="co">#&gt; dmap() is deprecated. Please use the new colwise family in dplyr.</span>
-<span class="co">#&gt; E.g., summarise_all(), mutate_all(), etc.</span>
-<span class="co">#&gt; Warning: attributes are not identical across measure variables; they will</span>
-<span class="co">#&gt; be dropped</span></code></pre></div>
-<p><img src="README-figs/README-vis-dat-typical-larger-data-1.png" width="672"></p>
+<span class="kw"><a href="reference/vis_dat.html">vis_dat</a></span>(typical_data_large)</code></pre></div>
+<p><img src="reference/figures/README-vis-dat-typical-larger-data-1.png" width="672"></p>
 </div>
 </div>
 <div id="using-vis_miss" class="section level2">
 <h2 class="hasAnchor">
-<a href="#using-vis_miss" class="anchor"> </a>Using <code><a href="reference/vis_miss.html">vis_miss()</a></code>
+<a href="#using-vis_miss" class="anchor"></a>Using <code><a href="reference/vis_miss.html">vis_miss()</a></code>
 </h2>
 <p>We can explore the missing data further using <code><a href="reference/vis_miss.html">vis_miss()</a></code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw"><a href="reference/vis_miss.html">vis_miss</a></span>(airquality)</code></pre></div>
-<p><img src="README-figs/README-vis-miss-aq-1.png" width="672"></p>
+<p><img src="reference/figures/README-vis-miss-aq-1.png" width="672"></p>
 <p>The percentages of missing/complete in <code>vis_miss</code> are accurate to 1 decimal place.</p>
 <p>You can cluster the missingness by setting <code>cluster = TRUE</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw"><a href="reference/vis_miss.html">vis_miss</a></span>(airquality, 
          <span class="dt">cluster =</span> <span class="ot">TRUE</span>)</code></pre></div>
-<p><img src="README-figs/README-vis-miss-aq-cluster-1.png" width="672"></p>
+<p><img src="reference/figures/README-vis-miss-aq-cluster-1.png" width="672"></p>
 <p>The columns can also just be arranged by columns with most missingness, by setting <code>sort_miss = TRUE</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw"><a href="reference/vis_miss.html">vis_miss</a></span>(airquality,
          <span class="dt">sort_miss =</span> <span class="ot">TRUE</span>)</code></pre></div>
-<p><img src="README-figs/README-vis-miss-aq-sort-miss-1.png" width="672"></p>
+<p><img src="reference/figures/README-vis-miss-aq-sort-miss-1.png" width="672"></p>
 <p><code>vis_miss</code> indicates when there is a very small amount of missing data at &lt;0.1% missingness.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-test_miss_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x1 =</span> <span class="dv">1</span>:<span class="dv">10000</span>,
+test_miss_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x1 =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10000</span>,
                            <span class="dt">x2 =</span> <span class="kw">rep</span>(<span class="st">"A"</span>, <span class="dv">10000</span>),
                            <span class="dt">x3 =</span> <span class="kw">c</span>(<span class="kw">rep</span>(1L, <span class="dv">9999</span>), <span class="ot">NA</span>))
 
-<span class="kw"><a href="reference/vis_miss.html">vis_miss</a></span>(test_miss_df)
-<span class="co">#&gt; Warning: attributes are not identical across measure variables; they will</span>
-<span class="co">#&gt; be dropped</span></code></pre></div>
-<p><img src="README-figs/README-vis-miss-test-1.png" width="672"></p>
+<span class="kw"><a href="reference/vis_miss.html">vis_miss</a></span>(test_miss_df)</code></pre></div>
+<p><img src="reference/figures/README-vis-miss-test-1.png" width="672"></p>
 <p><code>vis_miss</code> will also indicate when there is no missing data at all.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw"><a href="reference/vis_miss.html">vis_miss</a></span>(mtcars)</code></pre></div>
-<p><img src="README-figs/README-vis-miss-mtcars-1.png" width="672"></p>
+<p><img src="reference/figures/README-vis-miss-mtcars-1.png" width="672"></p>
 </div>
 </div>
 <div id="thank-yous" class="section level1">
 <h1 class="hasAnchor">
-<a href="#thank-yous" class="anchor"> </a>Thank yous</h1>
+<a href="#thank-yous" class="anchor"></a>Thank yous</h1>
 <p>Thank you to Ivan Hanigan who <a href="http://www.njtierney.com/r/missing%20data/rbloggers/2015/12/01/ggplot-missing-data/#comment-2388263747">first commented</a> this suggestion after I made a blog post about an initial prototype <code>ggplot_missing</code>, and Jenny Bryan, whose <a href="https://twitter.com/JennyBryan/status/679011378414268416">tweet</a> got me thinking about <code>vis_dat</code>, and for her code contributions that removed a lot of errors.</p>
 <p>Thank you to Hadley Wickham for suggesting the use of the internals of <code>readr</code> to make <code>vis_guess</code> work.</p>
 <p>Thank you to Miles McBain for his suggestions on how to improve <code>vis_guess</code>. This resulted in making it at least 2-3 times faster.</p>
@@ -176,25 +185,29 @@ test_miss_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<s
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Links</h2>
+    <h2 class="hasAnchor">
+<a href="#sidebar" class="anchor"></a>Links</h2>
 <ul class="list-unstyled">
+<li>Download from CRAN at <br><a href="https://cran.r-project.org/package=visdat">https://​cran.r-project.org/​package=visdat</a>
+</li>
+<li>Browse source code at <br><a href="https://github.com/njtierney/visdat">https://​github.com/​njtierney/​visdat</a>
+</li>
 <li>Report a bug at <br><a href="https://github.com/njtierney/visdat/issues">https://​github.com/​njtierney/​visdat/​issues</a>
 </li>
 </ul>
 <h2>License</h2>
-<p><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE">LICENSE</a></p>
+<p><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE.html">LICENSE</a></p>
 <h2>Developers</h2>
 <ul class="list-unstyled">
 <li>Nicholas Tierney <br><small class="roles"> Author, maintainer </small> </li>
 </ul>
-<html><body>
 <h2>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://travis-ci.org/njtierney/visdat"><img src="https://travis-ci.org/njtierney/visdat.svg?branch=master" alt="Travis-CI Build Status"></a></li>
+<li><a href="https://travis-ci.org/njtierney/visdat"><img src="https://travis-ci.org/njtierney/visdat.svg?branch=master" alt="Travis Build Status"></a></li>
 <li><a href="https://ci.appveyor.com/project/njtierney/visdat"><img src="https://ci.appveyor.com/api/projects/status/github/njtierney/visdat?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a></li>
 <li><a href="https://codecov.io/github/njtierney/visdat?branch=master"><img src="https://img.shields.io/codecov/c/github/njtierney/visdat/master.svg" alt="Coverage Status"></a></li>
+<li><a href="https://cran.r-project.org/package=visdat"><img src="http://www.r-pkg.org/badges/version/visdat" alt="CRAN_Status_Badge"></a></li>
 </ul>
-</body></html>
 </div>
 
 </div>

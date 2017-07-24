@@ -110,7 +110,7 @@ In the future I'm hoping to create some way of representing the added columns an
 
 At the moment the current implementation can be slow, as `plotly` has to work hard to translate the ggplot calls into plotly.
 
-```{r vis-dat-ly}
+```{r vis-dat-ly, eval = FALSE}
 vis_dat_ly(airquality)
 ```
 
@@ -131,7 +131,7 @@ vis_miss_ly(airquality)
 
 This is again similar to the other `vis_*_ly()` family calls, requiring 
 
-```{r vis-guess-ly}
+```{r vis-guess-ly, eval = FALSE}
 vis_guess_ly(typical_data)
 ```
 

@@ -31,7 +31,7 @@ There are two main commands in the `visdat` package:
 
 You can read more about visdat in the vignette, ["using visdat""](http://www.njtierney.com/visdat/articles/using_visdat.html).
 
-There are also experimental which are described in more detail in the vignette ["Experimental Features of visdat](http://www.njtierney.com/visdat/articles/experimental_features.html).
+There are also experimental functions, which include guessing values, comparing two dataframes, and adding interactivity. These are described in detail in the vignette ["Experimental Features of visdat](http://www.njtierney.com/visdat/articles/experimental_features.html).
 
 Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
 
