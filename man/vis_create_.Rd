@@ -2,11 +2,7 @@
 % Please edit documentation in R/internals.R
 \name{vis_create_}
 \alias{vis_create_}
-<<<<<<< HEAD
 \title{(Internal) Create a boilerplate for visualisations of the vis_ family}
-=======
-\title{(Internal) Create a boilerploate for visualisations of the vis_ family}
->>>>>>> master
 \usage{
 vis_create_(x)
 }
@@ -18,9 +14,5 @@ vis_create_(x)
 a ggplot object
 }
 \description{
-<<<<<<< HEAD
 (Internal) Create a boilerplate for visualisations of the vis_ family
-=======
-(Internal) Create a boilerploate for visualisations of the vis_ family
->>>>>>> master
 }

@@ -72,7 +72,7 @@ vis_compare <- function(df1,
     ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45,
                                      vjust = 1,
                                      hjust = 1)) +
-    ggplot2::labs(x = "Variables in Data",
+    ggplot2::labs(x = "",
          y = "Observations",
          # this prevents it from being used in the boilerplate
          fill = "Cell Type") +

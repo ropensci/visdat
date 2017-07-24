@@ -35,8 +35,7 @@
 \item{Level}{levels between 1 and 4}
 \item{Likert}{likert response - "strongly agree", "agree", and so on}
 \item{Lorem_Ipsum}{lorem ipsum text}
-\item{Marital}{marital status- "married", "divorced", "widowed",
-"separated", etc}
+\item{Marital}{marital status- "married", "divorced", "widowed", "separated", etc}
 \item{Military}{miliary branch they are in}
 \item{Month}{their favorite month}
 \item{Name}{their name}
@@ -61,12 +60,6 @@
 typical_data_large
 }
 \description{
-<<<<<<< HEAD:man/typical_data_large.Rd
 A wider dataset than \code{typical_data} containing information about some randomly generated people, created using the excellent \code{wakefield} package. It is created as deliberately odd / eclectic dataset.
-=======
-A wider dataset than \code{typical_data} containing information about some
-randomly generated people, created using the excellent \code{wakefield} package.
-It is created as deliberately odd / eclectic dataset.
->>>>>>> master:man/typical_larger_data.Rd
 }
 \keyword{datasets}
