@@ -1,20 +1,32 @@
 #' Visualise a data.frame to display missingness.
 #'
-#' `vis_miss` provides an at-a-glance ggplot of the missingness inside a dataframe, colouring cells according to missingness, where black indicates a missing cell and grey indicates a present cell. As it returns a ggplot object, it is very easy to customize and change labels, and so on.
+#' `vis_miss` provides an at-a-glance ggplot of the missingness inside a
+#'   dataframe, colouring cells according to missingness, where black indicates
+#'   a missing cell and grey indicates a present cell. As it returns a ggplot
+#'   object, it is very easy to customize and change labels.
 #'
 #' @param x a data.frame
 #'
-#' @param cluster logical TRUE/FALSE. TRUE specifies that you want to use hierarchical clustering (mcquitty method) to arrange rows according to missingness. FALSE specifies that you want to leave it as is
+#' @param cluster logical. TRUE specifies that you want to use hierarchical
+#'   clustering (mcquitty method) to arrange rows according to missingness.
+#'   FALSE specifies that you want to leave it as is.
 #'
-#' @param sort_miss logical TRUE/FALSE. TRUE arranges the columns in order of missingness
+#' @param sort_miss logical. TRUE arranges the columns in order of missingness
 #'
-#' @param show_perc logical TRUE/FALSE. TRUE now adds in the \% of missing/complete data in the whole dataset into the legend. Default value is TRUE
+#' @param show_perc logical. TRUE now adds in the \% of missing/complete data
+#'   in the whole dataset into the legend. Default value is TRUE.
 #'
-#' @param flip logical if TRUE, will flip the axis labels to be on top, resembling a dataframe
+#'@param show_perc_col logical. TRUE adds in the \% missing data in a given
+#'  column into the x axis. Can be disabled with FALSE
 #'
-#' @return `ggplot2` object displaying the position of missing values in the dataframe, and the percentage of values missing and present.
+#' @param warn_large_data logical default is TRUE
 #'
-#' @seealso [vis_miss_ly()] [vis_dat()] [vis_guess()] [vis_compare()]
+#' @param large_data_size integer default is 900000, this can be changed.
+#'
+#' @return `ggplot2` object displaying the position of missing values in the
+#'   dataframe, and the percentage of values missing and present.
+#'
+#' @seealso [vis_dat()]
 #'
 #' @examples
 #'
@@ -24,22 +36,27 @@
 #'
 #' vis_miss(airquality, sort_miss = TRUE)
 #'
-#' # flip the axis to look more like a dataframe
-#' vis_miss(airquality, flip = TRUE)
-#'
 #' @export
 vis_miss <- function(x,
                      cluster = FALSE,
                      sort_miss = FALSE,
                      show_perc = TRUE,
-                     flip = FALSE){
+                     show_perc_col = TRUE,
+                     large_data_size = 900000,
+                     warn_large_data = TRUE){
+
+  # add warning for large data
+  if (ncol(x) * nrow(x) > large_data_size && warn_large_data) {
+    stop("Data exceeds recommended size for visualisation, please consider
+         downsampling your data, or set argument 'warn_large_data' to FALSE.")
+  }
+
   # make a TRUE/FALSE matrix of the data.
   # This tells us whether it is missing (true) or not (false)
-  # x = airquality
   x.na <- is.na(x)
 
   # switch for creating the missing clustering
-  if (cluster == TRUE){
+  if (cluster){
 
     # this retrieves a row order of the clustered missingness
     row_order_index <-
@@ -52,7 +69,7 @@ vis_miss <- function(x,
     row_order_index <- seq_len(nrow(x))
   } # end else
 
-  if (sort_miss == TRUE) {
+  if (sort_miss) {
 
     # arrange by the columns with the highest missingness
     # code inspired from https://r-forge.r-project.org/scm/viewvc.php/ ...
@@ -63,14 +80,6 @@ vis_miss <- function(x,
     # get the names of those columns
     col_order_index <- names(x)[na_sort]
 
-    # original code was a bit slower:
-    #
-    # col_order_index <-
-    #   x.na %>%
-    #   as.data.frame %>%
-    #   dplyr::summarise_each(funs(mean)) %>%
-    #   names
-
   } else {
 
     col_order_index <- names(x)
@@ -79,22 +88,20 @@ vis_miss <- function(x,
 
   # Arranged data by dendrogram order index
 
-  d <- x.na[row_order_index , ] %>%
-    as.data.frame %>%
-    dplyr::mutate(rows = seq_len(nrow(x))) %>%
-    # gather the variables together for plotting
-    # here we now have a column of the row number (row),
-    # then the variable(variables),
-    # then the contents of that variable (value)
-    tidyr::gather_(key_col = "variables",
-                   value_col = "valueType",
-                   gather_cols = names(.)[-length(.)])
+  # gather the variables together for plotting
+  # here we now have a column of the row number (row),
+  # then the variable(variables),
+  # then the contents of that variable (value)
+  dat_pre_vis <- as.data.frame(x.na[row_order_index , ])
 
-  d$value <- tidyr::gather_(x, "variables", "value", names(x))$value
+  d <- dat_pre_vis %>%
+    vis_gather_() %>%
+    # add info for plotly mousover
+    dplyr::mutate(value = vis_extract_value_(dat_pre_vis))
 
-  # calculate the overall % missingness to display in legend ------------
+  # calculate the overall % missingness to display in legend -------------------
 
-  if (show_perc == TRUE){
+  if (show_perc) {
 
     temp <- miss_guide_label(x)
 
@@ -111,49 +118,38 @@ vis_miss <- function(x,
 
   }
 
-    # then we plot it
-  vis_miss_plot <-
-    ggplot2::ggplot(data = d,
-           ggplot2::aes_string(x = "variables",
-                      y = "rows",
-                      # text assists with plotly mouseover
-                      text = "value")) +
-      ggplot2::geom_raster(ggplot2::aes_string(fill = "valueType")) +
-      # change the colour, so that missing is grey, present is black
-      # 2016/12/15: Change the colour AGAIN, so that missing is black
-      #
-      ggplot2::scale_fill_manual(name = "",
-                        values = c("grey80",
-                                   "grey20"),
-                        labels = c(p_pres_lab,
-                                     p_miss_lab)) +
-      # scale_fill_grey(name = "",
-      #                 labels = c(p_pres_lab,
-      #                            p_miss_lab)) +
-      ggplot2::theme_minimal() +
-      ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45,
-                                                         vjust = 1,
-                                                         hjust = 1)) +
-      ggplot2::labs(x = "Variables in Data",
-                    y = "Observations") +
-      ggplot2::scale_x_discrete(limits = col_order_index) +
-      ggplot2::guides(fill = ggplot2::guide_legend(reverse = TRUE))
-      # guides(fill = guide_legend(title = "Type"))
-  # Thanks to
-# http://www.markhneedham.com/blog/2015/02/27/rggplot-controlling-x-axis-order/
-  # For the tip on using scale_x_discrete
+  # then we plot it
+  vis_miss_plot <- vis_create_(d) +
+    ggplot2::scale_fill_manual(name = "",
+                               values = c("grey80",
+                                          "grey20"),
+                               labels = c(p_pres_lab,
+                                          p_miss_lab)) +
+    ggplot2::guides(fill = ggplot2::guide_legend(reverse = TRUE)) +
+    ggplot2::theme(legend.position = "bottom")
 
-  if(flip == FALSE){
-    return(vis_miss_plot)
-  } else if(flip == TRUE){
-      suppressMessages({
-        vis_miss_plot +
-          ggplot2::scale_y_reverse() +
-          ggplot2::scale_x_discrete(position = "top",
-                                    limits = col_order_index) +
-          ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0.5)) +
-          ggplot2::labs(x = "")
-      })
+  # add the missingness column labels
+  if (show_perc_col){
+
+    # flip the axes, add the info about limits
+    vis_miss_plot +
+      ggplot2::scale_x_discrete(position = "top",
+                                limits = col_order_index,
+                                labels = label_col_missing_pct(
+                                  x,
+                                  col_order_index)
+      ) +
+      # fix up the location of the text
+      ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0))
+  } else {
+    vis_miss_plot +
+      ggplot2::scale_x_discrete(position = "top",
+                                limits = col_order_index)
   }
 
-} # end of function
+  # guides(fill = guide_legend(title = "Type"))
+  # Thanks to
+  # http://www.markhneedham.com/blog/2015/02/27/rggplot-controlling-x-axis-order/
+  # For the tip on using scale_x_discrete
+
+  } # end of function

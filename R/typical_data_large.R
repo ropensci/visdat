@@ -54,13 +54,4 @@
 #'   \item{Year}{significant year to that individuals}
 #'   \item{Zip}{a zip code they have visited}
 #' }
-#'
-#' @note the following code was used to create this data
-#'
-#' library(wakefield)
-#'
-#' set.seed(1214)
-#' typical_larger_data <- r_data_theme(n = 300, data_theme = "the_works")
-#'
-#'
-"typical_larger_data"
+"typical_data_large"

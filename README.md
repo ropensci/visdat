@@ -1,10 +1,11 @@
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 visdat
 ======
 
 <!-- add a TravisCI badge -->
 <!-- Add an appVeyor badge -->
-[![Travis-CI Build Status](https://travis-ci.org/njtierney/visdat.svg?branch=master)](https://travis-ci.org/njtierney/visdat) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/njtierney/visdat?branch=master&svg=true)](https://ci.appveyor.com/project/njtierney/visdat)[![Coverage Status](https://img.shields.io/codecov/c/github/njtierney/visdat/master.svg)](https://codecov.io/github/njtierney/visdat?branch=master)
+[![Travis Build Status](https://travis-ci.org/njtierney/visdat.svg?branch=master)](https://travis-ci.org/njtierney/visdat)[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/njtierney/visdat?branch=master&svg=true)](https://ci.appveyor.com/project/njtierney/visdat)[![Coverage Status](https://img.shields.io/codecov/c/github/njtierney/visdat/master.svg)](https://codecov.io/github/njtierney/visdat?branch=master)[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/visdat)](https://cran.r-project.org/package=visdat)
 
 How to install
 ==============
@@ -49,7 +50,7 @@ library(visdat)
 vis_dat(airquality)
 ```
 
-![](README-figs/README-vis-dat-aq-1.png)
+![](man/figures/README-vis-dat-aq-1.png)
 
 The plot above tells us that R reads this dataset as having numeric and integer values, with some missing data in `Ozone` and `Solar.R`. The classes are represented on the legend, and missing data represented by grey. The column/variable names are listed on the x axis.
 
@@ -61,7 +62,7 @@ vis_dat(airquality,
         sort_type = FALSE)
 ```
 
-![](README-figs/README-vis-dat-aq-sort-type-1.png)
+![](man/figures/README-vis-dat-aq-sort-type-1.png)
 
 ### With many kinds of data
 
@@ -70,22 +71,18 @@ To demonstrate what visdat looks like when you have different kinds of data, we 
 ``` r
 
 vis_dat(typical_data)
-#> Warning: attributes are not identical across measure variables; they will
-#> be dropped
 ```
 
-![](README-figs/README-vis-dat-typical-data-1.png)
+![](man/figures/README-vis-dat-typical-data-1.png)
 
 We can also look into using even wider data, looking at `typical_larger_data`
 
 ``` r
 
-vis_dat(typical_larger_data)
-#> Warning: attributes are not identical across measure variables; they will
-#> be dropped
+vis_dat(typical_data_large)
 ```
 
-![](README-figs/README-vis-dat-typical-larger-data-1.png)
+![](man/figures/README-vis-dat-typical-larger-data-1.png)
 
 Using `vis_miss()`
 ------------------
@@ -97,7 +94,7 @@ We can explore the missing data further using `vis_miss()`.
 vis_miss(airquality)
 ```
 
-![](README-figs/README-vis-miss-aq-1.png)
+![](man/figures/README-vis-miss-aq-1.png)
 
 The percentages of missing/complete in `vis_miss` are accurate to 1 decimal place.
 
@@ -109,7 +106,7 @@ vis_miss(airquality,
          cluster = TRUE)
 ```
 
-![](README-figs/README-vis-miss-aq-cluster-1.png)
+![](man/figures/README-vis-miss-aq-cluster-1.png)
 
 The columns can also just be arranged by columns with most missingness, by setting `sort_miss = TRUE`.
 
@@ -119,7 +116,7 @@ vis_miss(airquality,
          sort_miss = TRUE)
 ```
 
-![](README-figs/README-vis-miss-aq-sort-miss-1.png)
+![](man/figures/README-vis-miss-aq-sort-miss-1.png)
 
 `vis_miss` indicates when there is a very small amount of missing data at &lt;0.1% missingness.
 
@@ -130,11 +127,9 @@ test_miss_df <- data.frame(x1 = 1:10000,
                            x3 = c(rep(1L, 9999), NA))
 
 vis_miss(test_miss_df)
-#> Warning: attributes are not identical across measure variables; they will
-#> be dropped
 ```
 
-![](README-figs/README-vis-miss-test-1.png)
+![](man/figures/README-vis-miss-test-1.png)
 
 `vis_miss` will also indicate when there is no missing data at all.
 
@@ -143,7 +138,7 @@ vis_miss(test_miss_df)
 vis_miss(mtcars)
 ```
 
-![](README-figs/README-vis-miss-mtcars-1.png)
+![](man/figures/README-vis-miss-mtcars-1.png)
 
 Thank yous
 ==========
