@@ -4,7 +4,11 @@
 ^README-.*\.png$
 ^\.travis\.yml$
 ^appveyor\.yml$
+^_pkgdown\.yml$
 ^docs$
 ^paper$
 ^README-figs$
 ^CONDUCT\.md$
+^data-raw$
+.Rprofile
+^cran-comments\.md$

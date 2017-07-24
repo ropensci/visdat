@@ -1,6 +1,6 @@
 Package: visdat
 Title: Preliminary Visualisation of Data
-Version: 0.0.5.9000
+Version: 0.1.0.9000
 Authors@R: person("Nicholas", "Tierney", email = "nicholas.tierney@gmail.com", role = c("aut", "cre"))
 Description: visdat makes it easy to visualise your whole dataset so that you
     can visually identify problems.
@@ -18,7 +18,7 @@ Imports:
     plotly (>= 4.5.6),
     magrittr,
     stats
-URL: https://njtierney.com/visdat
+URL: https://github.com/njtierney/visdat
 BugReports: https://github.com/njtierney/visdat/issues
 Suggests:
     testthat,
