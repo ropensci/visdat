@@ -80,7 +80,7 @@ vis_miss <- function(x,
     # get the names of those columns
     col_order_index <- names(x)[na_sort]
 
-  } else {
+  } else if (!sort_miss) {
 
     col_order_index <- names(x)
 
