@@ -69,7 +69,6 @@ vis_create_ <- function(x){
 #'
 #' @return data.frame containing the missingness percent down to 0.1 percent
 #'
-#' @export
 label_col_missing_pct <- function(x,
                                   col_order_index){
 
