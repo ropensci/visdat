@@ -2,7 +2,7 @@
 #'
 #' `vis_compare`, like the other `vis_*` families, gives an at-a-glance ggplot
 #'   of a dataset, but in this case, hones in on visualising **two** different
-#'   dataframes of the same dimension, and so takes two dataframes as arguments.
+#'   dataframes of the same dimensions, and so takes two dataframes as arguments.
 #'
 #' @param df1 The first dataframe to compare
 #'
