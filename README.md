@@ -5,7 +5,7 @@ visdat
 
 <!-- add a TravisCI badge -->
 <!-- Add an appVeyor badge -->
-[![Travis Build Status](https://travis-ci.org/njtierney/visdat.svg?branch=master)](https://travis-ci.org/njtierney/visdat)[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/njtierney/visdat?branch=master&svg=true)](https://ci.appveyor.com/project/njtierney/visdat)[![Coverage Status](https://img.shields.io/codecov/c/github/njtierney/visdat/master.svg)](https://codecov.io/github/njtierney/visdat?branch=master)[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/visdat)](https://cran.r-project.org/package=visdat)[![CRAN Logs](http://cranlogs.r-pkg.org/badges/visdat)](http://cran.rstudio.com/web/packages/visdat/index.html)
+[![rOpenSci Badge](https://badges.ropensci.org/87_status.svg)](https://github.com/ropensci/onboarding/issues/87)[![Travis Build Status](https://travis-ci.org/njtierney/visdat.svg?branch=master)](https://travis-ci.org/njtierney/visdat)[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/njtierney/visdat?branch=master&svg=true)](https://ci.appveyor.com/project/njtierney/visdat)[![Coverage Status](https://img.shields.io/codecov/c/github/njtierney/visdat/master.svg)](https://codecov.io/github/njtierney/visdat?branch=master)[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/visdat)](https://cran.r-project.org/package=visdat)[![CRAN Logs](http://cranlogs.r-pkg.org/badges/visdat)](http://cran.rstudio.com/web/packages/visdat/index.html)
 
 How to install
 ==============
@@ -31,7 +31,7 @@ There are two main commands in the `visdat` package:
 
 You can read more about visdat in the vignette, ["using visdat"](http://visdat.njtierney.com/articles/using_visdat.html).
 
-There are also experimental functions, which include guessing values,  comparing two dataframes, and adding interactivity. These are described in detail in the vignette ["Experimental Features of visdat"](http://visdat.njtierney.com/articles/experimental_features.html).
+There are also experimental functions, which include guessing values, comparing two dataframes, and adding interactivity. These are described in detail in the vignette ["Experimental Features of visdat"](http://visdat.njtierney.com/articles/experimental_features.html).
 
 Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
 
