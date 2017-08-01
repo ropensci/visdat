@@ -1,7 +1,17 @@
 Package: visdat
 Title: Preliminary Visualisation of Data
-Version: 0.1.0.9000
-Authors@R: person("Nicholas", "Tierney", email = "nicholas.tierney@gmail.com", role = c("aut", "cre"))
+Version: 0.2.0.9000
+Authors@R: c(
+  person("Nicholas", "Tierney", email = "nicholas.tierney@gmail.com", role = c("aut", "cre")),
+  person("Sean", "Hughes", role = c("ctb"), comment = "Sean Hughes
+    reviewed the package for rOpenSci, 
+    see https://github.com/ropensci/onboarding/issues/87"),
+    person("Mara Averick", role = c("ctb"), comment = "Mara Averick
+    reviewed the package for rOpenSci, 
+    see https://github.com/ropensci/onboarding/issues/87")
+    )
+
+
 Description: visdat makes it easy to visualise your whole dataset so that you
     can visually identify problems.
 Depends:
@@ -19,7 +29,7 @@ Imports:
     magrittr,
     stats
 URL: http://visdat.njtierney.com/
-BugReports: https://github.com/njtierney/visdat/issues
+BugReports: https://github.com/ropensci/visdat/issues
 Suggests:
     testthat,
     knitr,

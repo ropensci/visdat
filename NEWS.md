@@ -1,3 +1,24 @@
+# visdat 0.2.0.9000 (2017/08/01)
+
+- visdat is now under the rOpenSci github repository
+- Added Sean Hughes and Mara Averick to the DESCRIPTION with `ctb`.
+
+## New features
+
+- `vis_compare()` for comparing two dataframes of the same dimensions
+- `vis_guess()` for displaying the likely type for each cell in a dataframe
+
+Interactive, `plotly` versions for each of the `vis_*` family
+
+- `vis_dat_ly()`
+- `vis_miss_ly()`
+- `vis_guess_ly()`
+- `vis_compare_ly()`
+
+## Minor Changes
+
+- Minor changes to the paper for JOSS
+
 # visdat 0.1.0 (2017/07/03)
 
 - lightweight CRAN submission - will only contain functions `vis_dat` and `vis_miss`
