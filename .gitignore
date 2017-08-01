@@ -3,3 +3,5 @@
 .RData
 inst/doc
 *.DS_Store
+paper/*.html
+paper/*.pdf
