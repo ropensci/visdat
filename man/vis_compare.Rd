@@ -18,7 +18,7 @@ present in each other, and which are not.
 \description{
 \code{vis_compare}, like the other \code{vis_*} families, gives an at-a-glance ggplot
 of a dataset, but in this case, hones in on visualising \strong{two} different
-dataframes of the same dimension, and so takes two dataframes as arguments.
+dataframes of the same dimensions, and so takes two dataframes as arguments.
 }
 \examples{
 
