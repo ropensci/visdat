@@ -5,7 +5,7 @@ visdat
 
 <!-- add a TravisCI badge -->
 <!-- Add an appVeyor badge -->
-[![rOpenSci Badge](https://badges.ropensci.org/87_status.svg)](https://github.com/ropensci/onboarding/issues/87)[![Travis Build Status](https://travis-ci.org/njtierney/visdat.svg?branch=master)](https://travis-ci.org/njtierney/visdat)[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/njtierney/visdat?branch=master&svg=true)](https://ci.appveyor.com/project/njtierney/visdat)[![Coverage Status](https://img.shields.io/codecov/c/github/njtierney/visdat/master.svg)](https://codecov.io/github/njtierney/visdat?branch=master)[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/visdat)](https://cran.r-project.org/package=visdat)[![CRAN Logs](http://cranlogs.r-pkg.org/badges/visdat)](http://cran.rstudio.com/web/packages/visdat/index.html)
+[![rOpenSci Badge](https://badges.ropensci.org/87_status.svg)](https://github.com/ropensci/onboarding/issues/87)[![Travis Build Status](https://travis-ci.org/ropensci/visdat.svg?branch=master)](https://travis-ci.org/ropensci/visdat)[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/ropensci/visdat?branch=master&svg=true)](https://ci.appveyor.com/project/ropensci/visdat)[![Coverage Status](https://img.shields.io/codecov/c/github/ropensci/visdat/master.svg)](https://codecov.io/github/ropensci/visdat?branch=master)[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/visdat)](https://cran.r-project.org/package=visdat)[![CRAN Logs](http://cranlogs.r-pkg.org/badges/visdat)](http://cran.rstudio.com/web/packages/visdat/index.html)
 
 How to install
 ==============
