@@ -1,32 +1,9 @@
----
-title: 'visdat: Visualising whole data frames'
-tags:
-  - visualisation
-  - R
-  - exporatory data analysis
-authors:
- - name: Nicholas Tierney
-   orcid: 0000-0003-1460-8722
-   affiliation: 1
-affiliations:
- - name: Queensland University of Technology
-   index: 1
-date: 09 January 2017
-bibliography: paper.bib
----
-
 # visdat: Visualising whole data frames
-09 January 2017  
+01 August 2017  
 
 # Summary
 
-As described by Hadley Wickham [@wickham2016], there are 6 phases of data science:
-
-![Process of Data Science](http://r4ds.had.co.nz/diagrams/data-science.png)
-
-You can get insight into your data by modelling, visualising, and transforming, which Wickham describes as "Understanding" or "knowledge generation". There is some overlap here, as in this process it wouldn't be surprising that you might uncover some feature of your dataset that you would need to clean up or change. For example, in analysing some data, you might discover that some strings were indeed factors, or that gender was considered numeric in your regression, warranting you to re-visit the Tidying phase.
-
-In the same way, this process gets applied in the Tidying step of data science. You read in your data, but you then need to look at it to understand what you need to do to make it ready for analysis. A phrase that often arises in this process is "looking at the data". It is helpful to look more closely at what this means. You can look at the first six rows of data, the head of the data:
+Reading in a new dataset means looking at the data to get a sense of what it contains, and potential problems and challenges with the data to get it analysis ready. "Looking at the data" can mean different things. Often times you look at the first six rows of data, the head of the data:
 
 
 ```r
@@ -43,7 +20,7 @@ head(iris)
 ## 6          5.4         3.9          1.7         0.4  setosa
 ```
 
-Another alterantive is `glimpse`, from the `dplyr` package [@dplyr]
+Or you can `glimpse` the data, using the `dplyr` package [@dplyr]
 
 
 ```r
@@ -60,7 +37,7 @@ dplyr::glimpse(iris)
 ## $ Species      <fctr> setosa, setosa, setosa, setosa, setosa, setosa, ...
 ```
 
-This has a better printing method that gives us more information about the data, displaying doubles and a factor. However, we don't always have data like the canonical iris dataset. Let's take a look at some data that might be a bit more typical of "messy" data.
+This shows that there are 150 observations, and 5 variables, which are doubles and a factor, along with some of the values in the data. However, we usually don't have data like the canonical iris dataset. Let's take a look at some data that might be a bit more typical of "messy" data.
 
 
 ```r
@@ -82,42 +59,28 @@ dplyr::glimpse(typical_data)
 ## $ Died       <lgl> TRUE, TRUE, FALSE, TRUE, TRUE, FALSE, FALSE, TRUE, ...
 ```
 
-Looking at this, you might then ask:
+Looking at this, you might then ask: "Isn't it odd that Income is a factor? And Age is a character?". And you might start to wonder what else is different, what else changed? It might be a bit unclear where to go from there. Do you do some exploratory plots of the data? What if the plot looks weird because the data has strange types? What if the data has other strange features? 
 
-> Isn't it odd that Income is a factor? And Age is a character? 
+There is a need for a tool to do preliminary data visualisation, to identify these problems early. The `visdat` package provides this, creating visualisations of an entire dataframe at once. Initially inspired by [`csv-fingerprint`](https://github.com/setosa/csv-fingerprint), `visdat` provides tools to create heatmap-like visualisations of an entire dataframe. `visdat` is an R [@Rcore] package provides 2 main functions `vis_dat` and `vis_miss`.
 
-And you might start to wonder what else is different, what else changed? 
-
-And it might be a bit unclear where to go from there. Do you plot the data? Why does my plot look wierd? What are these other strange features in the data? The `visdat` package provides visualisations of an entire dataframe at once. Initially inspired by [`csv-fingerprint`](https://github.com/setosa/csv-fingerprint), `visdat` provides tools to create heatmap-like visualisations of an entire dataframe. `visdat` is an R [@Rcore] package provides 2 main functions `vis_dat` and `vis_miss`.
-
-`vis_dat()` helps explore the data class structure and missingness:
+`vis_dat()` helps explore the data class structure and missingness, by displaying the class for each variable and the missing data, and presenting the plot in an intuitive way - it reads top down as the data would. The columns are grouped by similar class as well, to put similarly classified data types together.
 
 
 ```r
 vis_dat(typical_data)
 ```
 
-```
-## Warning: attributes are not identical across measure variables; they will
-## be dropped
-```
-
 ![](paper_files/figure-html/load-data-1.png)<!-- -->
 
-And the `vis_miss` function provides a custom plot for missing data.
+`vis_miss()` focuses on just displaying the present and missing data, again reading top down, but also displaying the percent of missing data in each column, and overall.
 
 
 ```r
 vis_miss(typical_data)
 ```
 
-```
-## Warning: attributes are not identical across measure variables; they will
-## be dropped
-```
+![](paper_files/figure-html/vis-miss-1.png)<!-- -->
 
-![](paper_files/figure-html/unnamed-chunk-1-1.png)<!-- -->
-
-These functions provide useful tools to help "get a look at the data", using principled visualisation techniques. The plots are built using ggplot2 [@ggplot2], which provides a consistent and powerful framework for visualisations. This means that users can customise and extend graphics from visdat very easily.
+These functions provide useful tools to help "get a look at the data", using preliminary visualisation techniques. The plots are built using ggplot2 [@ggplot2], which provides a consistent and powerful framework for visualisations. This means that users can customise and extend graphics from visdat very easily.
 
 # References
