@@ -10,10 +10,19 @@ visdat
 How to install
 ==============
 
-``` r
-# install.packages("devtools")
+visdat is available on CRAN
 
-devtools::install_github("njtierney/visdat")
+``` r
+
+install.packages("visdat")
+```
+
+If you would like to use the development version, install from github with:
+
+``` r
+
+# install.packages("devtools")
+devtools::install_github("ropensci/visdat")
 ```
 
 What does visdat do?
@@ -152,3 +161,5 @@ Thank you to Miles McBain for his suggestions on how to improve `vis_guess`. Thi
 Thanks to Carson Sievert for writing the code that combined `plotly` with `visdat`, and for Noam Ross for suggesting this in the first place.
 
 Finally thank you to [rOpenSci](https://github.com/ropensci) and it's amazing [onboarding process](https://github.com/ropensci/onboarding), this process has made visdat a much better package, thanks to the editor Noam Ross (@noamross), and the reviewers Sean Hughes (@seaaan) and Mara Averick (@batpigandme).
+
+[![ropensci\_footer](https://ropensci.org/public_images/ropensci_footer.png)](https://ropensci.org)
