@@ -7,4 +7,4 @@ typical_data_large <- typical_data_large %>%
   mutate(Income = as.factor(Income),
          Age = as.character(Age))
 
-use_data(typical_data_large)
+use_data(typical_data_large, overwrite = TRUE)
