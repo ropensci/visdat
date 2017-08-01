@@ -56,14 +56,7 @@
   <a href="news/index.html">News</a>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right">
-<li>
-  <a href="https://github.com/njtierney/visdat">
-    <span class="fa fa-github fa-lg"></span>
-     
-  </a>
-</li>
-      </ul>
+<ul class="nav navbar-nav navbar-right"></ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -83,16 +76,18 @@
 <div id="visdat" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#visdat" class="anchor"></a>visdat</h1></div>
-<!-- add a TravisCI badge -->
-<!-- Add an appVeyor badge -->
 
 </div>
 <div id="how-to-install" class="section level1">
 <h1 class="hasAnchor">
 <a href="#how-to-install" class="anchor"></a>How to install</h1>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages("devtools")</span>
-
-devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"njtierney/visdat"</span>)</code></pre></div>
+<p>visdat is available on CRAN</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
+<span class="kw">install.packages</span>(<span class="st">"visdat"</span>)</code></pre></div>
+<p>If you would like to use the development version, install from github with:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
+<span class="co"># install.packages("devtools")</span>
+devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"ropensci/visdat"</span>)</code></pre></div>
 </div>
 <div id="what-does-visdat-do" class="section level1">
 <h1 class="hasAnchor">
@@ -104,8 +99,8 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 <li><p><code><a href="reference/vis_dat.html">vis_dat()</a></code> visualises a dataframe showing you what the classes of the columns are, and also displaying the missing data.</p></li>
 <li><p><code><a href="reference/vis_miss.html">vis_miss()</a></code> visualises just the missing data, and allows for missingness to be clustered and columns rearranged. <code><a href="reference/vis_miss.html">vis_miss()</a></code> is similar to <code>missing.pattern.plot</code> from the <a href="https://cran.r-project.org/web/packages/mi/index.html"><code>mi</code></a> package. Unfortunately <code>missing.pattern.plot</code> is no longer in the <code>mi</code> package (as of 14/02/2016).</p></li>
 </ul>
-<p>You can read more about visdat in the vignette, <a href="http://www.njtierney.com/visdat/articles/using_visdat.html">“using visdat”“</a>.</p>
-<p>There are also experimental functions, which include guessing values, comparing two dataframes, and adding interactivity. These are described in detail in the vignette <a href="http://www.njtierney.com/visdat/articles/experimental_features.html">“Experimental Features of visdat</a>.</p>
+<p>You can read more about visdat in the vignette, <a href="http://visdat.njtierney.com/articles/using_visdat.html">“using visdat”</a>.</p>
+<p>There are also experimental functions, which include guessing values, comparing two dataframes, and adding interactivity. These are described in detail in the vignette <a href="http://visdat.njtierney.com/articles/experimental_features.html">“Experimental Features of visdat”</a>.</p>
 <p>Please note that this project is released with a <a href="CONDUCT.md">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
 </div>
 <div id="examples" class="section level1">
@@ -179,7 +174,9 @@ test_miss_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<s
 <p>Thank you to Ivan Hanigan who <a href="http://www.njtierney.com/r/missing%20data/rbloggers/2015/12/01/ggplot-missing-data/#comment-2388263747">first commented</a> this suggestion after I made a blog post about an initial prototype <code>ggplot_missing</code>, and Jenny Bryan, whose <a href="https://twitter.com/JennyBryan/status/679011378414268416">tweet</a> got me thinking about <code>vis_dat</code>, and for her code contributions that removed a lot of errors.</p>
 <p>Thank you to Hadley Wickham for suggesting the use of the internals of <code>readr</code> to make <code>vis_guess</code> work.</p>
 <p>Thank you to Miles McBain for his suggestions on how to improve <code>vis_guess</code>. This resulted in making it at least 2-3 times faster.</p>
-<p>Thanks also to Carson Sievert for writing the code that combined <code>plotly</code> with <code>visdat</code>, and for Noam Ross for suggesting this in the first place.</p>
+<p>Thanks to Carson Sievert for writing the code that combined <code>plotly</code> with <code>visdat</code>, and for Noam Ross for suggesting this in the first place.</p>
+<p>Finally thank you to <a href="https://github.com/ropensci">rOpenSci</a> and it’s amazing <a href="https://github.com/ropensci/onboarding">onboarding process</a>, this process has made visdat a much better package, thanks to the editor Noam Ross (<span class="citation">@noamross</span>), and the reviewers Sean Hughes (<span class="citation">@seaaan</span>) and Mara Averick (<span class="citation">@batpigandme</span>).</p>
+<p><a href="https://ropensci.org"><img src="https://ropensci.org/public_images/ropensci_footer.png" alt="ropensci_footer"></a></p>
 </div>
 </div>
   </div>
@@ -190,9 +187,7 @@ test_miss_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<s
 <ul class="list-unstyled">
 <li>Download from CRAN at <br><a href="https://cran.r-project.org/package=visdat">https://​cran.r-project.org/​package=visdat</a>
 </li>
-<li>Browse source code at <br><a href="https://github.com/njtierney/visdat">https://​github.com/​njtierney/​visdat</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/njtierney/visdat/issues">https://​github.com/​njtierney/​visdat/​issues</a>
+<li>Report a bug at <br><a href="https://github.com/ropensci/visdat/issues">https://​github.com/​ropensci/​visdat/​issues</a>
 </li>
 </ul>
 <h2>License</h2>
@@ -200,13 +195,16 @@ test_miss_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<s
 <h2>Developers</h2>
 <ul class="list-unstyled">
 <li>Nicholas Tierney <br><small class="roles"> Author, maintainer </small> </li>
+<li><a href="authors.html">All authors...</a></li>
 </ul>
 <h2>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://travis-ci.org/njtierney/visdat"><img src="https://travis-ci.org/njtierney/visdat.svg?branch=master" alt="Travis Build Status"></a></li>
-<li><a href="https://ci.appveyor.com/project/njtierney/visdat"><img src="https://ci.appveyor.com/api/projects/status/github/njtierney/visdat?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a></li>
-<li><a href="https://codecov.io/github/njtierney/visdat?branch=master"><img src="https://img.shields.io/codecov/c/github/njtierney/visdat/master.svg" alt="Coverage Status"></a></li>
+<li><a href="https://github.com/ropensci/onboarding/issues/87"><img src="https://badges.ropensci.org/87_status.svg" alt="rOpenSci Badge"></a></li>
+<li><a href="https://travis-ci.org/ropensci/visdat"><img src="https://travis-ci.org/ropensci/visdat.svg?branch=master" alt="Travis Build Status"></a></li>
+<li><a href="https://ci.appveyor.com/project/ropensci/visdat"><img src="https://ci.appveyor.com/api/projects/status/github/ropensci/visdat?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a></li>
+<li><a href="https://codecov.io/github/ropensci/visdat?branch=master"><img src="https://img.shields.io/codecov/c/github/ropensci/visdat/master.svg" alt="Coverage Status"></a></li>
 <li><a href="https://cran.r-project.org/package=visdat"><img src="http://www.r-pkg.org/badges/version/visdat" alt="CRAN_Status_Badge"></a></li>
+<li><a href="http://cran.rstudio.com/web/packages/visdat/index.html"><img src="http://cranlogs.r-pkg.org/badges/visdat" alt="CRAN Logs"></a></li>
 </ul>
 </div>
 
