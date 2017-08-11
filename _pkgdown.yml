@@ -12,22 +12,26 @@ reference:
     desc: >
       Tools for creating preliminary visualisations to "get a look at the data"
     contents:
-      - starts_with("vis_dat")
+      - vis_dat
+      - vis_dat_ly
   - title: "Focus on the missing data"
     desc: >
       Specifically display information about the missingness
     contents:
-      - starts_with("vis_miss")
+      - vis_miss
+      - vis_miss_ly
   - title: "Display the best guess of what each cell contains"
     desc: >
       Potentially reveal other classes in your dataset
     contents:
-      - starts_with("vis_guess")
+      - vis_guess
+      - vis_guess_ly
   - title: "Compare two dataframes"
     desc: >
       Only takes dataframes of the same dimensions
     contents:
-      - starts_with("vis_compare")
+      - vis_compare
+      - vis_compare_ly
 
 navbar:
   left:
