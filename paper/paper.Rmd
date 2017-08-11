@@ -1,5 +1,5 @@
 ---
-title: 'visdat: Visualising whole data frames'
+title: 'visdat: Visualising Whole Data Frames'
 tags:
   - visualisation
   - R
@@ -66,5 +66,9 @@ vis_miss(typical_data)
 ```
 
 These functions provide useful tools to help "get a look at the data", using preliminary visualisation techniques. The plots are built using ggplot2 [@ggplot2], which provides a consistent and powerful framework for visualisations. This means that users can customise and extend graphics from visdat very easily.
+
+# Acknowlegements
+
+I would like to thank the two reviewers, Mara Averick and Sean Hughes, for their helpful suggestions that resulted in a much better package.
 
 # References

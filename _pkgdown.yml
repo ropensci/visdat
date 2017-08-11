@@ -1,0 +1,41 @@
+template:
+  params:
+    bootswatch: flatly
+
+home:
+  links:
+  - text: Learn more
+    href: https://github.com/njtierney/naniar
+
+reference:
+  - title: "Visualise the whole dataframe, class, and missing data"
+    desc: >
+      Tools for creating preliminary visualisations to "get a look at the data"
+    contents:
+      - starts_with("vis_dat")
+  - title: "Focus on the missing data"
+    desc: >
+      Specifically display information about the missingness
+    contents:
+      - starts_with("vis_miss")
+  - title: "Display the best guess of what each cell contains"
+    desc: >
+      Potentially reveal other classes in your dataset
+    contents:
+      - starts_with("vis_guess")
+  - title: "Compare two dataframes"
+    desc: >
+      Only takes dataframes of the same dimensions
+    contents:
+      - starts_with("vis_compare")
+
+navbar:
+  left:
+  - text: Reference
+    href: reference/index.html
+  - text: Using visdat
+    href: articles/using_visdat.html
+  - text: Experimental Features
+    href: articles/experimental_features.html
+  - text: News
+    href: news/index.html
