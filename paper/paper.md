@@ -1,108 +1,35 @@
----
-title: 'visdat: Visualising Whole Data Frames'
-tags:
-  - visualisation
-  - R
-  - exporatory data analysis
-authors:
- - name: Nicholas Tierney
-   orcid: 0000-0003-1460-8722
-   affiliation: 1
-affiliations:
- - name: Monash University
-   index: 1
-date: 01 August 2017
-bibliography: paper.bib
----
-
-
-
 # visdat: Visualising Whole Data Frames
+01 August 2017  
+
+JOSS requirements:
+
+- A summary describing the high-level functionality and purpose of the software for a diverse, non-specialist audience
+- A clear statement of need that illustrates the purpose of the software
+- A list of key references including a link to the software archive
+- Mentions (if applicable) of any ongoing research projects using the software or recent scholarly publications enabled by it
 
 # Summary
 
-Reading in a new dataset means looking at the data to get a sense of what it contains, and potential problems and challenges with the data to get it analysis ready. "Looking at the data" can mean different things. Often times you look at the first six rows of data, the head of the data:
+When you receive a new dataset you need to look at the data to get a sense of what is in it and understand potential problems and challenges to get it analysis-ready. "Taking a look at the data" can mean different things. For example, examining statistical summaries (minimum, maximum, mean, inter-quartile range), finding missing values, checking data formatting, creating graphical summaries such as histograms, scatter plots, box plots, and more.
 
+When handling typical real-world data, these preliminary exploratory steps can become difficult to perform when values are not what you expect. For example, income might be a factor instead of numeric, date could be a number not a character string or a date class, or values could be missing when they shouldn't be. Often times you realise that you have expectations of the data, which are hard to realise until they are a problem. This is similar to how you might not think to buy more light bulbs until one goes out: when you use data in an exploratory scatter plot, or a preliminary model, you often don't realise your data is in the wrong format until that moment. What is needed is a birds eye view of the data, which tells you what classes are in the dataframe, and where the missing data are.
 
-```r
-head(iris)
-```
+`visdat` is an R [@Rcore] package that provides a tool to "get a look at the data", creating heatmap-like visualisations of an entire dataframe providing information on classes in the data, missing values, and also comparisons between two datasets. `visdat` takes inspiration from [`csv-fingerprint`](https://github.com/setosa/csv-fingerprint), and is powered by ggplot2 [@ggplot2], which provides a consistent and powerful framework for visualisations that can be extended if needed. 
 
-```
-##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-## 1          5.1         3.5          1.4         0.2  setosa
-## 2          4.9         3.0          1.4         0.2  setosa
-## 3          4.7         3.2          1.3         0.2  setosa
-## 4          4.6         3.1          1.5         0.2  setosa
-## 5          5.0         3.6          1.4         0.2  setosa
-## 6          5.4         3.9          1.7         0.4  setosa
-```
-
-Or you can `glimpse` the data, using the `dplyr` package [@dplyr]
-
-
-```r
-dplyr::glimpse(iris)
-```
-
-```
-## Observations: 150
-## Variables: 5
-## $ Sepal.Length <dbl> 5.1, 4.9, 4.7, 4.6, 5.0, 5.4, 4.6, 5.0, 4.4, 4.9,...
-## $ Sepal.Width  <dbl> 3.5, 3.0, 3.2, 3.1, 3.6, 3.9, 3.4, 3.4, 2.9, 3.1,...
-## $ Petal.Length <dbl> 1.4, 1.4, 1.3, 1.5, 1.4, 1.7, 1.4, 1.5, 1.4, 1.5,...
-## $ Petal.Width  <dbl> 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.2, 0.2, 0.1,...
-## $ Species      <fctr> setosa, setosa, setosa, setosa, setosa, setosa, ...
-```
-
-This shows that there are 150 observations, and 5 variables, which are doubles and a factor, along with some of the values in the data. However, we usually don't have data like the canonical iris dataset. Let's take a look at some data that might be a bit more typical of "messy" data.
+Plots are presented in an intuitive way, reading top down, just like your data. Below is a plot using `vis_dat()` of some example typical data containing missing values and data of a variety of classes.
 
 
 ```r
 library(visdat)
-dplyr::glimpse(typical_data)
-```
-
-```
-## Observations: 5,000
-## Variables: 9
-## $ ID         <chr> "0001", "0002", "0003", "0004", "0005", "0006", "00...
-## $ Race       <fctr> Black, Black, Black, Hispanic, NA, White, White, B...
-## $ Age        <chr> NA, "25", "31", "27", "21", "22", "23", "21", NA, "...
-## $ Sex        <fctr> Male, Male, Female, Female, Female, Female, Female...
-## $ Height(cm) <dbl> 175.9, 171.7, 173.5, 172.4, 158.5, 169.5, 163.7, 16...
-## $ IQ         <dbl> 110, 84, 115, 84, 116, 83, 101, 97, 92, 99, 88, 86,...
-## $ Smokes     <lgl> FALSE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FAL...
-## $ Income     <fctr> 4334.29, 16682.37, 50402.01, 91442.86, 75266.05, 1...
-## $ Died       <lgl> FALSE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FAL...
-```
-
-Looking at this, you might then ask: "Isn't it odd that Income is a factor? And Age is a character?". And you might start to wonder what else is different, what else changed? It might be a bit unclear where to go from there. Do you do some exploratory plots of the data? What if the plot looks weird because the data has strange types? What if the data has other strange features? 
-
-There is a need for a tool to do preliminary data visualisation, to identify these problems early. The `visdat` package provides this, creating visualisations of an entire dataframe at once. Initially inspired by [`csv-fingerprint`](https://github.com/setosa/csv-fingerprint), `visdat` provides tools to create heatmap-like visualisations of an entire dataframe. `visdat` is an R [@Rcore] package provides 2 main functions `vis_dat` and `vis_miss`.
-
-`vis_dat()` helps explore the data class structure and missingness, by displaying the class for each variable and the missing data, and presenting the plot in an intuitive way - it reads top down as the data would. The columns are grouped by similar class as well, to put similarly classified data types together.
-
-
-```r
 vis_dat(typical_data)
 ```
 
 ![](paper_files/figure-html/load-data-1.png)<!-- -->
 
-`vis_miss()` focuses on just displaying the present and missing data, again reading top down, but also displaying the percent of missing data in each column, and overall.
-
-
-```r
-vis_miss(typical_data)
-```
-
-![](paper_files/figure-html/vis-miss-1.png)<!-- -->
-
-These functions provide useful tools to help "get a look at the data", using preliminary visualisation techniques. The plots are built using ggplot2 [@ggplot2], which provides a consistent and powerful framework for visualisations. This means that users can customise and extend graphics from visdat very easily.
+`visdat` will continue to be improved over time, to improve speed in computation and improve interactive plotting.
 
 # Acknowlegements
 
-I would like to thank the two reviewers, Mara Averick and Sean Hughes, for their helpful suggestions that resulted in a much better package.
+I would like to thank the two reviewers, Mara Averick and Sean Hughes, for their helpful suggestions that resulted in a much better package, and rOpenSci for providing the support of the onboarding package review that facilitated these improvements.
 
 # References

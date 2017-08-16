@@ -6,9 +6,9 @@ authors:
   orcid: 0000-0003-1460-8722
 date: "01 August 2017"
 output:
-  pdf_document: default
   html_document:
     keep_md: yes
+  pdf_document: default
 bibliography: paper.bib
 tags:
 - visualisation
@@ -28,13 +28,13 @@ JOSS requirements:
 
 # Summary
 
-When you receive a new dataset you need to look at the data to get a sense of what is in it and understand potential problems and challenges to get it analysis-ready. "Taking a look at the data" can mean different things. For example, examining statistical summaries (minimum, maximum, mean, interquartile range), finding missing values, checking data formatting, creating graphical summaries such as histograms, scatterplots, boxplots, and more.
+When you receive a new dataset you need to look at the data to get a sense of what is in it and understand potential problems and challenges to get it analysis-ready. "Taking a look at the data" can mean different things. For example, examining statistical summaries (minimum, maximum, mean, inter-quartile range), finding missing values, checking data formatting, creating graphical summaries such as histograms, scatter plots, box plots, and more.
 
-When handling typical "messy" data, these preliminary exploratory steps can become difficult to perform when you encounter data that is not what you expect. For example, income might be a factor instead of numeric, date could be a number not a character string or a date class, or values could be missing when they shouldn't be. Often times you realise that you have expectations of the data, but it can be hard to know what they are exactly until they are a problem. This is sort of like how you might not think to buy more lightbulbs until one goes out - when you go to use the data in an exploratory scatter plot, or in a preliminary model, you don't always realise your data is in the wrong format until that moment. What you need is a birds eye view of the data that tells you what classes are in the dataframe, and where the missing data are.
+When handling typical real-world data, these preliminary exploratory steps can become difficult to perform when values are not what you expect. For example, income might be a factor instead of numeric, date could be a number not a character string or a date class, or values could be missing when they shouldn't be. Often times you realise that you have expectations of the data, which are hard to realise until they are a problem. This is similar to how you might not think to buy more light bulbs until one goes out: when you use data in an exploratory scatter plot, or a preliminary model, you often don't realise your data is in the wrong format until that moment. What is needed is a birds eye view of the data, which tells you what classes are in the dataframe, and where the missing data are.
 
-`visdat` is an R [@Rcore] package that provides a tool to "get a look at the data", creating heatmap-like visualisations of an entire dataframe - classes in the data, missing values, and comparisons between two datasets. `visdat` takes inspiration from [`csv-fingerprint`](https://github.com/setosa/csv-fingerprint), and is powered by ggplot2 [@ggplot2], which provides a consistent and powerful framework for visualisations that can be extended if needed. 
+`visdat` is an R [@Rcore] package that provides a tool to "get a look at the data", creating heatmap-like visualisations of an entire dataframe providing information on classes in the data, missing values, and also comparisons between two datasets. `visdat` takes inspiration from [`csv-fingerprint`](https://github.com/setosa/csv-fingerprint), and is powered by ggplot2 [@ggplot2], which provides a consistent and powerful framework for visualisations that can be extended if needed. 
 
-Plots are presented in an intuitive way, reading top down, just like your data. Below is a plot of some example typical data containing missing values and data of a variety of classes.
+Plots are presented in an intuitive way, reading top down, just like your data. Below is a plot using `vis_dat()` of some example typical data containing missing values and data of a variety of classes.
 
 ```{r load-data}
 library(visdat)
@@ -42,7 +42,7 @@ vis_dat(typical_data)
 
 ```
 
-`visdat` will continue to be improved over time, to improve speed in computation and also add interactive plots.
+`visdat` will continue to be improved over time, to improve speed in computation and improve interactive plotting.
 
 # Acknowlegements
 
