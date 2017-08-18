@@ -5,7 +5,7 @@ template:
 home:
   links:
   - text: Learn more
-    href: https://github.com/njtierney/naniar
+    href: https://github.com/ropensci/naniar
 
 reference:
   - title: "Visualise the whole dataframe, class, and missing data"

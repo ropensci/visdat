@@ -1,3 +1,8 @@
+# visdat 0.2.1 (2017/08/18)
+
+- Updated the `paper.md` for JOSS
+- Updated some old links in doco
+
 # visdat 0.2.0.9000 (2017/08/01)
 
 - visdat is now under the rOpenSci github repository

@@ -18,7 +18,8 @@
 #'
 #' @return `plotly` interactive plot, similar in appearance to `vis_dat`
 #'
-#' @seealso [vis_dat()] [vis_miss()] [vis_miss_ly()] [vis_guess()] [vis_compare()]
+#' @seealso [vis_dat()] [vis_miss()] [vis_miss_ly()] [vis_guess()]
+#'   [vis_compare()]
 #'
 #' @export
 #'

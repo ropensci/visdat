@@ -24,7 +24,7 @@
 vis_compare <- function(df1,
                         df2){
 
-  message("vis_compare is in BETA! If you have suggestions or errors\npost an issue at https://github.com/njtierney/visdat/issues")
+  message("vis_compare is in BETA! If you have suggestions or errors\npost an issue at https://github.com/ropensci/visdat/issues")
 
   # could add a parameter, "sort_match", to help with
   # sort_match logical TRUE/FALSE.
