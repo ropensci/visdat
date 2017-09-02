@@ -172,3 +172,57 @@ if (palette == "default"){
 } # close else brace
 
 } # close the function
+
+#' (Internal) create a tidy dataframe of correlations suitable for plotting
+#'
+#' @param data data.frame
+#' @param cor_method correlation method to use, from `cor`: "a character
+#'   string indicating which correlation coefficient (or covariance) is to be
+#'   computed. One of "pearson" (default), "kendall", or "spearman": can be
+#'   abbreviated."
+#' @param use_op  what to do in the presence of missings? can be
+#'   "everything", "all.obs", "complete.obs", "na.or.complete", or
+#'   "pairwise.complete.obs" (default).
+#'
+#' @return tidy dataframe of correlations
+#'
+vis_gather_cor <- function(data,
+                           cor_method = "pearson",
+                           use_op = "pairwise.complete.obs"){
+
+  cor(data,
+      method = cor_method,
+      use = use_op) %>%
+    as.data.frame() %>%
+    tibble::rownames_to_column() %>%
+    tidyr::gather(key = "rowname",
+                  value = "value") %>%
+    purrr::set_names(c("row_1", "row_2", "value"))
+
+}
+
+#' Create a correlation heatmap in ggplot2
+#'
+#' This method assumes that you have the data as ordered by `vis_gather_cor`.
+#'   It is used to create a ggplot of the correlation plot. It is made internal
+#'   so it is easier to maintain the code base.
+#'
+#' @param data data.frame
+#'
+#' @return ggplot2 plot
+#'
+vis_create_cor <- function(data){
+
+  ggplot2::ggplot(data,
+                  ggplot2::aes(x = row_1,
+                               y = row_2,
+                               fill = value)) +
+    ggplot2::geom_raster() +
+    ggplot2::scale_fill_gradientn(low = "steelblue",
+                                  mid = "white",
+                                  high = "salmon") +
+    ggplot2::theme_minimal() +
+    ggplot2::scale_x_discrete(position = "top") +
+    ggplot2::labs(x = "",
+                  y = "")
+}

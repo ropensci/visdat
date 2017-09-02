@@ -2,6 +2,7 @@
 
 export(vis_compare)
 export(vis_compare_ly)
+export(vis_cor)
 export(vis_dat)
 export(vis_dat_ly)
 export(vis_guess)
