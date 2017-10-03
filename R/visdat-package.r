@@ -19,7 +19,13 @@
 #' @name visdat
 #' @docType package
 #' @importFrom magrittr %>%
+#' @importFrom stats cor
 NULL
 
 if(getRversion() >= "2.15.1")  utils::globalVariables(c("."))
-globalVariables(c("valueGuess", "valueType"))
+globalVariables(c("valueGuess",
+                  "valueType",
+                  "row_1",
+                  "row_2",
+                  "value",
+                  "cor"))

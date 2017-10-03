@@ -190,7 +190,7 @@ vis_gather_cor <- function(data,
                            cor_method = "pearson",
                            use_op = "pairwise.complete.obs"){
 
-  cor(data,
+  stats::cor(data,
       method = cor_method,
       use = use_op) %>%
     as.data.frame() %>%
@@ -236,8 +236,10 @@ vis_create_cor <- function(data){
 #'
 #' @examples
 #'
+#'\dontrun{
 #' all_numeric(airquality) # TRUE
 #' all_numeric(iris) # FALSE
+#'}
 #'
 all_numeric <- function(x, ...){
   all(as.logical(lapply(x, is.numeric)))

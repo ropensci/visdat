@@ -1,3 +1,7 @@
+# visdat 0.2.2 (2017/10/03)
+
+- Added `vis_cor` to visualise correlations in a dataframe
+
 # visdat 0.2.1 (2017/08/18)
 
 - Updated the `paper.md` for JOSS

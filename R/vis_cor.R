@@ -19,7 +19,7 @@
 #' @examples
 #' vis_cor(airquality)
 #' vis_cor(mtcars)
-#' \donrtun{
+#' \dontrun{
 #' vis_cor(iris)
 #' }
 vis_cor <- function(data,
