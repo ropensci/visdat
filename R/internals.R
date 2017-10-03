@@ -218,11 +218,27 @@ vis_create_cor <- function(data){
                                y = row_2,
                                fill = value)) +
     ggplot2::geom_raster() +
-    ggplot2::scale_fill_gradientn(low = "steelblue",
+    ggplot2::scale_fill_gradient2(low = "steelblue",
                                   mid = "white",
                                   high = "salmon") +
     ggplot2::theme_minimal() +
     ggplot2::scale_x_discrete(position = "top") +
     ggplot2::labs(x = "",
                   y = "")
+}
+
+#' Are there any numeric columns?
+#'
+#' @param x data.frame
+#' @param ... optional extra inputs
+#'
+#' @return logical - TRUE means that there is a column with numerics, FALSE means that there is a column that is not numeric
+#'
+#' @examples
+#'
+#' all_numeric(airquality) # TRUE
+#' all_numeric(iris) # FALSE
+#'
+all_numeric <- function(x, ...){
+  all(as.logical(lapply(x, is.numeric)))
 }
