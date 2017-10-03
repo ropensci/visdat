@@ -19,15 +19,21 @@
 #' @examples
 #' vis_cor(airquality)
 #' vis_cor(mtcars)
+#' \donrtun{
 #' vis_cor(iris)
+#' }
 vis_cor <- function(data,
                     cor_method = "pearson",
                     use_op = "pairwise.complete.obs",
                     ...){
 
+  if (!all_numeric(data)) {
+    stop("data input can only contain numeric values, please subset the data to the numeric values you would like.")
+  } else {
+
   vis_gather_cor(data,
                  cor_method,
                  use_op) %>%
     vis_create_cor()
-
+    }
 }
