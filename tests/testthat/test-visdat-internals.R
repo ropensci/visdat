@@ -37,3 +37,10 @@ d_new <-
 test_that("vis_extract_value performs the same as old method",{
   expect_equal(d_old,d_new)
 })
+
+test_that("any_numeric returns TRUE for numeric dataframes and FALSE for dataframes containing non-numeric values",{
+
+  testthat::expect_equal(all_numeric(airquality),TRUE)
+  testthat::expect_equal(all_numeric(iris),FALSE)
+
+})
