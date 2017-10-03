@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Articles • visdat</title>
+<title>(Internal) create a tidy dataframe of correlations suitable for plotting — vis_gather_cor • visdat</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -37,7 +37,7 @@
   </head>
 
   <body>
-    <div class="container template-vignette-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -75,21 +75,55 @@
       
       </header>
 
-      <div class="page-header">
-  <h1>Articles <small>version&nbsp;0.2.2</small></h1>
-</div>
-
-<div class="row">
-  <div class="col-md-9">
-    <div class="section ">
-      <h3>All vignettes</h3>
-      <p class="section-desc"></p>
-
-      <ul>
-        <li><a href="experimental_features.html">Experimental Features of visdat</a></li>
-        <li><a href="using_visdat.html">Using visdat</a></li>
-      </ul>
+      <div class="row">
+  <div class="col-md-9 contents">
+    <div class="page-header">
+    <h1>(Internal) create a tidy dataframe of correlations suitable for plotting</h1>
     </div>
+
+    
+    <p>(Internal) create a tidy dataframe of correlations suitable for plotting</p>
+    
+
+    <pre class="usage"><span class='fu'>vis_gather_cor</span>(<span class='no'>data</span>, <span class='kw'>cor_method</span> <span class='kw'>=</span> <span class='st'>"pearson"</span>,
+  <span class='kw'>use_op</span> <span class='kw'>=</span> <span class='st'>"pairwise.complete.obs"</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>data</th>
+      <td><p>data.frame</p></td>
+    </tr>
+    <tr>
+      <th>cor_method</th>
+      <td><p>correlation method to use, from <code>cor</code>: "a character
+string indicating which correlation coefficient (or covariance) is to be
+computed. One of "pearson" (default), "kendall", or "spearman": can be
+abbreviated."</p></td>
+    </tr>
+    <tr>
+      <th>use_op</th>
+      <td><p>what to do in the presence of missings? can be
+"everything", "all.obs", "complete.obs", "na.or.complete", or
+"pairwise.complete.obs" (default).</p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>tidy dataframe of correlations</p>
+    
+
+  </div>
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+          </ul>
+
   </div>
 </div>
 

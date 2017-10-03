@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Visualise type guess in a data.frame — vis_guess • visdat</title>
+<title>Create a correlation heatmap ggplot of all of the data — vis_cor • visdat</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -78,70 +78,50 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Visualise type guess in a data.frame</h1>
+    <h1>Create a correlation heatmap ggplot of all of the data</h1>
     </div>
 
     
-    <p><code>vis_guess</code> visualises the class of every single individual cell in a
-dataframe and displays it as ggplot object, similar to <code>vis_dat</code>. Cells
-are coloured according to what class they are and whether the values are
-missing. <code>vis_guess</code> estimates the class of individual elements using
-<code><a href='http://www.rdocumentation.org/packages/readr/topics/parse_guess'>readr::guess_parser</a></code>.  It may be currently slow on larger datasets.</p>
+    <p>This provides a simple approach to visualising correlations amongst variables</p>
     
 
-    <pre class="usage"><span class='fu'>vis_guess</span>(<span class='no'>x</span>, <span class='kw'>palette</span> <span class='kw'>=</span> <span class='st'>"default"</span>)</pre>
+    <pre class="usage"><span class='fu'>vis_cor</span>(<span class='no'>data</span>, <span class='kw'>cor_method</span> <span class='kw'>=</span> <span class='st'>"pearson"</span>, <span class='kw'>use_op</span> <span class='kw'>=</span> <span class='st'>"pairwise.complete.obs"</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>a data.frame object</p></td>
+      <th>data</th>
+      <td><p>data.frame</p></td>
     </tr>
     <tr>
-      <th>palette</th>
-      <td><p>character "default", "qual" or "cb_safe". "default" (the
-default) provides the stock ggplot scale for separating the colours.
-"qual" uses an experimental qualitative colour scheme for providing
-distinct colours for each Type. "cb_safe" is a set of colours that are
-appropriate for those with colourblindness. "qual" and "cb_safe" are drawn
-from http://colorbrewer2.org/.</p></td>
+      <th>cor_method</th>
+      <td><p>correlation method to use, from <code>cor</code>: "a character
+string indicating which correlation coefficient (or covariance) is to be
+computed. One of "pearson" (default), "kendall", or "spearman": can be
+abbreviated."</p></td>
+    </tr>
+    <tr>
+      <th>use_op</th>
+      <td><p>what to do in the presence of missings? can be
+"everything", "all.obs", "complete.obs", "na.or.complete", or
+"pairwise.complete.obs" (default).</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>extra arguments you may want to pass</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>ggplot2</code> object displaying the guess of the type of values in the
-data frame and the position of any missing values.</p>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <p><code><a href='vis_miss.html'>vis_miss()</a></code> <code><a href='vis_dat.html'>vis_dat()</a></code> <code><a href='vis_miss_ly.html'>vis_miss_ly()</a></code> <code><a href='vis_compare.html'>vis_compare()</a></code></p>
+    <p>ggplot2 object</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='no'>messy_vector</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='fl'>TRUE</span>,
-                 <span class='st'>"TRUE"</span>,
-                 <span class='st'>"T"</span>,
-                 <span class='st'>"01/01/01"</span>,
-                 <span class='st'>"01/01/2001"</span>,
-                 <span class='fl'>NA</span>,
-                 <span class='fl'>NaN</span>,
-                 <span class='st'>"NA"</span>,
-                 <span class='st'>"Na"</span>,
-                 <span class='st'>"na"</span>,
-                 <span class='st'>"10"</span>,
-                 <span class='fl'>10</span>,
-                 <span class='st'>"10.1"</span>,
-                 <span class='fl'>10.1</span>,
-                 <span class='st'>"abc"</span>,
-                 <span class='st'>"$%TG"</span>)
-<span class='fu'>set.seed</span>(<span class='fl'>1114</span>)
-<span class='no'>messy_df</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='kw'>var1</span> <span class='kw'>=</span> <span class='no'>messy_vector</span>,
-                       <span class='kw'>var2</span> <span class='kw'>=</span> <span class='fu'>sample</span>(<span class='no'>messy_vector</span>),
-                       <span class='kw'>var3</span> <span class='kw'>=</span> <span class='fu'>sample</span>(<span class='no'>messy_vector</span>))
-<span class='fu'>vis_guess</span>(<span class='no'>messy_df</span>)</div><div class='img'><img src='vis_guess-1.png' alt='' width='700' height='432.632880098887' /></div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>vis_cor</span>(<span class='no'>airquality</span>)</div><div class='img'><img src='vis_cor-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>vis_cor</span>(<span class='no'>mtcars</span>)</div><div class='img'><img src='vis_cor-2.png' alt='' width='700' height='432.632880098887' /></div><span class='co'># NOT RUN {</span>
+<span class='fu'>vis_cor</span>(<span class='no'>iris</span>)
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -149,8 +129,6 @@ data frame and the position of any missing values.</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

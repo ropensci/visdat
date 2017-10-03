@@ -29,5 +29,7 @@ This provides a simple approach to visualising correlations amongst variables
 \examples{
 vis_cor(airquality)
 vis_cor(mtcars)
+\dontrun{
 vis_cor(iris)
+}
 }

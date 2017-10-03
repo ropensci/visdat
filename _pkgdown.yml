@@ -20,6 +20,11 @@ reference:
     contents:
       - vis_miss
       - vis_miss_ly
+  - title: "Visualise correlations in a dataframe"
+    desc: >
+      Show the correlation amongst variables in simple function
+    contents:
+      - vis_cor
   - title: "Display the best guess of what each cell contains"
     desc: >
       Potentially reveal other classes in your dataset
