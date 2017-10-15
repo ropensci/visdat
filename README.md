@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-visdat
-======
+visdat <img src="man/figures/visdat-logo.png" align="right" />
+==============================================================
 
 [![rOpenSci Badge](https://badges.ropensci.org/87_status.svg)](https://github.com/ropensci/onboarding/issues/87)[![JOSS status](http://joss.theoj.org/papers/c85f57adbc565b064fb4bfc9b59a1b2a/status.svg)](http://joss.theoj.org/papers/c85f57adbc565b064fb4bfc9b59a1b2a)[![DOI](https://zenodo.org/badge/50553382.svg)](https://zenodo.org/badge/latestdoi/50553382)
 
