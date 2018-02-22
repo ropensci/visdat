@@ -42,7 +42,12 @@ vis_miss_ly <- function(x){
                   colors = c("grey80", "grey20"),
                   colorbar = list(ticktext = c("Present","Missing"),
                                   tickvals = seq_along(categories))) %>%
-    plotly::layout(xaxis = list(title = ""))
+    plotly::layout(xaxis = list(title = "",
+                                tickmode = "array",
+                                tickvals = list(),
+                                ticktext = "",
+                                mirror = "allticks"),
+                   yaxis = list(autorange = "reversed"))
 
 }
 
