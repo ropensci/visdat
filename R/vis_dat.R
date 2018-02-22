@@ -78,7 +78,8 @@ vis_dat <- function(x,
     ggplot2::guides(fill = ggplot2::guide_legend(title = "Type")) +
     # add info about the axes
     ggplot2::scale_x_discrete(limits = type_order_index,
-                              position = "top")
+                              position = "top") +
+    ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0))
 
   # specify a palette ----------------------------------------------------------
   add_vis_dat_pal(vis_dat_plot, palette)
