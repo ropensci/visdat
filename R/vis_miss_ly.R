@@ -51,11 +51,11 @@ vis_miss_ly <- function(x){
 
 }
 
-discretize_colorscale <- function(palette, granularity = 4) {
+discretize_colorscale <- function(palette, granularity = 100) {
   n <- length(palette)
-  colorscale <- data.frame(range= seq_len(n*granularity))
-  colorscale$range <- seq(0, 1, length.out = n*granularity)
-  colorscale$color <- rep(palette, each = granularity)
+  colorscale <- data.frame(range = seq(0, 1, length.out = n*granularity),
+                           color = rep(palette, each = granularity))
+
   setNames(colorscale, NULL)
 }
 
