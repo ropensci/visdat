@@ -40,13 +40,14 @@ vis_miss_ly <- function(x){
                   hoverinfo = "text",
                   type = "heatmap",
                   colors = c("grey80", "grey20"),
-                  colorbar = list(ticktext = c("Present","Missing"),
-                                  tickvals = seq_along(categories))) %>%
+                  colorbar = list(
+                    ticktext = c("Present","Missing"),
+                    tickvals = seq_along(categories)
+                    )) %>%
     plotly::layout(
       xaxis = list(side = "top"),
       yaxis = list(autorange = "reversed")
       )
 
 }
-
 
