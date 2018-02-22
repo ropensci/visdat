@@ -23,8 +23,8 @@ vis_miss_ly <- function(x){
   d <- x.na
   n <- nrow(x)
   # printing for row numbers and column names
-  rows <- rep(1:nrow(x),ncol(x))
-  vars <- rep(colnames(x), each = nrow(x))
+  rows <- rep(1:n,ncol(x))
+  vars <- rep(colnames(x), each = n)
 
   categories <- sort(unique(c(d)))
   m <- matrix(match(d, categories), nrow = n)
@@ -39,15 +39,23 @@ vis_miss_ly <- function(x){
                   text = txt,
                   hoverinfo = "text",
                   type = "heatmap",
-                  colors = c("grey80", "grey20"),
-                  colorbar = list(
-                    ticktext = c("Present","Missing"),
-                    tickvals = seq_along(categories)
-                    )) %>%
+                  colorscale = discretize_colorscale(c("#cccccc","#333333"))) %>%
+    plotly::colorbar(tickmode = "array",
+                     ticktext = c("Present","Missing"),
+                     tickvals = 1:2,
+                     len = 0) %>%
     plotly::layout(
       xaxis = list(side = "top"),
-      yaxis = list(autorange = "reversed")
-      )
+      yaxis = list(autorange = "reversed"),
+      legend = list(orientation = 'h'))
 
+}
+
+discretize_colorscale <- function(palette, granularity = 4) {
+  n <- length(palette)
+  colorscale <- data.frame(range= seq_len(n*granularity))
+  colorscale$range <- seq(0, 1, length.out = n*granularity)
+  colorscale$color <- rep(palette, each = granularity)
+  setNames(colorscale, NULL)
 }
 
