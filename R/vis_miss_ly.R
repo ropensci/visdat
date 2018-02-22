@@ -35,14 +35,14 @@ vis_miss_ly <- function(x){
                 nrow = n)
 
   plotly::plot_ly(z = m,
-          x = names(x),
-          text = txt,
-          hoverinfo = "text",
-          type = "heatmap",
-          colors = c("grey80", "grey20"),
-          colorbar = list(ticktext = c("Present","Missing"),
-                          tickvals = seq_along(categories))
-  ) %>% plotly::layout(xaxis = list(title = ""))
+                  x = names(x),
+                  text = txt,
+                  hoverinfo = "text",
+                  type = "heatmap",
+                  colors = c("grey80", "grey20"),
+                  colorbar = list(ticktext = c("Present","Missing"),
+                                  tickvals = seq_along(categories))) %>%
+    plotly::layout(xaxis = list(title = ""))
 
 }
 
