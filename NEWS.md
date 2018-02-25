@@ -1,3 +1,7 @@
+# visdat 0.2.2.9000 (2017/10/03)
+
+* Added appropriate legend and x axis for `vis_miss_ly` - thanks to Stuart Lee
+
 # visdat 0.2.2 (2017/10/03)
 
 - Added `vis_cor` to visualise correlations in a dataframe
