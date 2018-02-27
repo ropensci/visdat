@@ -29,7 +29,8 @@ Imports:
     plotly (>= 4.5.6),
     magrittr,
     stats,
-    tibble
+    tibble,
+    rlang (>= 0.2.0)
 URL: http://visdat.njtierney.com/
 BugReports: https://github.com/ropensci/visdat/issues
 Suggests:
