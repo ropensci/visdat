@@ -36,6 +36,13 @@ dataframe, colouring cells according to missingness, where black indicates
 a missing cell and grey indicates a present cell. As it returns a ggplot
 object, it is very easy to customize and change labels.
 }
+\note{
+Some datasets might be too large to plot, sometimes creating a blank
+plot - if this happens, I would recommend downsampling the data, either
+looking at the first 1,000 rows or by taking a random sample. This means
+that you won't get the same "look" at the data, but it is better than
+a blank plot! See example code for suggestions on doing this.
+}
 \examples{
 
 vis_miss(airquality)
@@ -43,6 +50,20 @@ vis_miss(airquality)
 vis_miss(airquality, cluster = TRUE)
 
 vis_miss(airquality, sort_miss = TRUE)
+
+#' \dontrun{
+# if you have a large dataset, you might want to try downsampling:
+library(nycflight13)
+library(dplyr)
+flights \%>\%
+  sample_n(1000) \%>\%
+  vis_miss()
+
+flights \%>\%
+  slice(1:1000) \%>\%
+  vis_miss()
+
+}
 
 }
 \seealso{
