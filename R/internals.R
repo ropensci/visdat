@@ -207,17 +207,6 @@ gather_cor <- function(data,
 
 }
 
-translate_cor_use <- function(use_op){
-
-  dplyr::case_when(
-    use_op == "everything" ~ "NAs propagate conceptually, i.e., a resulting value will be NA whenever one of its contributing observations is NA.",
-    use_op == "all.obs" ~ "then the presence of missing observations will produce an error.",
-    use_op == "complete.obs" ~ "then missing values are handled by casewise deletion (and if there are no complete cases, that gives an error). ",
-    use_op == "na.or.complete" ~ "is the same unless there are no complete cases, that gives NA.",
-    use_op == "pairwise.complete.obs" ~ "then the correlation or covariance between each pair of variables is computed using all complete pairs of observations on those variables. ")
-
-}
-
 #' Are there any numeric columns?
 #'
 #' @param x data.frame
