@@ -184,47 +184,38 @@ if (palette == "default"){
 #'   "everything", "all.obs", "complete.obs", "na.or.complete", or
 #'   "pairwise.complete.obs" (default).
 #'
+#'
 #' @return tidy dataframe of correlations
 #'
-vis_gather_cor <- function(data,
-                           cor_method = "pearson",
-                           use_op = "pairwise.complete.obs"){
+#' @examples
+#' gather_cor(airquality)
+#'
+#' @export
+gather_cor <- function(data,
+                       cor_method = "pearson",
+                       use_op = "pairwise.complete.obs"){
 
   stats::cor(data,
       method = cor_method,
       use = use_op) %>%
     as.data.frame() %>%
     tibble::rownames_to_column() %>%
-    tidyr::gather(key = "rowname",
-                  value = "value") %>%
+    tidyr::gather(key = "key",
+                  value = "value",
+                  -rowname) %>%
     purrr::set_names(c("row_1", "row_2", "value"))
 
 }
 
-#' Create a correlation heatmap in ggplot2
-#'
-#' This method assumes that you have the data as ordered by `vis_gather_cor`.
-#'   It is used to create a ggplot of the correlation plot. It is made internal
-#'   so it is easier to maintain the code base.
-#'
-#' @param data data.frame
-#'
-#' @return ggplot2 plot
-#'
-vis_create_cor <- function(data){
+translate_cor_use <- function(use_op){
 
-  ggplot2::ggplot(data,
-                  ggplot2::aes(x = row_1,
-                               y = row_2,
-                               fill = value)) +
-    ggplot2::geom_raster() +
-    ggplot2::scale_fill_gradient2(low = "steelblue",
-                                  mid = "white",
-                                  high = "salmon") +
-    ggplot2::theme_minimal() +
-    ggplot2::scale_x_discrete(position = "top") +
-    ggplot2::labs(x = "",
-                  y = "")
+  dplyr::case_when(
+    use_op == "everything" ~ "NAs propagate conceptually, i.e., a resulting value will be NA whenever one of its contributing observations is NA.",
+    use_op == "all.obs" ~ "then the presence of missing observations will produce an error.",
+    use_op == "complete.obs" ~ "then missing values are handled by casewise deletion (and if there are no complete cases, that gives an error). ",
+    use_op == "na.or.complete" ~ "is the same unless there are no complete cases, that gives NA.",
+    use_op == "pairwise.complete.obs" ~ "then the correlation or covariance between each pair of variables is computed using all complete pairs of observations on those variables. ")
+
 }
 
 #' Are there any numeric columns?
