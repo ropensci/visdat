@@ -73,11 +73,11 @@ label_col_missing_pct <- function(x,
                                   col_order_index){
 
   # present everything in the right order
-  purrr::map_df(x, ~round(mean(is.na(.))*100,1))[col_order_index] %>%
+  purrr::map_df(x, ~round(mean(is.na(.))*100,2))[col_order_index] %>%
     purrr::map_chr(function(x){
       dplyr::case_when(
         x == 0 ~  "0%",
-        x > 0.1 ~ paste0(x,"%"),
+        x >= 0.1 ~ paste0(x,"%"),
         x < 0.1 ~ "<0.1%"
       )
     }) %>%
