@@ -1,4 +1,8 @@
-# visdat 0.2.2.9000 (2017/10/03)
+# visdat 0.2.2.9100 (2018/03/20)
+
+* fix visdat x axis lineup - [issue 57](https://github.com/ropensci/visdat/issues/57)
+
+# visdat 0.2.2.9000 (2018/02/20)
 
 * Added appropriate legend and x axis for `vis_miss_ly` - thanks to Stuart Lee
 

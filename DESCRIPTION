@@ -1,6 +1,6 @@
 Package: visdat
 Title: Preliminary Visualisation of Data
-Version: 0.2.2.9000
+Version: 0.2.2.9100
 Authors@R: c(
   person("Nicholas", "Tierney", role = c("aut", "cre"),
       email = "nicholas.tierney@gmail.com", 
