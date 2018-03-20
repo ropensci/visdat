@@ -1,9 +1,10 @@
-# visdat 0.2.2.9200 (2018/03/20)
+# visdat 0.2.2.9300 (2018/03/20)
 
 ## Bugfixes 
 
 * fix visdat x axis alignment - [issue 57](https://github.com/ropensci/visdat/issues/57)
 * fix bug where the column percentage missing would print to be NA when it was exactly equal to 0.1% missing. - [issue 62](https://github.com/ropensci/visdat/issues/62)
+* `vis_cor` didn't gather variables for plotting appropriately - now fixed
 
 # visdat 0.2.2.9000 (2018/02/20)
 
