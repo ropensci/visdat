@@ -20,6 +20,7 @@
 #' @docType package
 #' @importFrom magrittr %>%
 #' @importFrom stats cor
+#' @importFrom stats setNames
 NULL
 
 if(getRversion() >= "2.15.1")  utils::globalVariables(c("."))
@@ -28,4 +29,7 @@ globalVariables(c("valueGuess",
                   "row_1",
                   "row_2",
                   "value",
-                  "cor"))
+                  "cor",
+                  "setNames",
+                  "rowname",
+                  "n"))

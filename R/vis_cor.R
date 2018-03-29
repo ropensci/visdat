@@ -31,9 +31,20 @@ vis_cor <- function(data,
     stop("data input can only contain numeric values, please subset the data to the numeric values you would like.")
   } else {
 
-  vis_gather_cor(data,
-                 cor_method,
-                 use_op) %>%
-    vis_create_cor()
-    }
-}
+      gather_cor(data,
+             cor_method,
+             use_op) %>%
+      ggplot2::ggplot(ggplot2::aes_string(x = "row_1",
+                                          y = "row_2",
+                                          fill = "value")) +
+        ggplot2::geom_raster() +
+        ggplot2::scale_fill_gradient2(low = "steelblue",
+                                      mid = "white",
+                                      high = "salmon") +
+        ggplot2::theme_minimal() +
+        ggplot2::scale_x_discrete(position = "top") +
+        ggplot2::labs(x = "",
+                      y = "") +
+        ggplot2::guides(fill = ggplot2::guide_legend(title = "correlation"))
+  }
+  }

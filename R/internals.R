@@ -73,11 +73,11 @@ label_col_missing_pct <- function(x,
                                   col_order_index){
 
   # present everything in the right order
-  purrr::map_df(x, ~round(mean(is.na(.))*100,1))[col_order_index] %>%
+  purrr::map_df(x, ~round(mean(is.na(.))*100,2))[col_order_index] %>%
     purrr::map_chr(function(x){
       dplyr::case_when(
         x == 0 ~  "0%",
-        x > 0.1 ~ paste0(x,"%"),
+        x >= 0.1 ~ paste0(x,"%"),
         x < 0.1 ~ "<0.1%"
       )
     }) %>%
@@ -184,47 +184,27 @@ if (palette == "default"){
 #'   "everything", "all.obs", "complete.obs", "na.or.complete", or
 #'   "pairwise.complete.obs" (default).
 #'
+#'
 #' @return tidy dataframe of correlations
 #'
-vis_gather_cor <- function(data,
-                           cor_method = "pearson",
-                           use_op = "pairwise.complete.obs"){
+#' @examples
+#' gather_cor(airquality)
+#'
+#' @export
+gather_cor <- function(data,
+                       cor_method = "pearson",
+                       use_op = "pairwise.complete.obs"){
 
   stats::cor(data,
       method = cor_method,
       use = use_op) %>%
     as.data.frame() %>%
     tibble::rownames_to_column() %>%
-    tidyr::gather(key = "rowname",
-                  value = "value") %>%
+    tidyr::gather(key = "key",
+                  value = "value",
+                  -rowname) %>%
     purrr::set_names(c("row_1", "row_2", "value"))
 
-}
-
-#' Create a correlation heatmap in ggplot2
-#'
-#' This method assumes that you have the data as ordered by `vis_gather_cor`.
-#'   It is used to create a ggplot of the correlation plot. It is made internal
-#'   so it is easier to maintain the code base.
-#'
-#' @param data data.frame
-#'
-#' @return ggplot2 plot
-#'
-vis_create_cor <- function(data){
-
-  ggplot2::ggplot(data,
-                  ggplot2::aes(x = row_1,
-                               y = row_2,
-                               fill = value)) +
-    ggplot2::geom_raster() +
-    ggplot2::scale_fill_gradient2(low = "steelblue",
-                                  mid = "white",
-                                  high = "salmon") +
-    ggplot2::theme_minimal() +
-    ggplot2::scale_x_discrete(position = "top") +
-    ggplot2::labs(x = "",
-                  y = "")
 }
 
 #' Are there any numeric columns?

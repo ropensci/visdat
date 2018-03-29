@@ -1,15 +1,15 @@
 Package: visdat
 Title: Preliminary Visualisation of Data
-Version: 0.2.3.9000
+Version: 0.2.3.9300
 Authors@R: c(
   person("Nicholas", "Tierney", role = c("aut", "cre"),
       email = "nicholas.tierney@gmail.com", 
       comment = c(ORCID = "https://orcid.org/0000-0003-1460-8722")),
-  person("Sean", "Hughes", role = c("ctb"), 
+  person("Sean", "Hughes", role = "rev", 
       comment =c(ORCID = "https://orcid.org/0000-0002-9409-9405",
                  "Sean Hughes reviewed the package for rOpenSci, 
                   see https://github.com/ropensci/onboarding/issues/87")),
-  person("Mara", "Averick", role = c("ctb"), 
+  person("Mara", "Averick", role = "rev", 
       comment = "Mara Averick reviewed the package for rOpenSci, see 
       https://github.com/ropensci/onboarding/issues/87"),
   person("Stuart", "Lee", role = c("ctb")),
