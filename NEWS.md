@@ -1,4 +1,10 @@
-# visdat 0.2.2.9000 (2017/10/03)
+# visdat 0.2.3.9000 (2018/03/29)
+
+# New feature
+
+* Added draft `vis_expect` to make it easy to look at certain appearances of numbers in your data.
+
+# visdat 0.2.2.9000 (2018/02/21)
 
 * Added appropriate legend and x axis for `vis_miss_ly` - thanks to Stuart Lee
 
