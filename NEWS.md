@@ -1,3 +1,9 @@
+# visdat 0.2.3.9000 (2018/03/29)
+
+# New feature
+
+* Added draft `vis_expect` to make it easy to look at certain appearances of numbers in your data.
+
 # visdat 0.2.2.9300 (2018/03/20)
 
 ## Bugfixes 
