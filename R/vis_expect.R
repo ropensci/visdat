@@ -37,6 +37,8 @@ expect_frame <- function(data, expectation){
 #' @param expectation a formula following the syntax: `~.x {condition}`.
 #'   For example, writing `~.x < 20` would mean "where a variable value is less
 #'   than 20, replace with NA".
+#' @param show_perc logical - do you want to show the percentage of expected
+#'   values that are TRUE?
 #' @return a ggplot2 object
 #' @export
 #'

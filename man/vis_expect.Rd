@@ -4,7 +4,7 @@
 \alias{vis_expect}
 \title{Visualise whether a value is in a data frame}
 \usage{
-vis_expect(data, expectation)
+vis_expect(data, expectation, show_perc = TRUE)
 }
 \arguments{
 \item{data}{a data.frame}
@@ -12,6 +12,9 @@ vis_expect(data, expectation)
 \item{expectation}{a formula following the syntax: \code{~.x {condition}}.
 For example, writing \code{~.x < 20} would mean "where a variable value is less
 than 20, replace with NA".}
+
+\item{show_perc}{logical - do you want to show the percentage of expected
+values that are TRUE?}
 }
 \value{
 a ggplot2 object
