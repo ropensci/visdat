@@ -1,3 +1,9 @@
+# visdat 0.2.3.9500 (2018/04/27)
+
+# New feature
+
+* added CITATION for visdat to cite the JOSS article
+
 # visdat 0.2.3.9400 (2018/04/24)
 
 # New feature
