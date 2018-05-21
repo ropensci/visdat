@@ -39,6 +39,7 @@ Suggests:
     testthat,
     knitr,
     rmarkdown,
-    vdiffr
+    vdiffr,
+    gdtools
 VignetteBuilder: knitr
 Roxygen: list(markdown = TRUE)
