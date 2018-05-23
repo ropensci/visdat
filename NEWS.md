@@ -1,3 +1,9 @@
+# visdat 0.2.3.9600 (2018/05/23)
+
+# Bugfix
+
+* Fix visdat x axis alignment when show_perc_col = FALSE - [#82](https://github.com/ropensci/visdat/issues/82)
+
 # visdat 0.2.3.9500 (2018/04/27)
 
 # New feature

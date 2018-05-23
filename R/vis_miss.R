@@ -164,7 +164,9 @@ vis_miss <- function(x,
   } else {
     vis_miss_plot +
       ggplot2::scale_x_discrete(position = "top",
-                                limits = col_order_index)
+                                limits = col_order_index) +
+      # fix up the location of the text
+      ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0))
   }
 
   # guides(fill = guide_legend(title = "Type"))
