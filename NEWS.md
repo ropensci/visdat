@@ -1,11 +1,23 @@
-# visdat 0.2.3.9500 (2018/06/04)
+# visdat 0.2.3.9700 (2018/06/04)
 
 # New Feature
 
 * added NA colours to `vis_expect`
 * Added `show_perc` arg to `vis_expect` to show the percentage of expectations that are TRUE. #73
 
-# visdat 0.2.3.9000 (2018/03/29)
+# visdat 0.2.3.9600 (2018/05/23)
+
+# Bugfix
+
+* Fix visdat x axis alignment when show_perc_col = FALSE - [#82](https://github.com/ropensci/visdat/issues/82)
+
+# visdat 0.2.3.9500 (2018/04/27)
+
+# New feature
+
+* added CITATION for visdat to cite the JOSS article
+
+# visdat 0.2.3.9400 (2018/04/24)
 
 # New feature
 

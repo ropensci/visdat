@@ -41,6 +41,7 @@ dat_test <- tibble::tribble(
 
 vis_expect(dat_test,
            ~ .x == -1)
+
 vis_expect(airquality,
            ~ .x == 5.1)
 

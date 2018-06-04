@@ -1,6 +1,6 @@
 Package: visdat
 Title: Preliminary Visualisation of Data
-Version: 0.2.3.9400
+Version: 0.2.3.9600
 Authors@R: c(
   person("Nicholas", "Tierney", role = c("aut", "cre"),
       email = "nicholas.tierney@gmail.com", 
@@ -39,6 +39,7 @@ Suggests:
     testthat,
     knitr,
     rmarkdown,
-    vdiffr
+    vdiffr,
+    gdtools
 VignetteBuilder: knitr
 Roxygen: list(markdown = TRUE)

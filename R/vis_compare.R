@@ -80,7 +80,7 @@ vis_compare <- function(df1,
                       breaks = c("same", # red
                                  "different"), # dark blue
                       values = c("#fc8d59", # Orange
-                                 "#91bfdb"),
+                                 "#91bfdb"), # blue
                       na.value = "grey") +
   # flip the axes
   ggplot2::scale_y_reverse() +
