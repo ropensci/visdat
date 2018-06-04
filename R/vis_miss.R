@@ -146,7 +146,9 @@ vis_miss <- function(x,
                                labels = c(p_pres_lab,
                                           p_miss_lab)) +
     ggplot2::guides(fill = ggplot2::guide_legend(reverse = TRUE)) +
-    ggplot2::theme(legend.position = "bottom")
+    ggplot2::theme(legend.position = "bottom") +
+    # fix up the location of the text
+    ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0))
 
   # add the missingness column labels
   if (show_perc_col){
@@ -158,15 +160,12 @@ vis_miss <- function(x,
                                 labels = label_col_missing_pct(
                                   x,
                                   col_order_index)
-      ) +
-      # fix up the location of the text
-      ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0))
+      )
+
   } else {
     vis_miss_plot +
       ggplot2::scale_x_discrete(position = "top",
-                                limits = col_order_index) +
-      # fix up the location of the text
-      ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0))
+                                limits = col_order_index)
   }
 
   # guides(fill = guide_legend(title = "Type"))

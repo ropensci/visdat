@@ -54,7 +54,8 @@ expect_frame <- function(data, expectation){
 #'             ~x, ~y,
 #'             -1,  "A",
 #'             0,  "B",
-#'             1,  "C"
+#'             1,  "C",
+#'             NA, NA
 #'             )
 #'
 #' vis_expect(dat_test,
