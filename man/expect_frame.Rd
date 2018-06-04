@@ -10,8 +10,6 @@ expect_frame(data, expectation)
 \item{data}{data.frame}
 
 \item{expectation}{unquoted function calls - conditions or "expectations" to test}
-
-\item{show_perc}{logical}
 }
 \value{
 data.frames where expectation are true

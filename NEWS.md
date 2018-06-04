@@ -1,3 +1,9 @@
+# visdat 0.2.3.9400 (2018/06/04)
+
+# New Feature
+
+* Added `show_perc` arg to `vis_expect` to show the percentage of expectations that are TRUE. #73
+
 # visdat 0.2.3.9000 (2018/03/29)
 
 # New feature

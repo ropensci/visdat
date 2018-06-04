@@ -2,7 +2,6 @@
 #'
 #' @param data data.frame
 #' @param expectation unquoted function calls - conditions or "expectations" to test
-#' @param show_perc logical
 #'
 #' @return data.frames where expectation are true
 #' @author Stuart Lee and Earo Wang
@@ -38,6 +37,8 @@ expect_frame <- function(data, expectation){
 #' @param expectation a formula following the syntax: `~.x {condition}`.
 #'   For example, writing `~.x < 20` would mean "where a variable value is less
 #'   than 20, replace with NA".
+#' @param show_perc logical. TRUE now adds in the \% of expectations are
+#'   TRUE or FALSE in the whole dataset into the legend. Default value is TRUE.
 #' @return a ggplot2 object
 #' @export
 #'
@@ -71,10 +72,16 @@ vis_expect <- function(data, expectation, show_perc = TRUE){
     p_expect_false_lab <- temp$p_expect_true_lab
 
     # else if show_perc FALSE (do nothing)
+  } else {
+
+    p_expect_true_lab <- "TRUE"
+
+    p_expect_false_lab <- "FALSE"
+
   }
 
-  data_expect %>%
-    expect_frame(expectation) %>%
+  vis_expect_plot <- data_expect %>%
+    # expect_frame(expectation) %>%
     dplyr::mutate(rows = 1:n()) %>%
     tidyr::gather_(key_col = "variable",
                    value_col = "valueType",
@@ -90,16 +97,20 @@ vis_expect <- function(data, expectation, show_perc = TRUE){
                   y = "Observations") +
   # flip the axes
     ggplot2::scale_y_reverse() +
-    ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0.5)) +
+    ggplot2::scale_x_discrete(position = "top") +
     ggplot2::scale_fill_manual(name = "",
                                values = c("#998ec3", # purple
-                                          "#f1a340")) + # orange
+                                          "#f1a340"),
+                               labels = c(p_expect_false_lab,
+                                          p_expect_true_lab)) + # orange
     ggplot2::guides(fill = ggplot2::guide_legend(reverse = TRUE)) +
-    ggplot2::theme(legend.position = "bottom") +
     # change the limits etc.
     ggplot2::guides(fill = ggplot2::guide_legend(title = "Expectation")) +
     # add info about the axes
-    ggplot2::scale_x_discrete(position = "top") +
+    ggplot2::theme(legend.position = "bottom") +
+    # ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0.5)) +
     ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0))
+
+  return(vis_expect_plot)
 
 }

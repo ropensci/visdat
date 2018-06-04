@@ -29,15 +29,15 @@ expect_guide_label <- function(x) {
 
     # calculate rounded percentages
     p_expect_false <- round(p_expect, 1)
-    p_expect_true <- 100 - p_expect
+    p_expect_true <- round(100 - p_expect,1)
 
     # create the labels
-    p_expect_false_lab <- paste("Expectation FALSE \n(",
+    p_expect_false_lab <- paste("FALSE \n(",
                                 p_expect_false,
                                 "%)",
                                 sep = "")
 
-    p_expect_true_lab <- paste("Expectation TRUE \n(",
+    p_expect_true_lab <- paste("TRUE \n(",
                                p_expect_true,
                                "%)",
                                sep = "")

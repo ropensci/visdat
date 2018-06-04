@@ -12,6 +12,9 @@ vis_expect(data, expectation, show_perc = TRUE)
 \item{expectation}{a formula following the syntax: \code{~.x {condition}}.
 For example, writing \code{~.x < 20} would mean "where a variable value is less
 than 20, replace with NA".}
+
+\item{show_perc}{logical. TRUE now adds in the \% of expectations are
+TRUE or FALSE in the whole dataset into the legend. Default value is TRUE.}
 }
 \value{
 a ggplot2 object
