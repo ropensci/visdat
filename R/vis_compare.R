@@ -24,8 +24,6 @@
 vis_compare <- function(df1,
                         df2){
 
-  message("vis_compare is in BETA! If you have suggestions or errors\npost an issue at https://github.com/ropensci/visdat/issues")
-
   # could add a parameter, "sort_match", to help with
   # sort_match logical TRUE/FALSE.
   # TRUE arranges the columns in order of most matches.
@@ -34,7 +32,7 @@ vis_compare <- function(df1,
   # Tells us whether it is the same (true) as the other dataset, or not (false)
 
   if (!identical(dim(df1), dim(df2))){
-    stop("Dimensions of df1 and df2 are not the same. vis_compare currently only handles dataframes of identical dimensions.")
+    stop("Dimensions of df1 and df2 are not the same. vis_compare requires dataframes of identical dimensions.")
   }
 
   v_identical <- Vectorize(identical)
@@ -81,8 +79,8 @@ vis_compare <- function(df1,
                                  "different"),
                       breaks = c("same", # red
                                  "different"), # dark blue
-                      values = c("#ff7f00", # Orange
-                                 "#377eb8"), # blue
+                      values = c("#fc8d59", # Orange
+                                 "#91bfdb"),
                       na.value = "grey") +
   # flip the axes
   ggplot2::scale_y_reverse() +

@@ -2,6 +2,7 @@
 #'
 #' @param data data.frame
 #' @param expectation unquoted function calls - conditions or "expectations" to test
+#' @param show_perc logical
 #'
 #' @return data.frames where expectation are true
 #' @author Stuart Lee and Earo Wang
@@ -29,9 +30,9 @@ expect_frame <- function(data, expectation){
 
 #' Visualise whether a value is in a data frame
 #'
-#' vis_expect makes it simple to look for certain values in your data.
-#'   Not sure if you should expect whether -1 is in your data?
-#'   `vis_expect(data, ~.x == -1)` will show you.
+#'#' vis_expect visualises certain conditions or values in your data. For example,
+#'   If you are not sure whether to expect -1 in your data, you could write:
+#'   `vis_expect(data, ~.x == -1)`
 #'
 #' @param data a data.frame
 #' @param expectation a formula following the syntax: `~.x {condition}`.
@@ -55,9 +56,24 @@ expect_frame <- function(data, expectation){
 #' vis_expect(airquality,
 #'            ~ .x == 5.1)
 #'
-vis_expect <- function(data, expectation){
+vis_expect <- function(data, expectation, show_perc = TRUE){
 
-  data %>%
+  data_expect <- expect_frame(data, expectation)
+
+  # calculate the overall % expecations to display in legend -------------------
+
+  if (show_perc) {
+
+    temp <- expect_guide_label(data_expect)
+
+    p_expect_true_lab <- temp$p_expect_false_lab
+
+    p_expect_false_lab <- temp$p_expect_true_lab
+
+    # else if show_perc FALSE (do nothing)
+  }
+
+  data_expect %>%
     expect_frame(expectation) %>%
     dplyr::mutate(rows = 1:n()) %>%
     tidyr::gather_(key_col = "variable",
