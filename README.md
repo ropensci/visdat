@@ -10,7 +10,7 @@ status](http://joss.theoj.org/papers/c85f57adbc565b064fb4bfc9b59a1b2a/status.svg
 [![Travis Build
 Status](https://travis-ci.org/ropensci/visdat.svg?branch=master)](https://travis-ci.org/ropensci/visdat)[![AppVeyor
 Build
-Status](https://ci.appveyor.com/api/projects/status/github/ropensci/visdat?branch=master&svg=true)](https://ci.appveyor.com/project/ropensci/visdat)[![Coverage
+Status](https://ci.appveyor.com/api/projects/status/github/njtierney/visdat?branch=master&svg=true)](https://ci.appveyor.com/project/njtierney/visdat)[![Coverage
 Status](https://img.shields.io/codecov/c/github/ropensci/visdat/master.svg)](https://codecov.io/github/ropensci/visdat?branch=master)
 
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/naniar)](https://cran.r-project.org/package=naniar)[![CRAN
