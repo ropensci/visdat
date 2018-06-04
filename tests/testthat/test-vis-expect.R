@@ -4,7 +4,8 @@ dat_test <- tibble::tribble(
            ~x, ~y,
            -1,  "A",
            0,  "B",
-           1,  "C"
+           1,  "C",
+           NA, NA
            )
 
 
