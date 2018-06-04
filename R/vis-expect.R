@@ -29,14 +29,20 @@ expect_frame <- function(data, expectation){
 
 #' Visualise whether a value is in a data frame
 #'
-#'#' vis_expect visualises certain conditions or values in your data. For example,
+#' vis_expect visualises certain conditions or values in your data. For example,
 #'   If you are not sure whether to expect -1 in your data, you could write:
-#'   `vis_expect(data, ~.x == -1)`
+#'   `vis_expect(data, ~.x == -1)`, and you can see if there are times where
+#'   the values in your data are equal to -1. You could also, for example,
+#'   explore a set of bad strings, or possible NA values and visualise where
+#'   they are using \code{vis_expect(data, ~.x \%in\% bad_strings)} where
+#'   `bad_strings` is a character vector containing bad strings  like `N A`
+#'   `N/A` etc.
 #'
 #' @param data a data.frame
 #' @param expectation a formula following the syntax: `~.x {condition}`.
 #'   For example, writing `~.x < 20` would mean "where a variable value is less
-#'   than 20, replace with NA".
+#'   than 20, replace with NA", and \code{~.x \%in\% {vector}} would mean "where a
+#'   variable has values that are in that vector".
 #' @param show_perc logical. TRUE now adds in the \% of expectations are
 #'   TRUE or FALSE in the whole dataset into the legend. Default value is TRUE.
 #' @return a ggplot2 object
@@ -56,6 +62,26 @@ expect_frame <- function(data, expectation){
 
 #' vis_expect(airquality,
 #'            ~ .x == 5.1)
+#'
+#' # explore some common NA strings
+#'
+#' common_nas <- c(
+#' "NA",
+#' "N A",
+#' "N/A",
+#' "na",
+#' "n a",
+#' "n/a"
+#' )
+#'
+#' dat_ms <- tibble::tribble(~x,  ~y,    ~z,
+#'                          1,   "A",   -100,
+#'                          3,   "N/A", -99,
+#'                          NA,  NA,    -98,
+#'                          "N A", "E",   -101,
+#'                          "na", "F",   -1)
+#'
+#' vis_expect(dat_ms, ~.x %in% common_nas)
 #'
 vis_expect <- function(data, expectation, show_perc = TRUE){
 
@@ -104,7 +130,7 @@ vis_expect <- function(data, expectation, show_perc = TRUE){
                                           "grey"),
                                labels = c(p_expect_false_lab,
                                           p_expect_true_lab),
-                               na.value = "#6B6B6B") +
+                               na.value = "#E5E5E5") + # light gray
     ggplot2::guides(fill = ggplot2::guide_legend(reverse = TRUE)) +
     # change the limits etc.
     ggplot2::guides(fill = ggplot2::guide_legend(title = "Expectation")) +
