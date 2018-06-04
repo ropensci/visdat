@@ -23,10 +23,10 @@ dataframes of the same dimensions, and so takes two dataframes as arguments.
 \examples{
 
 # make a new dataset of iris that contains some NA values
-iris_diff <- iris
-iris_diff[1:10, 1:2] <- NA
+aq_diff <- airquality
+aq_diff[1:10, 1:2] <- NA
 
-vis_compare(iris, iris_diff)
+vis_compare(airquality, aq_diff)
 }
 \seealso{
 \code{\link[=vis_miss]{vis_miss()}} \code{\link[=vis_dat]{vis_dat()}} \code{\link[=vis_miss_ly]{vis_miss_ly()}} \code{\link[=vis_compare]{vis_compare()}}

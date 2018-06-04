@@ -1,3 +1,10 @@
+# visdat 0.2.3.9700 (2018/06/04)
+
+# New Feature
+
+* added NA colours to `vis_expect`
+* Added `show_perc` arg to `vis_expect` to show the percentage of expectations that are TRUE. #73
+
 # visdat 0.2.3.9600 (2018/05/23)
 
 # Bugfix

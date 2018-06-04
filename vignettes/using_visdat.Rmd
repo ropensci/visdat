@@ -149,9 +149,88 @@ vis_miss(airquality,
 
 To further explore the missingness structure in a dataset, I recommend the [`naniar`](https://github.com/njtierney/naniar) package, which provides more general tools for graphical and numerical exploration of missing values.
 
-## Interactivity
+## Using `vis_expect()`
 
-Thanks to Carson Sievert, you can now add some really nifty interactivity into visdat by using `plotly::ggplotly`, allowing for information to be revealed upon mouseover of a cell.
+## Using `vis_cor()`
+
+## Using `vis_compare()`
+
+Sometimes you want to see what has changed in your data. `vis_compare()` helps with that. It is currently only just barely working, so keep in mind that this is very much in its beta stages.
+
+For the sake of simplicity, let's make some changes to `iris`, and compare this new dataset.
+
+```{r vis-compare-iris}
+iris_diff <- iris
+iris_diff[sample(1:150, 30),sample(1:4, 2)] <- NA
+
+vis_compare(iris_diff, iris)
+
+```
+
+Here the differences are marked in blue.
+
+If you try and compare differences when the dimensions are different, you get an ugly error.
+
+```{r vis-compare-error, eval = FALSE}
+
+iris_diff_2 <- iris
+iris_diff_2$new_col <- iris$Sepal.Length + iris$Sepal.Width
+
+vis_compare(iris, iris_diff_2)
+#> vis_compare is still in BETA! If you have suggestions or errors, post an issue at https://github.com/njtierney/visdat/issuesthe condition has length > 1 and only the first element will be usedError: `.x` (5) and `.y` (6) are different lengths
+```
+
+In the future I'm hoping to create some way of representing the added columns and rows as an additional facet-like part of the plot, perhaps using something from [gridExtra](https://cran.r-project.org/web/packages/gridExtra/vignettes/arrangeGrob.html).
+
+
+## Using `vis_guess()`
+
+`vis_guess()` takes a guess at what each cell is. It's best illustrated using some messy data, which we'll make here.
+
+```{r create-messy-vec}
+
+messy_vector <- c(TRUE,
+                  T,
+                  "TRUE",
+                  "T",
+                  "01/01/01",
+                  "01/01/2001",
+                  NA,
+                  NaN,
+                  "NA",
+                  "Na",
+                  "na",
+                  "10",
+                  10,
+                  "10.1",
+                  10.1,
+                  "abc",
+                  "$%TG")
+
+set.seed(1114)
+messy_df <- data.frame(var1 = messy_vector,
+                       var2 = sample(messy_vector),
+                       var3 = sample(messy_vector))
+
+```
+
+
+```{r vis-guess-messy-df, fig.show='hold', out.width='50%'}
+library(visdat)
+vis_guess(messy_df)
+vis_dat(messy_df)
+
+```
+
+So here we see that there are many different kinds of data in your dataframe. As an analyst this might be a depressing finding. We can see this comparison above.
+
+Here, you might just assume your data is weird because it's all factors - or worse, not notice that this is a problem.
+
+At the moment `vis_guess` is very slow. Please take this into consideration when you are using it on data with more than 1000 rows. We're looking into ways of making it faster, potentially using methods from the `parallel` package, or extending the c++ code from `readr:::collectorGuess`.
+
+## Interactive plots (vis_*_ly)
+
+Thanks to Carson Sievert, you can now add some really nifty interactivity into visdat plots - these will eventually by using `plotly::ggplotly`, allowing for information to be revealed upon mouseover of a cell.
 
 ```{r plotly-example}
 
@@ -161,6 +240,41 @@ vis_dat(airquality) %>% ggplotly()
 vis_miss(airquality) %>% ggplotly()
 
 ```
+
+There are also interactive versions of most of these plots, 
+
+
+`vis_dat_ly(airquality)` is shorthand to call `ggplotly(vis_dat(airquality))`. When hovering the cursor over a cell, it will display information about each each cell, the type of data, the value, the row number, and the variable.
+
+At the moment the current implementation can be slow, as `plotly` has to work hard to translate the ggplot calls into plotly.
+
+```{r vis-dat-ly, eval = FALSE}
+vis_dat_ly(airquality)
+```
+
+## vis_miss_ly
+
+`vis_miss_ly(airquality)` is similar to `vis_dat_ly`, a shorthand call to `ggplotly(vis_miss(airquality))` with one important difference: it is written in pure plotly, so it is very fast!
+
+When hovering the cursor over a cell, it will display information about each each cell, the type of data, the number of missings in that case, and the number of missings in that variable.
+
+```{r vis-miss-ly}
+
+vis_miss_ly(airquality)
+
+```
+
+## vis_guess_ly
+
+This is again similar to the other `vis_*_ly()` family calls, requiring 
+
+```{r vis-guess-ly, eval = FALSE}
+vis_guess_ly(typical_data)
+```
+
+## vis_cor_ly
+
+## vis_expect_ly
 
 # Future work
 
