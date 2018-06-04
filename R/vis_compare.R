@@ -16,10 +16,10 @@
 #' @examples
 #'
 #' # make a new dataset of iris that contains some NA values
-#' iris_diff <- iris
-#' iris_diff[1:10, 1:2] <- NA
+#' aq_diff <- airquality
+#' aq_diff[1:10, 1:2] <- NA
 #'
-#' vis_compare(iris, iris_diff)
+#' vis_compare(airquality, aq_diff)
 #' @export
 vis_compare <- function(df1,
                         df2){

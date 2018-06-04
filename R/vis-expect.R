@@ -100,9 +100,11 @@ vis_expect <- function(data, expectation, show_perc = TRUE){
     ggplot2::scale_x_discrete(position = "top") +
     ggplot2::scale_fill_manual(name = "",
                                values = c("#998ec3", # purple
-                                          "#f1a340"),
+                                          "#f1a340", # orange
+                                          "grey"),
                                labels = c(p_expect_false_lab,
-                                          p_expect_true_lab)) + # orange
+                                          p_expect_true_lab),
+                               na.value = "#6B6B6B") +
     ggplot2::guides(fill = ggplot2::guide_legend(reverse = TRUE)) +
     # change the limits etc.
     ggplot2::guides(fill = ggplot2::guide_legend(title = "Expectation")) +
@@ -111,6 +113,6 @@ vis_expect <- function(data, expectation, show_perc = TRUE){
     # ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0.5)) +
     ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0))
 
-  return(vis_expect_plot)
+  vis_expect_plot
 
 }
