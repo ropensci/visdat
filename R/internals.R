@@ -7,7 +7,7 @@
 #'
 vis_gather_ <- function(x){
   x %>%
-  dplyr::mutate(rows = seq_len(nrow(x))) %>%
+  dplyr::mutate(rows = dplyr::row_number()) %>%
     tidyr::gather_(key_col = "variable",
                    value_col = "valueType",
                    gather_cols = names(.)[-length(.)])

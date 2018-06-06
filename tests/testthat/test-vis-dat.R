@@ -20,9 +20,14 @@ test_that("vis_dat creates the right plot",{
                               vis_dat_plot_pal_cb)
 })
 
+test_that("vis_dat doesn't fail when using diamonds",{
+  msg <- paste0(packageVersion("ggplot2"))
+  cat(msg)
+  expect_is(vis_dat(ggplot2::diamonds), "gg")
+})
 
 test_that("vis_dat fails when the wrong palette is provided",{
   ver <- as.character(gdtools::version_freetype())
   cat(sprintf("FreeType version: %s\n", ver))
-  testthat::expect_error(vis_dat(typical_data, palette = "wat"))
+  expect_error(vis_dat(typical_data, palette = "wat"))
 })

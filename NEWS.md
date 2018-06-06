@@ -1,25 +1,34 @@
+# visdat 0.2.4.9000 (2018/06/07)
+
+## Bug Fix
+
+* Fix error reported in [#75](https://github.com/ropensci/visdat/issues/75) 
+  where `vis_dat(diamonds)` errored `seq_len(nrow(x))` inside internal 
+  function `vis_gather_`, used to calculate the row numbers. Using 
+  `mutate(rows = dplyr::row_number())` solved the issue.
+
 # visdat 0.2.3.9700 (2018/06/04)
 
-# New Feature
+## New Feature
 
 * added NA colours to `vis_expect`
 * Added `show_perc` arg to `vis_expect` to show the percentage of expectations that are TRUE. #73
 
 # visdat 0.2.3.9600 (2018/05/23)
 
-# Bugfix
+## Bugfix
 
 * Fix visdat x axis alignment when show_perc_col = FALSE - [#82](https://github.com/ropensci/visdat/issues/82)
 
 # visdat 0.2.3.9500 (2018/04/27)
 
-# New feature
+## New feature
 
 * added CITATION for visdat to cite the JOSS article
 
 # visdat 0.2.3.9400 (2018/04/24)
 
-# New feature
+## New feature
 
 * Added draft `vis_expect` to make it easy to look at certain appearances of numbers in your data.
 
