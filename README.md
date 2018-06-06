@@ -16,7 +16,9 @@ Status](https://img.shields.io/codecov/c/github/ropensci/visdat/master.svg)](htt
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/naniar)](https://cran.r-project.org/package=naniar)[![CRAN
 Logs](http://cranlogs.r-pkg.org/badges/visdat)](http://cran.rstudio.com/web/packages/visdat/index.html)
 
-[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![Project Status: Active – The project has reached a stable, usable
+state and is being actively
+developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
 
 # How to install
 
