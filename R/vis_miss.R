@@ -137,7 +137,6 @@ vis_miss <- function(x,
     p_pres_lab <- "Present"
 
   }
-
   # then we plot it
   vis_miss_plot <- vis_create_(d) +
     ggplot2::scale_fill_manual(name = "",
@@ -151,6 +150,31 @@ vis_miss <- function(x,
     ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0))
 
   # add the missingness column labels
+
+  # if there is only one colummn you don't need to sort the columns
+  # this is perhaps a bit of a hacky way around, but I can't see another
+  # way around it. Related issue: https://github.com/ropensci/visdat/issues/72
+  if (ncol(x) == 1) {
+
+    if (show_perc_col){
+      return(print(
+      vis_miss_plot +
+        ggplot2::scale_x_discrete(position = "top",
+                                  labels = label_col_missing_pct(
+                                    x,
+                                    col_order_index)
+        )
+      ))
+    } else if (!show_perc_col) {
+      return(print(
+      vis_miss_plot +
+        ggplot2::scale_x_discrete(position = "top",
+                                  labels = col_order_index)
+      ))
+    }
+
+  }
+
   if (show_perc_col){
 
     # flip the axes, add the info about limits
