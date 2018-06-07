@@ -33,7 +33,7 @@ Imports:
     stats,
     tibble,
     rlang (>= 0.2.0)
-URL: http://visdat.njtierney.com/
+URL: http://visdat.njtierney.com/, https://github.com/ropensci/visdat
 BugReports: https://github.com/ropensci/visdat/issues
 Suggests:
     testthat,
