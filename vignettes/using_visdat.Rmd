@@ -151,19 +151,21 @@ To further explore the missingness structure in a dataset, I recommend the [`nan
 
 ## Using `vis_expect()`
 
+If you want to visualise other thigns in your data aside from missing data and 
+
 ## Using `vis_cor()`
 
 ## Using `vis_compare()`
 
-Sometimes you want to see what has changed in your data. `vis_compare()` helps with that. It is currently only just barely working, so keep in mind that this is very much in its beta stages.
+Sometimes you want to see what has changed in your data. `vis_compare()` displays the differences in two dataframes of the same size. Let's look at an example.
 
-For the sake of simplicity, let's make some changes to `iris`, and compare this new dataset.
+Let's make some changes to the `chickwts`, and compare this new dataset.
 
 ```{r vis-compare-iris}
-iris_diff <- iris
-iris_diff[sample(1:150, 30),sample(1:4, 2)] <- NA
+chickwts_diff <- chickwts
+chickwts_diff[sample(1:nrow(chickwts), 30),sample(1:ncol(chickwts), 2)] <- NA
 
-vis_compare(iris_diff, iris)
+vis_compare(chickwts_diff, chickwts)
 
 ```
 
@@ -173,15 +175,13 @@ If you try and compare differences when the dimensions are different, you get an
 
 ```{r vis-compare-error, eval = FALSE}
 
-iris_diff_2 <- iris
-iris_diff_2$new_col <- iris$Sepal.Length + iris$Sepal.Width
+chickwts_diff_2 <- chickwts
+chickwts_diff_2$new_col <- chickwts_diff_2$weight*2
 
-vis_compare(iris, iris_diff_2)
-#> vis_compare is still in BETA! If you have suggestions or errors, post an issue at https://github.com/njtierney/visdat/issuesthe condition has length > 1 and only the first element will be usedError: `.x` (5) and `.y` (6) are different lengths
+vis_compare(chickwts, chickwts_diff_2)
+# Error in vis_compare(chickwts, chickwts_diff_2) : 
+#   Dimensions of df1 and df2 are not the same. vis_compare requires dataframes of identical dimensions.
 ```
-
-In the future I'm hoping to create some way of representing the added columns and rows as an additional facet-like part of the plot, perhaps using something from [gridExtra](https://cran.r-project.org/web/packages/gridExtra/vignettes/arrangeGrob.html).
-
 
 ## Using `vis_guess()`
 
@@ -278,5 +278,6 @@ vis_guess_ly(typical_data)
 
 # Future work
 
-There are some other features in development for interactivity, guessing types of data, and comparing datasets. You read more about these in the vignette, "Experimental Features of visdat".
+Future work from here is focussed on making `visdat` more stable, improving the 
+speed of plotting, the interactive functions
 
