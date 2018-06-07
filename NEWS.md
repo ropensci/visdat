@@ -1,11 +1,18 @@
-# visdat 0.2.4.9000 (2018/06/07)
+# visdat 0.2.5.9000 (2018/06/07)
 
-## Bug Fix
+## Bug Fixes
 
-* Fix error reported in [#75](https://github.com/ropensci/visdat/issues/75) 
+* Fix bug reported in [#75](https://github.com/ropensci/visdat/issues/75) 
   where `vis_dat(diamonds)` errored `seq_len(nrow(x))` inside internal 
   function `vis_gather_`, used to calculate the row numbers. Using 
   `mutate(rows = dplyr::row_number())` solved the issue.
+
+* Fix bug reported in [#72](https://github.com/ropensci/visdat/issues/72)
+  where `vis_miss` errored when one column was given to it. This was an issue
+  with using `limits` inside `scale_x_discrete` - which is used to order the
+  columns of the data. It is not necessary to order one column of data, so I
+  created an if-else to avoid this step and return the plot early.
+  
 
 # visdat 0.2.3.9700 (2018/06/04)
 
