@@ -151,7 +151,7 @@ To further explore the missingness structure in a dataset, I recommend the [`nan
 
 ## Using `vis_expect()`
 
-If you want to visualise other thigns in your data aside from missing data and 
+If you want to visualise other thigns in your data aside from missing data and the classes you can visualise expectations
 
 ## Using `vis_cor()`
 
