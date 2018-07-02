@@ -1,11 +1,27 @@
-# visdat 0.2.6.9100 (2018/07/02)
+# visdat 0.5.000 (2018/07/02) "I Had The Blues But I Shook Them Loose"
+
+## New Feature
+
+* added NA colours to `vis_expect`
+* Added `show_perc` arg to `vis_expect` to show the percentage of expectations that are TRUE. #73
+* added CITATION for visdat to cite the JOSS article
+* Added draft `vis_expect` to make it easy to look at certain appearances of numbers in your data.
+- Added `vis_cor` to visualise correlations in a dataframe
+
+- visdat is now under the rOpenSci github repository
+- Added Sean Hughes and Mara Averick to the DESCRIPTION with `ctb`.
+
+- `vis_compare()` for comparing two dataframes of the same dimensions
+- `vis_guess()` for displaying the likely type for each cell in a dataframe
+- Minor changes to the paper for JOSS
 
 ## Minor Changes
 
-- updated options for `vis_cor` to use argument `na_action` not `use_op`.
-- cleaned up the organisation of the files and internal functions
-
-# visdat 0.2.5.9000 (2018/06/07)
+* updated options for `vis_cor` to use argument `na_action` not `use_op`.
+* cleaned up the organisation of the files and internal functions
+* Added appropriate legend and x axis for `vis_miss_ly` - thanks to Stuart Lee
+* Updated the `paper.md` for JOSS
+* Updated some old links in doco
 
 ## Bug Fixes
 
@@ -19,76 +35,14 @@
   with using `limits` inside `scale_x_discrete` - which is used to order the
   columns of the data. It is not necessary to order one column of data, so I
   created an if-else to avoid this step and return the plot early.
-  
-
-# visdat 0.2.3.9700 (2018/06/04)
-
-## New Feature
-
-* added NA colours to `vis_expect`
-* Added `show_perc` arg to `vis_expect` to show the percentage of expectations that are TRUE. #73
-
-# visdat 0.2.3.9600 (2018/05/23)
-
-## Bugfix
 
 * Fix visdat x axis alignment when show_perc_col = FALSE - [#82](https://github.com/ropensci/visdat/issues/82)
-
-# visdat 0.2.3.9500 (2018/04/27)
-
-## New feature
-
-* added CITATION for visdat to cite the JOSS article
-
-# visdat 0.2.3.9400 (2018/04/24)
-
-## New feature
-
-* Added draft `vis_expect` to make it easy to look at certain appearances of numbers in your data.
-
-# visdat 0.2.2.9300 (2018/03/20)
-
-## Bugfixes 
 
 * fix visdat x axis alignment - [issue 57](https://github.com/ropensci/visdat/issues/57)
 * fix bug where the column percentage missing would print to be NA when it was exactly equal to 0.1% missing. - [issue 62](https://github.com/ropensci/visdat/issues/62)
 * `vis_cor` didn't gather variables for plotting appropriately - now fixed
 
-# visdat 0.2.2.9000 (2018/02/20)
-
-* Added appropriate legend and x axis for `vis_miss_ly` - thanks to Stuart Lee
-
-# visdat 0.2.2 (2017/10/03)
-
-- Added `vis_cor` to visualise correlations in a dataframe
-
-# visdat 0.2.1 (2017/08/18)
-
-- Updated the `paper.md` for JOSS
-- Updated some old links in doco
-
-# visdat 0.2.0.9000 (2017/08/01)
-
-- visdat is now under the rOpenSci github repository
-- Added Sean Hughes and Mara Averick to the DESCRIPTION with `ctb`.
-
-## New features
-
-- `vis_compare()` for comparing two dataframes of the same dimensions
-- `vis_guess()` for displaying the likely type for each cell in a dataframe
-
-Interactive, `plotly` versions for each of the `vis_*` family
-
-- `vis_dat_ly()`
-- `vis_miss_ly()`
-- `vis_guess_ly()`
-- `vis_compare_ly()`
-
-## Minor Changes
-
-- Minor changes to the paper for JOSS
-
-# visdat 0.1.0 (2017/07/03)
+# visdat 0.1.0 (2017/07/03) ("JOSS")
 
 - lightweight CRAN submission - will only contain functions `vis_dat` and `vis_miss`
 
