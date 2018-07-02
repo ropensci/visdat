@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>A utility function for <code>vis_dat</code> — compare_print • visdat</title>
+<title>(Internal) A utility function for <code>vis_compare</code> — compare_print • visdat</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -36,12 +36,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
 
 
-<meta property="og:title" content="A utility function for <code>vis_dat</code> — compare_print" />
+<meta property="og:title" content="(Internal) A utility function for <code>vis_compare</code> — compare_print" />
 
 <meta property="og:description" content="compare_print is an internal function that takes creates a dataframe with
 information about where there are differences in the dataframe. This
-function is used in &quot;vis_compare&quot;. It does a simple evaluation on the data
-(df1 == df2) and (currently) replaces the &quot;true&quot; (the same) with &quot;Same&quot;
+function is used in vis_compare. It evaluates on the data (df1 == df2)
+and (currently) replaces the &quot;true&quot; (the same) with &quot;Same&quot;
 and FALSE with &quot;Different&quot;, unless it is missing (coded as NA), in which
 case it leaves it as NA." />
 <meta name="twitter:card" content="summary" />
@@ -72,7 +72,7 @@ case it leaves it as NA." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">visdat</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.5.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.6.9000</span>
       </span>
     </div>
 
@@ -83,9 +83,6 @@ case it leaves it as NA." />
 </li>
 <li>
   <a href="../articles/using_visdat.html">Using visdat</a>
-</li>
-<li>
-  <a href="../articles/experimental_features.html">Experimental Features</a>
 </li>
 <li>
   <a href="../news/index.html">News</a>
@@ -117,8 +114,8 @@ case it leaves it as NA." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>A utility function for <code>vis_dat</code></h1>
-    <small class="dont-index">Source: <a href='https://github.com/ropensci/visdat/blob/master/R/compare_print.R'><code>R/compare_print.R</code></a></small>
+    <h1>(Internal) A utility function for <code>vis_compare</code></h1>
+    <small class="dont-index">Source: <a href='https://github.com/ropensci/visdat/blob/master/R/vis-compare.R'><code>R/vis-compare.R</code></a></small>
     <div class="hidden name"><code>compare_print.Rd</code></div>
     </div>
 
@@ -126,8 +123,8 @@ case it leaves it as NA." />
     
     <p><code>compare_print</code> is an internal function that takes creates a dataframe with
 information about where there are differences in the dataframe. This
-function is used in "vis_compare". It does a simple evaluation on the data
-(df1 == df2) and (currently) replaces the "true" (the same) with "Same"
+function is used in <code>vis_compare</code>. It evaluates on the data <code>(df1 == df2)</code>
+and (currently) replaces the "true" (the same) with "Same"
 and FALSE with "Different", unless it is missing (coded as NA), in which
 case it leaves it as NA.</p>
     

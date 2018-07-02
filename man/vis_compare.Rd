@@ -25,9 +25,7 @@ dataframes of the same dimension, so it takes two dataframes as arguments.
 # make a new dataset of iris that contains some NA values
 aq_diff <- airquality
 aq_diff[1:10, 1:2] <- NA
-\dontrun{
 vis_compare(airquality, aq_diff)
-}
 }
 \seealso{
 \code{\link[=vis_miss]{vis_miss()}} \code{\link[=vis_dat]{vis_dat()}} \code{\link[=vis_guess]{vis_guess()}} \code{\link[=vis_expect]{vis_expect()}} \code{\link[=vis_cor]{vis_cor()}}

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>A utility function for <code>vis_dat</code> — fingerprint • visdat</title>
+<title>Take the fingerprint of a data.frame - find the class or return NA — fingerprint • visdat</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -36,13 +36,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
 
 
-<meta property="og:title" content="A utility function for <code>vis_dat</code> — fingerprint" />
+<meta property="og:title" content="Take the fingerprint of a data.frame - find the class or return NA — fingerprint" />
 
 <meta property="og:description" content="fingerprint is an internal function that takes the &quot;fingerprint&quot; of a
-dataframe, and (currently) replaces the contents (x) with the class of a
+dataframe, and currently replaces the contents (x) with the class of a
 given object, unless it is missing (coded as NA), in which case it leaves
 it as NA. The name &quot;fingerprint&quot; is taken from the csv-fingerprint, of
-which this package is based." />
+which the package, visdat, is based upon" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -71,7 +71,7 @@ which this package is based." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">visdat</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.5.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.6.9000</span>
       </span>
     </div>
 
@@ -82,9 +82,6 @@ which this package is based." />
 </li>
 <li>
   <a href="../articles/using_visdat.html">Using visdat</a>
-</li>
-<li>
-  <a href="../articles/experimental_features.html">Experimental Features</a>
 </li>
 <li>
   <a href="../news/index.html">News</a>
@@ -116,18 +113,18 @@ which this package is based." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>A utility function for <code>vis_dat</code></h1>
-    <small class="dont-index">Source: <a href='https://github.com/ropensci/visdat/blob/master/R/fingerprint.R'><code>R/fingerprint.R</code></a></small>
+    <h1>Take the fingerprint of a data.frame - find the class or return NA</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ropensci/visdat/blob/master/R/internals.R'><code>R/internals.R</code></a></small>
     <div class="hidden name"><code>fingerprint.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
     <p><code>fingerprint</code> is an internal function that takes the "fingerprint" of a
-dataframe, and (currently) replaces the contents (x) with the class of a
-given object, unless it is missing (coded as NA), in which case it leaves
-it as NA. The name "fingerprint" is taken from the csv-fingerprint, of
-which this package is based.</p>
+dataframe, and currently replaces the contents (x) with the class of a
+given object, unless it is missing (coded as <code>NA</code>), in which case it leaves
+it as <code>NA</code>. The name "fingerprint" is taken from the csv-fingerprint, of
+which the package, <code>visdat</code>, is based upon</p>
     
     </div>
 

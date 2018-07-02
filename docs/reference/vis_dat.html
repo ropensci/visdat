@@ -70,7 +70,7 @@ easy to customize and change labels, and customize the plot" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">visdat</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.5.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.6.9000</span>
       </span>
     </div>
 
@@ -81,9 +81,6 @@ easy to customize and change labels, and customize the plot" />
 </li>
 <li>
   <a href="../articles/using_visdat.html">Using visdat</a>
-</li>
-<li>
-  <a href="../articles/experimental_features.html">Experimental Features</a>
 </li>
 <li>
   <a href="../news/index.html">News</a>
@@ -116,7 +113,7 @@ easy to customize and change labels, and customize the plot" />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Visualises a data.frame to tell you what it contains.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ropensci/visdat/blob/master/R/vis_dat.R'><code>R/vis_dat.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/ropensci/visdat/blob/master/R/vis-dat.R'><code>R/vis-dat.R</code></a></small>
     <div class="hidden name"><code>vis_dat.Rd</code></div>
     </div>
 
@@ -155,11 +152,13 @@ from http://colorbrewer2.org/.</p></td>
     </tr>
     <tr>
       <th>warn_large_data</th>
-      <td><p>logical default is TRUE</p></td>
+      <td><p>logical - warn if there is large data? Default is TRUE
+see note for more details</p></td>
     </tr>
     <tr>
       <th>large_data_size</th>
-      <td><p>integer default is 900000, this can be changed.</p></td>
+      <td><p>integer default is 900000, this can be changed. See
+note for more details</p></td>
     </tr>
     </table>
     
@@ -178,15 +177,18 @@ a blank plot! See example code for suggestions on doing this.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='vis_miss.html'>vis_miss()</a></code></p></div>
+    <div class='dont-index'><p><code><a href='vis_miss.html'>vis_miss()</a></code> <code><a href='vis_guess.html'>vis_guess()</a></code> <code><a href='vis_expect.html'>vis_expect()</a></code> <code><a href='vis_cor.html'>vis_cor()</a></code>
+<code><a href='vis_compare.html'>vis_compare()</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='fu'>vis_dat</span>(<span class='no'>airquality</span>)</div><div class='img'><img src='vis_dat-1.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># experimental colourblind safe palette</span>
-<span class='fu'>vis_dat</span>(<span class='no'>airquality</span>, <span class='kw'>palette</span> <span class='kw'>=</span> <span class='st'>"cb_safe"</span>)</div><div class='img'><img src='vis_dat-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>vis_dat</span>(<span class='no'>airquality</span>, <span class='kw'>palette</span> <span class='kw'>=</span> <span class='st'>"qual"</span>)</div><div class='img'><img src='vis_dat-3.png' alt='' width='700' height='433' /></div><div class='input'>
 </div><span class='co'># NOT RUN {</span>
+<span class='co'># experimental colourblind safe palette</span>
+<span class='fu'>vis_dat</span>(<span class='no'>airquality</span>, <span class='kw'>palette</span> <span class='kw'>=</span> <span class='st'>"cb_safe"</span>)
+<span class='fu'>vis_dat</span>(<span class='no'>airquality</span>, <span class='kw'>palette</span> <span class='kw'>=</span> <span class='st'>"qual"</span>)
+
 <span class='co'># if you have a large dataset, you might want to try downsampling:</span>
 <span class='fu'>library</span>(<span class='no'>nycflight13</span>)
 <span class='fu'>library</span>(<span class='no'>dplyr</span>)

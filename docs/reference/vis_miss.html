@@ -70,7 +70,7 @@ object, it is very easy to customize and change labels." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">visdat</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.5.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.6.9000</span>
       </span>
     </div>
 
@@ -81,9 +81,6 @@ object, it is very easy to customize and change labels." />
 </li>
 <li>
   <a href="../articles/using_visdat.html">Using visdat</a>
-</li>
-<li>
-  <a href="../articles/experimental_features.html">Experimental Features</a>
 </li>
 <li>
   <a href="../news/index.html">News</a>
@@ -116,7 +113,7 @@ object, it is very easy to customize and change labels." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Visualise a data.frame to display missingness.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ropensci/visdat/blob/master/R/vis_miss.R'><code>R/vis_miss.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/ropensci/visdat/blob/master/R/vis-miss.R'><code>R/vis-miss.R</code></a></small>
     <div class="hidden name"><code>vis_miss.Rd</code></div>
     </div>
 
@@ -143,11 +140,12 @@ object, it is very easy to customize and change labels.</p>
       <th>cluster</th>
       <td><p>logical. TRUE specifies that you want to use hierarchical
 clustering (mcquitty method) to arrange rows according to missingness.
-FALSE specifies that you want to leave it as is.</p></td>
+FALSE specifies that you want to leave it as is. Default value is FALSE.</p></td>
     </tr>
     <tr>
       <th>sort_miss</th>
-      <td><p>logical. TRUE arranges the columns in order of missingness</p></td>
+      <td><p>logical. TRUE arranges the columns in order of missingness.
+Default value is FALSE.</p></td>
     </tr>
     <tr>
       <th>show_perc</th>
@@ -157,15 +155,17 @@ in the whole dataset into the legend. Default value is TRUE.</p></td>
     <tr>
       <th>show_perc_col</th>
       <td><p>logical. TRUE adds in the % missing data in a given
-column into the x axis. Can be disabled with FALSE</p></td>
+column into the x axis. Can be disabled with FALSE. Default value is TRUE.</p></td>
     </tr>
     <tr>
       <th>large_data_size</th>
-      <td><p>integer default is 900000, this can be changed.</p></td>
+      <td><p>integer default is 900000, this can be changed. See
+note for more details</p></td>
     </tr>
     <tr>
       <th>warn_large_data</th>
-      <td><p>logical default is TRUE</p></td>
+      <td><p>logical - warn if there is large data? Default is TRUE
+see note for more details</p></td>
     </tr>
     </table>
     
@@ -184,15 +184,17 @@ a blank plot! See example code for suggestions on doing this.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='vis_dat.html'>vis_dat()</a></code></p></div>
+    <div class='dont-index'><p><code><a href='vis_dat.html'>vis_dat()</a></code> <code><a href='vis_guess.html'>vis_guess()</a></code> <code><a href='vis_expect.html'>vis_expect()</a></code> <code><a href='vis_cor.html'>vis_cor()</a></code> <code><a href='vis_compare.html'>vis_compare()</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='fu'>vis_miss</span>(<span class='no'>airquality</span>)</div><div class='img'><img src='vis_miss-1.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='fu'>vis_miss</span>(<span class='no'>airquality</span>, <span class='kw'>cluster</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='img'><img src='vis_miss-2.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='fu'>vis_miss</span>(<span class='no'>airquality</span>, <span class='kw'>sort_miss</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='img'><img src='vis_miss-3.png' alt='' width='700' height='433' /></div><div class='input'>
 </div><span class='co'># NOT RUN {</span>
+<span class='fu'>vis_miss</span>(<span class='no'>airquality</span>, <span class='kw'>cluster</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+
+<span class='fu'>vis_miss</span>(<span class='no'>airquality</span>, <span class='kw'>sort_miss</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+
 <span class='co'># if you have a large dataset, you might want to try downsampling:</span>
 <span class='fu'>library</span>(<span class='no'>nycflight13</span>)
 <span class='fu'>library</span>(<span class='no'>dplyr</span>)

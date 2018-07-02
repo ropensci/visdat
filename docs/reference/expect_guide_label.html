@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Label the legend with the percent of missing data — expect_guide_label • visdat</title>
+<title>(Internal) Label the legend with the percent of missing data — expect_guide_label • visdat</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -36,9 +36,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
 
 
-<meta property="og:title" content="Label the legend with the percent of missing data — expect_guide_label" />
+<meta property="og:title" content="(Internal) Label the legend with the percent of missing data — expect_guide_label" />
 
-<meta property="og:description" content="miss_guide_label is an internal function for vis_miss to label the legend." />
+<meta property="og:description" content="miss_guide_label is an internal function to label the legend of vis_miss." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -67,7 +67,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">visdat</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.5.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.6.9000</span>
       </span>
     </div>
 
@@ -78,9 +78,6 @@
 </li>
 <li>
   <a href="../articles/using_visdat.html">Using visdat</a>
-</li>
-<li>
-  <a href="../articles/experimental_features.html">Experimental Features</a>
 </li>
 <li>
   <a href="../news/index.html">News</a>
@@ -112,14 +109,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Label the legend with the percent of missing data</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ropensci/visdat/blob/master/R/expect-guide-label.R'><code>R/expect-guide-label.R</code></a></small>
+    <h1>(Internal) Label the legend with the percent of missing data</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ropensci/visdat/blob/master/R/vis-expect.R'><code>R/vis-expect.R</code></a></small>
     <div class="hidden name"><code>expect_guide_label.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p><code>miss_guide_label</code> is an internal function for vis_miss to label the legend.</p>
+    <p><code>miss_guide_label</code> is an internal function to label the legend of <code>vis_miss</code>.</p>
     
     </div>
 
@@ -130,13 +127,13 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>is a dataframe passed from vis_miss(x).</p></td>
+      <td><p>is a dataframe passed from <code><a href='vis_miss.html'>vis_miss(x)</a></code>.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a data_frame with two columns <code>p_miss_lab</code> and <code>p_pres_lab</code>,
+    <p>a <code>tibble</code> with two columns <code>p_miss_lab</code> and <code>p_pres_lab</code>,
 containing the labels to use for present and missing. A dataframe is
 returned because I think it is a good style habit compared to a list.</p>
     

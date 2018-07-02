@@ -38,10 +38,10 @@
 
 <meta property="og:title" content="Visualise whether a value is in a data frame — vis_expect" />
 
-<meta property="og:description" content="vis_expect visualises certain conditions or values in your data. For example,
-If you are not sure whether to expect -1 in your data, you could write:
-vis_expect(data, ~.x == -1), and you can see if there are times where
-the values in your data are equal to -1. You could also, for example,
+<meta property="og:description" content="vis_expect visualises certain conditions or values in your data. For
+example, If you are not sure whether to expect -1 in your data, you could
+write: vis_expect(data, ~.x == -1), and you can see if there are times
+where the values in your data are equal to -1. You could also, for example,
 explore a set of bad strings, or possible NA values and visualise where
 they are using vis_expect(data, ~.x %in% bad_strings) where
 bad_strings is a character vector containing bad strings  like N A
@@ -74,7 +74,7 @@ N/A etc." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">visdat</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.5.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.6.9000</span>
       </span>
     </div>
 
@@ -85,9 +85,6 @@ N/A etc." />
 </li>
 <li>
   <a href="../articles/using_visdat.html">Using visdat</a>
-</li>
-<li>
-  <a href="../articles/experimental_features.html">Experimental Features</a>
 </li>
 <li>
   <a href="../news/index.html">News</a>
@@ -126,10 +123,10 @@ N/A etc." />
 
     <div class="ref-description">
     
-    <p>vis_expect visualises certain conditions or values in your data. For example,
-If you are not sure whether to expect -1 in your data, you could write:
-<code>vis_expect(data, ~.x == -1)</code>, and you can see if there are times where
-the values in your data are equal to -1. You could also, for example,
+    <p><code>vis_expect</code> visualises certain conditions or values in your data. For
+example, If you are not sure whether to expect -1 in your data, you could
+write: <code>vis_expect(data, ~.x == -1)</code>, and you can see if there are times
+where the values in your data are equal to -1. You could also, for example,
 explore a set of bad strings, or possible NA values and visualise where
 they are using <code>vis_expect(data, ~.x %in% bad_strings)</code> where
 <code>bad_strings</code> is a character vector containing bad strings  like <code>N A</code>
@@ -164,6 +161,10 @@ TRUE or FALSE in the whole dataset into the legend. Default value is TRUE.</p></
 
     <p>a ggplot2 object</p>
     
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='vis_miss.html'>vis_miss()</a></code> <code><a href='vis_dat.html'>vis_dat()</a></code> <code><a href='vis_guess.html'>vis_guess()</a></code> <code><a href='vis_cor.html'>vis_cor()</a></code> <code><a href='vis_compare.html'>vis_compare()</a></code></p></div>
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
@@ -175,9 +176,10 @@ TRUE or FALSE in the whole dataset into the legend. Default value is TRUE.</p></
             <span class='fl'>NA</span>, <span class='fl'>NA</span>
             )
 
-<span class='fu'>vis_expect</span>(<span class='no'>dat_test</span>,
-           ~ <span class='no'>.x</span> <span class='kw'>==</span> -<span class='fl'>1</span>)</div><div class='img'><img src='vis_expect-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>vis_expect</span>(<span class='no'>airquality</span>,
-           ~ <span class='no'>.x</span> <span class='kw'>==</span> <span class='fl'>5.1</span>)</div><div class='img'><img src='vis_expect-2.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'>vis_expect</span>(<span class='no'>dat_test</span>, ~<span class='no'>.x</span> <span class='kw'>==</span> -<span class='fl'>1</span>)</div><div class='img'><img src='vis_expect-1.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><span class='co'># NOT RUN {</span>
+<span class='fu'>vis_expect</span>(<span class='no'>airquality</span>, ~<span class='no'>.x</span> <span class='kw'>==</span> <span class='fl'>5.1</span>)
+
 <span class='co'># explore some common NA strings</span>
 
 <span class='no'>common_nas</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(
@@ -196,7 +198,9 @@ TRUE or FALSE in the whole dataset into the legend. Default value is TRUE.</p></
                          <span class='st'>"N A"</span>, <span class='st'>"E"</span>,   -<span class='fl'>101</span>,
                          <span class='st'>"na"</span>, <span class='st'>"F"</span>,   -<span class='fl'>1</span>)
 
-<span class='fu'>vis_expect</span>(<span class='no'>dat_ms</span>, ~<span class='no'>.x</span> <span class='kw'>%in%</span> <span class='no'>common_nas</span>)</div><div class='img'><img src='vis_expect-3.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'>vis_expect</span>(<span class='no'>dat_ms</span>, ~<span class='no'>.x</span> <span class='kw'>%in%</span> <span class='no'>common_nas</span>)
+
+<span class='co'># }</span><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -205,6 +209,8 @@ TRUE or FALSE in the whole dataset into the legend. Default value is TRUE.</p></
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

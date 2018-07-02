@@ -1,6 +1,6 @@
-#' Create a correlation heatmap ggplot of all of the data
+#' Visualise correlations amongst variables in your data as a heatmap
 #'
-#' Visualises correlations amongst variables using ggplot
+#' Visualise correlations amongst variables in your data as a heatmap
 #'
 #' @param data data.frame
 #' @param cor_method correlation method to use, from `cor`: "a character

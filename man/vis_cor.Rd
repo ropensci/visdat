@@ -2,7 +2,7 @@
 % Please edit documentation in R/vis-cor.R
 \name{vis_cor}
 \alias{vis_cor}
-\title{Create a correlation heatmap ggplot of all of the data}
+\title{Visualise correlations amongst variables in your data as a heatmap}
 \usage{
 vis_cor(data, cor_method = "pearson", na_action = "pairwise.complete.obs",
   ...)
@@ -26,11 +26,11 @@ taken from the \code{cor} function argument \code{use}.}
 ggplot2 object
 }
 \description{
-Visualises correlations amongst variables using ggplot
+Visualise correlations amongst variables in your data as a heatmap
 }
 \examples{
-\dontrun{
 vis_cor(airquality)
+\dontrun{
 vis_cor(mtcars)
 vis_cor(iris)
 }

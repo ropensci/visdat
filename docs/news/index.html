@@ -64,7 +64,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">visdat</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.5.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.6.9000</span>
       </span>
     </div>
 
@@ -75,9 +75,6 @@
 </li>
 <li>
   <a href="../articles/using_visdat.html">Using visdat</a>
-</li>
-<li>
-  <a href="../articles/experimental_features.html">Experimental Features</a>
 </li>
 <li>
   <a href="../news/index.html">News</a>
@@ -113,6 +110,19 @@
       <small>Source: <a href='https://github.com/ropensci/visdat/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="visdat-0-2-6-9100-20180702" class="section level1">
+<h1 class="page-header">
+<a href="#visdat-0-2-6-9100-20180702" class="anchor"></a>visdat 0.2.6.9100 (2018/07/02)<small> Unreleased </small>
+</h1>
+<div id="minor-changes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#minor-changes" class="anchor"></a>Minor Changes</h2>
+<ul>
+<li>updated options for <code>vis_cor</code> to use argument <code>na_action</code> not <code>use_op</code>.</li>
+<li>cleaned up the organisation of the files and internal functions</li>
+</ul>
+</div>
+</div>
     <div id="visdat-0-2-5-9000-20180607" class="section level1">
 <h1 class="page-header">
 <a href="#visdat-0-2-5-9000-20180607" class="anchor"></a>visdat 0.2.5.9000 (2018/06/07)<small> Unreleased </small>
@@ -238,15 +248,15 @@
 </ul>
 <p>Interactive, <code>plotly</code> versions for each of the <code>vis_*</code> family</p>
 <ul>
-<li><code><a href="../reference/vis_dat_ly.html">vis_dat_ly()</a></code></li>
-<li><code><a href="../reference/vis_miss_ly.html">vis_miss_ly()</a></code></li>
-<li><code><a href="../reference/vis_guess_ly.html">vis_guess_ly()</a></code></li>
-<li><code><a href="../reference/vis_compare_ly.html">vis_compare_ly()</a></code></li>
+<li><code>vis_dat_ly()</code></li>
+<li><code>vis_miss_ly()</code></li>
+<li><code>vis_guess_ly()</code></li>
+<li><code>vis_compare_ly()</code></li>
 </ul>
 </div>
-<div id="minor-changes" class="section level2">
+<div id="minor-changes-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#minor-changes" class="anchor"></a>Minor Changes</h2>
+<a href="#minor-changes-1" class="anchor"></a>Minor Changes</h2>
 <ul>
 <li>Minor changes to the paper for JOSS</li>
 </ul>
@@ -277,10 +287,10 @@
 </li>
 <li>Added protoype/placeholder functions for <code>plotly</code> vis_*_ly interactive graphs:
 <ul>
-<li><code><a href="../reference/vis_guess_ly.html">vis_guess_ly()</a></code></li>
-<li><code><a href="../reference/vis_dat_ly.html">vis_dat_ly()</a></code></li>
+<li><code>vis_guess_ly()</code></li>
+<li><code>vis_dat_ly()</code></li>
 <li>
-<code><a href="../reference/vis_compare_ly.html">vis_compare_ly()</a></code> These simply wrap <code><a href="http://www.rdocumentation.org/packages/plotly/topics/ggplotly">plotly::ggplotly(vis_*(data))</a></code>. In the future they will be written in <code>plotly</code> so that they can be generated much faster</li>
+<code>vis_compare_ly()</code> These simply wrap <code><a href="http://www.rdocumentation.org/packages/plotly/topics/ggplotly">plotly::ggplotly(vis_*(data))</a></code>. In the future they will be written in <code>plotly</code> so that they can be generated much faster</li>
 </ul>
 </li>
 </ul>
@@ -399,6 +409,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#visdat-0-2-6-9100-20180702">0.2.6.9100</a></li>
         <li><a href="#visdat-0-2-5-9000-20180607">0.2.5.9000</a></li>
         <li><a href="#visdat-0-2-3-9700-20180604">0.2.3.9700</a></li>
         <li><a href="#visdat-0-2-3-9600-20180523">0.2.3.9600</a></li>

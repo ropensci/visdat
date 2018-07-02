@@ -43,9 +43,6 @@
     <loc>http://visdat.njtierney.com//reference/vis_compare.html</loc>
   </url>
   <url>
-    <loc>http://visdat.njtierney.com//reference/vis_compare_ly.html</loc>
-  </url>
-  <url>
     <loc>http://visdat.njtierney.com//reference/vis_cor.html</loc>
   </url>
   <url>
@@ -53,9 +50,6 @@
   </url>
   <url>
     <loc>http://visdat.njtierney.com//reference/vis_dat.html</loc>
-  </url>
-  <url>
-    <loc>http://visdat.njtierney.com//reference/vis_dat_ly.html</loc>
   </url>
   <url>
     <loc>http://visdat.njtierney.com//reference/vis_expect.html</loc>
@@ -70,13 +64,7 @@
     <loc>http://visdat.njtierney.com//reference/vis_guess.html</loc>
   </url>
   <url>
-    <loc>http://visdat.njtierney.com//reference/vis_guess_ly.html</loc>
-  </url>
-  <url>
     <loc>http://visdat.njtierney.com//reference/vis_miss.html</loc>
-  </url>
-  <url>
-    <loc>http://visdat.njtierney.com//reference/vis_miss_ly.html</loc>
   </url>
   <url>
     <loc>http://visdat.njtierney.com//reference/visdat.html</loc>

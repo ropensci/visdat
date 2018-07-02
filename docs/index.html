@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">visdat</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.5.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.6.9000</span>
       </span>
     </div>
 
@@ -43,9 +43,6 @@
 </li>
 <li>
   <a href="articles/using_visdat.html">Using visdat</a>
-</li>
-<li>
-  <a href="articles/experimental_features.html">Experimental Features</a>
 </li>
 <li>
   <a href="news/index.html">News</a>
@@ -104,14 +101,16 @@
 <h1 class="hasAnchor">
 <a href="#what-does-visdat-do" class="anchor"></a>What does visdat do?</h1>
 <p>Initially inspired by <a href="https://github.com/setosa/csv-fingerprint"><code>csv-fingerprint</code></a>, <code>vis_dat</code> helps you visualise a dataframe and “get a look at the data” by displaying the variable classes in a dataframe as a plot with <code>vis_dat</code>, and getting a brief look into missing data patterns using <code>vis_miss</code>.</p>
-<p>The name <code>visdat</code> was chosen as I think in the future it could be integrated with <a href="https://github.com/ropensci/testdat"><code>testdat</code></a>. The idea being that first you visualise your data (<code>visdat</code>), then you run tests from <code>testdat</code> to fix them.</p>
-<p>There are two main commands in the <code>visdat</code> package:</p>
+<p><code>visdat</code> has 6 functions:</p>
 <ul>
 <li><p><code><a href="reference/vis_dat.html">vis_dat()</a></code> visualises a dataframe showing you what the classes of the columns are, and also displaying the missing data.</p></li>
 <li><p><code><a href="reference/vis_miss.html">vis_miss()</a></code> visualises just the missing data, and allows for missingness to be clustered and columns rearranged. <code><a href="reference/vis_miss.html">vis_miss()</a></code> is similar to <code>missing.pattern.plot</code> from the <a href="https://cran.r-project.org/web/packages/mi/index.html"><code>mi</code></a> package. Unfortunately <code>missing.pattern.plot</code> is no longer in the <code>mi</code> package (as of 14/02/2016).</p></li>
+<li><p><code><a href="reference/vis_compare.html">vis_compare()</a></code> visualise differences between two dataframes of the same dimensions</p></li>
+<li><p><code><a href="reference/vis_expect.html">vis_expect()</a></code> visualise where certain conditions hold true in your data</p></li>
+<li><p><code><a href="reference/vis_cor.html">vis_cor()</a></code> visualise the correlation of variables in a nice heatmap</p></li>
+<li><p><code><a href="reference/vis_guess.html">vis_guess()</a></code> visualise the individual class of earch value in your data</p></li>
 </ul>
 <p>You can read more about visdat in the vignette, <a href="http://visdat.njtierney.com/articles/using_visdat.html">“using visdat”</a>.</p>
-<p>There are also experimental functions, which include guessing values, comparing two dataframes, and adding interactivity. These are described in detail in the vignette <a href="http://visdat.njtierney.com/articles/experimental_features.html">“Experimental Features of visdat”</a>.</p>
 <p>Please note that this project is released with a <a href="CONDUCT.html">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
 </div>
 <div id="examples" class="section level1">
@@ -128,64 +127,120 @@
 <a class="sourceLine" id="cb3-4" data-line-number="4"><span class="kw"><a href="reference/vis_dat.html">vis_dat</a></span>(airquality)</a></code></pre></div>
 <p><img src="reference/figures/README-vis-dat-aq-1.png" width="700"></p>
 <p>The plot above tells us that R reads this dataset as having numeric and integer values, with some missing data in <code>Ozone</code> and <code>Solar.R</code>. The classes are represented on the legend, and missing data represented by grey. The column/variable names are listed on the x axis.</p>
-<p>By default, <code>vis_dat</code> sorts the columns according to the type of the data in the vectors. You can turn this off by setting <code>sort_type = FALSE</code>.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw"><a href="reference/vis_dat.html">vis_dat</a></span>(airquality, </a>
-<a class="sourceLine" id="cb4-3" data-line-number="3">        <span class="dt">sort_type =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
-<p><img src="reference/figures/README-vis-dat-aq-sort-type-1.png" width="700"></p>
-<div id="with-many-kinds-of-data" class="section level3">
-<h3 class="hasAnchor">
-<a href="#with-many-kinds-of-data" class="anchor"></a>With many kinds of data</h3>
-<p>To demonstrate what visdat looks like when you have different kinds of data, we can look at the dataset <code>typical_data</code>, provided within <code>visdat</code>, and created with the excellent <a href="https://github.com/trinker/wakefield"><code>wakefield</code> package</a>.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw"><a href="reference/vis_dat.html">vis_dat</a></span>(typical_data)</a></code></pre></div>
-<p><img src="reference/figures/README-vis-dat-typical-data-1.png" width="700"></p>
-<p>We can also look into using even wider data, looking at <code>typical_larger_data</code></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw"><a href="reference/vis_dat.html">vis_dat</a></span>(typical_data_large)</a></code></pre></div>
-<p><img src="reference/figures/README-vis-dat-typical-larger-data-1.png" width="700"></p>
-</div>
 </div>
 <div id="using-vis_miss" class="section level2">
 <h2 class="hasAnchor">
 <a href="#using-vis_miss" class="anchor"></a>Using <code><a href="reference/vis_miss.html">vis_miss()</a></code>
 </h2>
-<p>We can explore the missing data further using <code><a href="reference/vis_miss.html">vis_miss()</a></code>.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="kw"><a href="reference/vis_miss.html">vis_miss</a></span>(airquality)</a></code></pre></div>
+<p>We can explore the missing data further using <code><a href="reference/vis_miss.html">vis_miss()</a></code>:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw"><a href="reference/vis_miss.html">vis_miss</a></span>(airquality)</a></code></pre></div>
 <p><img src="reference/figures/README-vis-miss-aq-1.png" width="700"></p>
-<p>The percentages of missing/complete in <code>vis_miss</code> are accurate to 1 decimal place.</p>
-<p>You can cluster the missingness by setting <code>cluster = TRUE</code>.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="kw"><a href="reference/vis_miss.html">vis_miss</a></span>(airquality, </a>
-<a class="sourceLine" id="cb8-3" data-line-number="3">         <span class="dt">cluster =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<p>Percentages of missing/complete in <code>vis_miss</code> are accurate to 1 decimal place.</p>
+<p>You can cluster the missingness by setting <code>cluster = TRUE</code>:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw"><a href="reference/vis_miss.html">vis_miss</a></span>(airquality, </a>
+<a class="sourceLine" id="cb5-3" data-line-number="3">         <span class="dt">cluster =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <p><img src="reference/figures/README-vis-miss-aq-cluster-1.png" width="700"></p>
-<p>The columns can also just be arranged by columns with most missingness, by setting <code>sort_miss = TRUE</code>.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="kw"><a href="reference/vis_miss.html">vis_miss</a></span>(airquality,</a>
-<a class="sourceLine" id="cb9-3" data-line-number="3">         <span class="dt">sort_miss =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<p>Columns can also be arranged by columns with most missingness, by setting <code>sort_miss = TRUE</code>:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw"><a href="reference/vis_miss.html">vis_miss</a></span>(airquality,</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3">         <span class="dt">sort_miss =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <p><img src="reference/figures/README-vis-miss-aq-sort-miss-1.png" width="700"></p>
-<p><code>vis_miss</code> indicates when there is a very small amount of missing data at &lt;0.1% missingness.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb10-2" data-line-number="2">test_miss_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x1 =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10000</span>,</a>
-<a class="sourceLine" id="cb10-3" data-line-number="3">                           <span class="dt">x2 =</span> <span class="kw">rep</span>(<span class="st">"A"</span>, <span class="dv">10000</span>),</a>
-<a class="sourceLine" id="cb10-4" data-line-number="4">                           <span class="dt">x3 =</span> <span class="kw">c</span>(<span class="kw">rep</span>(1L, <span class="dv">9999</span>), <span class="ot">NA</span>))</a>
-<a class="sourceLine" id="cb10-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb10-6" data-line-number="6"><span class="kw"><a href="reference/vis_miss.html">vis_miss</a></span>(test_miss_df)</a></code></pre></div>
+<p><code>vis_miss</code> indicates when there is a very small amount of missing data at &lt;0.1% missingness:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2">test_miss_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x1 =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10000</span>,</a>
+<a class="sourceLine" id="cb7-3" data-line-number="3">                           <span class="dt">x2 =</span> <span class="kw">rep</span>(<span class="st">"A"</span>, <span class="dv">10000</span>),</a>
+<a class="sourceLine" id="cb7-4" data-line-number="4">                           <span class="dt">x3 =</span> <span class="kw">c</span>(<span class="kw">rep</span>(1L, <span class="dv">9999</span>), <span class="ot">NA</span>))</a>
+<a class="sourceLine" id="cb7-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="kw"><a href="reference/vis_miss.html">vis_miss</a></span>(test_miss_df)</a></code></pre></div>
 <p><img src="reference/figures/README-vis-miss-test-1.png" width="700"></p>
-<p><code>vis_miss</code> will also indicate when there is no missing data at all.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="kw"><a href="reference/vis_miss.html">vis_miss</a></span>(mtcars)</a></code></pre></div>
+<p><code>vis_miss</code> will also indicate when there is no missing data at all:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="kw"><a href="reference/vis_miss.html">vis_miss</a></span>(mtcars)</a></code></pre></div>
 <p><img src="reference/figures/README-vis-miss-mtcars-1.png" width="700"></p>
+<p>To further explore the missingness structure in a dataset, I recommend the <a href="https://github.com/njtierney/naniar"><code>naniar</code></a> package, which provides more general tools for graphical and numerical exploration of missing values.</p>
+</div>
+<div id="using-vis_compare" class="section level2">
+<h2 class="hasAnchor">
+<a href="#using-vis_compare" class="anchor"></a>Using <code><a href="reference/vis_compare.html">vis_compare()</a></code>
+</h2>
+<p>Sometimes you want to see what has changed in your data. <code><a href="reference/vis_compare.html">vis_compare()</a></code> displays the differences in two dataframes of the same size. Let’s look at an example.</p>
+<p>Let’s make some changes to the <code>chickwts</code>, and compare this new dataset:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">chickwts_diff &lt;-<span class="st"> </span>chickwts</a>
+<a class="sourceLine" id="cb9-2" data-line-number="2">chickwts_diff[<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(chickwts), <span class="dv">30</span>),<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">ncol</span>(chickwts), <span class="dv">2</span>)] &lt;-<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="kw"><a href="reference/vis_compare.html">vis_compare</a></span>(chickwts_diff, chickwts)</a></code></pre></div>
+<p><img src="reference/figures/README-vis-compare-iris-1.png" width="700"></p>
+<p>Here the differences are marked in blue.</p>
+<p>If you try and compare differences when the dimensions are different, you get an ugly error:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb10-2" data-line-number="2">chickwts_diff_<span class="dv">2</span> &lt;-<span class="st"> </span>chickwts</a>
+<a class="sourceLine" id="cb10-3" data-line-number="3">chickwts_diff_<span class="dv">2</span><span class="op">$</span>new_col &lt;-<span class="st"> </span>chickwts_diff_<span class="dv">2</span><span class="op">$</span>weight<span class="op">*</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb10-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb10-5" data-line-number="5"><span class="kw"><a href="reference/vis_compare.html">vis_compare</a></span>(chickwts, chickwts_diff_<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb10-6" data-line-number="6"><span class="co"># Error in vis_compare(chickwts, chickwts_diff_2) : </span></a>
+<a class="sourceLine" id="cb10-7" data-line-number="7"><span class="co">#   Dimensions of df1 and df2 are not the same. vis_compare requires dataframes of identical dimensions.</span></a></code></pre></div>
+</div>
+<div id="using-vis_expect" class="section level2">
+<h2 class="hasAnchor">
+<a href="#using-vis_expect" class="anchor"></a>Using <code><a href="reference/vis_expect.html">vis_expect()</a></code>
+</h2>
+<p><code>vis_expect</code> visualises certain conditions or values in your data. For example, If you are not sure whether to expect values greater than 25 in your data (airquality), you could write: <code><a href="reference/vis_expect.html">vis_expect(airquality, ~.x &gt;= 25)</a></code>, and you can see if there are times where the values in your data are greater than or equal to 25:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="kw"><a href="reference/vis_expect.html">vis_expect</a></span>(airquality, <span class="op">~</span>.x <span class="op">&gt;=</span><span class="st"> </span><span class="dv">25</span>)</a></code></pre></div>
+<p><img src="reference/figures/README-vis-expect-1.png" width="700"></p>
+<p>This shows the proportion of times that there are values greater than 25, as well as the missings.</p>
+</div>
+<div id="using-vis_cor" class="section level2">
+<h2 class="hasAnchor">
+<a href="#using-vis_cor" class="anchor"></a>Using <code><a href="reference/vis_cor.html">vis_cor()</a></code>
+</h2>
+<p>To make it easy to plot correlations of your data, use <code>vis_cor</code>:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="kw"><a href="reference/vis_cor.html">vis_cor</a></span>(airquality)</a></code></pre></div>
+<p><img src="reference/figures/README-vis-cor-1.png" width="700"></p>
+</div>
+<div id="using-vis_guess" class="section level2">
+<h2 class="hasAnchor">
+<a href="#using-vis_guess" class="anchor"></a>Using <code><a href="reference/vis_guess.html">vis_guess()</a></code>
+</h2>
+<p><code><a href="reference/vis_guess.html">vis_guess()</a></code> takes a guess at what each cell is. It’s best illustrated using some messy data, which we’ll make here:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb13-2" data-line-number="2">messy_vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb13-3" data-line-number="3">                  T,</a>
+<a class="sourceLine" id="cb13-4" data-line-number="4">                  <span class="st">"TRUE"</span>,</a>
+<a class="sourceLine" id="cb13-5" data-line-number="5">                  <span class="st">"T"</span>,</a>
+<a class="sourceLine" id="cb13-6" data-line-number="6">                  <span class="st">"01/01/01"</span>,</a>
+<a class="sourceLine" id="cb13-7" data-line-number="7">                  <span class="st">"01/01/2001"</span>,</a>
+<a class="sourceLine" id="cb13-8" data-line-number="8">                  <span class="ot">NA</span>,</a>
+<a class="sourceLine" id="cb13-9" data-line-number="9">                  <span class="ot">NaN</span>,</a>
+<a class="sourceLine" id="cb13-10" data-line-number="10">                  <span class="st">"NA"</span>,</a>
+<a class="sourceLine" id="cb13-11" data-line-number="11">                  <span class="st">"Na"</span>,</a>
+<a class="sourceLine" id="cb13-12" data-line-number="12">                  <span class="st">"na"</span>,</a>
+<a class="sourceLine" id="cb13-13" data-line-number="13">                  <span class="st">"10"</span>,</a>
+<a class="sourceLine" id="cb13-14" data-line-number="14">                  <span class="dv">10</span>,</a>
+<a class="sourceLine" id="cb13-15" data-line-number="15">                  <span class="st">"10.1"</span>,</a>
+<a class="sourceLine" id="cb13-16" data-line-number="16">                  <span class="fl">10.1</span>,</a>
+<a class="sourceLine" id="cb13-17" data-line-number="17">                  <span class="st">"abc"</span>,</a>
+<a class="sourceLine" id="cb13-18" data-line-number="18">                  <span class="st">"$%TG"</span>)</a>
+<a class="sourceLine" id="cb13-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb13-20" data-line-number="20"><span class="kw">set.seed</span>(<span class="dv">1114</span>)</a>
+<a class="sourceLine" id="cb13-21" data-line-number="21">messy_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">var1 =</span> messy_vector,</a>
+<a class="sourceLine" id="cb13-22" data-line-number="22">                       <span class="dt">var2 =</span> <span class="kw">sample</span>(messy_vector),</a>
+<a class="sourceLine" id="cb13-23" data-line-number="23">                       <span class="dt">var3 =</span> <span class="kw">sample</span>(messy_vector))</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="kw"><a href="reference/vis_guess.html">vis_guess</a></span>(messy_df)</a>
+<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="kw"><a href="reference/vis_dat.html">vis_dat</a></span>(messy_df)</a></code></pre></div>
+<p><img src="reference/figures/README-vis-guess-messy-df-1.png" width="50%"><img src="reference/figures/README-vis-guess-messy-df-2.png" width="50%"></p>
+<p>So here we see that there are many different kinds of data in your dataframe. As an analyst this might be a depressing finding. We can see this comparison above.</p>
 </div>
 </div>
 <div id="thank-yous" class="section level1">
 <h1 class="hasAnchor">
 <a href="#thank-yous" class="anchor"></a>Thank yous</h1>
 <p>Thank you to Ivan Hanigan who <a href="http://www.njtierney.com/r/missing%20data/rbloggers/2015/12/01/ggplot-missing-data/#comment-2388263747">first commented</a> this suggestion after I made a blog post about an initial prototype <code>ggplot_missing</code>, and Jenny Bryan, whose <a href="https://twitter.com/JennyBryan/status/679011378414268416">tweet</a> got me thinking about <code>vis_dat</code>, and for her code contributions that removed a lot of errors.</p>
-<p>Thank you to Hadley Wickham for suggesting the use of the internals of <code>readr</code> to make <code>vis_guess</code> work.</p>
-<p>Thank you to Miles McBain for his suggestions on how to improve <code>vis_guess</code>. This resulted in making it at least 2-3 times faster.</p>
-<p>Thanks to Carson Sievert for writing the code that combined <code>plotly</code> with <code>visdat</code>, and for Noam Ross for suggesting this in the first place.</p>
+<p>Thank you to Hadley Wickham for suggesting the use of the internals of <code>readr</code> to make <code>vis_guess</code> work. Thank you to Miles McBain for his suggestions on how to improve <code>vis_guess</code>. This resulted in making it at least 2-3 times faster. Thanks to Carson Sievert for writing the code that combined <code>plotly</code> with <code>visdat</code>, and for Noam Ross for suggesting this in the first place. Thank you also to Earo Wang and Stuart Lee for their help in getting capturing expressions in <code>vis_expect</code>.</p>
 <p>Finally thank you to <a href="https://github.com/ropensci">rOpenSci</a> and it’s amazing <a href="https://github.com/ropensci/onboarding">onboarding process</a>, this process has made visdat a much better package, thanks to the editor Noam Ross (<span class="citation">@noamross</span>), and the reviewers Sean Hughes (<span class="citation">@seaaan</span>) and Mara Averick (<span class="citation">@batpigandme</span>).</p>
 <p><a href="https://ropensci.org"><img src="https://ropensci.org/public_images/ropensci_footer.png" alt="ropensci_footer"></a></p>
 </div>

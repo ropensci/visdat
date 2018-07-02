@@ -45,9 +45,9 @@ a blank plot! See example code for suggestions on doing this.
 }
 \examples{
 
-\dontrun{
 vis_dat(airquality)
 
+\dontrun{
 # experimental colourblind safe palette
 vis_dat(airquality, palette = "cb_safe")
 vis_dat(airquality, palette = "qual")

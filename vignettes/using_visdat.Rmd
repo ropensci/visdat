@@ -70,7 +70,7 @@ vis_miss(typical_data)
 
 The name `visdat` was chosen as it borrows from the idea of [`testdat`](https://github.com/ropensci/testdat), which provides unit testing for your data.  In a similar way, `visdat` provides visual tests, the idea being that first you visualise your data (`visdat`), then you run tests from `testdat`, or a package like `assertr`, to fix these errors.
 
-## Using `vis_dat`
+## `vis_dat`
 
 Let's see what's inside the dataset `airquality`, which contains information about daily air quality measurements in New York from May to September 1973. More information about the dataset can be found with `?airquality`.
 
@@ -94,7 +94,7 @@ vis_dat(typical_data,
 
 ```
 
-## Using `vis_miss`
+## `vis_miss`
 
 We can explore the missing data further using `vis_miss`.
 
@@ -150,7 +150,7 @@ vis_miss(airquality,
 To further explore the missingness structure in a dataset, I recommend the [`naniar`](https://github.com/njtierney/naniar) package, which provides more general tools for graphical and numerical exploration of missing values.
 
 
-## Using `vis_compare()`
+## `vis_compare`
 
 Sometimes you want to see what has changed in your data. `vis_compare()` displays the differences in two dataframes of the same size. Let's look at an example.
 
@@ -179,7 +179,7 @@ vis_compare(chickwts, chickwts_diff_2)
 ```
 
 
-## Using `vis_expect()`
+## `vis_expect`
 
 `vis_expect` visualises certain conditions or values in your data. For example,
 If you are not sure whether to expect values greater than 25 in your data
@@ -208,7 +208,7 @@ bad_data <- data.frame(x = c(rnorm(100), rep("N/A", 10)),
 vis_expect(bad_data, ~.x %in% c("N/A", "N A "))
 ```
 
-## Using `vis_cor()`
+## `vis_cor`
 
 To make it easy to plot correlations of your data, use `vis_cor`:
 
@@ -240,7 +240,7 @@ vis_cor(airquality,
 
 ```
 
-## Using `vis_guess()`
+## `vis_guess`
 
 `vis_guess()` takes a guess at what each cell is. It's best illustrated using some messy data, which we'll make here.
 

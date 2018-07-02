@@ -48,9 +48,9 @@ a blank plot! See example code for suggestions on doing this.
 }
 \examples{
 
-\dontrun{
 vis_miss(airquality)
 
+\dontrun{
 vis_miss(airquality, cluster = TRUE)
 
 vis_miss(airquality, sort_miss = TRUE)

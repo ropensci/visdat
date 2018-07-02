@@ -23,6 +23,16 @@ reference:
       Specifically display information about the missingness
     contents:
       - vis_miss
+  - title: "Compare two dataframes"
+    desc: >
+      Only takes dataframes of the same dimensions
+    contents:
+      - vis_compare
+  - title: "Visualise whether a value you expect is in a data frame"
+    desc: >
+      Visualise where certain conditions or values are TRUE in your data.
+    contents::
+      - vis_expect
   - title: "Visualise correlations in a dataframe"
     desc: >
       Show the correlation amongst variables in simple function
@@ -33,11 +43,6 @@ reference:
       Potentially reveal other classes in your dataset
     contents:
       - vis_guess
-  - title: "Compare two dataframes"
-    desc: >
-      Only takes dataframes of the same dimensions
-    contents:
-      - vis_compare
 
 navbar:
   left:
@@ -45,7 +50,5 @@ navbar:
     href: reference/index.html
   - text: Using visdat
     href: articles/using_visdat.html
-  - text: Experimental Features
-    href: articles/experimental_features.html
   - text: News
     href: news/index.html
