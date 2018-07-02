@@ -39,11 +39,11 @@
 #'
 #' vis_dat(airquality)
 #'
+#' \dontrun{
 #' # experimental colourblind safe palette
 #' vis_dat(airquality, palette = "cb_safe")
 #' vis_dat(airquality, palette = "qual")
 #'
-#' \dontrun{
 #' # if you have a large dataset, you might want to try downsampling:
 #' library(nycflight13)
 #' library(dplyr)

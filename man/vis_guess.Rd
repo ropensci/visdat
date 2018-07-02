@@ -49,7 +49,9 @@ set.seed(1114)
 messy_df <- data.frame(var1 = messy_vector,
                        var2 = sample(messy_vector),
                        var3 = sample(messy_vector))
+\dontrun{
 vis_guess(messy_df)
+}
 }
 \seealso{
 \code{\link[=vis_miss]{vis_miss()}} \code{\link[=vis_dat]{vis_dat()}} \code{\link[=vis_expect]{vis_expect()}} \code{\link[=vis_cor]{vis_cor()}} \code{\link[=vis_compare]{vis_compare()}}

@@ -29,8 +29,8 @@ ggplot2 object
 Visualises correlations amongst variables using ggplot
 }
 \examples{
-vis_cor(airquality)
 \dontrun{
+vis_cor(airquality)
 vis_cor(mtcars)
 vis_cor(iris)
 }

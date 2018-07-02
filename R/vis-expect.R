@@ -32,12 +32,10 @@
 #'             NA, NA
 #'             )
 #'
-#' vis_expect(dat_test,
-#'            ~.x == -1)
+#' vis_expect(dat_test, ~.x == -1)
 #'
 #' \dontrun{
-#' vis_expect(airquality,
-#'            ~.x == 5.1)
+#' vis_expect(airquality, ~.x == 5.1)
 #'
 #' # explore some common NA strings
 #'

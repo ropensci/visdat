@@ -149,6 +149,36 @@ vis_miss(airquality,
 
 To further explore the missingness structure in a dataset, I recommend the [`naniar`](https://github.com/njtierney/naniar) package, which provides more general tools for graphical and numerical exploration of missing values.
 
+
+## Using `vis_compare()`
+
+Sometimes you want to see what has changed in your data. `vis_compare()` displays the differences in two dataframes of the same size. Let's look at an example.
+
+Let's make some changes to the `chickwts`, and compare this new dataset.
+
+```{r vis-compare-iris}
+chickwts_diff <- chickwts
+chickwts_diff[sample(1:nrow(chickwts), 30),sample(1:ncol(chickwts), 2)] <- NA
+
+vis_compare(chickwts_diff, chickwts)
+
+```
+
+Here the differences are marked in blue.
+
+If you try and compare differences when the dimensions are different, you get an ugly error.
+
+```{r vis-compare-error, eval = FALSE}
+
+chickwts_diff_2 <- chickwts
+chickwts_diff_2$new_col <- chickwts_diff_2$weight*2
+
+vis_compare(chickwts, chickwts_diff_2)
+# Error in vis_compare(chickwts, chickwts_diff_2) : 
+#   Dimensions of df1 and df2 are not the same. vis_compare requires dataframes of identical dimensions.
+```
+
+
 ## Using `vis_expect()`
 
 `vis_expect` visualises certain conditions or values in your data. For example,
@@ -210,34 +240,6 @@ vis_cor(airquality,
 
 ```
 
-## Using `vis_compare()`
-
-Sometimes you want to see what has changed in your data. `vis_compare()` displays the differences in two dataframes of the same size. Let's look at an example.
-
-Let's make some changes to the `chickwts`, and compare this new dataset.
-
-```{r vis-compare-iris}
-chickwts_diff <- chickwts
-chickwts_diff[sample(1:nrow(chickwts), 30),sample(1:ncol(chickwts), 2)] <- NA
-
-vis_compare(chickwts_diff, chickwts)
-
-```
-
-Here the differences are marked in blue.
-
-If you try and compare differences when the dimensions are different, you get an ugly error.
-
-```{r vis-compare-error, eval = FALSE}
-
-chickwts_diff_2 <- chickwts
-chickwts_diff_2$new_col <- chickwts_diff_2$weight*2
-
-vis_compare(chickwts, chickwts_diff_2)
-# Error in vis_compare(chickwts, chickwts_diff_2) : 
-#   Dimensions of df1 and df2 are not the same. vis_compare requires dataframes of identical dimensions.
-```
-
 ## Using `vis_guess()`
 
 `vis_guess()` takes a guess at what each cell is. It's best illustrated using some messy data, which we'll make here.
@@ -287,7 +289,7 @@ At the moment `vis_guess` is very slow. Please take this into consideration when
 
 You can make the plots in visdat by wrapping them in `plotly::ggplotly`:
 
-```{r intx}
+```{r intx, eval = FALSE}
 
 library(plotly)
 ggplotly(vis_dat(airquality))
