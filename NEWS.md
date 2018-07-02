@@ -1,27 +1,26 @@
-# visdat 0.5.000 (2018/07/02) "I Had The Blues But I Shook Them Loose"
+# visdat 0.5.000 (2018/07/02) "The Northern Lights Moonwalker"
 
 ## New Feature
 
-* added NA colours to `vis_expect`
-* Added `show_perc` arg to `vis_expect` to show the percentage of expectations that are TRUE. #73
-* added CITATION for visdat to cite the JOSS article
+* `vis_compare()` for comparing two dataframes of the same dimensions
+* `vis_expect()` for visualising where certain values of expectations occur in the data
+    * Added NA colours to `vis_expect`
+    * Added `show_perc` arg to `vis_expect` to show the percentage of expectations that are TRUE. #73
+* `vis_cor` to visualise correlations in a dataframe
+* `vis_guess()` for displaying the likely type for each cell in a dataframe
 * Added draft `vis_expect` to make it easy to look at certain appearances of numbers in your data.
-- Added `vis_cor` to visualise correlations in a dataframe
-
-- visdat is now under the rOpenSci github repository
-- Added Sean Hughes and Mara Averick to the DESCRIPTION with `ctb`.
-
-- `vis_compare()` for comparing two dataframes of the same dimensions
-- `vis_guess()` for displaying the likely type for each cell in a dataframe
-- Minor changes to the paper for JOSS
+* visdat is now under the rOpenSci github repository
 
 ## Minor Changes
 
+* added CITATION for visdat to cite the JOSS article
 * updated options for `vis_cor` to use argument `na_action` not `use_op`.
 * cleaned up the organisation of the files and internal functions
 * Added appropriate legend and x axis for `vis_miss_ly` - thanks to Stuart Lee
 * Updated the `paper.md` for JOSS
 * Updated some old links in doco
+* Added Sean Hughes and Mara Averick to the DESCRIPTION with `ctb`.
+* Minor changes to the paper for JOSS
 
 ## Bug Fixes
 
