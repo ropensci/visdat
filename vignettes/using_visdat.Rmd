@@ -151,9 +151,64 @@ To further explore the missingness structure in a dataset, I recommend the [`nan
 
 ## Using `vis_expect()`
 
-If you want to visualise other thigns in your data aside from missing data and the classes you can visualise expectations
+`vis_expect` visualises certain conditions or values in your data. For example,
+If you are not sure whether to expect values greater than 25 in your data
+(airquality), you could write: `vis_expect(airquality, ~.x >= 25)`, and you can
+see if there are times where the  values in your data are greater than or equal
+to 25.
+
+```{r vis-expect}
+
+vis_expect(airquality, ~.x >= 25)
+
+```
+
+This shows the proportion of times that there are values greater than 25, as well as the missings.
+
+You could also, for example, explore a 
+set of bad strings, or possible NA values and visualise where they are 
+using `vis_expect(data, ~.x %in% bad_strings)` where `bad_strings` is a
+character vector containing bad strings  like `N A`, `N/A` etc.
+
+```{r vis-expect-bad-strings}
+
+bad_data <- data.frame(x = c(rnorm(100), rep("N/A", 10)),
+                       y = c(rep("N A ", 30), rnorm(80)))
+
+vis_expect(bad_data, ~.x %in% c("N/A", "N A "))
+```
 
 ## Using `vis_cor()`
+
+To make it easy to plot correlations of your data, use `vis_cor`:
+
+```{r vis-cor}
+
+vis_cor(airquality)
+
+```
+
+Under the hood, `vis_cor` is powered by the `cor` function in base R, and takes
+a character string indicating which correlation coefficient (or covariance) is
+to be computed. One of "pearson" (default), "kendall", or "spearman".
+
+```{r vis-cor-spearman}
+
+vis_cor(airquality, cor_method = "spearman")
+
+```
+
+You can also specify what to do for the missing data using the `na_action`
+function, which again borrows from the `cor` methods. This can be "everything",
+"all.obs", "complete.obs", "na.or.complete", or "pairwise.complete.obs"
+(default), e.g.:
+
+```{r vis-cor-na-action}
+
+vis_cor(airquality,
+        na_action = "complete.obs")
+
+```
 
 ## Using `vis_compare()`
 
@@ -216,7 +271,7 @@ messy_df <- data.frame(var1 = messy_vector,
 
 
 ```{r vis-guess-messy-df, fig.show='hold', out.width='50%'}
-library(visdat)
+
 vis_guess(messy_df)
 vis_dat(messy_df)
 
@@ -241,9 +296,12 @@ ggplotly(vis_guess(airquality))
 
 ```
 
+In the future these will have their own functions, written in plotly with nice
+standardised on-hover behaviour. If you would like to see how these work,
+please see the [development version on GitHub](https://github.com/ropensci/visdat).
 
 # Future work
 
 Future work from here is focussed on making `visdat` more stable, improving the 
-speed of plotting, and adding interactive versions of the functions
+speed of plotting, and adding interactive versions for each function.
 

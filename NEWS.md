@@ -1,3 +1,9 @@
+# visdat 0.2.6.9000 (2018/07/02)
+
+## Minor Changes
+
+- updated options for `vis_cor` to use argument `na_action` not `use_op`.
+
 # visdat 0.2.5.9000 (2018/06/07)
 
 ## Bug Fixes
