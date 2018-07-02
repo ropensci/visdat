@@ -21,7 +21,7 @@ TRUE or FALSE in the whole dataset into the legend. Default value is TRUE.}
 a ggplot2 object
 }
 \description{
-vis_expect visualises certain conditions or values in your data. For example,
+\code{vis_expect} visualises certain conditions or values in your data. For example,
 If you are not sure whether to expect -1 in your data, you could write:
 \code{vis_expect(data, ~.x == -1)}, and you can see if there are times where
 the values in your data are equal to -1. You could also, for example,

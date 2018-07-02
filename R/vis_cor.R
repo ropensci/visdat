@@ -7,9 +7,10 @@
 #'   string indicating which correlation coefficient (or covariance) is to be
 #'   computed. One of "pearson" (default), "kendall", or "spearman": can be
 #'   abbreviated."
-#' @param use_op  what to do in the presence of missings? can be
-#'   "everything", "all.obs", "complete.obs", "na.or.complete", or
-#'   "pairwise.complete.obs" (default).
+#' @param na_action The method for computing covariances when there are missing
+#'   values present. This can be "everything", "all.obs", "complete.obs",
+#'   "na.or.complete", or "pairwise.complete.obs" (default). This option is
+#'   taken from the `cor` function argument `use`.
 #' @param ... extra arguments you may want to pass
 #'
 #' @return ggplot2 object
@@ -24,7 +25,7 @@
 #' }
 vis_cor <- function(data,
                     cor_method = "pearson",
-                    use_op = "pairwise.complete.obs",
+                    na_action = "pairwise.complete.obs",
                     ...){
 
   if (!all_numeric(data)) {
@@ -33,7 +34,7 @@ vis_cor <- function(data,
 
       gather_cor(data,
              cor_method,
-             use_op) %>%
+             na_action) %>%
       ggplot2::ggplot(ggplot2::aes_string(x = "row_1",
                                           y = "row_2",
                                           fill = "value")) +

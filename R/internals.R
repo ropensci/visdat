@@ -180,9 +180,10 @@ if (palette == "default"){
 #'   string indicating which correlation coefficient (or covariance) is to be
 #'   computed. One of "pearson" (default), "kendall", or "spearman": can be
 #'   abbreviated."
-#' @param use_op  what to do in the presence of missings? can be
-#'   "everything", "all.obs", "complete.obs", "na.or.complete", or
-#'   "pairwise.complete.obs" (default).
+#' @param na_action The method for computing covariances when there are missing
+#'   values present. This can be "everything", "all.obs", "complete.obs",
+#'   "na.or.complete", or "pairwise.complete.obs" (default). This option is
+#'   taken from the `cor` function argument `use`.
 #'
 #'
 #' @return tidy dataframe of correlations
@@ -193,11 +194,11 @@ if (palette == "default"){
 #' @export
 gather_cor <- function(data,
                        cor_method = "pearson",
-                       use_op = "pairwise.complete.obs"){
+                       na_action = "pairwise.complete.obs"){
 
   stats::cor(data,
       method = cor_method,
-      use = use_op) %>%
+      use = na_action) %>%
     as.data.frame() %>%
     tibble::rownames_to_column() %>%
     tidyr::gather(key = "key",

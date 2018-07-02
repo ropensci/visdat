@@ -29,7 +29,7 @@ expect_frame <- function(data, expectation){
 
 #' Visualise whether a value is in a data frame
 #'
-#' vis_expect visualises certain conditions or values in your data. For example,
+#' `vis_expect` visualises certain conditions or values in your data. For example,
 #'   If you are not sure whether to expect -1 in your data, you could write:
 #'   `vis_expect(data, ~.x == -1)`, and you can see if there are times where
 #'   the values in your data are equal to -1. You could also, for example,

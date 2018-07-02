@@ -4,7 +4,8 @@
 \alias{vis_cor}
 \title{Create a correlation heatmap ggplot of all of the data}
 \usage{
-vis_cor(data, cor_method = "pearson", use_op = "pairwise.complete.obs", ...)
+vis_cor(data, cor_method = "pearson", na_action = "pairwise.complete.obs",
+  ...)
 }
 \arguments{
 \item{data}{data.frame}
@@ -14,9 +15,10 @@ string indicating which correlation coefficient (or covariance) is to be
 computed. One of "pearson" (default), "kendall", or "spearman": can be
 abbreviated."}
 
-\item{use_op}{what to do in the presence of missings? can be
-"everything", "all.obs", "complete.obs", "na.or.complete", or
-"pairwise.complete.obs" (default).}
+\item{na_action}{The method for computing covariances when there are missing
+values present. This can be "everything", "all.obs", "complete.obs",
+"na.or.complete", or "pairwise.complete.obs" (default). This option is
+taken from the \code{cor} function argument \code{use}.}
 
 \item{...}{extra arguments you may want to pass}
 }
