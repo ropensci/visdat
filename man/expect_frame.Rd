@@ -9,7 +9,7 @@ expect_frame(data, expectation)
 \arguments{
 \item{data}{data.frame}
 
-\item{expectation}{unquoted function calls - conditions or "expectations" to test}
+\item{expectation}{unquoted conditions or "expectations" to test}
 }
 \value{
 data.frames where expectation are true

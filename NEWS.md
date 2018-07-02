@@ -1,8 +1,9 @@
-# visdat 0.2.6.9000 (2018/07/02)
+# visdat 0.2.6.9100 (2018/07/02)
 
 ## Minor Changes
 
 - updated options for `vis_cor` to use argument `na_action` not `use_op`.
+- cleaned up the organisation of the files and internal functions
 
 # visdat 0.2.5.9000 (2018/06/07)
 

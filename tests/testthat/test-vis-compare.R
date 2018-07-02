@@ -19,6 +19,3 @@ test_that("vis_compare will not accept two dataframes of differing dims",{
   expect_error(
     vis_compare(iris, iris_add))
 })
-
-  # stop("Dimensions of df1 and df2 are not the same. Unfortunately vis_compare
-  #      does not handles dataframes of the exact same dimension.")

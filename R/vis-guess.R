@@ -17,7 +17,7 @@
 #' @return `ggplot2` object displaying the guess of the type of values in the
 #'   data frame and the position of any missing values.
 #'
-#' @seealso [vis_miss()] [vis_dat()] [vis_compare()] [vis_expect()]
+#' @seealso  [vis_miss()] [vis_dat()] [vis_expect()] [vis_cor()] [vis_compare()]
 #'
 #' @examples
 #'
@@ -63,3 +63,45 @@ vis_guess <- function(x, palette = "default"){
   add_vis_dat_pal(vis_plot, palette)
 
 } # close function
+
+#' (Internal) Guess the type of each individual cell in a dataframe
+#'
+#' `vis_guess` uses `guess_type` to guess cell elements, like `fingerprint`.
+#'
+#' @param x is a vector of values you want to guess
+#'
+#' @return a character vector that describes the suspected class. e.g., "10" is
+#'   an integer, "20.11" is a double, "text" is character, etc.
+#'
+#' @examples
+#' \dontrun{
+#' guess_type(1)
+#'
+#' guess_type("x")
+#'
+#' guess_type(c("1", "0L"))
+#'
+#' purrr::map_df(iris, guess_type)
+#' }
+guess_type <- function(x){
+
+  # since
+  # readr::collector_guess(NA,
+  #                        locale_ = readr::locale())
+  #
+  # returns "character", use an ifelse to identify NAs
+  #
+  # This is a fast way to check individual elements of a vector.
+  # `purrr::map` writes more function calls, slowing down things by a factor
+  # of about 3. This is faster, for the moment.
+
+  output <- character(length(x))
+  nas <- is.na(x)
+
+  output[!nas] <- vapply(FUN = readr::guess_parser,
+                         X = x[!nas],
+                         FUN.VALUE = character(1))
+  output[nas] <- NA
+  output
+
+}

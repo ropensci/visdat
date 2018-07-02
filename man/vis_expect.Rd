@@ -42,6 +42,8 @@ dat_test <- tibble::tribble(
 
 vis_expect(dat_test,
            ~ .x == -1)
+
+\dontrun{
 vis_expect(airquality,
            ~ .x == 5.1)
 
@@ -65,4 +67,9 @@ dat_ms <- tibble::tribble(~x,  ~y,    ~z,
 
 vis_expect(dat_ms, ~.x \%in\% common_nas)
 
+}
+
+}
+\seealso{
+\code{\link[=vis_miss]{vis_miss()}} \code{\link[=vis_dat]{vis_dat()}} \code{\link[=vis_guess]{vis_guess()}} \code{\link[=vis_cor]{vis_cor()}} \code{\link[=vis_compare]{vis_compare()}}
 }

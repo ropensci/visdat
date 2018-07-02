@@ -2,13 +2,13 @@
 % Please edit documentation in R/internals.R
 \name{add_vis_dat_pal}
 \alias{add_vis_dat_pal}
-\title{Add a specific palette to a visdat plot}
+\title{(Internal) Add a specific palette to a visdat plot}
 \usage{
 add_vis_dat_pal(vis_plot, palette)
 }
 \arguments{
-\item{vis_plot}{visdat plot created using vis_gather_, vis_extract_value
-and vis_create_}
+\item{vis_plot}{visdat plot created using \code{vis_gather_}, \code{vis_extract_value}
+and \code{vis_create_}}
 
 \item{palette}{character "default", "qual" or "cb_safe". "default" (the
 default) provides the stock ggplot scale for separating the colours. "qual"
@@ -21,7 +21,7 @@ http://colorbrewer2.org/.}
 a visdat plot with a particular palette
 }
 \description{
-Add a specific palette to a visdat plot
+(Internal) Add a specific palette to a visdat plot
 }
 \examples{
 

@@ -1,32 +1,3 @@
-#' Create a dataframe to help visualise 'expected' values
-#'
-#' @param data data.frame
-#' @param expectation unquoted function calls - conditions or "expectations" to test
-#'
-#' @return data.frames where expectation are true
-#' @author Stuart Lee and Earo Wang
-#'
-#' @examples
-#'
-#' \dontrun{
-#' dat_test <- tibble::tribble(
-#'             ~x, ~y,
-#'             -1,  "A",
-#'             0,  "B",
-#'             1,  "C"
-#'             )
-#'
-#' expect_frame(dat_test,
-#'              ~ .x == -1)
-#' }
-expect_frame <- function(data, expectation){
-
-  my_fun <- purrr::as_mapper(expectation)
-
-  purrr::map_dfc(data, my_fun)
-
-}
-
 #' Visualise whether a value is in a data frame
 #'
 #' `vis_expect` visualises certain conditions or values in your data. For example,
@@ -46,6 +17,9 @@ expect_frame <- function(data, expectation){
 #' @param show_perc logical. TRUE now adds in the \% of expectations are
 #'   TRUE or FALSE in the whole dataset into the legend. Default value is TRUE.
 #' @return a ggplot2 object
+#'
+#' @seealso [vis_miss()] [vis_dat()] [vis_guess()] [vis_cor()] [vis_compare()]
+#'
 #' @export
 #'
 #' @examples
@@ -60,7 +34,8 @@ expect_frame <- function(data, expectation){
 #'
 #' vis_expect(dat_test,
 #'            ~ .x == -1)
-
+#'
+#' \dontrun{
 #' vis_expect(airquality,
 #'            ~ .x == 5.1)
 #'
@@ -83,6 +58,8 @@ expect_frame <- function(data, expectation){
 #'                          "na", "F",   -1)
 #'
 #' vis_expect(dat_ms, ~.x %in% common_nas)
+#'
+#' }
 #'
 vis_expect <- function(data, expectation, show_perc = TRUE){
 
@@ -141,5 +118,86 @@ vis_expect <- function(data, expectation, show_perc = TRUE){
     ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0))
 
   vis_expect_plot
+
+}
+
+#' Create a dataframe to help visualise 'expected' values
+#'
+#' @param data data.frame
+#' @param expectation unquoted conditions or "expectations" to test
+#'
+#' @return data.frames where expectation are true
+#' @author Stuart Lee and Earo Wang
+#'
+#' @examples
+#'
+#' \dontrun{
+#' dat_test <- tibble::tribble(
+#'             ~x, ~y,
+#'             -1,  "A",
+#'             0,  "B",
+#'             1,  "C"
+#'             )
+#'
+#' expect_frame(dat_test,
+#'              ~ .x == -1)
+#' }
+expect_frame <- function(data, expectation){
+
+  my_fun <- purrr::as_mapper(expectation)
+
+  purrr::map_dfc(data, my_fun)
+
+}
+
+
+#' (Internal) Label the legend with the percent of missing data
+#'
+#' `miss_guide_label` is an internal function to label the legend of `vis_miss`.
+#'
+#' @param x is a dataframe passed from `vis_miss(x)`.
+#'
+#' @return a `tibble` with two columns `p_miss_lab` and `p_pres_lab`,
+#'   containing the labels to use for present and missing. A dataframe is
+#'   returned because I think it is a good style habit compared to a list.
+#'
+expect_guide_label <- function(x) {
+
+  p_expect <- (mean(as.matrix(x), na.rm = TRUE) * 100)
+
+  if (p_expect == 0) {
+
+    p_expect_false_lab <- "No Expectations True"
+
+    p_expect_true_lab <- "Present (100%)"
+
+  } else if (p_expect < 0.1) {
+
+    p_expect_false_lab <- "TRUE (< 0.1%)"
+
+    p_expect_true_lab <- "FALSE (> 99.9%)"
+
+  } else {
+
+    # calculate rounded percentages
+    p_expect_false <- round(p_expect, 1)
+    p_expect_true <- round(100 - p_expect,1)
+
+    # create the labels
+    p_expect_false_lab <- paste("FALSE \n(",
+                                p_expect_false,
+                                "%)",
+                                sep = "")
+
+    p_expect_true_lab <- paste("TRUE \n(",
+                               p_expect_true,
+                               "%)",
+                               sep = "")
+  }
+
+  label_frame <- tibble::tibble(p_expect_false_lab = paste(p_expect_false_lab),
+                                p_expect_true_lab = paste(p_expect_true_lab))
+
+  return(label_frame)
 
 }

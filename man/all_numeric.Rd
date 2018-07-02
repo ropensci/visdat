@@ -2,7 +2,7 @@
 % Please edit documentation in R/internals.R
 \name{all_numeric}
 \alias{all_numeric}
-\title{Are there any numeric columns?}
+\title{(Internal) Are they all numeric columns?}
 \usage{
 all_numeric(x, ...)
 }
@@ -15,7 +15,7 @@ all_numeric(x, ...)
 logical - TRUE means that there is a column with numerics, FALSE means that there is a column that is not numeric
 }
 \description{
-Are there any numeric columns?
+(Internal) Are they all numeric columns?
 }
 \examples{
 

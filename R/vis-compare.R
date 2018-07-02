@@ -2,7 +2,7 @@
 #'
 #' `vis_compare`, like the other `vis_*` families, gives an at-a-glance ggplot
 #'   of a dataset, but in this case, hones in on visualising **two** different
-#'   dataframes of the same dimensions, and so takes two dataframes as arguments.
+#'   dataframes of the same dimension, so it takes two dataframes as arguments.
 #'
 #' @param df1 The first dataframe to compare
 #'
@@ -11,7 +11,7 @@
 #' @return `ggplot2` object displaying which values in each data frame are
 #'   present in each other, and which are not.
 #'
-#' @seealso [vis_miss()] [vis_dat()] [vis_compare()] [vis_expect()]
+#' @seealso [vis_miss()] [vis_dat()] [vis_guess()] [vis_expect()] [vis_cor()]
 #'
 #' @examples
 #'
@@ -88,3 +88,26 @@ vis_compare <- function(df1,
     ggplot2::scale_x_discrete(position = "top",
                               limits = names(df_diff))
 }
+
+#' (Internal) A utility function for `vis_compare`
+#'
+#' `compare_print` is an internal function that takes creates a dataframe with
+#'   information about where there are differences in the dataframe. This
+#'   function is used in `vis_compare`. It evaluates on the data `(df1 == df2)`
+#'   and (currently) replaces the "true" (the same) with "Same"
+#'   and FALSE with "Different", unless it is missing (coded as NA), in which
+#'   case it leaves it as NA.
+#'
+#' @param x a vector
+#'
+#'
+compare_print <- function(x){
+
+  dplyr::if_else(x == "TRUE",
+                 true = "same",
+                 false = "different",
+                 missing = "missing")
+
+
+} # end function
+

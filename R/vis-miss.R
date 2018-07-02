@@ -26,7 +26,7 @@
 #' @return `ggplot2` object displaying the position of missing values in the
 #'   dataframe, and the percentage of values missing and present.
 #'
-#' @seealso [vis_dat()]
+#' @seealso [vis_dat()] [vis_guess()] [vis_expect()] [vis_cor()] [vis_compare()]
 #'
 #' @note Some datasets might be too large to plot, sometimes creating a blank
 #'   plot - if this happens, I would recommend downsampling the data, either
@@ -156,26 +156,30 @@ vis_miss <- function(x,
   # way around it. Related issue: https://github.com/ropensci/visdat/issues/72
   if (ncol(x) == 1) {
 
-    if (show_perc_col){
-      return(print(
+    if (show_perc_col) {
+      return(
+        # print(
       vis_miss_plot +
         ggplot2::scale_x_discrete(position = "top",
                                   labels = label_col_missing_pct(
                                     x,
                                     col_order_index)
         )
-      ))
+      # )
+      )
     } else if (!show_perc_col) {
-      return(print(
+      return(
+        # print(
       vis_miss_plot +
         ggplot2::scale_x_discrete(position = "top",
                                   labels = col_order_index)
-      ))
+      # )
+      )
     }
 
   }
 
-  if (show_perc_col){
+  if (show_perc_col) {
 
     # flip the axes, add the info about limits
     vis_miss_plot +

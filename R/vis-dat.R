@@ -24,7 +24,8 @@
 #' @return `ggplot2` object displaying the type of values in the data frame and
 #'   the position of any missing values.
 #'
-#' @seealso [vis_miss()]
+#' @seealso  [vis_miss()] [vis_guess()] [vis_expect()] [vis_cor()]
+#'   [vis_compare()]
 #'
 #' @note Some datasets might be too large to plot, sometimes creating a blank
 #'   plot - if this happens, I would recommend downsampling the data, either

@@ -1,3 +1,24 @@
+#' Take the fingerprint of a data.frame - find the class or return NA
+#'
+#' `fingerprint` is an internal function that takes the "fingerprint" of a
+#'   dataframe, and currently replaces the contents (x) with the class of a
+#'   given object, unless it is missing (coded as `NA`), in which case it leaves
+#'   it as `NA`. The name "fingerprint" is taken from the csv-fingerprint, of
+#'   which the package, `visdat`, is based upon
+#'
+#' @param x a vector
+#'
+fingerprint <- function(x){
+
+  # is the data missing?
+  ifelse(is.na(x),
+         # yes? Leave as is NA
+         yes = NA,
+         # no? make that value no equal to the class of this cell.
+         no = paste(class(x), collapse = "\n")
+  )
+} # end function
+
 #' (Internal) Gather rows into a format appropriate for grid visualisation
 #'
 #' @param x a dataframe
@@ -13,11 +34,10 @@ vis_gather_ <- function(x){
                    gather_cols = names(.)[-length(.)])
 }
 
-
 #' (Internal) Add values of each row as a column
 #'
 #' This adds information about each row, so that when called by plotly, the
-#'   values are made visible on hover. Warnings are suppressed because tidyr
+#'   values are made visible on hover. Warnings are suppressed because `tidyr`
 #'   gives a warning about type coercion, which is fine.
 #'
 #' @param x dataframe created from `vis_gather_`
@@ -35,7 +55,7 @@ vis_extract_value_ <- function(x){
 
 }
 
-#' (Internal) Create a boilerplate for visualisations of the vis_ family
+#' (Internal) Create a boilerplate for visualisations of the `vis_` family
 #'
 #' @param x a dataframe in longformat as transformed by `vis_gather_` and
 #'   `vis_extract_value`.
@@ -62,36 +82,10 @@ vis_create_ <- function(x){
 
 }
 
-#' (Internal) Create labels for the columns containing the \% missing data
+#' (Internal) Add a specific palette to a visdat plot
 #'
-#' @param x data.frame
-#' @param col_order_index the order of the columns
-#'
-#' @return data.frame containing the missingness percent down to 0.1 percent
-#'
-label_col_missing_pct <- function(x,
-                                  col_order_index){
-
-  # present everything in the right order
-  purrr::map_df(x, ~round(mean(is.na(.))*100,2))[col_order_index] %>%
-    purrr::map_chr(function(x){
-      dplyr::case_when(
-        x == 0 ~  "0%",
-        x >= 0.1 ~ paste0(x,"%"),
-        x < 0.1 ~ "<0.1%"
-      )
-    }) %>%
-    paste0(col_order_index,
-           " (",
-           .,
-           ")")
-
-}
-
-#' Add a specific palette to a visdat plot
-#'
-#' @param vis_plot visdat plot created using vis_gather_, vis_extract_value
-#'   and vis_create_
+#' @param vis_plot visdat plot created using `vis_gather_`, `vis_extract_value`
+#'   and `vis_create_`
 #' @param palette character "default", "qual" or "cb_safe". "default" (the
 #'   default) provides the stock ggplot scale for separating the colours. "qual"
 #'   uses an experimental qualitative colour scheme for providing distinct
@@ -173,42 +167,87 @@ if (palette == "default"){
 
 } # close the function
 
-#' (Internal) create a tidy dataframe of correlations suitable for plotting
+#' (Internal) Create labels for the columns containing the \% missing data
 #'
-#' @param data data.frame
-#' @param cor_method correlation method to use, from `cor`: "a character
-#'   string indicating which correlation coefficient (or covariance) is to be
-#'   computed. One of "pearson" (default), "kendall", or "spearman": can be
-#'   abbreviated."
-#' @param na_action The method for computing covariances when there are missing
-#'   values present. This can be "everything", "all.obs", "complete.obs",
-#'   "na.or.complete", or "pairwise.complete.obs" (default). This option is
-#'   taken from the `cor` function argument `use`.
+#' @param x data.frame
+#' @param col_order_index the order of the columns
 #'
+#' @return data.frame containing the missingness percent down to 0.1 percent
 #'
-#' @return tidy dataframe of correlations
-#'
-#' @examples
-#' gather_cor(airquality)
-#'
-#' @export
-gather_cor <- function(data,
-                       cor_method = "pearson",
-                       na_action = "pairwise.complete.obs"){
+label_col_missing_pct <- function(x,
+                                  col_order_index){
 
-  stats::cor(data,
-      method = cor_method,
-      use = na_action) %>%
-    as.data.frame() %>%
-    tibble::rownames_to_column() %>%
-    tidyr::gather(key = "key",
-                  value = "value",
-                  -rowname) %>%
-    purrr::set_names(c("row_1", "row_2", "value"))
+  # present everything in the right order
+  purrr::map_df(x, ~round(mean(is.na(.))*100,2))[col_order_index] %>%
+    purrr::map_chr(function(x){
+      dplyr::case_when(
+        x == 0 ~  "0%",
+        x >= 0.1 ~ paste0(x,"%"),
+        x < 0.1 ~ "<0.1%"
+      )
+    }) %>%
+    paste0(col_order_index,
+           " (",
+           .,
+           ")")
 
 }
 
-#' Are there any numeric columns?
+
+#' Label the legend with the percent of missing data
+#'
+#' `miss_guide_label` is an internal function for vis_miss to label the legend.
+#'
+#' @param x is a dataframe passed from vis_miss(x).
+#'
+#' @return a data_frame with two columns `p_miss_lab` and `p_pres_lab`,
+#'   containing the labels to use for present and missing. A dataframe is
+#'   returned because I think it is a good style habit compared to a list.
+#'
+#'
+miss_guide_label <- function(x) {
+
+  p_miss <- (mean(is.na(x)) * 100)
+
+  if (p_miss == 0) {
+
+    p_miss_lab <- "No Missing Values"
+
+    p_pres_lab <- "Present (100%)"
+
+  } else if (p_miss < 0.1) {
+
+    p_miss_lab <- "Missing (< 0.1%)"
+
+    p_pres_lab <- "Present (> 99.9%)"
+
+  } else {
+
+    # calculate rounded percentages
+    p_miss <- round(p_miss, 1)
+    p_pres <- 100 - p_miss
+
+    # create the labels
+    p_miss_lab <- paste("Missing \n(",
+                        p_miss,
+                        "%)",
+                        sep = "")
+
+    p_pres_lab <- paste("Present \n(",
+                        p_pres,
+                        "%)",
+                        sep = "")
+  }
+
+  label_frame <- dplyr::data_frame(p_miss_lab = paste(p_miss_lab),
+                                   p_pres_lab = paste(p_pres_lab))
+
+  return(label_frame)
+
+}
+
+
+#' (Internal) Are they all numeric columns?
 #'
 #' @param x data.frame
 #' @param ... optional extra inputs
@@ -225,3 +264,4 @@ gather_cor <- function(data,
 all_numeric <- function(x, ...){
   all(as.logical(lapply(x, is.numeric)))
 }
+# Can I capture moving from a value to NA, or, from NA to another value?
