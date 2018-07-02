@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Authors • visdat</title>
+<title>Citation and Authors • visdat</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -18,13 +18,28 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
+
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="pkgdown.css" rel="stylesheet">
-<script src="jquery.sticky-kit.min.js"></script>
 <script src="pkgdown.js"></script>
-  
-  
+
+
+<!-- docsearch -->
+<script src="docsearch.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<link href="docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+
+
+<meta property="og:title" content="Citation and Authors" />
+
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -37,7 +52,7 @@
   </head>
 
   <body>
-    <div class="container template-authors">
+    <div class="container template-citation-authors">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -47,8 +62,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">visdat</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="index.html">visdat</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.5.9000</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -66,8 +85,20 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/ropensci/visdat">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
+      
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div>
+      </form>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -75,28 +106,55 @@
       
       </header>
 
-      <div class="row">
-  <div class="contents col-md-12">
+<div class="row">
+  <div class="contents col-md-9">
+    <div class="page-header">
+      <h1>Citation</h1>
+    </div>
+
+    <p>Tierney N (2017).
+&ldquo;visdat: Visualising Whole Data Frames.&rdquo;
+<em>JOSS</em>, <b>2</b>(16), 355.
+doi: <a href="http://doi.org/10.21105/joss.00355">10.21105/joss.00355</a>, <a href="http://dx.doi.org/10.21105/joss.00355">http://dx.doi.org/10.21105/joss.00355</a>. 
+</p>
+    <pre>@Article{,
+  title = {visdat: Visualising Whole Data Frames},
+  author = {Nicholas Tierney},
+  doi = {10.21105/joss.00355},
+  url = {http://dx.doi.org/10.21105/joss.00355},
+  year = {2017},
+  publisher = {Journal of Open Source Software},
+  volume = {2},
+  number = {16},
+  pages = {355},
+  journal = {JOSS},
+}</pre>
     <div class="page-header">
       <h1>Authors</h1>
     </div>
 
     <ul class="list-unstyled">
       <li>
-        <p><strong>Nicholas Tierney</strong>. Author, maintainer.
+        <p><strong>Nicholas Tierney</strong>. Author, maintainer. <a href='https://orcid.org/https://orcid.org/0000-0003-1460-8722' target='orcid.widget'><img src='https://members.orcid.org/sites/default/files/vector_iD_icon.svg' class='orcid' height='16'></a>
         </p>
       </li>
       <li>
-        <p><strong>Sean Hughes</strong>. Contributor.
-        <br /><small>Sean Hughes
-    reviewed the package for rOpenSci, 
-    see https://github.com/ropensci/onboarding/issues/87</small></p>
+        <p><strong>Sean Hughes</strong>. Reviewer. <a href='https://orcid.org/https://orcid.org/0000-0002-9409-9405' target='orcid.widget'><img src='https://members.orcid.org/sites/default/files/vector_iD_icon.svg' class='orcid' height='16'></a>
+        <br /><small>Sean Hughes reviewed the package for rOpenSci, 
+                  see https://github.com/ropensci/onboarding/issues/87</small></p>
       </li>
       <li>
-        <p><strong>Mara Averick</strong>. Contributor.
-        <br /><small>Mara Averick
-    reviewed the package for rOpenSci, 
-    see https://github.com/ropensci/onboarding/issues/87</small></p>
+        <p><strong>Mara Averick</strong>. Reviewer. 
+        <br /><small>Mara Averick reviewed the package for rOpenSci, see 
+      https://github.com/ropensci/onboarding/issues/87</small></p>
+      </li>
+      <li>
+        <p><strong>Stuart Lee</strong>. Contributor. 
+        </p>
+      </li>
+      <li>
+        <p><strong>Earo Wang</strong>. Contributor. 
+        </p>
       </li>
     </ul>
 
@@ -111,11 +169,31 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
    </div>
 
+  
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script>
+  docsearch({
+    
+    
+    apiKey: '9ef7630dc874be89bea2042eec22bebf',
+    indexName: 'visdat',
+    inputSelector: 'input#search-input.form-control',
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
+  });
+</script>
+
+
   </body>
 </html>
+

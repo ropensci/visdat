@@ -1,0 +1,9 @@
+pandoc: 2.2.1
+pkgdown: 1.1.0
+pkgdown_sha: ~
+articles:
+  using_visdat: using_visdat.html
+urls:
+  reference: http://visdat.njtierney.com//reference
+  article: http://visdat.njtierney.com//articles
+

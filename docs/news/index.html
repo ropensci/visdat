@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>All news • visdat</title>
+<title>Changelog • visdat</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -18,13 +18,28 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
+
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+<!-- docsearch -->
+<script src="../docsearch.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<link href="../docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+
+
+<meta property="og:title" content="Changelog" />
+
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -47,8 +62,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">visdat</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">visdat</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.5.9000</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -66,8 +85,20 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/ropensci/visdat">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
+      
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div>
+      </form>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -75,32 +106,123 @@
       
       </header>
 
-      <div class="row">
-
-  <div class="col-md-9">
+<div class="row">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Change log <small>All releases</small></h1>
+      <h1>Changelog <small></small></h1>
+      <small>Source: <a href='https://github.com/ropensci/visdat/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div class="contents">
+    <div id="visdat-0-2-5-9000-20180607" class="section level1">
+<h1 class="page-header">
+<a href="#visdat-0-2-5-9000-20180607" class="anchor"></a>visdat 0.2.5.9000 (2018/06/07)<small> Unreleased </small>
+</h1>
+<div id="bug-fixes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#bug-fixes" class="anchor"></a>Bug Fixes</h2>
+<ul>
+<li><p>Fix bug reported in <a href="https://github.com/ropensci/visdat/issues/75"><a href='https://github.com/ropensci/visdat/issues/75'>#75</a></a> where <code><a href="../reference/vis_dat.html">vis_dat(diamonds)</a></code> errored <code>seq_len(nrow(x))</code> inside internal function <code>vis_gather_</code>, used to calculate the row numbers. Using <code>mutate(rows = dplyr::row_number())</code> solved the issue.</p></li>
+<li><p>Fix bug reported in <a href="https://github.com/ropensci/visdat/issues/72"><a href='https://github.com/ropensci/visdat/issues/72'>#72</a></a> where <code>vis_miss</code> errored when one column was given to it. This was an issue with using <code>limits</code> inside <code>scale_x_discrete</code> - which is used to order the columns of the data. It is not necessary to order one column of data, so I created an if-else to avoid this step and return the plot early.</p></li>
+</ul>
+</div>
+</div>
+    <div id="visdat-0-2-3-9700-20180604" class="section level1">
+<h1 class="page-header">
+<a href="#visdat-0-2-3-9700-20180604" class="anchor"></a>visdat 0.2.3.9700 (2018/06/04)<small> Unreleased </small>
+</h1>
+<div id="new-feature" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-feature" class="anchor"></a>New Feature</h2>
+<ul>
+<li>added NA colours to <code>vis_expect</code>
+</li>
+<li>Added <code>show_perc</code> arg to <code>vis_expect</code> to show the percentage of expectations that are TRUE. <a href='https://github.com/ropensci/visdat/issues/73'>#73</a></li>
+</ul>
+</div>
+</div>
+    <div id="visdat-0-2-3-9600-20180523" class="section level1">
+<h1 class="page-header">
+<a href="#visdat-0-2-3-9600-20180523" class="anchor"></a>visdat 0.2.3.9600 (2018/05/23)<small> Unreleased </small>
+</h1>
+<div id="bugfix" class="section level2">
+<h2 class="hasAnchor">
+<a href="#bugfix" class="anchor"></a>Bugfix</h2>
+<ul>
+<li>Fix visdat x axis alignment when show_perc_col = FALSE - <a href="https://github.com/ropensci/visdat/issues/82"><a href='https://github.com/ropensci/visdat/issues/82'>#82</a></a>
+</li>
+</ul>
+</div>
+</div>
+    <div id="visdat-0-2-3-9500-20180427" class="section level1">
+<h1 class="page-header">
+<a href="#visdat-0-2-3-9500-20180427" class="anchor"></a>visdat 0.2.3.9500 (2018/04/27)<small> Unreleased </small>
+</h1>
+<div id="new-feature-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-feature-1" class="anchor"></a>New feature</h2>
+<ul>
+<li>added CITATION for visdat to cite the JOSS article</li>
+</ul>
+</div>
+</div>
+    <div id="visdat-0-2-3-9400-20180424" class="section level1">
+<h1 class="page-header">
+<a href="#visdat-0-2-3-9400-20180424" class="anchor"></a>visdat 0.2.3.9400 (2018/04/24)<small> Unreleased </small>
+</h1>
+<div id="new-feature-2" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-feature-2" class="anchor"></a>New feature</h2>
+<ul>
+<li>Added draft <code>vis_expect</code> to make it easy to look at certain appearances of numbers in your data.</li>
+</ul>
+</div>
+</div>
+    <div id="visdat-0-2-2-9300-20180320" class="section level1">
+<h1 class="page-header">
+<a href="#visdat-0-2-2-9300-20180320" class="anchor"></a>visdat 0.2.2.9300 (2018/03/20)<small> Unreleased </small>
+</h1>
+<div id="bugfixes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#bugfixes" class="anchor"></a>Bugfixes</h2>
+<ul>
+<li>fix visdat x axis alignment - <a href="https://github.com/ropensci/visdat/issues/57">issue 57</a>
+</li>
+<li>fix bug where the column percentage missing would print to be NA when it was exactly equal to 0.1% missing. - <a href="https://github.com/ropensci/visdat/issues/62">issue 62</a>
+</li>
+<li>
+<code>vis_cor</code> didn’t gather variables for plotting appropriately - now fixed</li>
+</ul>
+</div>
+</div>
+    <div id="visdat-0-2-2-9000-20180220" class="section level1">
+<h1 class="page-header">
+<a href="#visdat-0-2-2-9000-20180220" class="anchor"></a>visdat 0.2.2.9000 (2018/02/20)<small> Unreleased </small>
+</h1>
+<ul>
+<li>Added appropriate legend and x axis for <code>vis_miss_ly</code> - thanks to Stuart Lee</li>
+</ul>
+</div>
     <div id="visdat-0-2-2-20171003" class="section level1">
-<h1 class="hasAnchor">
-<a href="#visdat-0-2-2-20171003" class="anchor"></a>visdat 0.2.2 (2017/10/03)</h1>
+<h1 class="page-header">
+<a href="#visdat-0-2-2-20171003" class="anchor"></a>visdat 0.2.2 (2017/10/03)<small> Unreleased </small>
+</h1>
 <ul>
 <li>Added <code>vis_cor</code> to visualise correlations in a dataframe</li>
 </ul>
 </div>
     <div id="visdat-0-2-1-20170818" class="section level1">
-<h1 class="hasAnchor">
-<a href="#visdat-0-2-1-20170818" class="anchor"></a>visdat 0.2.1 (2017/08/18)</h1>
+<h1 class="page-header">
+<a href="#visdat-0-2-1-20170818" class="anchor"></a>visdat 0.2.1 (2017/08/18)<small> Unreleased </small>
+</h1>
 <ul>
 <li>Updated the <code>paper.md</code> for JOSS</li>
 <li>Updated some old links in doco</li>
 </ul>
 </div>
     <div id="visdat-0-2-0-9000-20170801" class="section level1">
-<h1 class="hasAnchor">
-<a href="#visdat-0-2-0-9000-20170801" class="anchor"></a>visdat 0.2.0.9000 (2017/08/01)</h1>
+<h1 class="page-header">
+<a href="#visdat-0-2-0-9000-20170801" class="anchor"></a>visdat 0.2.0.9000 (2017/08/01)<small> Unreleased </small>
+</h1>
 <ul>
 <li>visdat is now under the rOpenSci github repository</li>
 <li>Added Sean Hughes and Mara Averick to the DESCRIPTION with <code>ctb</code>.</li>
@@ -131,16 +253,18 @@
 </div>
 </div>
     <div id="visdat-0-1-0-20170703" class="section level1">
-<h1 class="hasAnchor">
-<a href="#visdat-0-1-0-20170703" class="anchor"></a>visdat 0.1.0 (2017/07/03)</h1>
+<h1 class="page-header">
+<a href="#visdat-0-1-0-20170703" class="anchor"></a>visdat 0.1.0 (2017/07/03)<small> 2017-07-11 </small>
+</h1>
 <ul>
 <li>lightweight CRAN submission - will only contain functions <code>vis_dat</code> and <code>vis_miss</code>
 </li>
 </ul>
 </div>
     <div id="visdat-0-0-7-9100-20170703" class="section level1">
-<h1 class="hasAnchor">
-<a href="#visdat-0-0-7-9100-20170703" class="anchor"></a>visdat 0.0.7.9100 (2017/07/03)</h1>
+<h1 class="page-header">
+<a href="#visdat-0-0-7-9100-20170703" class="anchor"></a>visdat 0.0.7.9100 (2017/07/03)<small> Unreleased </small>
+</h1>
 <div id="new-features-1" class="section level2">
 <h2 class="hasAnchor">
 <a href="#new-features-1" class="anchor"></a>New Features</h2>
@@ -151,11 +275,14 @@
 <li>
 <code>vis_guess</code> now gets a palette argument like <code>vis_dat</code>
 </li>
-<li>Added protoype/placeholder functions for <code>plotly</code> vis_*_ly interactive graphs:</li>
+<li>Added protoype/placeholder functions for <code>plotly</code> vis_*_ly interactive graphs:
+<ul>
 <li><code><a href="../reference/vis_guess_ly.html">vis_guess_ly()</a></code></li>
 <li><code><a href="../reference/vis_dat_ly.html">vis_dat_ly()</a></code></li>
 <li>
 <code><a href="../reference/vis_compare_ly.html">vis_compare_ly()</a></code> These simply wrap <code><a href="http://www.rdocumentation.org/packages/plotly/topics/ggplotly">plotly::ggplotly(vis_*(data))</a></code>. In the future they will be written in <code>plotly</code> so that they can be generated much faster</li>
+</ul>
+</li>
 </ul>
 </div>
 <div id="minor-improvements" class="section level2">
@@ -169,8 +296,9 @@
 </div>
 </div>
     <div id="visdat-0-0-6-9000-20170226" class="section level1">
-<h1 class="hasAnchor">
-<a href="#visdat-0-0-6-9000-20170226" class="anchor"></a>visdat 0.0.6.9000 (2017/02/26)</h1>
+<h1 class="page-header">
+<a href="#visdat-0-0-6-9000-20170226" class="anchor"></a>visdat 0.0.6.9000 (2017/02/26)<small> Unreleased </small>
+</h1>
 <div id="new-features-2" class="section level2">
 <h2 class="hasAnchor">
 <a href="#new-features-2" class="anchor"></a>New Features</h2>
@@ -191,8 +319,9 @@
 </div>
 </div>
     <div id="visdat-0-0-5-9000-20170109" class="section level1">
-<h1 class="hasAnchor">
-<a href="#visdat-0-0-5-9000-20170109" class="anchor"></a>visdat 0.0.5.9000 (2017/01/09)</h1>
+<h1 class="page-header">
+<a href="#visdat-0-0-5-9000-20170109" class="anchor"></a>visdat 0.0.5.9000 (2017/01/09)<small> Unreleased </small>
+</h1>
 <div id="minor-improvements-2" class="section level2">
 <h2 class="hasAnchor">
 <a href="#minor-improvements-2" class="anchor"></a>Minor Improvements</h2>
@@ -207,17 +336,18 @@
 </div>
 </div>
     <div id="visdat-0-0-4-9999-20170108" class="section level1">
-<h1 class="hasAnchor">
-<a href="#visdat-0-0-4-9999-20170108" class="anchor"></a>visdat 0.0.4.9999 (2017/01/08)</h1>
-<div id="new-feature" class="section level2">
+<h1 class="page-header">
+<a href="#visdat-0-0-4-9999-20170108" class="anchor"></a>visdat 0.0.4.9999 (2017/01/08)<small> Unreleased </small>
+</h1>
+<div id="new-feature-3" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-feature" class="anchor"></a>New Feature</h2>
+<a href="#new-feature-3" class="anchor"></a>New Feature</h2>
 <ul>
 <li>Added feature <code>flip = TRUE</code>, to <code>vis_dat</code> and <code>vis_miss</code>. This flips the x axis and the ordering of the rows. This more closely resembles a dataframe.</li>
 <li>
 <code>vis_miss_ly</code> is a new function that uses plotly to plot missing data, like <code>vis_miss</code>, but interactive, without the need to call <code><a href="http://www.rdocumentation.org/packages/plotly/topics/ggplotly">plotly::ggplotly</a></code> on it. It’s fast, but at the moment it needs a bit of love on the legend front to maintain the style and features (clustering, etc) of current <code>vis_miss</code>.</li>
 <li>
-<code>vis_miss</code> now gains a <code>show_perc</code> argument, which displays the % of missing and complete data. This is switched on by default and addresses issue #19.</li>
+<code>vis_miss</code> now gains a <code>show_perc</code> argument, which displays the % of missing and complete data. This is switched on by default and addresses issue <a href='https://github.com/ropensci/visdat/issues/19'>#19</a>.</li>
 </ul>
 </div>
 <div id="new-feature-under-development" class="section level2">
@@ -238,7 +368,7 @@
 <li>removed all instances of <code>1:rnow(x)</code> and replaced with <code>seq_along(nrow(x))</code>.</li>
 <li>Updated documentation, improved legend and colours for <code>vis_miss_ly</code>.</li>
 <li>removed export for <code>vis_dat_ly</code>, as it currently does not work.</li>
-<li>Removed a lot of unnecessary @importFrom tags, included magrittr in this, and added magrittr to Imports</li>
+<li>Removed a lot of unnecessary <a href='http://github.com/importFrom'>@importFrom</a> tags, included magrittr in this, and added magrittr to Imports</li>
 <li>Changes ALL CAPS Headers in news to Title Case</li>
 <li>Made it clear that <code><a href="../reference/vis_guess.html">vis_guess()</a></code> and <code>vis_compare</code> are very beta</li>
 <li>updated documentation in README and <code><a href="../reference/vis_dat.html">vis_dat()</a></code>, <code><a href="../reference/vis_miss.html">vis_miss()</a></code>, <code><a href="../reference/vis_compare.html">vis_compare()</a></code>, and <code><a href="../reference/vis_guess.html">vis_guess()</a></code>
@@ -247,29 +377,35 @@
 <li>updated DESCRIPTION URL and bug report</li>
 <li>Changed the default colours of <code>vis_compare</code> to be different to the ggplot2 standards.</li>
 <li>
-<code>vis_miss</code> legend labels are created using the internal function <code>miss_guide_label</code>. <code>miss_guide_label</code> will check if data is 100% missing or 100% present and display this in the figure. Additionally, if there is less than 0.1% missing data, “&lt;0.1% missingness” will also be displayed. This sort of gets around issue #18 for the moment.</li>
+<code>vis_miss</code> legend labels are created using the internal function <code>miss_guide_label</code>. <code>miss_guide_label</code> will check if data is 100% missing or 100% present and display this in the figure. Additionally, if there is less than 0.1% missing data, “&lt;0.1% missingness” will also be displayed. This sort of gets around issue <a href='https://github.com/ropensci/visdat/issues/18'>#18</a> for the moment.</li>
 <li>tests have been added for the <code>miss_guide_label</code> legend labels function.</li>
 <li>Changed legend label for <code>vis_miss</code>, <code>vis_dat</code>, and <code>vis_guess</code>.</li>
 <li>updated README</li>
 <li>Added vignette folder (but not vignettes added yet)</li>
-<li>Added appveyor-CI and travis-CI, addressing issues #22 and #23</li>
+<li>Added appveyor-CI and travis-CI, addressing issues <a href='https://github.com/ropensci/visdat/issues/22'>#22</a> and <a href='https://github.com/ropensci/visdat/issues/23'>#23</a></li>
 </ul>
 </div>
-<div id="bug-fixes" class="section level2">
+<div id="bug-fixes-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes" class="anchor"></a>Bug Fixes</h2>
+<a href="#bug-fixes-1" class="anchor"></a>Bug Fixes</h2>
 <ul>
-<li>Update <code><a href="../reference/vis_dat.html">vis_dat()</a></code> to use <code>purrr::dmap(fingerprint)</code> instead of <code>mutate_each_()</code>. This solves issue #3 where <code>vis_dat</code> couldn’t take variables with spaces in their name.</li>
+<li>Update <code><a href="../reference/vis_dat.html">vis_dat()</a></code> to use <code>purrr::dmap(fingerprint)</code> instead of <code>mutate_each_()</code>. This solves issue <a href='https://github.com/ropensci/visdat/issues/3'>#3</a> where <code>vis_dat</code> couldn’t take variables with spaces in their name.</li>
 </ul>
 </div>
 </div>
-    </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#visdat-0-2-5-9000-20180607">0.2.5.9000</a></li>
+        <li><a href="#visdat-0-2-3-9700-20180604">0.2.3.9700</a></li>
+        <li><a href="#visdat-0-2-3-9600-20180523">0.2.3.9600</a></li>
+        <li><a href="#visdat-0-2-3-9500-20180427">0.2.3.9500</a></li>
+        <li><a href="#visdat-0-2-3-9400-20180424">0.2.3.9400</a></li>
+        <li><a href="#visdat-0-2-2-9300-20180320">0.2.2.9300</a></li>
+        <li><a href="#visdat-0-2-2-9000-20180220">0.2.2.9000</a></li>
         <li><a href="#visdat-0-2-2-20171003">0.2.2</a></li>
         <li><a href="#visdat-0-2-1-20170818">0.2.1</a></li>
         <li><a href="#visdat-0-2-0-9000-20170801">0.2.0.9000</a></li>
@@ -290,11 +426,31 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
    </div>
 
+  
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script>
+  docsearch({
+    
+    
+    apiKey: '9ef7630dc874be89bea2042eec22bebf',
+    indexName: 'visdat',
+    inputSelector: 'input#search-input.form-control',
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
+  });
+</script>
+
+
   </body>
 </html>
+

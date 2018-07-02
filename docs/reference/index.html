@@ -18,13 +18,28 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
+
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+<!-- docsearch -->
+<script src="../docsearch.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<link href="../docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+
+
+<meta property="og:title" content="Function reference" />
+
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -47,8 +62,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">visdat</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">visdat</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.5.9000</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -66,8 +85,20 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/ropensci/visdat">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
+      
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div>
+      </form>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -75,120 +106,116 @@
       
       </header>
 
-      <div class="row">
-  <div class="col-md-9">
+<div class="row">
+  <div class="contents col-md-9">
     <div class="page-header">
-      <h1>
-        Reference
-        <small>version&nbsp;0.2.2</small>
-      </h1>
+      <h1>Reference</h1>
     </div>
 
-    <div class="contents">
-      <table class="ref-index">
+    <table class="ref-index">
 
-      <colgroup>
-        <col class="alias" />
-        <col class="title" />
-      </colgroup>
+    <colgroup>
+      
+      <col class="alias" />
+      <col class="title" />
+    </colgroup>
 
-      <tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-visualise-the-whole-dataframe-class-and-missing-data" class="hasAnchor"><a href="#section-visualise-the-whole-dataframe-class-and-missing-data" class="anchor"></a>Visualise the whole dataframe, class, and missing data</h2>
-            <p class="section-desc"><p>Tools for creating preliminary visualisations to “get a look at the data”</p></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="vis_dat.html">vis_dat</a></code> </p>
-          </td>
-          <td><p>Visualises a data.frame to tell you what it contains.</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="vis_dat_ly.html">vis_dat_ly</a></code> </p>
-          </td>
-          <td><p>Interactive plot of data in plotly</p></td>
-        </tr>
-      </tbody><tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-focus-on-the-missing-data" class="hasAnchor"><a href="#section-focus-on-the-missing-data" class="anchor"></a>Focus on the missing data</h2>
-            <p class="section-desc"><p>Specifically display information about the missingness</p></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="vis_miss.html">vis_miss</a></code> </p>
-          </td>
-          <td><p>Visualise a data.frame to display missingness.</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="vis_miss_ly.html">vis_miss_ly</a></code> </p>
-          </td>
-          <td><p>Interactive plot of missingness in plotly</p></td>
-        </tr>
-      </tbody><tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-visualise-correlations-in-a-dataframe" class="hasAnchor"><a href="#section-visualise-correlations-in-a-dataframe" class="anchor"></a>Visualise correlations in a dataframe</h2>
-            <p class="section-desc"><p>Show the correlation amongst variables in simple function</p></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="vis_cor.html">vis_cor</a></code> </p>
-          </td>
-          <td><p>Create a correlation heatmap ggplot of all of the data</p></td>
-        </tr>
-      </tbody><tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-display-the-best-guess-of-what-each-cell-contains" class="hasAnchor"><a href="#section-display-the-best-guess-of-what-each-cell-contains" class="anchor"></a>Display the best guess of what each cell contains</h2>
-            <p class="section-desc"><p>Potentially reveal other classes in your dataset</p></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="vis_guess.html">vis_guess</a></code> </p>
-          </td>
-          <td><p>Visualise type guess in a data.frame</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="vis_guess_ly.html">vis_guess_ly</a></code> </p>
-          </td>
-          <td><p>Visualise guess in a data.frame</p></td>
-        </tr>
-      </tbody><tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-compare-two-dataframes" class="hasAnchor"><a href="#section-compare-two-dataframes" class="anchor"></a>Compare two dataframes</h2>
-            <p class="section-desc"><p>Only takes dataframes of the same dimensions</p></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="vis_compare.html">vis_compare</a></code> </p>
-          </td>
-          <td><p>Visually compare two dataframes and see where they are different.</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="vis_compare_ly.html">vis_compare_ly</a></code> </p>
-          </td>
-          <td><p>Interactive vis_compare compare two dataframes to find differences.s</p></td>
-        </tr>
-      </tbody>
-      </table>
-    </div>
+    <tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-visualise-the-whole-dataframe-class-and-missing-data" class="hasAnchor"><a href="#section-visualise-the-whole-dataframe-class-and-missing-data" class="anchor"></a>Visualise the whole dataframe, class, and missing data</h2>
+          <p class="section-desc"><p>Tools for creating preliminary visualisations to “get a look at the data”</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="vis_dat.html">vis_dat()</a></code> </p>
+        </td>
+        <td><p>Visualises a data.frame to tell you what it contains.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="vis_dat_ly.html">vis_dat_ly()</a></code> </p>
+        </td>
+        <td><p>Interactive plot of data in plotly</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-focus-on-the-missing-data" class="hasAnchor"><a href="#section-focus-on-the-missing-data" class="anchor"></a>Focus on the missing data</h2>
+          <p class="section-desc"><p>Specifically display information about the missingness</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="vis_miss.html">vis_miss()</a></code> </p>
+        </td>
+        <td><p>Visualise a data.frame to display missingness.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="vis_miss_ly.html">vis_miss_ly()</a></code> </p>
+        </td>
+        <td><p>Interactive plot of missingness in plotly</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-visualise-correlations-in-a-dataframe" class="hasAnchor"><a href="#section-visualise-correlations-in-a-dataframe" class="anchor"></a>Visualise correlations in a dataframe</h2>
+          <p class="section-desc"><p>Show the correlation amongst variables in simple function</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="vis_cor.html">vis_cor()</a></code> </p>
+        </td>
+        <td><p>Create a correlation heatmap ggplot of all of the data</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-display-the-best-guess-of-what-each-cell-contains" class="hasAnchor"><a href="#section-display-the-best-guess-of-what-each-cell-contains" class="anchor"></a>Display the best guess of what each cell contains</h2>
+          <p class="section-desc"><p>Potentially reveal other classes in your dataset</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="vis_guess.html">vis_guess()</a></code> </p>
+        </td>
+        <td><p>Visualise type guess in a data.frame</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="vis_guess_ly.html">vis_guess_ly()</a></code> </p>
+        </td>
+        <td><p>Visualise guess in a data.frame</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-compare-two-dataframes" class="hasAnchor"><a href="#section-compare-two-dataframes" class="anchor"></a>Compare two dataframes</h2>
+          <p class="section-desc"><p>Only takes dataframes of the same dimensions</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="vis_compare.html">vis_compare()</a></code> </p>
+        </td>
+        <td><p>Visually compare two dataframes and see where they are different.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="vis_compare_ly.html">vis_compare_ly()</a></code> </p>
+        </td>
+        <td><p>Interactive vis_compare compare two dataframes to find differences.s</p></td>
+      </tr>
+    </tbody>
+    </table>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -209,11 +236,31 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
    </div>
 
+  
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script>
+  docsearch({
+    
+    
+    apiKey: '9ef7630dc874be89bea2042eec22bebf',
+    indexName: 'visdat',
+    inputSelector: 'input#search-input.form-control',
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
+  });
+</script>
+
+
   </body>
 </html>
+
