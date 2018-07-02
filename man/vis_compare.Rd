@@ -29,5 +29,5 @@ aq_diff[1:10, 1:2] <- NA
 vis_compare(airquality, aq_diff)
 }
 \seealso{
-\code{\link[=vis_miss]{vis_miss()}} \code{\link[=vis_dat]{vis_dat()}} \code{\link[=vis_miss_ly]{vis_miss_ly()}} \code{\link[=vis_compare]{vis_compare()}}
+\code{\link[=vis_miss]{vis_miss()}} \code{\link[=vis_dat]{vis_dat()}} \code{\link[=vis_compare]{vis_compare()}} \code{\link[=vis_expect]{vis_expect()}}
 }

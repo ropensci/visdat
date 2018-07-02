@@ -52,5 +52,5 @@ messy_df <- data.frame(var1 = messy_vector,
 vis_guess(messy_df)
 }
 \seealso{
-\code{\link[=vis_miss]{vis_miss()}} \code{\link[=vis_dat]{vis_dat()}} \code{\link[=vis_miss_ly]{vis_miss_ly()}} \code{\link[=vis_compare]{vis_compare()}}
+\code{\link[=vis_miss]{vis_miss()}} \code{\link[=vis_dat]{vis_dat()}} \code{\link[=vis_compare]{vis_compare()}} \code{\link[=vis_expect]{vis_expect()}}
 }

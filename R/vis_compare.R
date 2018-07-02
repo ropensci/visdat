@@ -11,7 +11,7 @@
 #' @return `ggplot2` object displaying which values in each data frame are
 #'   present in each other, and which are not.
 #'
-#' @seealso [vis_miss()] [vis_dat()] [vis_miss_ly()] [vis_compare()]
+#' @seealso [vis_miss()] [vis_dat()] [vis_compare()] [vis_expect()]
 #'
 #' @examples
 #'

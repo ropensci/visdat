@@ -18,13 +18,11 @@ reference:
       Tools for creating preliminary visualisations to "get a look at the data"
     contents:
       - vis_dat
-      - vis_dat_ly
   - title: "Focus on the missing data"
     desc: >
       Specifically display information about the missingness
     contents:
       - vis_miss
-      - vis_miss_ly
   - title: "Visualise correlations in a dataframe"
     desc: >
       Show the correlation amongst variables in simple function
@@ -35,13 +33,11 @@ reference:
       Potentially reveal other classes in your dataset
     contents:
       - vis_guess
-      - vis_guess_ly
   - title: "Compare two dataframes"
     desc: >
       Only takes dataframes of the same dimensions
     contents:
       - vis_compare
-      - vis_compare_ly
 
 navbar:
   left:

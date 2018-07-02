@@ -17,7 +17,7 @@ It's main functions are:
 \item \code{\link[=vis_miss]{vis_miss()}}
 \item \code{\link[=vis_guess]{vis_guess()}}
 \item \code{\link[=vis_compare]{vis_compare()}}
-\item \code{\link[=vis_miss_ly]{vis_miss_ly()}}
+\item \code{\link[=vis_expect]{vis_expect()}}
 }
 
 Learn more about visdat at \url{www.njtierney.com/visdat/articles/using_visdat.html}

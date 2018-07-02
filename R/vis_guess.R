@@ -17,7 +17,7 @@
 #' @return `ggplot2` object displaying the guess of the type of values in the
 #'   data frame and the position of any missing values.
 #'
-#' @seealso [vis_miss()] [vis_dat()] [vis_miss_ly()] [vis_compare()]
+#' @seealso [vis_miss()] [vis_dat()] [vis_compare()] [vis_expect()]
 #'
 #' @examples
 #'

@@ -228,56 +228,22 @@ Here, you might just assume your data is weird because it's all factors - or wor
 
 At the moment `vis_guess` is very slow. Please take this into consideration when you are using it on data with more than 1000 rows. We're looking into ways of making it faster, potentially using methods from the `parallel` package, or extending the c++ code from `readr:::collectorGuess`.
 
-## Interactive plots (vis_*_ly)
+# Interactivity
 
-Thanks to Carson Sievert, you can now add some really nifty interactivity into visdat plots - these will eventually by using `plotly::ggplotly`, allowing for information to be revealed upon mouseover of a cell.
+You can make the plots in visdat by wrapping them in `plotly::ggplotly`:
 
-```{r plotly-example}
+```{r intx}
 
 library(plotly)
-
-vis_dat(airquality) %>% ggplotly()
-vis_miss(airquality) %>% ggplotly()
-
-```
-
-There are also interactive versions of most of these plots, 
-
-
-`vis_dat_ly(airquality)` is shorthand to call `ggplotly(vis_dat(airquality))`. When hovering the cursor over a cell, it will display information about each each cell, the type of data, the value, the row number, and the variable.
-
-At the moment the current implementation can be slow, as `plotly` has to work hard to translate the ggplot calls into plotly.
-
-```{r vis-dat-ly, eval = FALSE}
-vis_dat_ly(airquality)
-```
-
-## vis_miss_ly
-
-`vis_miss_ly(airquality)` is similar to `vis_dat_ly`, a shorthand call to `ggplotly(vis_miss(airquality))` with one important difference: it is written in pure plotly, so it is very fast!
-
-When hovering the cursor over a cell, it will display information about each each cell, the type of data, the number of missings in that case, and the number of missings in that variable.
-
-```{r vis-miss-ly}
-
-vis_miss_ly(airquality)
+ggplotly(vis_dat(airquality))
+ggplotly(vis_miss(airquality))
+ggplotly(vis_guess(airquality))
 
 ```
 
-## vis_guess_ly
-
-This is again similar to the other `vis_*_ly()` family calls, requiring 
-
-```{r vis-guess-ly, eval = FALSE}
-vis_guess_ly(typical_data)
-```
-
-## vis_cor_ly
-
-## vis_expect_ly
 
 # Future work
 
 Future work from here is focussed on making `visdat` more stable, improving the 
-speed of plotting, the interactive functions
+speed of plotting, and adding interactive versions of the functions
 
