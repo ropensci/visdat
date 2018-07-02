@@ -1,6 +1,6 @@
 #' Create a correlation heatmap ggplot of all of the data
 #'
-#' This provides a simple approach to visualising correlations amongst variables
+#' Visualises correlations amongst variables using ggplot
 #'
 #' @param data data.frame
 #' @param cor_method correlation method to use, from `cor`: "a character
@@ -11,7 +11,7 @@
 #'   values present. This can be "everything", "all.obs", "complete.obs",
 #'   "na.or.complete", or "pairwise.complete.obs" (default). This option is
 #'   taken from the `cor` function argument `use`.
-#' @param ... extra arguments you may want to pass
+#' @param ... extra arguments you may want to pass to `cor`
 #'
 #' @return ggplot2 object
 #'
@@ -19,8 +19,8 @@
 #'
 #' @examples
 #' vis_cor(airquality)
-#' vis_cor(mtcars)
 #' \dontrun{
+#' vis_cor(mtcars)
 #' vis_cor(iris)
 #' }
 vis_cor <- function(data,

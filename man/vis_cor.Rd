@@ -20,18 +20,18 @@ values present. This can be "everything", "all.obs", "complete.obs",
 "na.or.complete", or "pairwise.complete.obs" (default). This option is
 taken from the \code{cor} function argument \code{use}.}
 
-\item{...}{extra arguments you may want to pass}
+\item{...}{extra arguments you may want to pass to \code{cor}}
 }
 \value{
 ggplot2 object
 }
 \description{
-This provides a simple approach to visualising correlations amongst variables
+Visualises correlations amongst variables using ggplot
 }
 \examples{
 vis_cor(airquality)
-vis_cor(mtcars)
 \dontrun{
+vis_cor(mtcars)
 vis_cor(iris)
 }
 }

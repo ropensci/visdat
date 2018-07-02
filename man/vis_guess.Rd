@@ -7,7 +7,7 @@
 vis_guess(x, palette = "default")
 }
 \arguments{
-\item{x}{a data.frame object}
+\item{x}{a data.frame}
 
 \item{palette}{character "default", "qual" or "cb_safe". "default" (the
 default) provides the stock ggplot scale for separating the colours.

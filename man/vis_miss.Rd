@@ -12,19 +12,22 @@ vis_miss(x, cluster = FALSE, sort_miss = FALSE, show_perc = TRUE,
 
 \item{cluster}{logical. TRUE specifies that you want to use hierarchical
 clustering (mcquitty method) to arrange rows according to missingness.
-FALSE specifies that you want to leave it as is.}
+FALSE specifies that you want to leave it as is. Default value is FALSE.}
 
-\item{sort_miss}{logical. TRUE arranges the columns in order of missingness}
+\item{sort_miss}{logical. TRUE arranges the columns in order of missingness.
+Default value is FALSE.}
 
 \item{show_perc}{logical. TRUE now adds in the \% of missing/complete data
 in the whole dataset into the legend. Default value is TRUE.}
 
 \item{show_perc_col}{logical. TRUE adds in the \% missing data in a given
-column into the x axis. Can be disabled with FALSE}
+column into the x axis. Can be disabled with FALSE. Default value is TRUE.}
 
-\item{large_data_size}{integer default is 900000, this can be changed.}
+\item{large_data_size}{integer default is 900000, this can be changed. See
+note for more details}
 
-\item{warn_large_data}{logical default is TRUE}
+\item{warn_large_data}{logical - warn if there is large data? Default is TRUE
+see note for more details}
 }
 \value{
 \code{ggplot2} object displaying the position of missing values in the
@@ -47,11 +50,11 @@ a blank plot! See example code for suggestions on doing this.
 
 vis_miss(airquality)
 
+\dontrun{
 vis_miss(airquality, cluster = TRUE)
 
 vis_miss(airquality, sort_miss = TRUE)
 
-\dontrun{
 # if you have a large dataset, you might want to try downsampling:
 library(nycflight13)
 library(dplyr)

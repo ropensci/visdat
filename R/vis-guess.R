@@ -6,7 +6,7 @@
 #'   missing. `vis_guess` estimates the class of individual elements using
 #'   `readr::guess_parser`.  It may be currently slow on larger datasets.
 #'
-#' @param x a data.frame object
+#' @param x a data.frame
 #' @param palette character "default", "qual" or "cb_safe". "default" (the
 #'   default) provides the stock ggplot scale for separating the colours.
 #'   "qual" uses an experimental qualitative colour scheme for providing

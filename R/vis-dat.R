@@ -17,9 +17,11 @@
 #'   appropriate for those with colourblindness. "qual" and "cb_safe" are drawn
 #'   from http://colorbrewer2.org/.
 #'
-#' @param warn_large_data logical default is TRUE
+#' @param warn_large_data logical - warn if there is large data? Default is TRUE
+#'   see note for more details
 #'
-#' @param large_data_size integer default is 900000, this can be changed.
+#' @param large_data_size integer default is 900000, this can be changed. See
+#'   note for more details
 #'
 #' @return `ggplot2` object displaying the type of values in the data frame and
 #'   the position of any missing values.
