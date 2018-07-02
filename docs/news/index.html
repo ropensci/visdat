@@ -64,7 +64,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">visdat</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.6.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.0</span>
       </span>
     </div>
 
@@ -110,161 +110,64 @@
       <small>Source: <a href='https://github.com/ropensci/visdat/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="visdat-0-2-6-9100-20180702" class="section level1">
+    <div id="visdat-0-5-0-20180702-the-northern-lights-moonwalker" class="section level1">
 <h1 class="page-header">
-<a href="#visdat-0-2-6-9100-20180702" class="anchor"></a>visdat 0.2.6.9100 (2018/07/02)<small> Unreleased </small>
+<a href="#visdat-0-5-0-20180702-the-northern-lights-moonwalker" class="anchor"></a>visdat 0.5.0 (2018/07/02) “The Northern Lights Moonwalker”<small> Unreleased </small>
 </h1>
+<div id="new-feature" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-feature" class="anchor"></a>New Feature</h2>
+<ul>
+<li>
+<code><a href="../reference/vis_compare.html">vis_compare()</a></code> for comparing two dataframes of the same dimensions</li>
+<li>
+<code><a href="../reference/vis_expect.html">vis_expect()</a></code> for visualising where certain values of expectations occur in the data
+<ul>
+<li>Added NA colours to <code>vis_expect</code>
+</li>
+<li>Added <code>show_perc</code> arg to <code>vis_expect</code> to show the percentage of expectations that are TRUE. <a href='https://github.com/ropensci/visdat/issues/73'>#73</a></li>
+</ul>
+</li>
+<li>
+<code>vis_cor</code> to visualise correlations in a dataframe</li>
+<li>
+<code><a href="../reference/vis_guess.html">vis_guess()</a></code> for displaying the likely type for each cell in a dataframe</li>
+<li>Added draft <code>vis_expect</code> to make it easy to look at certain appearances of numbers in your data.</li>
+<li>visdat is now under the rOpenSci github repository</li>
+</ul>
+</div>
 <div id="minor-changes" class="section level2">
 <h2 class="hasAnchor">
 <a href="#minor-changes" class="anchor"></a>Minor Changes</h2>
 <ul>
+<li>added CITATION for visdat to cite the JOSS article</li>
 <li>updated options for <code>vis_cor</code> to use argument <code>na_action</code> not <code>use_op</code>.</li>
 <li>cleaned up the organisation of the files and internal functions</li>
+<li>Added appropriate legend and x axis for <code>vis_miss_ly</code> - thanks to Stuart Lee</li>
+<li>Updated the <code>paper.md</code> for JOSS</li>
+<li>Updated some old links in doco</li>
+<li>Added Sean Hughes and Mara Averick to the DESCRIPTION with <code>ctb</code>.</li>
+<li>Minor changes to the paper for JOSS</li>
 </ul>
 </div>
-</div>
-    <div id="visdat-0-2-5-9000-20180607" class="section level1">
-<h1 class="page-header">
-<a href="#visdat-0-2-5-9000-20180607" class="anchor"></a>visdat 0.2.5.9000 (2018/06/07)<small> Unreleased </small>
-</h1>
 <div id="bug-fixes" class="section level2">
 <h2 class="hasAnchor">
 <a href="#bug-fixes" class="anchor"></a>Bug Fixes</h2>
 <ul>
 <li><p>Fix bug reported in <a href="https://github.com/ropensci/visdat/issues/75"><a href='https://github.com/ropensci/visdat/issues/75'>#75</a></a> where <code><a href="../reference/vis_dat.html">vis_dat(diamonds)</a></code> errored <code>seq_len(nrow(x))</code> inside internal function <code>vis_gather_</code>, used to calculate the row numbers. Using <code>mutate(rows = dplyr::row_number())</code> solved the issue.</p></li>
 <li><p>Fix bug reported in <a href="https://github.com/ropensci/visdat/issues/72"><a href='https://github.com/ropensci/visdat/issues/72'>#72</a></a> where <code>vis_miss</code> errored when one column was given to it. This was an issue with using <code>limits</code> inside <code>scale_x_discrete</code> - which is used to order the columns of the data. It is not necessary to order one column of data, so I created an if-else to avoid this step and return the plot early.</p></li>
-</ul>
-</div>
-</div>
-    <div id="visdat-0-2-3-9700-20180604" class="section level1">
-<h1 class="page-header">
-<a href="#visdat-0-2-3-9700-20180604" class="anchor"></a>visdat 0.2.3.9700 (2018/06/04)<small> Unreleased </small>
-</h1>
-<div id="new-feature" class="section level2">
-<h2 class="hasAnchor">
-<a href="#new-feature" class="anchor"></a>New Feature</h2>
-<ul>
-<li>added NA colours to <code>vis_expect</code>
-</li>
-<li>Added <code>show_perc</code> arg to <code>vis_expect</code> to show the percentage of expectations that are TRUE. <a href='https://github.com/ropensci/visdat/issues/73'>#73</a></li>
-</ul>
-</div>
-</div>
-    <div id="visdat-0-2-3-9600-20180523" class="section level1">
-<h1 class="page-header">
-<a href="#visdat-0-2-3-9600-20180523" class="anchor"></a>visdat 0.2.3.9600 (2018/05/23)<small> Unreleased </small>
-</h1>
-<div id="bugfix" class="section level2">
-<h2 class="hasAnchor">
-<a href="#bugfix" class="anchor"></a>Bugfix</h2>
-<ul>
-<li>Fix visdat x axis alignment when show_perc_col = FALSE - <a href="https://github.com/ropensci/visdat/issues/82"><a href='https://github.com/ropensci/visdat/issues/82'>#82</a></a>
-</li>
-</ul>
-</div>
-</div>
-    <div id="visdat-0-2-3-9500-20180427" class="section level1">
-<h1 class="page-header">
-<a href="#visdat-0-2-3-9500-20180427" class="anchor"></a>visdat 0.2.3.9500 (2018/04/27)<small> Unreleased </small>
-</h1>
-<div id="new-feature-1" class="section level2">
-<h2 class="hasAnchor">
-<a href="#new-feature-1" class="anchor"></a>New feature</h2>
-<ul>
-<li>added CITATION for visdat to cite the JOSS article</li>
-</ul>
-</div>
-</div>
-    <div id="visdat-0-2-3-9400-20180424" class="section level1">
-<h1 class="page-header">
-<a href="#visdat-0-2-3-9400-20180424" class="anchor"></a>visdat 0.2.3.9400 (2018/04/24)<small> Unreleased </small>
-</h1>
-<div id="new-feature-2" class="section level2">
-<h2 class="hasAnchor">
-<a href="#new-feature-2" class="anchor"></a>New feature</h2>
-<ul>
-<li>Added draft <code>vis_expect</code> to make it easy to look at certain appearances of numbers in your data.</li>
-</ul>
-</div>
-</div>
-    <div id="visdat-0-2-2-9300-20180320" class="section level1">
-<h1 class="page-header">
-<a href="#visdat-0-2-2-9300-20180320" class="anchor"></a>visdat 0.2.2.9300 (2018/03/20)<small> Unreleased </small>
-</h1>
-<div id="bugfixes" class="section level2">
-<h2 class="hasAnchor">
-<a href="#bugfixes" class="anchor"></a>Bugfixes</h2>
-<ul>
+<li><p>Fix visdat x axis alignment when show_perc_col = FALSE - <a href="https://github.com/ropensci/visdat/issues/82"><a href='https://github.com/ropensci/visdat/issues/82'>#82</a></a></p></li>
 <li>fix visdat x axis alignment - <a href="https://github.com/ropensci/visdat/issues/57">issue 57</a>
 </li>
 <li>fix bug where the column percentage missing would print to be NA when it was exactly equal to 0.1% missing. - <a href="https://github.com/ropensci/visdat/issues/62">issue 62</a>
 </li>
-<li>
-<code>vis_cor</code> didn’t gather variables for plotting appropriately - now fixed</li>
+<li><p><code>vis_cor</code> didn’t gather variables for plotting appropriately - now fixed</p></li>
 </ul>
 </div>
 </div>
-    <div id="visdat-0-2-2-9000-20180220" class="section level1">
+    <div id="visdat-0-1-0-20170703-joss" class="section level1">
 <h1 class="page-header">
-<a href="#visdat-0-2-2-9000-20180220" class="anchor"></a>visdat 0.2.2.9000 (2018/02/20)<small> Unreleased </small>
-</h1>
-<ul>
-<li>Added appropriate legend and x axis for <code>vis_miss_ly</code> - thanks to Stuart Lee</li>
-</ul>
-</div>
-    <div id="visdat-0-2-2-20171003" class="section level1">
-<h1 class="page-header">
-<a href="#visdat-0-2-2-20171003" class="anchor"></a>visdat 0.2.2 (2017/10/03)<small> Unreleased </small>
-</h1>
-<ul>
-<li>Added <code>vis_cor</code> to visualise correlations in a dataframe</li>
-</ul>
-</div>
-    <div id="visdat-0-2-1-20170818" class="section level1">
-<h1 class="page-header">
-<a href="#visdat-0-2-1-20170818" class="anchor"></a>visdat 0.2.1 (2017/08/18)<small> Unreleased </small>
-</h1>
-<ul>
-<li>Updated the <code>paper.md</code> for JOSS</li>
-<li>Updated some old links in doco</li>
-</ul>
-</div>
-    <div id="visdat-0-2-0-9000-20170801" class="section level1">
-<h1 class="page-header">
-<a href="#visdat-0-2-0-9000-20170801" class="anchor"></a>visdat 0.2.0.9000 (2017/08/01)<small> Unreleased </small>
-</h1>
-<ul>
-<li>visdat is now under the rOpenSci github repository</li>
-<li>Added Sean Hughes and Mara Averick to the DESCRIPTION with <code>ctb</code>.</li>
-</ul>
-<div id="new-features" class="section level2">
-<h2 class="hasAnchor">
-<a href="#new-features" class="anchor"></a>New features</h2>
-<ul>
-<li>
-<code><a href="../reference/vis_compare.html">vis_compare()</a></code> for comparing two dataframes of the same dimensions</li>
-<li>
-<code><a href="../reference/vis_guess.html">vis_guess()</a></code> for displaying the likely type for each cell in a dataframe</li>
-</ul>
-<p>Interactive, <code>plotly</code> versions for each of the <code>vis_*</code> family</p>
-<ul>
-<li><code>vis_dat_ly()</code></li>
-<li><code>vis_miss_ly()</code></li>
-<li><code>vis_guess_ly()</code></li>
-<li><code>vis_compare_ly()</code></li>
-</ul>
-</div>
-<div id="minor-changes-1" class="section level2">
-<h2 class="hasAnchor">
-<a href="#minor-changes-1" class="anchor"></a>Minor Changes</h2>
-<ul>
-<li>Minor changes to the paper for JOSS</li>
-</ul>
-</div>
-</div>
-    <div id="visdat-0-1-0-20170703" class="section level1">
-<h1 class="page-header">
-<a href="#visdat-0-1-0-20170703" class="anchor"></a>visdat 0.1.0 (2017/07/03)<small> 2017-07-11 </small>
+<a href="#visdat-0-1-0-20170703-joss" class="anchor"></a>visdat 0.1.0 (2017/07/03) (“JOSS”)<small> 2017-07-11 </small>
 </h1>
 <ul>
 <li>lightweight CRAN submission - will only contain functions <code>vis_dat</code> and <code>vis_miss</code>
@@ -275,9 +178,9 @@
 <h1 class="page-header">
 <a href="#visdat-0-0-7-9100-20170703" class="anchor"></a>visdat 0.0.7.9100 (2017/07/03)<small> Unreleased </small>
 </h1>
-<div id="new-features-1" class="section level2">
+<div id="new-features" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-features-1" class="anchor"></a>New Features</h2>
+<a href="#new-features" class="anchor"></a>New Features</h2>
 <ul>
 <li>
 <code><a href="../reference/add_vis_dat_pal.html">add_vis_dat_pal()</a></code> (internal) to add a palette for <code>vis_dat</code> and <code>vis_guess</code>
@@ -309,9 +212,9 @@
 <h1 class="page-header">
 <a href="#visdat-0-0-6-9000-20170226" class="anchor"></a>visdat 0.0.6.9000 (2017/02/26)<small> Unreleased </small>
 </h1>
-<div id="new-features-2" class="section level2">
+<div id="new-features-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-features-2" class="anchor"></a>New Features</h2>
+<a href="#new-features-1" class="anchor"></a>New Features</h2>
 <ul>
 <li>axes in <code>vis_</code> family are now flipped by default</li>
 <li>
@@ -349,9 +252,9 @@
 <h1 class="page-header">
 <a href="#visdat-0-0-4-9999-20170108" class="anchor"></a>visdat 0.0.4.9999 (2017/01/08)<small> Unreleased </small>
 </h1>
-<div id="new-feature-3" class="section level2">
+<div id="new-feature-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-feature-3" class="anchor"></a>New Feature</h2>
+<a href="#new-feature-1" class="anchor"></a>New Feature</h2>
 <ul>
 <li>Added feature <code>flip = TRUE</code>, to <code>vis_dat</code> and <code>vis_miss</code>. This flips the x axis and the ordering of the rows. This more closely resembles a dataframe.</li>
 <li>
@@ -409,18 +312,8 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="#visdat-0-2-6-9100-20180702">0.2.6.9100</a></li>
-        <li><a href="#visdat-0-2-5-9000-20180607">0.2.5.9000</a></li>
-        <li><a href="#visdat-0-2-3-9700-20180604">0.2.3.9700</a></li>
-        <li><a href="#visdat-0-2-3-9600-20180523">0.2.3.9600</a></li>
-        <li><a href="#visdat-0-2-3-9500-20180427">0.2.3.9500</a></li>
-        <li><a href="#visdat-0-2-3-9400-20180424">0.2.3.9400</a></li>
-        <li><a href="#visdat-0-2-2-9300-20180320">0.2.2.9300</a></li>
-        <li><a href="#visdat-0-2-2-9000-20180220">0.2.2.9000</a></li>
-        <li><a href="#visdat-0-2-2-20171003">0.2.2</a></li>
-        <li><a href="#visdat-0-2-1-20170818">0.2.1</a></li>
-        <li><a href="#visdat-0-2-0-9000-20170801">0.2.0.9000</a></li>
-        <li><a href="#visdat-0-1-0-20170703">0.1.0</a></li>
+        <li><a href="#visdat-0-5-0-20180702-the-northern-lights-moonwalker">0.5.0</a></li>
+        <li><a href="#visdat-0-1-0-20170703-joss">0.1.0</a></li>
         <li><a href="#visdat-0-0-7-9100-20170703">0.0.7.9100</a></li>
         <li><a href="#visdat-0-0-6-9000-20170226">0.0.6.9000</a></li>
         <li><a href="#visdat-0-0-5-9000-20170109">0.0.5.9000</a></li>
