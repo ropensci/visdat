@@ -200,7 +200,7 @@ label_col_missing_pct <- function(x,
 #'
 #' @param x is a dataframe passed from vis_miss(x).
 #'
-#' @return a data_frame with two columns `p_miss_lab` and `p_pres_lab`,
+#' @return a tibble with two columns `p_miss_lab` and `p_pres_lab`,
 #'   containing the labels to use for present and missing. A dataframe is
 #'   returned because I think it is a good style habit compared to a list.
 #'
@@ -239,8 +239,8 @@ miss_guide_label <- function(x) {
                         sep = "")
   }
 
-  label_frame <- dplyr::data_frame(p_miss_lab = paste(p_miss_lab),
-                                   p_pres_lab = paste(p_pres_lab))
+  label_frame <- tibble::tibble(p_miss_lab = paste(p_miss_lab),
+                                p_pres_lab = paste(p_pres_lab))
 
   return(label_frame)
 

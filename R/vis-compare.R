@@ -36,8 +36,7 @@ vis_compare <- function(df1,
 
   v_identical <- Vectorize(identical)
 
-  df_diff <- purrr::map2(df1, df2, v_identical) %>%
-    dplyr::as_data_frame()
+  df_diff <- purrr::map2_df(df1, df2, v_identical)
 
   d <- df_diff %>%
     as.data.frame() %>%
