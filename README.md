@@ -13,7 +13,7 @@ build
 status](https://ci.appveyor.com/api/projects/status/github/ropensci/visdat?branch=master&svg=true)](https://ci.appveyor.com/project/ropensci/visdat)[![Coverage
 Status](https://img.shields.io/codecov/c/github/ropensci/visdat/master.svg)](https://codecov.io/github/ropensci/visdat?branch=master)
 
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/naniar)](https://cran.r-project.org/package=naniar)[![CRAN
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/visdat)](https://cran.r-project.org/package=visdat)[![CRAN
 Logs](http://cranlogs.r-pkg.org/badges/visdat)](http://cran.rstudio.com/web/packages/visdat/index.html)
 
 [![Project Status: Active – The project has reached a stable, usable
