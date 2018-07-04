@@ -29,18 +29,20 @@ head(iris)
 Or you can have a `glimpse` at it through `dplyr::glimpse`
 
 ```{r glimpse}
-
-dplyr::glimpse(iris)
+library(dplyr)
+glimpse(iris)
 
 ```
 
 Here we see that we have doubles, and a factor. We get some insight into the data.
 
-But we don't always have data like the canonical iris dataset. let's take a look at some data that might be a bit more typical of "messy" data.
+But we don't always have data like the canonical iris dataset. let's take a look at some data that might be a bit more typical of "messy" data using the `typical_data` dataset
+from the `visdat` package.
 
 ```{r visdat-glimpse}
 library(visdat)
-dplyr::glimpse(typical_data)
+
+glimpse(typical_data)
 
 ```
 
@@ -75,8 +77,6 @@ The name `visdat` was chosen as it borrows from the idea of [`testdat`](https://
 Let's see what's inside the dataset `airquality`, which contains information about daily air quality measurements in New York from May to September 1973. More information about the dataset can be found with `?airquality`.
 
 ```{r vis_dat}
-
-library(visdat)
 
 vis_dat(airquality)
 

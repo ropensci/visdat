@@ -23,15 +23,15 @@
 vis_compare <- function(df1,
                         df2){
 
-  # could add a parameter, "sort_match", to help with
+  # could add a parameter, sort_match, to help with
   # sort_match logical TRUE/FALSE.
   # TRUE arranges the columns in order of most matches.
 
   # make a TRUE/FALSE matrix of the data.
   # Tells us whether it is the same (true) as the other dataset, or not (false)
 
-  if (!identical(dim(df1), dim(df2))){
-    stop("Dimensions of df1 and df2 are not the same. vis_compare requires dataframes of identical dimensions.")
+  if (!identical(dim(df1), dim(df2))) {
+    stop("vis_compare requires identical dimensions of df1 and df2")
   }
 
   v_identical <- Vectorize(identical)
@@ -39,16 +39,12 @@ vis_compare <- function(df1,
   df_diff <- purrr::map2(df1, df2, v_identical) %>%
     dplyr::as_data_frame()
 
-  d <-
-  df_diff %>%
+  d <- df_diff %>%
     as.data.frame() %>%
     purrr::map_df(compare_print) %>%
     vis_gather_() %>%
     dplyr::mutate(value_df1 = vis_extract_value_(df1),
                   value_df2 = vis_extract_value_(df2))
-
-  # d$value_df1 <- tidyr::gather_(df1, "variables", "value", names(df1))$value
-  # d$value_df2 <- tidyr::gather_(df2, "variables", "value", names(df2))$value
 
   # then we plot it
   ggplot2::ggplot(data = d,
@@ -57,16 +53,11 @@ vis_compare <- function(df1,
                     y = "rows")) +
                     # text assists with plotly mouseover
                     # text = c("value_df1", "value_df2"))) +
-    # this "test code has been removed as ggplot2 version 3.0.0
+    # this test code has been removed as ggplot2 version 3.0.0
     # breaks.
     # Logged in issue https://github.com/ropensci/visdat/issues/89
 
     ggplot2::geom_raster(ggplot2::aes_string(fill = "valueType")) +
-    # change the colour, so that missing is grey, present is black
-    # scale_fill_discrete(name = "",
-    #                     labels = c("Different",
-    #                                "Missing",
-    #                                "Same")) +
     ggplot2::theme_minimal() +
     ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45,
                                      vjust = 1,
@@ -75,7 +66,6 @@ vis_compare <- function(df1,
          y = "Observations",
          # this prevents it from being used in the boilerplate
          fill = "Cell Type") +
-    # ggplot2::scale_x_discrete(limits = names(df_diff)) +
     ggplot2::scale_fill_manual(limits = c("same",
                                  "different"),
                       breaks = c("same", # red
