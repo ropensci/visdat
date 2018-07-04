@@ -1,4 +1,4 @@
-# visdat 0.5.0 (2018/07/02) "The Northern Lights Moonwalker"
+# visdat 0.5.1 (2018/07/02) "The Northern Lights Moonwalker"
 
 ## New Feature
 

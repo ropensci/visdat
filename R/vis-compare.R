@@ -54,11 +54,13 @@ vis_compare <- function(df1,
   ggplot2::ggplot(data = d,
                   ggplot2::aes_string(
                     x = "variable",
-                    y = "rows",
+                    y = "rows")) +
                     # text assists with plotly mouseover
-                    # currently this text argument prevents it from being used
-                    # in the boilerplate
-                    text = c("value_df1", "value_df2"))) +
+                    # text = c("value_df1", "value_df2"))) +
+    # this "test code has been removed as ggplot2 version 3.0.0
+    # breaks.
+    # Logged in issue https://github.com/ropensci/visdat/issues/89
+
     ggplot2::geom_raster(ggplot2::aes_string(fill = "valueType")) +
     # change the colour, so that missing is grey, present is black
     # scale_fill_discrete(name = "",
