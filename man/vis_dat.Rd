@@ -4,8 +4,8 @@
 \alias{vis_dat}
 \title{Visualises a data.frame to tell you what it contains.}
 \usage{
-vis_dat(x, sort_type = TRUE, palette = "default", warn_large_data = TRUE,
-  large_data_size = 9e+05)
+vis_dat(x, sort_type = TRUE, palette = "default",
+  warn_large_data = TRUE, large_data_size = 9e+05)
 }
 \arguments{
 \item{x}{a data.frame object}

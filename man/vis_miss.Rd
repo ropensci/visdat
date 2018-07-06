@@ -5,7 +5,8 @@
 \title{Visualise a data.frame to display missingness.}
 \usage{
 vis_miss(x, cluster = FALSE, sort_miss = FALSE, show_perc = TRUE,
-  show_perc_col = TRUE, large_data_size = 9e+05, warn_large_data = TRUE)
+  show_perc_col = TRUE, large_data_size = 9e+05,
+  warn_large_data = TRUE)
 }
 \arguments{
 \item{x}{a data.frame}

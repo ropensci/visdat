@@ -46,7 +46,8 @@ vis_cor <- function(data,
         ggplot2::scale_x_discrete(position = "top") +
         ggplot2::labs(x = "",
                       y = "") +
-        ggplot2::guides(fill = ggplot2::guide_legend(title = "correlation"))
+        ggplot2::guides(fill = ggplot2::guide_legend(title = "correlation")) +
+        ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45, hjust = 0))
   }
   }
 
