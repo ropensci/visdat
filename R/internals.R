@@ -182,14 +182,16 @@ label_col_missing_pct <- function(x,
     purrr::map_chr(function(x){
       dplyr::case_when(
         x == 0 ~  "0%",
-        x >= 0.1 ~ paste0(x,"%"),
+        # x >= 0.1 ~ paste0(x,"%"),
+        x >= 0.1 ~ glue::glue("{x}%"),
         x < 0.1 ~ "<0.1%"
       )
     }) %>%
-    paste0(col_order_index,
-           " (",
-           .,
-           ")")
+    # paste0(col_order_index,
+    #        " (",
+    #        .,
+    #        ")")
+    glue::glue("{col_order_index}({.})")
 
 }
 
