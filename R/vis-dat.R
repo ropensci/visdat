@@ -64,6 +64,10 @@ vis_dat <- function(x,
                     warn_large_data = TRUE,
                     large_data_size = 900000) {
 
+  if(!("data.frame" %in% class(x))){
+    stop("x must be a data.frame object")
+  }
+
   # add warning for large data
   if (ncol(x) * nrow(x) > large_data_size && warn_large_data){
     stop("Data exceeds recommended size for visualisation, please consider
