@@ -31,3 +31,7 @@ test_that("vis_dat fails when the wrong palette is provided",{
   cat(sprintf("FreeType version: %s\n", ver))
   expect_error(vis_dat(typical_data, palette = "wat"))
 })
+
+test_that("vis_dat fails when an object of the wrong class is provided", {
+  expect_error(vis_dat(AirPassengers))
+})
