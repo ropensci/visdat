@@ -66,7 +66,7 @@ vis_dat <- function(x,
 
   # throw error if x not data.frame
   if(!(inherits(x, "data.frame"))){
-    stop("Oops - vis_dat requires x to be an object of class data.frame but the object you've provided me with is of class(es): ",
+    stop("vis_dat requires a data.frame but the object I see has class/es: ",
          paste(class(x), collapse = ", "))
   }
 
