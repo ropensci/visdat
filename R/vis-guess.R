@@ -100,7 +100,8 @@ guess_type <- function(x){
 
   output[!nas] <- vapply(FUN = readr::guess_parser,
                          X = x[!nas],
-                         FUN.VALUE = character(1))
+                         FUN.VALUE = character(1),
+                         guess_integer = TRUE)
   output[nas] <- NA
   output
 
