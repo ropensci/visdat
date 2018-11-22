@@ -65,10 +65,7 @@ vis_dat <- function(x,
                     large_data_size = 900000) {
 
   # throw error if x not data.frame
-  if(!(inherits(x, "data.frame"))){
-    stop("vis_dat requires a data.frame but the object I see has class/es: ",
-         paste(class(x), collapse = ", "))
-  }
+  test_if_dataframe(x)
 
   # add warning for large data
   if (ncol(x) * nrow(x) > large_data_size && warn_large_data){

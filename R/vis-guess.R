@@ -45,6 +45,9 @@
 #' @export
 vis_guess <- function(x, palette = "default"){
 
+  # throw error if x not data.frame
+  test_if_dataframe(x)
+
 # x = messy_df
   # suppress warnings here as this is just a note about combining classes
   d <- suppressWarnings(vis_gather_(x)) %>%
