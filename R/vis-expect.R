@@ -61,6 +61,9 @@
 #'
 vis_expect <- function(data, expectation, show_perc = TRUE){
 
+  # throw error if data not data.frame
+  test_if_dataframe(data)
+
   data_expect <- expect_frame(data, expectation)
 
   # calculate the overall % expecations to display in legend -------------------

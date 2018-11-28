@@ -25,3 +25,6 @@ test_that("vis_expect creates the right plot",{
                               vis_expect_plot_show_perc_true)
 })
 
+test_that("vis_expect fails when an object of the wrong class is provided", {
+  testthat::expect_error(vis_expect(AirPassengers, ~.x < 20))
+})

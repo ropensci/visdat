@@ -16,3 +16,7 @@ test_that("vis_guess creates the right plot",{
 test_that("vis_guess fails when the wrong palette is provided",{
   testthat::expect_error(vis_guess(typical_data, palette = "wat"))
 })
+
+test_that("vis_guess fails when an object of the wrong class is provided", {
+  testthat::expect_error(vis_guess(AirPassengers))
+})

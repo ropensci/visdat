@@ -30,6 +30,12 @@ vis_compare <- function(df1,
   # make a TRUE/FALSE matrix of the data.
   # Tells us whether it is the same (true) as the other dataset, or not (false)
 
+  # throw error if df1 not data.frame
+  test_if_dataframe(df1)
+
+  # throw error if df2 not data.frame
+  test_if_dataframe(df2)
+
   if (!identical(dim(df1), dim(df2))) {
     stop("vis_compare requires identical dimensions of df1 and df2")
   }

@@ -28,6 +28,9 @@ vis_cor <- function(data,
                     na_action = "pairwise.complete.obs",
                     ...){
 
+  # throw error if data not data.frame
+  test_if_dataframe(data)
+
   if (!all_numeric(data)) {
     stop("data input can only contain numeric values, please subset the data to the numeric values you would like.")
   } else {
