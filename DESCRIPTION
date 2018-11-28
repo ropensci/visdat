@@ -1,6 +1,6 @@
 Package: visdat
 Title: Preliminary Visualisation of Data
-Version: 0.5.1
+Version: 0.5.1.9000
 Authors@R: c(
   person("Nicholas", "Tierney", role = c("aut", "cre"),
       email = "nicholas.tierney@gmail.com", 
@@ -22,7 +22,7 @@ Depends:
     R (>= 3.2.2)
 License: MIT + file LICENSE
 LazyData: true
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1
 Imports:
     ggplot2,
     tidyr,
@@ -43,4 +43,5 @@ Suggests:
     vdiffr,
     gdtools
 VignetteBuilder: knitr
+Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

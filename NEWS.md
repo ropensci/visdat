@@ -1,3 +1,9 @@
+# visdat 0.5.1.9000 (2018/11/28) 
+
+## Minor Change
+
+* Internal error message has been improved by [Nic](https://github.com/thisisnic) in [#102](https://github.com/ropensci/visdat/pull/102)
+
 # visdat 0.5.1 (2018/07/02) "The Northern Lights Moonwalker"
 
 ## New Feature
