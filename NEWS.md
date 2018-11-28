@@ -1,8 +1,14 @@
-# visdat 0.5.1.9000 (2018/11/28) 
+# visdat 0.5.1.9001 (2018/11/28) 
 
 ## Minor Change
 
 * Internal error message has been improved by [Nic](https://github.com/thisisnic) in [#102](https://github.com/ropensci/visdat/pull/102)
+
+## Bug Fix
+
+* [Jim Hester](https://github.com/jimhester) fixed recent changes in readr 1.2.0 in PR [#103](https://github.com/ropensci/visdat/pull/103), which changes the default behavior of the `guess_parser`, to not
+guess integer types by default. To opt-into the current behavior you
+need to pass `guess_integer = TRUE.`
 
 # visdat 0.5.1 (2018/07/02) "The Northern Lights Moonwalker"
 
