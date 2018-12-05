@@ -1,4 +1,4 @@
-# visdat 0.5.1.9001 (2018/11/28) 
+# visdat 0.5.2 (2018/12/06) "Youth, The Midnight, Kids"
 
 ## Minor Change
 
