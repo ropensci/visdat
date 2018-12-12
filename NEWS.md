@@ -1,3 +1,9 @@
+# visdat 0.5.2.9000 (2018/12/12)
+
+## Minor Change
+
+* Version bump to dev version
+
 # visdat 0.5.2 (2018/12/06) "Youth, The Midnight, Kids"
 
 ## Minor Change
