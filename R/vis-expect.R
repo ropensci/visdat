@@ -61,6 +61,9 @@
 #'
 vis_expect <- function(data, expectation, show_perc = TRUE){
 
+  # throw error if data not data.frame
+  test_if_dataframe(data)
+
   data_expect <- expect_frame(data, expectation)
 
   # calculate the overall % expecations to display in legend -------------------
@@ -182,12 +185,12 @@ expect_guide_label <- function(x) {
     p_expect_true <- round(100 - p_expect,1)
 
     # create the labels
-    p_expect_false_lab <- paste("FALSE \n(",
+    p_expect_false_lab <- paste("TRUE \n(",
                                 p_expect_false,
                                 "%)",
                                 sep = "")
 
-    p_expect_true_lab <- paste("TRUE \n(",
+    p_expect_true_lab <- paste("FALSE \n(",
                                p_expect_true,
                                "%)",
                                sep = "")

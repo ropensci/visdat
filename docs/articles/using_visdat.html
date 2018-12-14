@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">visdat</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.2</span>
       </span>
     </div>
 
@@ -75,7 +75,7 @@
       <h1>Using visdat</h1>
                         <h4 class="author">Nicholas Tierney</h4>
             
-            <h4 class="date">2018-07-04</h4>
+            <h4 class="date">2018-12-06</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ropensci/visdat/blob/master/vignettes/using_visdat.Rmd"><code>vignettes/using_visdat.Rmd</code></a></small>
       <div class="hidden name"><code>using_visdat.Rmd</code></div>
@@ -96,7 +96,6 @@
 ## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
 <p>Or you can have a <code>glimpse</code> at it through <code><a href="http://dplyr.tidyverse.org/reference/reexports.html">dplyr::glimpse</a></code></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">library</span>(dplyr)</a></code></pre></div>
-<pre><code>## Warning: package 'dplyr' was built under R version 3.5.1</code></pre>
 <pre><code>## 
 ## Attaching package: 'dplyr'</code></pre>
 <pre><code>## The following objects are masked from 'package:stats':
@@ -105,7 +104,7 @@
 <pre><code>## The following objects are masked from 'package:base':
 ## 
 ##     intersect, setdiff, setequal, union</code></pre>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="http://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(iris)</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw"><a href="http://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(iris)</a></code></pre></div>
 <pre><code>## Observations: 150
 ## Variables: 5
 ## $ Sepal.Length &lt;dbl&gt; 5.1, 4.9, 4.7, 4.6, 5.0, 5.4, 4.6, 5.0, 4.4, 4.9,...
@@ -115,9 +114,9 @@
 ## $ Species      &lt;fct&gt; setosa, setosa, setosa, setosa, setosa, setosa, s...</code></pre>
 <p>Here we see that we have doubles, and a factor. We get some insight into the data.</p>
 <p>But we don’t always have data like the canonical iris dataset. let’s take a look at some data that might be a bit more typical of “messy” data using the <code>typical_data</code> dataset from the <code>visdat</code> package.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">library</span>(visdat)</a>
-<a class="sourceLine" id="cb10-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="kw"><a href="http://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(typical_data)</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">library</span>(visdat)</a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="kw"><a href="http://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(typical_data)</a></code></pre></div>
 <pre><code>## Observations: 5,000
 ## Variables: 9
 ## $ ID           &lt;chr&gt; "0001", "0002", "0003", "0004", "0005", "0006", "...
@@ -136,10 +135,10 @@
 <p>And you might start to wonder what else is different, what else changed?</p>
 <p>And it might be a bit unclear where to go from there. Do you plot the data? Why does my plot look weird? What are these other strange features in the data? The <code>visdat</code> package provides visualisations of an entire dataframe at once. Initially inspired by <a href="https://github.com/setosa/csv-fingerprint"><code>csv-fingerprint</code></a>, <code>visdat</code> provides tools to create heatmap-like visualisations of an entire dataframe. <code>visdat</code> provides 2 main functions: <code>vis_dat</code> and <code>vis_miss</code>.</p>
 <p><code><a href="../reference/vis_dat.html">vis_dat()</a></code> helps explore the data class structure and missingness:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw"><a href="../reference/vis_dat.html">vis_dat</a></span>(typical_data)</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw"><a href="../reference/vis_dat.html">vis_dat</a></span>(typical_data)</a></code></pre></div>
 <p><img src="using_visdat_files/figure-html/load-data-1.png" width="480"></p>
 <p>And the <code>vis_miss</code> function provides a custom plot for missing data.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw"><a href="../reference/vis_miss.html">vis_miss</a></span>(typical_data)</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw"><a href="../reference/vis_miss.html">vis_miss</a></span>(typical_data)</a></code></pre></div>
 <p><img src="using_visdat_files/figure-html/example-vis-miss-1.png" width="480"></p>
 <p>The name <code>visdat</code> was chosen as it borrows from the idea of <a href="https://github.com/ropensci/testdat"><code>testdat</code></a>, which provides unit testing for your data. In a similar way, <code>visdat</code> provides visual tests, the idea being that first you visualise your data (<code>visdat</code>), then you run tests from <code>testdat</code>, or a package like <code>assertr</code>, to fix these errors.</p>
 <div id="vis_dat" class="section level2">
@@ -147,13 +146,13 @@
 <a href="#vis_dat" class="anchor"></a><code>vis_dat</code>
 </h2>
 <p>Let’s see what’s inside the dataset <code>airquality</code>, which contains information about daily air quality measurements in New York from May to September 1973. More information about the dataset can be found with <code>?airquality</code>.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw"><a href="../reference/vis_dat.html">vis_dat</a></span>(airquality)</a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw"><a href="../reference/vis_dat.html">vis_dat</a></span>(airquality)</a></code></pre></div>
 <p><img src="using_visdat_files/figure-html/vis_dat-1.png" width="480"> The plot above tells us that R reads this dataset as having numeric and integer values, with some missing data in <code>Ozone</code> and <code>Solar.R</code>. The classes are represented on the legend, and missing data represented by grey. The column/variable names are listed on the x axis.</p>
 <p>By default, <code>vis_dat</code> sorts the columns according to the type of the data in the vectors. You can turn this off by setting <code>sort_type = FALSE</code>. This feature is better illustrated using the <code>typical_data</code> dataset, created using <a href="github.com/trinker/wakefield">wakefield</a> and contained within <code>visdat</code>.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw"><a href="../reference/vis_dat.html">vis_dat</a></span>(typical_data)</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw"><a href="../reference/vis_dat.html">vis_dat</a></span>(typical_data)</a></code></pre></div>
 <p><img src="using_visdat_files/figure-html/visdat-typical-1.png" width="480"></p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw"><a href="../reference/vis_dat.html">vis_dat</a></span>(typical_data, </a>
-<a class="sourceLine" id="cb16-2" data-line-number="2">        <span class="dt">sort_type =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw"><a href="../reference/vis_dat.html">vis_dat</a></span>(typical_data, </a>
+<a class="sourceLine" id="cb15-2" data-line-number="2">        <span class="dt">sort_type =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 <p><img src="using_visdat_files/figure-html/visdat-typical-2.png" width="480"></p>
 </div>
 <div id="vis_miss" class="section level2">
@@ -161,29 +160,29 @@
 <a href="#vis_miss" class="anchor"></a><code>vis_miss</code>
 </h2>
 <p>We can explore the missing data further using <code>vis_miss</code>.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw"><a href="../reference/vis_miss.html">vis_miss</a></span>(airquality)</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw"><a href="../reference/vis_miss.html">vis_miss</a></span>(airquality)</a></code></pre></div>
 <p><img src="using_visdat_files/figure-html/vis_miss-1.png" width="480"></p>
 <p>Notice that the percentages of missingness are provided in the data. These are accurate to 1 decimal place. <code>vis_miss</code> indicates when there is a very small amount of missing data at &lt;0.1% missingness.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1">df_test &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x1 =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10000</span>,</a>
-<a class="sourceLine" id="cb18-2" data-line-number="2">                      <span class="dt">x2 =</span> <span class="kw">rep</span>(<span class="st">"A"</span>, <span class="dv">10000</span>),</a>
-<a class="sourceLine" id="cb18-3" data-line-number="3">                      <span class="dt">x3 =</span> <span class="kw">c</span>(<span class="kw">rep</span>(1L, <span class="dv">9999</span>), <span class="ot">NA</span>))</a>
-<a class="sourceLine" id="cb18-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb18-5" data-line-number="5"><span class="kw"><a href="../reference/vis_miss.html">vis_miss</a></span>(df_test)</a></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">df_test &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x1 =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10000</span>,</a>
+<a class="sourceLine" id="cb17-2" data-line-number="2">                      <span class="dt">x2 =</span> <span class="kw">rep</span>(<span class="st">"A"</span>, <span class="dv">10000</span>),</a>
+<a class="sourceLine" id="cb17-3" data-line-number="3">                      <span class="dt">x3 =</span> <span class="kw">c</span>(<span class="kw">rep</span>(1L, <span class="dv">9999</span>), <span class="ot">NA</span>))</a>
+<a class="sourceLine" id="cb17-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb17-5" data-line-number="5"><span class="kw"><a href="../reference/vis_miss.html">vis_miss</a></span>(df_test)</a></code></pre></div>
 <p><img src="using_visdat_files/figure-html/vismiss-new-data-1.png" width="480"></p>
 <p><code>vis_miss</code> will also indicate when there is no missing data at all.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1">df_test &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x1 =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10000</span>,</a>
-<a class="sourceLine" id="cb19-2" data-line-number="2">                      <span class="dt">x2 =</span> <span class="kw">rep</span>(<span class="st">"tidy"</span>, <span class="dv">10000</span>),</a>
-<a class="sourceLine" id="cb19-3" data-line-number="3">                      <span class="dt">x3 =</span> <span class="kw">rep</span>(<span class="st">"data"</span>, <span class="dv">10000</span>))</a>
-<a class="sourceLine" id="cb19-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb19-5" data-line-number="5"><span class="kw"><a href="../reference/vis_miss.html">vis_miss</a></span>(df_test)</a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1">df_test &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x1 =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10000</span>,</a>
+<a class="sourceLine" id="cb18-2" data-line-number="2">                      <span class="dt">x2 =</span> <span class="kw">rep</span>(<span class="st">"tidy"</span>, <span class="dv">10000</span>),</a>
+<a class="sourceLine" id="cb18-3" data-line-number="3">                      <span class="dt">x3 =</span> <span class="kw">rep</span>(<span class="st">"data"</span>, <span class="dv">10000</span>))</a>
+<a class="sourceLine" id="cb18-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb18-5" data-line-number="5"><span class="kw"><a href="../reference/vis_miss.html">vis_miss</a></span>(df_test)</a></code></pre></div>
 <p><img src="using_visdat_files/figure-html/vismiss-mtcars-1.png" width="480"></p>
 <p>Columns can be arranged by columns with most missingness, by setting <code>sort_miss = TRUE</code>.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="kw"><a href="../reference/vis_miss.html">vis_miss</a></span>(airquality,</a>
-<a class="sourceLine" id="cb20-2" data-line-number="2">         <span class="dt">sort_miss =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="kw"><a href="../reference/vis_miss.html">vis_miss</a></span>(airquality,</a>
+<a class="sourceLine" id="cb19-2" data-line-number="2">         <span class="dt">sort_miss =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <p><img src="using_visdat_files/figure-html/vismiss-1.png" width="480"></p>
 <p>And missingness can be clustered by setting <code>cluster = TRUE</code></p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="kw"><a href="../reference/vis_miss.html">vis_miss</a></span>(airquality, </a>
-<a class="sourceLine" id="cb21-2" data-line-number="2">         <span class="dt">cluster =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="kw"><a href="../reference/vis_miss.html">vis_miss</a></span>(airquality, </a>
+<a class="sourceLine" id="cb20-2" data-line-number="2">         <span class="dt">cluster =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <p><img src="using_visdat_files/figure-html/vis_miss-cluster-1.png" width="480"></p>
 <p>To further explore the missingness structure in a dataset, I recommend the <a href="https://github.com/njtierney/naniar"><code>naniar</code></a> package, which provides more general tools for graphical and numerical exploration of missing values.</p>
 </div>
@@ -193,33 +192,33 @@
 </h2>
 <p>Sometimes you want to see what has changed in your data. <code><a href="../reference/vis_compare.html">vis_compare()</a></code> displays the differences in two dataframes of the same size. Let’s look at an example.</p>
 <p>Let’s make some changes to the <code>chickwts</code>, and compare this new dataset.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1">chickwts_diff &lt;-<span class="st"> </span>chickwts</a>
-<a class="sourceLine" id="cb22-2" data-line-number="2">chickwts_diff[<span class="kw"><a href="http://dplyr.tidyverse.org/reference/sample.html">sample</a></span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(chickwts), <span class="dv">30</span>),<span class="kw"><a href="http://dplyr.tidyverse.org/reference/sample.html">sample</a></span>(<span class="dv">1</span><span class="op">:</span><span class="kw">ncol</span>(chickwts), <span class="dv">2</span>)] &lt;-<span class="st"> </span><span class="ot">NA</span></a>
-<a class="sourceLine" id="cb22-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb22-4" data-line-number="4"><span class="kw"><a href="../reference/vis_compare.html">vis_compare</a></span>(chickwts_diff, chickwts)</a></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1">chickwts_diff &lt;-<span class="st"> </span>chickwts</a>
+<a class="sourceLine" id="cb21-2" data-line-number="2">chickwts_diff[<span class="kw"><a href="http://dplyr.tidyverse.org/reference/sample.html">sample</a></span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(chickwts), <span class="dv">30</span>),<span class="kw"><a href="http://dplyr.tidyverse.org/reference/sample.html">sample</a></span>(<span class="dv">1</span><span class="op">:</span><span class="kw">ncol</span>(chickwts), <span class="dv">2</span>)] &lt;-<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb21-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb21-4" data-line-number="4"><span class="kw"><a href="../reference/vis_compare.html">vis_compare</a></span>(chickwts_diff, chickwts)</a></code></pre></div>
 <p><img src="using_visdat_files/figure-html/vis-compare-iris-1.png" width="480"></p>
 <p>Here the differences are marked in blue.</p>
 <p>If you try and compare differences when the dimensions are different, you get an ugly error.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1">chickwts_diff_<span class="dv">2</span> &lt;-<span class="st"> </span>chickwts</a>
-<a class="sourceLine" id="cb23-2" data-line-number="2">chickwts_diff_<span class="dv">2</span><span class="op">$</span>new_col &lt;-<span class="st"> </span>chickwts_diff_<span class="dv">2</span><span class="op">$</span>weight<span class="op">*</span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb23-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb23-4" data-line-number="4"><span class="kw"><a href="../reference/vis_compare.html">vis_compare</a></span>(chickwts, chickwts_diff_<span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb23-5" data-line-number="5"><span class="co"># Error in vis_compare(chickwts, chickwts_diff_2) : </span></a>
-<a class="sourceLine" id="cb23-6" data-line-number="6"><span class="co">#   Dimensions of df1 and df2 are not the same. vis_compare requires dataframes of identical dimensions.</span></a></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1">chickwts_diff_<span class="dv">2</span> &lt;-<span class="st"> </span>chickwts</a>
+<a class="sourceLine" id="cb22-2" data-line-number="2">chickwts_diff_<span class="dv">2</span><span class="op">$</span>new_col &lt;-<span class="st"> </span>chickwts_diff_<span class="dv">2</span><span class="op">$</span>weight<span class="op">*</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb22-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb22-4" data-line-number="4"><span class="kw"><a href="../reference/vis_compare.html">vis_compare</a></span>(chickwts, chickwts_diff_<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb22-5" data-line-number="5"><span class="co"># Error in vis_compare(chickwts, chickwts_diff_2) : </span></a>
+<a class="sourceLine" id="cb22-6" data-line-number="6"><span class="co">#   Dimensions of df1 and df2 are not the same. vis_compare requires dataframes of identical dimensions.</span></a></code></pre></div>
 </div>
 <div id="vis_expect" class="section level2">
 <h2 class="hasAnchor">
 <a href="#vis_expect" class="anchor"></a><code>vis_expect</code>
 </h2>
 <p><code>vis_expect</code> visualises certain conditions or values in your data. For example, If you are not sure whether to expect values greater than 25 in your data (airquality), you could write: <code><a href="../reference/vis_expect.html">vis_expect(airquality, ~.x &gt;= 25)</a></code>, and you can see if there are times where the values in your data are greater than or equal to 25.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1"><span class="kw"><a href="../reference/vis_expect.html">vis_expect</a></span>(airquality, <span class="op">~</span>.x <span class="op">&gt;=</span><span class="st"> </span><span class="dv">25</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="kw"><a href="../reference/vis_expect.html">vis_expect</a></span>(airquality, <span class="op">~</span>.x <span class="op">&gt;=</span><span class="st"> </span><span class="dv">25</span>)</a></code></pre></div>
 <p><img src="using_visdat_files/figure-html/vis-expect-1.png" width="480"></p>
 <p>This shows the proportion of times that there are values greater than 25, as well as the missings.</p>
 <p>You could also, for example, explore a set of bad strings, or possible NA values and visualise where they are using <code><a href="../reference/vis_expect.html">vis_expect(data, ~.x %in% bad_strings)</a></code> where <code>bad_strings</code> is a character vector containing bad strings like <code>N A</code>, <code>N/A</code> etc.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1">bad_data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="kw">rnorm</span>(<span class="dv">100</span>), <span class="kw">rep</span>(<span class="st">"N/A"</span>, <span class="dv">10</span>)),</a>
-<a class="sourceLine" id="cb25-2" data-line-number="2">                       <span class="dt">y =</span> <span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">"N A "</span>, <span class="dv">30</span>), <span class="kw">rnorm</span>(<span class="dv">80</span>)))</a>
-<a class="sourceLine" id="cb25-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb25-4" data-line-number="4"><span class="kw"><a href="../reference/vis_expect.html">vis_expect</a></span>(bad_data, <span class="op">~</span>.x <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">"N/A"</span>, <span class="st">"N A "</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1">bad_data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="kw">rnorm</span>(<span class="dv">100</span>), <span class="kw">rep</span>(<span class="st">"N/A"</span>, <span class="dv">10</span>)),</a>
+<a class="sourceLine" id="cb24-2" data-line-number="2">                       <span class="dt">y =</span> <span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">"N A "</span>, <span class="dv">30</span>), <span class="kw">rnorm</span>(<span class="dv">80</span>)))</a>
+<a class="sourceLine" id="cb24-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb24-4" data-line-number="4"><span class="kw"><a href="../reference/vis_expect.html">vis_expect</a></span>(bad_data, <span class="op">~</span>.x <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">"N/A"</span>, <span class="st">"N A "</span>))</a></code></pre></div>
 <p><img src="using_visdat_files/figure-html/vis-expect-bad-strings-1.png" width="480"></p>
 </div>
 <div id="vis_cor" class="section level2">
@@ -227,14 +226,14 @@
 <a href="#vis_cor" class="anchor"></a><code>vis_cor</code>
 </h2>
 <p>To make it easy to plot correlations of your data, use <code>vis_cor</code>:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1"><span class="kw"><a href="../reference/vis_cor.html">vis_cor</a></span>(airquality)</a></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="kw"><a href="../reference/vis_cor.html">vis_cor</a></span>(airquality)</a></code></pre></div>
 <p><img src="using_visdat_files/figure-html/vis-cor-1.png" width="480"></p>
 <p>Under the hood, <code>vis_cor</code> is powered by the <code>cor</code> function in base R, and takes a character string indicating which correlation coefficient (or covariance) is to be computed. One of “pearson” (default), “kendall”, or “spearman”.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="kw"><a href="../reference/vis_cor.html">vis_cor</a></span>(airquality, <span class="dt">cor_method =</span> <span class="st">"spearman"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1"><span class="kw"><a href="../reference/vis_cor.html">vis_cor</a></span>(airquality, <span class="dt">cor_method =</span> <span class="st">"spearman"</span>)</a></code></pre></div>
 <p><img src="using_visdat_files/figure-html/vis-cor-spearman-1.png" width="480"></p>
 <p>You can also specify what to do for the missing data using the <code>na_action</code> function, which again borrows from the <code>cor</code> methods. This can be “everything”, “all.obs”, “complete.obs”, “na.or.complete”, or “pairwise.complete.obs” (default), e.g.:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="kw"><a href="../reference/vis_cor.html">vis_cor</a></span>(airquality,</a>
-<a class="sourceLine" id="cb28-2" data-line-number="2">        <span class="dt">na_action =</span> <span class="st">"complete.obs"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="kw"><a href="../reference/vis_cor.html">vis_cor</a></span>(airquality,</a>
+<a class="sourceLine" id="cb27-2" data-line-number="2">        <span class="dt">na_action =</span> <span class="st">"complete.obs"</span>)</a></code></pre></div>
 <p><img src="using_visdat_files/figure-html/vis-cor-na-action-1.png" width="480"></p>
 </div>
 <div id="vis_guess" class="section level2">
@@ -242,30 +241,30 @@
 <a href="#vis_guess" class="anchor"></a><code>vis_guess</code>
 </h2>
 <p><code><a href="../reference/vis_guess.html">vis_guess()</a></code> takes a guess at what each cell is. It’s best illustrated using some messy data, which we’ll make here.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1">messy_vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb29-2" data-line-number="2">                  T,</a>
-<a class="sourceLine" id="cb29-3" data-line-number="3">                  <span class="st">"TRUE"</span>,</a>
-<a class="sourceLine" id="cb29-4" data-line-number="4">                  <span class="st">"T"</span>,</a>
-<a class="sourceLine" id="cb29-5" data-line-number="5">                  <span class="st">"01/01/01"</span>,</a>
-<a class="sourceLine" id="cb29-6" data-line-number="6">                  <span class="st">"01/01/2001"</span>,</a>
-<a class="sourceLine" id="cb29-7" data-line-number="7">                  <span class="ot">NA</span>,</a>
-<a class="sourceLine" id="cb29-8" data-line-number="8">                  <span class="ot">NaN</span>,</a>
-<a class="sourceLine" id="cb29-9" data-line-number="9">                  <span class="st">"NA"</span>,</a>
-<a class="sourceLine" id="cb29-10" data-line-number="10">                  <span class="st">"Na"</span>,</a>
-<a class="sourceLine" id="cb29-11" data-line-number="11">                  <span class="st">"na"</span>,</a>
-<a class="sourceLine" id="cb29-12" data-line-number="12">                  <span class="st">"10"</span>,</a>
-<a class="sourceLine" id="cb29-13" data-line-number="13">                  <span class="dv">10</span>,</a>
-<a class="sourceLine" id="cb29-14" data-line-number="14">                  <span class="st">"10.1"</span>,</a>
-<a class="sourceLine" id="cb29-15" data-line-number="15">                  <span class="fl">10.1</span>,</a>
-<a class="sourceLine" id="cb29-16" data-line-number="16">                  <span class="st">"abc"</span>,</a>
-<a class="sourceLine" id="cb29-17" data-line-number="17">                  <span class="st">"$%TG"</span>)</a>
-<a class="sourceLine" id="cb29-18" data-line-number="18"></a>
-<a class="sourceLine" id="cb29-19" data-line-number="19"><span class="kw">set.seed</span>(<span class="dv">1114</span>)</a>
-<a class="sourceLine" id="cb29-20" data-line-number="20">messy_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">var1 =</span> messy_vector,</a>
-<a class="sourceLine" id="cb29-21" data-line-number="21">                       <span class="dt">var2 =</span> <span class="kw"><a href="http://dplyr.tidyverse.org/reference/sample.html">sample</a></span>(messy_vector),</a>
-<a class="sourceLine" id="cb29-22" data-line-number="22">                       <span class="dt">var3 =</span> <span class="kw"><a href="http://dplyr.tidyverse.org/reference/sample.html">sample</a></span>(messy_vector))</a></code></pre></div>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="kw"><a href="../reference/vis_guess.html">vis_guess</a></span>(messy_df)</a>
-<a class="sourceLine" id="cb30-2" data-line-number="2"><span class="kw"><a href="../reference/vis_dat.html">vis_dat</a></span>(messy_df)</a></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">messy_vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb28-2" data-line-number="2">                  T,</a>
+<a class="sourceLine" id="cb28-3" data-line-number="3">                  <span class="st">"TRUE"</span>,</a>
+<a class="sourceLine" id="cb28-4" data-line-number="4">                  <span class="st">"T"</span>,</a>
+<a class="sourceLine" id="cb28-5" data-line-number="5">                  <span class="st">"01/01/01"</span>,</a>
+<a class="sourceLine" id="cb28-6" data-line-number="6">                  <span class="st">"01/01/2001"</span>,</a>
+<a class="sourceLine" id="cb28-7" data-line-number="7">                  <span class="ot">NA</span>,</a>
+<a class="sourceLine" id="cb28-8" data-line-number="8">                  <span class="ot">NaN</span>,</a>
+<a class="sourceLine" id="cb28-9" data-line-number="9">                  <span class="st">"NA"</span>,</a>
+<a class="sourceLine" id="cb28-10" data-line-number="10">                  <span class="st">"Na"</span>,</a>
+<a class="sourceLine" id="cb28-11" data-line-number="11">                  <span class="st">"na"</span>,</a>
+<a class="sourceLine" id="cb28-12" data-line-number="12">                  <span class="st">"10"</span>,</a>
+<a class="sourceLine" id="cb28-13" data-line-number="13">                  <span class="dv">10</span>,</a>
+<a class="sourceLine" id="cb28-14" data-line-number="14">                  <span class="st">"10.1"</span>,</a>
+<a class="sourceLine" id="cb28-15" data-line-number="15">                  <span class="fl">10.1</span>,</a>
+<a class="sourceLine" id="cb28-16" data-line-number="16">                  <span class="st">"abc"</span>,</a>
+<a class="sourceLine" id="cb28-17" data-line-number="17">                  <span class="st">"$%TG"</span>)</a>
+<a class="sourceLine" id="cb28-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb28-19" data-line-number="19"><span class="kw">set.seed</span>(<span class="dv">1114</span>)</a>
+<a class="sourceLine" id="cb28-20" data-line-number="20">messy_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">var1 =</span> messy_vector,</a>
+<a class="sourceLine" id="cb28-21" data-line-number="21">                       <span class="dt">var2 =</span> <span class="kw"><a href="http://dplyr.tidyverse.org/reference/sample.html">sample</a></span>(messy_vector),</a>
+<a class="sourceLine" id="cb28-22" data-line-number="22">                       <span class="dt">var3 =</span> <span class="kw"><a href="http://dplyr.tidyverse.org/reference/sample.html">sample</a></span>(messy_vector))</a></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="kw"><a href="../reference/vis_guess.html">vis_guess</a></span>(messy_df)</a>
+<a class="sourceLine" id="cb29-2" data-line-number="2"><span class="kw"><a href="../reference/vis_dat.html">vis_dat</a></span>(messy_df)</a></code></pre></div>
 <p><img src="using_visdat_files/figure-html/vis-guess-messy-df-1.png" width="50%"><img src="using_visdat_files/figure-html/vis-guess-messy-df-2.png" width="50%"></p>
 <p>So here we see that there are many different kinds of data in your dataframe. As an analyst this might be a depressing finding. We can see this comparison above.</p>
 <p>Here, you might just assume your data is weird because it’s all factors - or worse, not notice that this is a problem.</p>
@@ -275,10 +274,10 @@
 <h1 class="hasAnchor">
 <a href="#interactivity" class="anchor"></a>Interactivity</h1>
 <p>You can make the plots in visdat by wrapping them in <code><a href="http://www.rdocumentation.org/packages/plotly/topics/ggplotly">plotly::ggplotly</a></code>:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="kw">library</span>(plotly)</a>
-<a class="sourceLine" id="cb31-2" data-line-number="2"><span class="kw"><a href="http://www.rdocumentation.org/packages/plotly/topics/ggplotly">ggplotly</a></span>(<span class="kw"><a href="../reference/vis_dat.html">vis_dat</a></span>(airquality))</a>
-<a class="sourceLine" id="cb31-3" data-line-number="3"><span class="kw"><a href="http://www.rdocumentation.org/packages/plotly/topics/ggplotly">ggplotly</a></span>(<span class="kw"><a href="../reference/vis_miss.html">vis_miss</a></span>(airquality))</a>
-<a class="sourceLine" id="cb31-4" data-line-number="4"><span class="kw"><a href="http://www.rdocumentation.org/packages/plotly/topics/ggplotly">ggplotly</a></span>(<span class="kw"><a href="../reference/vis_guess.html">vis_guess</a></span>(airquality))</a></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="kw">library</span>(plotly)</a>
+<a class="sourceLine" id="cb30-2" data-line-number="2"><span class="kw"><a href="http://www.rdocumentation.org/packages/plotly/topics/ggplotly">ggplotly</a></span>(<span class="kw"><a href="../reference/vis_dat.html">vis_dat</a></span>(airquality))</a>
+<a class="sourceLine" id="cb30-3" data-line-number="3"><span class="kw"><a href="http://www.rdocumentation.org/packages/plotly/topics/ggplotly">ggplotly</a></span>(<span class="kw"><a href="../reference/vis_miss.html">vis_miss</a></span>(airquality))</a>
+<a class="sourceLine" id="cb30-4" data-line-number="4"><span class="kw"><a href="http://www.rdocumentation.org/packages/plotly/topics/ggplotly">ggplotly</a></span>(<span class="kw"><a href="../reference/vis_guess.html">vis_guess</a></span>(airquality))</a></code></pre></div>
 <p>In the future these will have their own functions, written in plotly with nice standardised on-hover behaviour. If you would like to see how these work, please see the <a href="https://github.com/ropensci/visdat">development version on GitHub</a>.</p>
 </div>
 <div id="future-work" class="section level1">

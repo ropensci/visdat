@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Visualise whether a value is in a data frame — vis_expect • visdat</title>
+<title>Test if input is a data.frame — test_if_dataframe • visdat</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -36,16 +36,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
 
 
-<meta property="og:title" content="Visualise whether a value is in a data frame — vis_expect" />
+<meta property="og:title" content="Test if input is a data.frame — test_if_dataframe" />
 
-<meta property="og:description" content="vis_expect visualises certain conditions or values in your data. For
-example, If you are not sure whether to expect -1 in your data, you could
-write: vis_expect(data, ~.x == -1), and you can see if there are times
-where the values in your data are equal to -1. You could also, for example,
-explore a set of bad strings, or possible NA values and visualise where
-they are using vis_expect(data, ~.x %in% bad_strings) where
-bad_strings is a character vector containing bad strings  like N A
-N/A etc." />
+<meta property="og:description" content="Test if input is a data.frame" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -116,90 +109,39 @@ N/A etc." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Visualise whether a value is in a data frame</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ropensci/visdat/blob/master/R/vis-expect.R'><code>R/vis-expect.R</code></a></small>
-    <div class="hidden name"><code>vis_expect.Rd</code></div>
+    <h1>Test if input is a data.frame</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ropensci/visdat/blob/master/R/internals.R'><code>R/internals.R</code></a></small>
+    <div class="hidden name"><code>test_if_dataframe.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p><code>vis_expect</code> visualises certain conditions or values in your data. For
-example, If you are not sure whether to expect -1 in your data, you could
-write: <code>vis_expect(data, ~.x == -1)</code>, and you can see if there are times
-where the values in your data are equal to -1. You could also, for example,
-explore a set of bad strings, or possible NA values and visualise where
-they are using <code>vis_expect(data, ~.x %in% bad_strings)</code> where
-<code>bad_strings</code> is a character vector containing bad strings  like <code>N A</code>
-<code>N/A</code> etc.</p>
+    <p>Test if input is a data.frame</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>vis_expect</span>(<span class='no'>data</span>, <span class='no'>expectation</span>, <span class='kw'>show_perc</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>test_if_dataframe</span>(<span class='no'>x</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>data</th>
-      <td><p>a data.frame</p></td>
-    </tr>
-    <tr>
-      <th>expectation</th>
-      <td><p>a formula following the syntax: <code>~.x {condition}</code>.
-For example, writing <code>~.x &lt; 20</code> would mean "where a variable value is less
-than 20, replace with NA", and <code>~.x %in% {vector}</code> would mean "where a
-variable has values that are in that vector".</p></td>
-    </tr>
-    <tr>
-      <th>show_perc</th>
-      <td><p>logical. TRUE now adds in the % of expectations are
-TRUE or FALSE in the whole dataset into the legend. Default value is TRUE.</p></td>
+      <th>x</th>
+      <td><p>object</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a ggplot2 object</p>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><code><a href='vis_miss.html'>vis_miss()</a></code> <code><a href='vis_dat.html'>vis_dat()</a></code> <code><a href='vis_guess.html'>vis_guess()</a></code> <code><a href='vis_cor.html'>vis_cor()</a></code> <code><a href='vis_compare.html'>vis_compare()</a></code></p></div>
+    <p>an error if input (x) is not a data.frame</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='no'>dat_test</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tribble'>tribble</a></span>(
-            ~<span class='no'>x</span>, ~<span class='no'>y</span>,
-            -<span class='fl'>1</span>,  <span class='st'>"A"</span>,
-            <span class='fl'>0</span>,  <span class='st'>"B"</span>,
-            <span class='fl'>1</span>,  <span class='st'>"C"</span>,
-            <span class='fl'>NA</span>, <span class='fl'>NA</span>
-            )
-
-<span class='fu'>vis_expect</span>(<span class='no'>dat_test</span>, ~<span class='no'>.x</span> <span class='kw'>==</span> -<span class='fl'>1</span>)</div><div class='img'><img src='vis_expect-1.png' alt='' width='700' height='433' /></div><div class='input'>
-</div><span class='co'># NOT RUN {</span>
-<span class='fu'>vis_expect</span>(<span class='no'>airquality</span>, ~<span class='no'>.x</span> <span class='kw'>==</span> <span class='fl'>5.1</span>)
-
-<span class='co'># explore some common NA strings</span>
-
-<span class='no'>common_nas</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(
-<span class='st'>"NA"</span>,
-<span class='st'>"N A"</span>,
-<span class='st'>"N/A"</span>,
-<span class='st'>"na"</span>,
-<span class='st'>"n a"</span>,
-<span class='st'>"n/a"</span>
-)
-
-<span class='no'>dat_ms</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tribble'>tribble</a></span>(~<span class='no'>x</span>,  ~<span class='no'>y</span>,    ~<span class='no'>z</span>,
-                         <span class='fl'>1</span>,   <span class='st'>"A"</span>,   -<span class='fl'>100</span>,
-                         <span class='fl'>3</span>,   <span class='st'>"N/A"</span>, -<span class='fl'>99</span>,
-                         <span class='fl'>NA</span>,  <span class='fl'>NA</span>,    -<span class='fl'>98</span>,
-                         <span class='st'>"N A"</span>, <span class='st'>"E"</span>,   -<span class='fl'>101</span>,
-                         <span class='st'>"na"</span>, <span class='st'>"F"</span>,   -<span class='fl'>1</span>)
-
-<span class='fu'>vis_expect</span>(<span class='no'>dat_ms</span>, ~<span class='no'>.x</span> <span class='kw'>%in%</span> <span class='no'>common_nas</span>)
-
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='co'># success</span>
+<span class='fu'>test_if_dataframe</span>(<span class='no'>airquality</span>)
+<span class='co'>#fail</span>
+<span class='fu'>test_if_dataframe</span>(<span class='no'>AirPassengers</span>)
 <span class='co'># }</span><div class='input'>
 </div></pre>
   </div>
@@ -209,8 +151,6 @@ TRUE or FALSE in the whole dataset into the legend. Default value is TRUE.</p></
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

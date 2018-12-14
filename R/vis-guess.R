@@ -45,6 +45,9 @@
 #' @export
 vis_guess <- function(x, palette = "default"){
 
+  # throw error if x not data.frame
+  test_if_dataframe(x)
+
 # x = messy_df
   # suppress warnings here as this is just a note about combining classes
   d <- suppressWarnings(vis_gather_(x)) %>%
@@ -100,7 +103,8 @@ guess_type <- function(x){
 
   output[!nas] <- vapply(FUN = readr::guess_parser,
                          X = x[!nas],
-                         FUN.VALUE = character(1))
+                         FUN.VALUE = character(1),
+                         guess_integer = TRUE)
   output[nas] <- NA
   output
 

@@ -13,3 +13,7 @@ test_that("vis_cor creates the right plot",{
 test_that("vis_cor sends an error when used with the wrong data",{
   testthat::expect_error(vis_cor(iris))
 })
+
+test_that("vis_cor fails when an object of the wrong class is provided", {
+  testthat::expect_error(vis_cor(AirPassengers))
+})

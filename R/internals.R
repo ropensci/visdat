@@ -267,3 +267,28 @@ all_numeric <- function(x, ...){
   all(as.logical(lapply(x, is.numeric)))
 }
 # Can I capture moving from a value to NA, or, from NA to another value?
+
+
+#' Test if input is a data.frame
+#'
+#' @param x object
+#'
+#' @return an error if input (x) is not a data.frame
+#'
+#' @examples
+#' \dontrun{
+#' # success
+#' test_if_dataframe(airquality)
+#' #fail
+#' test_if_dataframe(AirPassengers)
+#' }
+#'
+test_if_dataframe <- function(x){
+  if (!inherits(x, "data.frame")) {
+    stop("vis_dat requires a data.frame but the object I see has class/es: ",
+         paste(class(x), collapse = ", "), call.=FALSE)
+  }
+}
+
+
+

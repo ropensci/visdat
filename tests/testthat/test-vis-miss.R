@@ -19,3 +19,7 @@ test_that("vis_miss creates the right plot",{
   vdiffr::expect_doppelganger("vis_miss show percent in columns", vis_miss_plot_show_perc_col)
   vdiffr::expect_doppelganger("vis_miss no show percent in columns", vis_miss_plot_show_perc_col_t)
 })
+
+test_that("vis_miss fails when an object of the wrong class is provided", {
+  testthat::expect_error(vis_miss(AirPassengers))
+})

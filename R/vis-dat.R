@@ -64,6 +64,9 @@ vis_dat <- function(x,
                     warn_large_data = TRUE,
                     large_data_size = 900000) {
 
+  # throw error if x not data.frame
+  test_if_dataframe(x)
+
   # add warning for large data
   if (ncol(x) * nrow(x) > large_data_size && warn_large_data){
     stop("Data exceeds recommended size for visualisation, please consider
