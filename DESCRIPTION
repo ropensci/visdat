@@ -1,6 +1,6 @@
 Package: visdat
 Title: Preliminary Visualisation of Data
-Version: 0.5.2.9000
+Version: 0.5.2.9001
 Authors@R: c(
   person("Nicholas", "Tierney", role = c("aut", "cre"),
       email = "nicholas.tierney@gmail.com", 
@@ -33,7 +33,8 @@ Imports:
     magrittr,
     stats,
     tibble,
-    rlang (>= 0.2.0)
+    rlang (>= 0.2.0),
+    glue
 URL: http://visdat.njtierney.com/, https://github.com/ropensci/visdat
 BugReports: https://github.com/ropensci/visdat/issues
 Suggests:

@@ -15,9 +15,11 @@ fingerprint <- function(x){
          # yes? Leave as is NA
          yes = NA,
          # no? make that value no equal to the class of this cell.
-         no = paste(class(x), collapse = "\n")
+         no = glue::glue_collapse(class(x),
+                                  sep = "\n")
   )
 } # end function
+
 
 #' (Internal) Gather rows into a format appropriate for grid visualisation
 #'
@@ -178,18 +180,18 @@ label_col_missing_pct <- function(x,
                                   col_order_index){
 
   # present everything in the right order
+
+  labelled_pcts <-
   purrr::map_df(x, ~round(mean(is.na(.))*100,2))[col_order_index] %>%
     purrr::map_chr(function(x){
       dplyr::case_when(
         x == 0 ~  "0%",
-        x >= 0.1 ~ paste0(x,"%"),
+        x >= 0.1 ~ as.character(glue::glue("{x}%")),
         x < 0.1 ~ "<0.1%"
       )
-    }) %>%
-    paste0(col_order_index,
-           " (",
-           .,
-           ")")
+    })
+
+    glue::glue("{col_order_index} ({labelled_pcts})")
 
 }
 
@@ -228,19 +230,14 @@ miss_guide_label <- function(x) {
     p_pres <- 100 - p_miss
 
     # create the labels
-    p_miss_lab <- paste("Missing \n(",
-                        p_miss,
-                        "%)",
-                        sep = "")
+    p_miss_lab <- glue::glue("Missing \n({p_miss}%)")
 
-    p_pres_lab <- paste("Present \n(",
-                        p_pres,
-                        "%)",
-                        sep = "")
-  }
+    p_pres_lab <- glue::glue("Present \n({p_pres}%)")
 
-  label_frame <- tibble::tibble(p_miss_lab = paste(p_miss_lab),
-                                p_pres_lab = paste(p_pres_lab))
+    }
+
+  label_frame <- tibble::tibble(p_miss_lab,
+                                p_pres_lab)
 
   return(label_frame)
 
@@ -284,9 +281,8 @@ all_numeric <- function(x, ...){
 test_if_dataframe <- function(x){
   if (!inherits(x, "data.frame")) {
     stop("vis_dat requires a data.frame but the object I see has class/es: ",
-         paste(class(x), collapse = ", "), call.=FALSE)
+         glue::glue_collapse(class(x),
+                             sep = ", "),
+         call. = FALSE)
   }
 }
-
-
-

@@ -1,3 +1,9 @@
+# visdat 0.5.2.9001 (2018/12/14)
+
+## Minor Change
+
+* Uses `glue` and `glue_collapse()` instead of `paste` and `paste0`
+
 # visdat 0.5.2.9000 (2018/12/12)
 
 ## Minor Change
