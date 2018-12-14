@@ -7,8 +7,11 @@ test_that("miss_guide_label works for exactly 0.1% missing", {
   # 1 missing in 1000.
   test_miss_1 <- c(1:999, NA)
 
-  expect_equal(miss_guide_label(test_miss_1)$p_miss_lab, "Missing \n(0.1%)")
-  expect_equal(miss_guide_label(test_miss_1)$p_pres_lab, "Present \n(99.9%)")
+  expect_equal(miss_guide_label(test_miss_1)$p_miss_lab,
+               glue::as_glue("Missing \n(0.1%)"))
+
+  expect_equal(miss_guide_label(test_miss_1)$p_pres_lab,
+               glue::as_glue("Present \n(99.9%)"))
 
 })
 

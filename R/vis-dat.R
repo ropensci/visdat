@@ -78,7 +78,8 @@ vis_dat <- function(x,
     type_sort <- order(
       # get the class, if there are multiple classes, combine them together
       purrr::map_chr(.x = x,
-                     .f = function(x) paste(class(x), collapse = "\n"))
+                     .f = function(x) glue::glue_collapse(class(x),
+                                                          sep = "\n"))
     )
     # get the names of those columns
     type_order_index <- names(x)[type_sort]
