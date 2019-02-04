@@ -42,15 +42,19 @@ vis_cor <- function(data,
                                           y = "row_2",
                                           fill = "value")) +
         ggplot2::geom_raster() +
-        ggplot2::scale_fill_gradient2(low = "steelblue",
-                                      mid = "white",
-                                      high = "salmon") +
+      # colours from scico::scico(3, palette = "vik")
+        ggplot2::scale_fill_gradient2(low = "#001260",# blue
+                                      mid = "#EAEDE9", # white
+                                      high = "#601200", # red
+                                      breaks = c(-1, -0.5, 0, 0.5, 1),
+                                      limits = c(-1, 1)) +
         ggplot2::theme_minimal() +
         ggplot2::scale_x_discrete(position = "top") +
         ggplot2::labs(x = "",
                       y = "") +
-        ggplot2::guides(fill = ggplot2::guide_legend(title = "correlation")) +
-        ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45, hjust = 0))
+        ggplot2::guides(fill = ggplot2::guide_legend(title = "Correlation")) +
+        ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45,
+                                                           hjust = 0))
   }
   }
 
