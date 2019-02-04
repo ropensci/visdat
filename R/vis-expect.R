@@ -87,7 +87,7 @@ vis_expect <- function(data, expectation, show_perc = TRUE){
 
   vis_expect_plot <- data_expect %>%
     # expect_frame(expectation) %>%
-    dplyr::mutate(rows = 1:dplyr::n()) %>%
+    dplyr::mutate(rows = dplyr::row_number()) %>%
     tidyr::gather_(key_col = "variable",
                    value_col = "valueType",
                    gather_cols = names(.)[-length(.)]) %>%
