@@ -1,3 +1,9 @@
+# visdat 0.5.3.9000 (2019/02/04)
+
+## Minor Change
+
+* Update `vis_cor()` to use perceptually uniform colours from `scico` package, using `scico::scico(3, palette = "vik")`.
+
 # visdat 0.5.2.9001 (2018/12/14)
 
 ## Minor Change
