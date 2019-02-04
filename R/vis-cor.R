@@ -45,7 +45,9 @@ vis_cor <- function(data,
       # colours from scico::scico(3, palette = "vik")
         ggplot2::scale_fill_gradient2(low = "#001260",# blue
                                       mid = "#EAEDE9", # white
-                                      high = "#601200") + # red
+                                      high = "#601200", # red
+                                      breaks = c(-1, -0.5, 0, 0.5, 1),
+                                      limits = c(-1, 1)) +
         ggplot2::theme_minimal() +
         ggplot2::scale_x_discrete(position = "top") +
         ggplot2::labs(x = "",

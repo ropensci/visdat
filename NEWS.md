@@ -3,6 +3,7 @@
 ## Minor Change
 
 * Update `vis_cor()` to use perceptually uniform colours from `scico` package, using `scico::scico(3, palette = "vik")`.
+* Update `vis_cor()` to have fixed legend values from -1 to +1 (#110)
 
 # visdat 0.5.2.9001 (2018/12/14)
 
