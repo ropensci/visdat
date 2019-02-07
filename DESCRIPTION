@@ -42,7 +42,9 @@ Suggests:
     knitr,
     rmarkdown,
     vdiffr,
-    gdtools
+    gdtools,
+    spelling
 VignetteBuilder: knitr
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
+Language: en-US
