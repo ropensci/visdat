@@ -3,9 +3,9 @@
 ## Minor Change
 
 * Update `vis_cor()` to use perceptually uniform colours from `scico` package, using `scico::scico(3, palette = "vik")`.
-* Update `vis_cor()` to have fixed legend values from -1 to +1 (#110) using 
-  options `breaks` and `limits`. Special thanks to [this SO thread for the answer](https://stackoverflow.com/questions/24265652/label-minimum-and-maximum-of-scale-fill-gradient-legend-with-text-ggplot2)
+* Update `vis_cor()` to have fixed legend values from -1 to +1 (#110) using options `breaks` and `limits`. Special thanks to [this SO thread for the answer](https://stackoverflow.com/questions/24265652/label-minimum-and-maximum-of-scale-fill-gradient-legend-with-text-ggplot2)
 * Uses `glue` and `glue_collapse()` instead of `paste` and `paste0`
+* adds WORDLIST for spelling thanks to `usethis::use_spell_check()`
 
 # visdat 0.5.2 (2018/12/06) "Youth, The Midnight, Kids"
 
