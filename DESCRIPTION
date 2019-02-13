@@ -29,16 +29,15 @@ Imports:
     dplyr,
     purrr,
     readr,
-    plotly (>= 4.5.6),
     magrittr,
     stats,
     tibble,
-    rlang (>= 0.2.0),
     glue
 URL: http://visdat.njtierney.com/, https://github.com/ropensci/visdat
 BugReports: https://github.com/ropensci/visdat/issues
 Suggests:
     testthat,
+    plotly (>= 4.5.6),
     knitr,
     rmarkdown,
     vdiffr,
