@@ -1,3 +1,5 @@
+# visdat 0.5.3.9000 (2019/02/019)
+
 # visdat 0.5.3 (2019/02/04) "The Legend of LoFi"
 
 ## Minor Change
