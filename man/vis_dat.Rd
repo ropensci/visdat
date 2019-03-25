@@ -23,8 +23,9 @@ from http://colorbrewer2.org/.}
 \item{warn_large_data}{logical - warn if there is large data? Default is TRUE
 see note for more details}
 
-\item{large_data_size}{integer default is 900000, this can be changed. See
-note for more details}
+\item{large_data_size}{integer default is 900000 (given by
+`nrow(data.frame) * ncol(data.frame)``). This can be changed. See
+note for more details.}
 }
 \value{
 \code{ggplot2} object displaying the type of values in the data frame and

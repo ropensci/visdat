@@ -23,8 +23,9 @@
 #' @param warn_large_data logical - warn if there is large data? Default is TRUE
 #'   see note for more details
 #'
-#' @param large_data_size integer default is 900000, this can be changed. See
-#'   note for more details
+#' @param large_data_size integer default is 900000 (given by
+#'   `nrow(data.frame) * ncol(data.frame)``). This can be changed. See
+#'   note for more details.
 #'
 #' @return `ggplot2` object displaying the position of missing values in the
 #'   dataframe, and the percentage of values missing and present.

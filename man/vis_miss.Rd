@@ -24,8 +24,9 @@ in the whole dataset into the legend. Default value is TRUE.}
 \item{show_perc_col}{logical. TRUE adds in the \% missing data in a given
 column into the x axis. Can be disabled with FALSE. Default value is TRUE.}
 
-\item{large_data_size}{integer default is 900000, this can be changed. See
-note for more details}
+\item{large_data_size}{integer default is 900000 (given by
+`nrow(data.frame) * ncol(data.frame)``). This can be changed. See
+note for more details.}
 
 \item{warn_large_data}{logical - warn if there is large data? Default is TRUE
 see note for more details}
