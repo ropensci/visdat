@@ -1,8 +1,8 @@
 url: http://visdat.njtierney.com/
 
 template:
+  package: rotemplate
   params:
-    bootswatch: flatly
     docsearch:
       api_key: 9ef7630dc874be89bea2042eec22bebf
       index_name:  visdat
