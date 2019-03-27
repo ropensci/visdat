@@ -12,14 +12,14 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- docsearch --><script src="../docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
+<link href="../docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
 <link href="../ropensci.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><!-- docsearch --><script src="../docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
-<link href="../docsearch.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><meta property="og:title" content="Using visdat">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Using visdat">
 <meta property="og:description" content="">
 <meta property="og:image" content="http://visdat.njtierney.com/logo.png">
 <meta name="twitter:card" content="summary">
@@ -57,7 +57,7 @@
 </li>
         <li>
   <a href="https://github.com/ropensci/visdat">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -280,11 +280,11 @@
 <div id="interactivity" class="section level1">
 <h1 class="hasAnchor">
 <a href="#interactivity" class="anchor"></a>Interactivity</h1>
-<p>You can make the plots in visdat by wrapping them in <code><a href="https://www.rdocumentation.org/packages/plotly/topics/ggplotly">plotly::ggplotly</a></code>:</p>
+<p>You can make the plots in visdat by wrapping them in <code>plotly::ggplotly</code>:</p>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(plotly)</a>
-<a class="sourceLine" id="cb30-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/plotly/topics/ggplotly">ggplotly</a></span>(<span class="kw"><a href="../reference/vis_dat.html">vis_dat</a></span>(airquality))</a>
-<a class="sourceLine" id="cb30-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/plotly/topics/ggplotly">ggplotly</a></span>(<span class="kw"><a href="../reference/vis_miss.html">vis_miss</a></span>(airquality))</a>
-<a class="sourceLine" id="cb30-4" data-line-number="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/plotly/topics/ggplotly">ggplotly</a></span>(<span class="kw"><a href="../reference/vis_guess.html">vis_guess</a></span>(airquality))</a></code></pre></div>
+<a class="sourceLine" id="cb30-2" data-line-number="2"><span class="kw">ggplotly</span>(<span class="kw"><a href="../reference/vis_dat.html">vis_dat</a></span>(airquality))</a>
+<a class="sourceLine" id="cb30-3" data-line-number="3"><span class="kw">ggplotly</span>(<span class="kw"><a href="../reference/vis_miss.html">vis_miss</a></span>(airquality))</a>
+<a class="sourceLine" id="cb30-4" data-line-number="4"><span class="kw">ggplotly</span>(<span class="kw"><a href="../reference/vis_guess.html">vis_guess</a></span>(airquality))</a></code></pre></div>
 <p>In the future these will have their own functions, written in plotly with nice standardised on-hover behaviour. If you would like to see how these work, please see the <a href="https://github.com/ropensci/visdat">development version on GitHub</a>.</p>
 </div>
 <div id="future-work" class="section level1">
