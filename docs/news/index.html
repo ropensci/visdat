@@ -17,15 +17,6 @@
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-
-
-<!-- docsearch -->
-<script src="../docsearch.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous" />
-<link href="../docsearch.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
-
-
 <!-- Bootstrap -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
@@ -48,6 +39,12 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script>
 
+
+<!-- docsearch -->
+<script src="../docsearch.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous" />
+<link href="../docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
 
 
 <meta property="og:title" content="Changelog" />
@@ -93,7 +90,7 @@
 </li>
         <li>
   <a href="https://github.com/ropensci/visdat">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -132,7 +129,7 @@
 <h2 class="hasAnchor">
 <a href="#minor-change" class="anchor"></a>Minor Change</h2>
 <ul>
-<li>Update <code><a href="../reference/vis_cor.html">vis_cor()</a></code> to use perceptually uniform colours from <code>scico</code> package, using <code>scico::scico(3, palette = "vik")</code>.</li>
+<li>Update <code><a href="../reference/vis_cor.html">vis_cor()</a></code> to use perceptually uniform colours from <code>scico</code> package, using <code><a href="https://www.rdocumentation.org/packages/scico/topics/scico">scico::scico(3, palette = "vik")</a></code>.</li>
 <li>Update <code><a href="../reference/vis_cor.html">vis_cor()</a></code> to have fixed legend values from -1 to +1 (<a href='https://github.com/ropensci/visdat/issues/110'>#110</a>) using options <code>breaks</code> and <code>limits</code>. Special thanks to <a href="https://stackoverflow.com/questions/24265652/label-minimum-and-maximum-of-scale-fill-gradient-legend-with-text-ggplot2">this SO thread for the answer</a>
 </li>
 <li>Uses <code>glue</code> and <code>glue_collapse()</code> instead of <code>paste</code> and <code>paste0</code>
@@ -247,7 +244,7 @@
 <li><code>vis_guess_ly()</code></li>
 <li><code>vis_dat_ly()</code></li>
 <li>
-<code>vis_compare_ly()</code> These simply wrap <code>plotly::ggplotly(vis_*(data))</code>. In the future they will be written in <code>plotly</code> so that they can be generated much faster</li>
+<code>vis_compare_ly()</code> These simply wrap <code><a href="https://www.rdocumentation.org/packages/plotly/topics/ggplotly">plotly::ggplotly(vis_*(data))</a></code>. In the future they will be written in <code>plotly</code> so that they can be generated much faster</li>
 </ul>
 </li>
 </ul>
@@ -294,7 +291,7 @@
 <a href="#minor-improvements-2" class="anchor"></a>Minor Improvements</h2>
 <ul>
 <li>Added testing for visualisations with <code>vdiffr</code>. Code coverage is now at 99%</li>
-<li>Fixed up suggestions from <code>goodpractice::gp()</code>
+<li>Fixed up suggestions from <code><a href="https://www.rdocumentation.org/packages/goodpractice/topics/gp">goodpractice::gp()</a></code>
 </li>
 <li>Submitted to rOpenSci onboarding</li>
 <li>
@@ -312,7 +309,7 @@
 <ul>
 <li>Added feature <code>flip = TRUE</code>, to <code>vis_dat</code> and <code>vis_miss</code>. This flips the x axis and the ordering of the rows. This more closely resembles a dataframe.</li>
 <li>
-<code>vis_miss_ly</code> is a new function that uses plotly to plot missing data, like <code>vis_miss</code>, but interactive, without the need to call <code>plotly::ggplotly</code> on it. It’s fast, but at the moment it needs a bit of love on the legend front to maintain the style and features (clustering, etc) of current <code>vis_miss</code>.</li>
+<code>vis_miss_ly</code> is a new function that uses plotly to plot missing data, like <code>vis_miss</code>, but interactive, without the need to call <code><a href="https://www.rdocumentation.org/packages/plotly/topics/ggplotly">plotly::ggplotly</a></code> on it. It’s fast, but at the moment it needs a bit of love on the legend front to maintain the style and features (clustering, etc) of current <code>vis_miss</code>.</li>
 <li>
 <code>vis_miss</code> now gains a <code>show_perc</code> argument, which displays the % of missing and complete data. This is switched on by default and addresses issue <a href='https://github.com/ropensci/visdat/issues/19'>#19</a>.</li>
 </ul>
