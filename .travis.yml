@@ -27,6 +27,3 @@ before_install:
   - sudo apt-get --yes --force-yes update -qq
   - sudo apt-get install --yes libudunits2-dev libproj-dev libgeos-dev libgdal-dev
   - Rscript -e 'update.packages(ask = FALSE)'
-
-before_cache:
-  Rscript -e 'remotes::install_cran("pkgdown");remotes::install_github("ropenscilabs/rotemplate").'
