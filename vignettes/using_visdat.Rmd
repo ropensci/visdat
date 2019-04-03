@@ -157,6 +157,7 @@ Sometimes you want to see what has changed in your data. `vis_compare()` display
 Let's make some changes to the `chickwts`, and compare this new dataset.
 
 ```{r vis-compare-iris}
+set.seed(2019-04-03-1107)
 chickwts_diff <- chickwts
 chickwts_diff[sample(1:nrow(chickwts), 30),sample(1:ncol(chickwts), 2)] <- NA
 

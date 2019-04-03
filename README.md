@@ -168,6 +168,7 @@ at an example.
 Let’s make some changes to the `chickwts`, and compare this new dataset:
 
 ``` r
+set.seed(2019-04-03-1105)
 chickwts_diff <- chickwts
 chickwts_diff[sample(1:nrow(chickwts), 30),sample(1:ncol(chickwts), 2)] <- NA
 
@@ -245,7 +246,7 @@ messy_vector <- c(TRUE,
                   "abc",
                   "$%TG")
 
-set.seed(1114)
+set.seed(2019-04-03-1106)
 messy_df <- data.frame(var1 = messy_vector,
                        var2 = sample(messy_vector),
                        var3 = sample(messy_vector))
@@ -285,7 +286,6 @@ Finally thank you to [rOpenSci](https://github.com/ropensci) and it’s
 amazing [onboarding process](https://github.com/ropensci/onboarding),
 this process has made visdat a much better package, thanks to the editor
 Noam Ross (@noamross), and the reviewers Sean Hughes (@seaaan) and Mara
-Averick
-(@batpigandme).
+Averick (@batpigandme).
 
 [![ropensci\_footer](https://ropensci.org/public_images/ropensci_footer.png)](https://ropensci.org)

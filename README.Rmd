@@ -156,6 +156,7 @@ Sometimes you want to see what has changed in your data. `vis_compare()` display
 Let's make some changes to the `chickwts`, and compare this new dataset:
 
 ```{r vis-compare-iris}
+set.seed(2019-04-03-1105)
 chickwts_diff <- chickwts
 chickwts_diff[sample(1:nrow(chickwts), 30),sample(1:ncol(chickwts), 2)] <- NA
 
@@ -231,7 +232,7 @@ messy_vector <- c(TRUE,
                   "abc",
                   "$%TG")
 
-set.seed(1114)
+set.seed(2019-04-03-1106)
 messy_df <- data.frame(var1 = messy_vector,
                        var2 = sample(messy_vector),
                        var3 = sample(messy_vector))
