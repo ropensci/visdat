@@ -1,5 +1,6 @@
 context("Warn for large data")
 
+set.seed(2019-04-03-1104)
 big_df <- matrix(rnorm(100000),
                  nrow = 1000,
                  ncol = 1000) %>%
