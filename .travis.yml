@@ -7,13 +7,17 @@ dist: trusty
 
 matrix:
   include:
-   - r: release
-     before_cache: Rscript -e 'remotes::install_cran("pkgdown");remotes::install_github("ropensci/rotemplate")'
-     deploy:
-       provider: script
-       script: Rscript -e 'pkgdown::deploy_site_github()'
-       skip_cleanup: true
-   - r: devel
+      - dist: trusty
+      github_packages:
+        - r-lib/pkgdown
+        - ropensci/rotemplate
+      - r: release
+      before_cache: Rscript -e 'remotes::install_cran("pkgdown");remotes::install_github("ropensci/rotemplate")'
+      deploy:
+        provider: script
+        script: Rscript -e 'pkgdown::deploy_site_github()'
+        skip_cleanup: true
+      - r: devel
 
 env:
   global:
