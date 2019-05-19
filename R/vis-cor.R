@@ -32,7 +32,7 @@ vis_cor <- function(data,
   test_if_dataframe(data)
 
   if (!all_numeric(data)) {
-    stop("data input can only contain numeric values, please subset the data to the numeric values you would like.")
+    stop("data input can only contain numeric values, please subset the data to the numeric values you would like. dplyr::select_if(data, is.numeric) can be helpful here!")
   } else {
 
       gather_cor(data,

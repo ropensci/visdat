@@ -221,6 +221,46 @@ vis_cor(airquality)
 
 ![](man/figures/README-vis-cor-1.png)<!-- -->
 
+## Using `vis_value`
+
+`vis_value()` visualises the values of your data on a 0 to 1 scale.
+
+``` r
+vis_value(airquality)
+```
+
+![](man/figures/README-vis-value-1.png)<!-- -->
+
+It only works on numeric data, so you might get strange results if you
+are using factors:
+
+``` r
+library(ggplot2)
+vis_value(iris)
+```
+
+    data input can only contain numeric values, please subset the data to the numeric values you would like. dplyr::select_if(data, is.numeric) can be helpful here!
+
+So you might need to subset the data beforehand like so:
+
+``` r
+library(dplyr)
+#> 
+#> Attaching package: 'dplyr'
+#> The following objects are masked from 'package:stats':
+#> 
+#>     filter, lag
+#> The following objects are masked from 'package:base':
+#> 
+#>     intersect, setdiff, setequal, union
+
+iris %>%
+  select_if(is.numeric) %>%
+  vis_value()
+```
+
+![](man/figures/README-iris-error-fix-1.png)<!-- -->
+
 ## Using `vis_guess()`
 
 `vis_guess()` takes a guess at what each cell is. It’s best illustrated

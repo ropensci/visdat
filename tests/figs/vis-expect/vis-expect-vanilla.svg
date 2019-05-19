@@ -45,9 +45,9 @@
 <rect x='326.29' y='547.01' width='17.28' height='18.04' style='stroke-width: 0.75; stroke: none; fill: #998EC3;' clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)' />
 <rect x='385.31' y='547.01' width='17.28' height='18.04' style='stroke-width: 0.75; stroke: none; fill: #F1A340;' clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)' />
 <rect x='444.33' y='547.01' width='17.28' height='18.04' style='stroke-width: 0.75; stroke: none; fill: #E5E5E5;' clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)' />
-<g clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)'><text x='349.05' y='554.29' style='font-size: 8.80px; font-family: Liberation Sans;' textLength='27.41px' lengthAdjust='spacingAndGlyphs'>FALSE</text></g>
+<g clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)'><text x='349.05' y='554.29' style='font-size: 8.80px; font-family: Liberation Sans;' textLength='26.41px' lengthAdjust='spacingAndGlyphs'>TRUE </text></g>
 <g clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)'><text x='349.05' y='563.80' style='font-size: 8.80px; font-family: Liberation Sans;' textLength='30.78px' lengthAdjust='spacingAndGlyphs'>(83.3%)</text></g>
-<g clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)'><text x='408.07' y='554.29' style='font-size: 8.80px; font-family: Liberation Sans;' textLength='23.97px' lengthAdjust='spacingAndGlyphs'>TRUE</text></g>
+<g clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)'><text x='408.07' y='554.29' style='font-size: 8.80px; font-family: Liberation Sans;' textLength='29.84px' lengthAdjust='spacingAndGlyphs'>FALSE </text></g>
 <g clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)'><text x='408.07' y='563.80' style='font-size: 8.80px; font-family: Liberation Sans;' textLength='30.78px' lengthAdjust='spacingAndGlyphs'>(16.7%)</text></g>
 <g clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)'><text x='467.09' y='559.05' style='font-size: 8.80px; font-family: Liberation Sans;' textLength='12.23px' lengthAdjust='spacingAndGlyphs'>NA</text></g>
 <g clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)'><text x='28.09' y='14.56' style='font-size: 13.20px; font-family: Liberation Sans;' textLength='103.33px' lengthAdjust='spacingAndGlyphs'>vis_expect vanilla</text></g>

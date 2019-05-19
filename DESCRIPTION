@@ -46,4 +46,4 @@ Suggests:
 VignetteBuilder: knitr
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-Language: en-US
+Encoding: UTF-8

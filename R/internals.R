@@ -286,3 +286,12 @@ test_if_dataframe <- function(x){
          call. = FALSE)
   }
 }
+
+#' Scale a vector between 0 and one.
+#'
+#' @param x numeric vector
+#'
+#' @return numeric vector between 0 and 1
+scale_01 <- function(x) {
+  (x - min(x, na.rm = TRUE)) / diff(range(x, na.rm = TRUE))
+}

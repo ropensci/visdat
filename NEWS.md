@@ -1,4 +1,8 @@
-# visdat 0.5.3.9000 (2019/02/019)
+# visdat 0.5.3.9000 (2019/05/20)
+
+## New Feature
+
+* `vis_value()` for visualising all values in a dataset. It rescales values to be between 0 and 1. See #100
 
 # visdat 0.5.3 (2019/02/04) "The Legend of LoFi"
 

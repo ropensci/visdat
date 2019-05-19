@@ -60,7 +60,8 @@ vis_guess <- function(x, palette = "default"){
       ggplot2::guides(fill = ggplot2::guide_legend(title = "Type")) +
       # flip the axes, add info for axes
       ggplot2::scale_x_discrete(position = "top",
-                                limits = names(x))
+                                limits = names(x)) +
+    ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0))
 
   # specify a palette ----------------------------------------------------------
   add_vis_dat_pal(vis_plot, palette)
