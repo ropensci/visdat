@@ -1,5 +1,7 @@
 context("vis_guess")
 
+readr::guess_parser(typical_data$Sex[1])
+
 # try out all the options
 vis_guess_plot <- vis_guess(typical_data)
 vis_guess_plot_cb_safe <- vis_guess(typical_data, palette = "cb_safe")

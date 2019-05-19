@@ -265,3 +265,13 @@ all_numeric <- function(x, ...){
   all(as.logical(lapply(x, is.numeric)))
 }
 # Can I capture moving from a value to NA, or, from NA to another value?
+
+
+#' Scale a vector between 0 and one.
+#'
+#' @param x numeric vector
+#'
+#' @return numeric vector between 0 and 1
+scale_01 <- function(x) {
+  (x - min(x, na.rm = TRUE)) / diff(range(x, na.rm = TRUE))
+}

@@ -4,21 +4,39 @@
 \alias{vis_value}
 \title{Visualise the value of data values}
 \usage{
-vis_value(data, na_colour = "grey90")
+vis_value(data, na_colour = "grey90", viridis_option = "D")
 }
 \arguments{
 \item{data}{a data.frame}
 
-\item{na_colour}{a character vector of length one describing what colour you want the NA values to be. Default is "grey90"}
+\item{na_colour}{a character vector of length one describing what colour
+you want the NA values to be. Default is "grey90"}
+
+\item{viridis_option}{A character string indicating the colormap option to
+use. Four options are available: "magma" (or "A"), "inferno" (or "B"),
+"plasma" (or "C"), "viridis" (or "D", the default option) and "cividis"
+(or "E").}
 }
 \value{
 a ggplot plot of the values
 }
 \description{
-Visualise all of the values in the data on a 0 to 1 scale.
+Visualise all of the values in the data on a 0 to 1 scale. Only works on
+numeric data - see examples for how to subset to only numeric data.
 }
 \examples{
 
 vis_value(airquality)
+vis_value(airquality, viridis_option = "A")
+vis_value(airquality, viridis_option = "B")
+vis_value(airquality, viridis_option = "C")
+vis_value(airquality, viridis_option = "E")
+
+\dontrun{
+library(dplyr)
+diamonds \%>\%
+  select_if(is.numeric) \%>\%
+  vis_value()
+}
 
 }

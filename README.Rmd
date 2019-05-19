@@ -212,6 +212,35 @@ vis_cor(airquality)
 
 ```
 
+## Using `vis_value`
+
+`vis_value()` visualises the values of your data on a 0 to 1 scale.
+
+```{r vis-value}
+vis_value(airquality)
+```
+
+It only works on numeric data, so you might get strange results if you are using   factors:
+
+```{r iris-error, eval = FALSE}
+library(ggplot2)
+vis_value(iris)
+```
+
+```
+data input can only contain numeric values, please subset the data to the numeric values you would like. dplyr::select_if(data, is.numeric) can be helpful here!
+```
+
+So you might need to subset the data beforehand like so:
+
+```{r iris-error-fix}
+library(dplyr)
+
+iris %>%
+  select_if(is.numeric) %>%
+  vis_value()
+```
+
 ## Using `vis_guess()`
 
 `vis_guess()` takes a guess at what each cell is. It's best illustrated using

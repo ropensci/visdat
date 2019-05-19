@@ -1,9 +1,15 @@
 #' Visualise the value of data values
 #'
-#' Visualise all of the values in the data on a 0 to 1 scale.
+#' Visualise all of the values in the data on a 0 to 1 scale. Only works on
+#'   numeric data - see examples for how to subset to only numeric data.
 #'
 #' @param data a data.frame
-#' @param na_colour a character vector of length one describing what colour you want the NA values to be. Default is "grey90"
+#' @param na_colour a character vector of length one describing what colour
+#'   you want the NA values to be. Default is "grey90"
+#' @param viridis_option A character string indicating the colormap option to
+#'   use. Four options are available: "magma" (or "A"), "inferno" (or "B"),
+#'   "plasma" (or "C"), "viridis" (or "D", the default option) and "cividis"
+#'   (or "E").
 #'
 #' @return a ggplot plot of the values
 #' @export
@@ -11,11 +17,25 @@
 #' @examples
 #'
 #' vis_value(airquality)
+#' vis_value(airquality, viridis_option = "A")
+#' vis_value(airquality, viridis_option = "B")
+#' vis_value(airquality, viridis_option = "C")
+#' vis_value(airquality, viridis_option = "E")
 #'
-vis_value <- function(data, na_colour = "grey90") {
-  scale_01 <- function(x) {
-    (x - min(x, na.rm = TRUE)) / diff(range(x, na.rm = TRUE))
-  }
+#' \dontrun{
+#' library(dplyr)
+#' diamonds %>%
+#'   select_if(is.numeric) %>%
+#'   vis_value()
+#' }
+#'
+vis_value <- function(data,
+                      na_colour = "grey90",
+                      viridis_option = "D") {
+
+  if (!all_numeric(data)) {
+    stop("data input can only contain numeric values, please subset the data to the numeric values you would like. dplyr::select_if(data, is.numeric) can be helpful here!")
+  } else {
 
   purrr::map_dfr(data, scale_01) %>%
     vis_gather_() %>%
@@ -26,7 +46,9 @@ vis_value <- function(data, na_colour = "grey90") {
     # add info about the axes
     ggplot2::scale_x_discrete(position = "top") +
     ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0)) +
-    ggplot2::scale_fill_viridis_c(option = "D",
+    ggplot2::scale_fill_viridis_c(option = viridis_option,
                                   na.value = na_colour)
+
+  }
 
 }

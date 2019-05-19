@@ -1,3 +1,9 @@
+# visdat 0.5.1.9000 (2019/05/19)
+
+## New Feature
+
+* `vis_value()` for visualising all values in a dataset. It rescales values to be between 0 and 1. See #100
+
 # visdat 0.5.1 (2018/07/02) "The Northern Lights Moonwalker"
 
 ## New Feature
