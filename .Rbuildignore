@@ -16,3 +16,4 @@
 ^LICENSE\.md$
 .Rprofile
 ^revdep$
+^\.github$
