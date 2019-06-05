@@ -2,21 +2,19 @@
 
 language: R
 cache: packages
-sudo: true
-dist: trusty
 
 matrix:
   include:
       - dist: trusty
-      github_packages:
-        - r-lib/pkgdown
-        - ropensci/rotemplate
+        github_packages:
+          - r-lib/pkgdown
+          - ropensci/rotemplate
       - r: release
-      before_cache: Rscript -e 'remotes::install_cran("pkgdown");remotes::install_github("ropensci/rotemplate")'
-      deploy:
-        provider: script
-        script: Rscript -e 'pkgdown::deploy_site_github()'
-        skip_cleanup: true
+        before_cache: Rscript -e 'remotes::install_cran("pkgdown");remotes::install_github("ropensci/rotemplate")'
+        deploy:
+          provider: script
+          script: Rscript -e 'pkgdown::deploy_site_github()'
+          skip_cleanup: true
       - r: devel
 
 env:
@@ -26,8 +24,13 @@ env:
 after_success:
   - Rscript -e 'covr::codecov()'
 
-before_install:
-  - sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable --yes
-  - sudo apt-get --yes --force-yes update -qq
-  - sudo apt-get install --yes libudunits2-dev libproj-dev libgeos-dev libgdal-dev
-  - Rscript -e 'update.packages(ask = FALSE)'
+addons:
+  apt:
+    sources:
+      - sourceline: 'ppa:ubuntugis/ppa'
+    packages:
+      - libudunits2-dev
+      - libproj-dev
+      - libgeos-dev
+      - libgdal-dev
+
