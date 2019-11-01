@@ -42,7 +42,6 @@ dat_test <- tibble::tribble(
 
 vis_expect(dat_test, ~.x == -1)
 
-\dontrun{
 vis_expect(airquality, ~.x == 5.1)
 
 # explore some common NA strings
@@ -65,7 +64,6 @@ dat_ms <- tibble::tribble(~x,  ~y,    ~z,
 
 vis_expect(dat_ms, ~.x \%in\% common_nas)
 
-}
 
 }
 \seealso{

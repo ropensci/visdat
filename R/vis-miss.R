@@ -42,11 +42,11 @@
 #'
 #' vis_miss(airquality)
 #'
-#' \dontrun{
 #' vis_miss(airquality, cluster = TRUE)
 #'
 #' vis_miss(airquality, sort_miss = TRUE)
 #'
+#'\dontrun{
 #' # if you have a large dataset, you might want to try downsampling:
 #' library(nycflight13)
 #' library(dplyr)
@@ -57,8 +57,7 @@
 #' flights %>%
 #'   slice(1:1000) %>%
 #'   vis_miss()
-#'
-#' }
+#'}
 #'
 #' @export
 vis_miss <- function(x,

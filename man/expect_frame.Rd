@@ -18,7 +18,6 @@ data.frames where expectation are true
 Create a dataframe to help visualise 'expected' values
 }
 \examples{
-
 \dontrun{
 dat_test <- tibble::tribble(
             ~x, ~y,
@@ -29,7 +28,7 @@ dat_test <- tibble::tribble(
 
 expect_frame(dat_test,
              ~ .x == -1)
-}
+             }
 }
 \author{
 Stuart Lee and Earo Wang

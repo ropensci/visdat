@@ -48,12 +48,12 @@ a blank plot! See example code for suggestions on doing this.
 
 vis_dat(airquality)
 
-\dontrun{
 # experimental colourblind safe palette
 vis_dat(airquality, palette = "cb_safe")
 vis_dat(airquality, palette = "qual")
 
 # if you have a large dataset, you might want to try downsampling:
+\dontrun{
 library(nycflight13)
 library(dplyr)
 flights \%>\%
@@ -63,7 +63,6 @@ flights \%>\%
 flights \%>\%
   slice(1:1000) \%>\%
   vis_dat()
-
 }
 
 }

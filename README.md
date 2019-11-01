@@ -196,8 +196,8 @@ vis_compare(chickwts, chickwts_diff_2)
 
 `vis_expect` visualises certain conditions or values in your data. For
 example, If you are not sure whether to expect values greater than 25 in
-your data (airquality), you could write: `vis_expect(airquality, ~.x
->= 25)`, and you can see if there are times where the values in your
+your data (airquality), you could write: `vis_expect(airquality,
+~.x>=25)`, and you can see if there are times where the values in your
 data are greater than or equal to 25:
 
 ``` r

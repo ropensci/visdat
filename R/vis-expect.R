@@ -34,7 +34,6 @@
 #'
 #' vis_expect(dat_test, ~.x == -1)
 #'
-#' \dontrun{
 #' vis_expect(airquality, ~.x == 5.1)
 #'
 #' # explore some common NA strings
@@ -57,7 +56,6 @@
 #'
 #' vis_expect(dat_ms, ~.x %in% common_nas)
 #'
-#' }
 #'
 vis_expect <- function(data, expectation, show_perc = TRUE){
 
@@ -131,7 +129,6 @@ vis_expect <- function(data, expectation, show_perc = TRUE){
 #' @author Stuart Lee and Earo Wang
 #'
 #' @examples
-#'
 #' \dontrun{
 #' dat_test <- tibble::tribble(
 #'             ~x, ~y,
@@ -142,7 +139,7 @@ vis_expect <- function(data, expectation, show_perc = TRUE){
 #'
 #' expect_frame(dat_test,
 #'              ~ .x == -1)
-#' }
+#'              }
 expect_frame <- function(data, expectation){
 
   my_fun <- purrr::as_mapper(expectation)

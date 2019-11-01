@@ -21,14 +21,12 @@
 #' vis_value(airquality, viridis_option = "B")
 #' vis_value(airquality, viridis_option = "C")
 #' vis_value(airquality, viridis_option = "E")
-#'
 #' \dontrun{
 #' library(dplyr)
 #' diamonds %>%
 #'   select_if(is.numeric) %>%
 #'   vis_value()
-#' }
-#'
+#'}
 vis_value <- function(data,
                       na_colour = "grey90",
                       viridis_option = "D") {

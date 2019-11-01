@@ -52,11 +52,11 @@ a blank plot! See example code for suggestions on doing this.
 
 vis_miss(airquality)
 
-\dontrun{
 vis_miss(airquality, cluster = TRUE)
 
 vis_miss(airquality, sort_miss = TRUE)
 
+\dontrun{
 # if you have a large dataset, you might want to try downsampling:
 library(nycflight13)
 library(dplyr)
@@ -67,7 +67,6 @@ flights \%>\%
 flights \%>\%
   slice(1:1000) \%>\%
   vis_miss()
-
 }
 
 }

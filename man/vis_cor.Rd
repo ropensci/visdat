@@ -30,8 +30,9 @@ Visualise correlations amongst variables in your data as a heatmap
 }
 \examples{
 vis_cor(airquality)
-\dontrun{
 vis_cor(mtcars)
+\dontrun{
+# this will error
 vis_cor(iris)
 }
 }
