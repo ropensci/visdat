@@ -1,13 +1,20 @@
 #' Visualise binary values
 #'
+#'
 #' @param data a data.frame
+#' @param col_zero colour for zeroes, default is "salmon"
+#' @param col_one colour for ones, default is "steelblue2"
+#' @param col_na colour for NA, default is "grey90"
 #'
 #' @return a ggplot plot of the binary values
 #' @export
 #'
 #' @examples
 #' vis_binary(dat_bin)
-vis_binary <- function(data) {
+vis_binary <- function(data,
+                       col_zero = "salmon",
+                       col_one = "steelblue2",
+                       col_na = "grey90") {
 
   test_if_all_binary(data)
 
@@ -22,6 +29,7 @@ vis_binary <- function(data) {
     # add info about the axes
     ggplot2::scale_x_discrete(position = "top") +
     ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0)) +
-    ggplot2::scale_fill_manual(values = c("salmon",
-                                          "steelblue2"))
+    ggplot2::scale_fill_manual(values = c(col_zero, # zero
+                                          col_one), # one
+                               na.value = col_na)
 }

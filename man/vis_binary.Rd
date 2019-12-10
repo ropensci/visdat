@@ -4,10 +4,16 @@
 \alias{vis_binary}
 \title{Visualise binary values}
 \usage{
-vis_binary(data)
+vis_binary(data, col_zero, col_one, col_na)
 }
 \arguments{
 \item{data}{a data.frame}
+
+\item{col_zero}{colour for zeroes, default is "salmon"}
+
+\item{col_one}{colour for ones, default is "steelblue2"}
+
+\item{col_na}{colour for NA, default is "grey90"}
 }
 \value{
 a ggplot plot of the binary values
