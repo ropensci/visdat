@@ -4,8 +4,7 @@
 \alias{gather_cor}
 \title{(Internal) create a tidy dataframe of correlations suitable for plotting}
 \usage{
-gather_cor(data, cor_method = "pearson",
-  na_action = "pairwise.complete.obs")
+gather_cor(data, cor_method = "pearson", na_action = "pairwise.complete.obs")
 }
 \arguments{
 \item{data}{data.frame}

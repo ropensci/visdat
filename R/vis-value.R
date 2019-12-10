@@ -31,9 +31,7 @@ vis_value <- function(data,
                       na_colour = "grey90",
                       viridis_option = "D") {
 
-  if (!all_numeric(data)) {
-    stop("data input can only contain numeric values, please subset the data to the numeric values you would like. dplyr::select_if(data, is.numeric) can be helpful here!")
-  } else {
+  test_if_all_numeric(data)
 
   purrr::map_dfr(data, scale_01) %>%
     vis_gather_() %>%
@@ -46,7 +44,5 @@ vis_value <- function(data,
     ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0)) +
     ggplot2::scale_fill_viridis_c(option = viridis_option,
                                   na.value = na_colour)
-
-  }
 
 }

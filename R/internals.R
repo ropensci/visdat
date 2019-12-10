@@ -263,6 +263,11 @@ all_numeric <- function(x, ...){
 }
 # Can I capture moving from a value to NA, or, from NA to another value?
 
+is_binary <- function(x) all(x %in% c(0L, 1L, NA))
+
+all_binary <- function(x, ...){
+  all(as.logical(lapply(x, is_binary)))
+}
 
 #' Test if input is a data.frame
 #'
@@ -284,6 +289,18 @@ test_if_dataframe <- function(x){
          glue::glue_collapse(class(x),
                              sep = ", "),
          call. = FALSE)
+  }
+}
+
+test_if_all_numeric <- function(data){
+  if (!all_numeric(data)) {
+    stop("data input can only contain numeric values, please subset the data to the numeric values you would like. dplyr::select_if(data, is.numeric) can be helpful here!")
+    }
+  }
+
+test_if_all_binary <- function(data){
+  if (!all_binary(data)) {
+    stop("data input can only contain binary values - this means either 0 or 1, or NA. Please subset the data to be binary values, or see ?vis_value.")
   }
 }
 

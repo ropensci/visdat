@@ -16,7 +16,7 @@ vis_compare(df1, df2)
 present in each other, and which are not.
 }
 \description{
-\code{vis_compare}, like the other \code{vis_*} families, gives an at-a-glance ggplot
+\code{vis_compare}, like the other \verb{vis_*} families, gives an at-a-glance ggplot
 of a dataset, but in this case, hones in on visualising \strong{two} different
 dataframes of the same dimension, so it takes two dataframes as arguments.
 }
