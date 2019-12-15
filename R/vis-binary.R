@@ -7,10 +7,10 @@
 #' @param col_na colour for NA, default is "grey90"
 #'
 #' @return a ggplot plot of the binary values
-#' @export
 #'
 #' @examples
 #' vis_binary(dat_bin)
+#' @export
 vis_binary <- function(data,
                        col_zero = "salmon",
                        col_one = "steelblue2",

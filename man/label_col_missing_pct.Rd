@@ -2,7 +2,7 @@
 % Please edit documentation in R/internals.R
 \name{label_col_missing_pct}
 \alias{label_col_missing_pct}
-\title{(Internal) Create labels for the columns containing the \\% missing data}
+\title{Create labels for the columns containing the percent missing data}
 \usage{
 label_col_missing_pct(x, col_order_index)
 }
@@ -15,5 +15,8 @@ label_col_missing_pct(x, col_order_index)
 data.frame containing the missingness percent down to 0.1 percent
 }
 \description{
-(Internal) Create labels for the columns containing the \\% missing data
+Create labels for the columns containing the percent missing data
+}
+\note{
+internal
 }

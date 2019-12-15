@@ -169,11 +169,11 @@ if (palette == "default"){
 
 } # close the function
 
-#' (Internal) Create labels for the columns containing the \% missing data
+#' Create labels for the columns containing the percent missing data
 #'
 #' @param x data.frame
 #' @param col_order_index the order of the columns
-#'
+#' @note internal
 #' @return data.frame containing the missingness percent down to 0.1 percent
 #'
 label_col_missing_pct <- function(x,

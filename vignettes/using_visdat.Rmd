@@ -280,11 +280,11 @@ airquality %>%
 
 ## `vis_binary`
 
-`vis_binary()` visualises the occurence of binary values in your data. It is 
+`vis_binary()` visualises the occurrence of binary values in your data. It is 
 similar to `vis_value()` except it just focusses on values that are NA, 0, and 1.
 
 ```{r vis-binary}
-vis_binary(dat_bit)
+vis_binary(dat_bin)
 ```
 
 

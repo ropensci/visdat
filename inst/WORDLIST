@@ -18,10 +18,10 @@ dev
 doco
 DOI
 downsampling
-earch
 errored
 extensibility
 focussed
+focusses
 Funcions
 GATC
 ggplot
@@ -48,7 +48,9 @@ miliary
 Moonwalker
 mtcars
 na
+ncol
 Noam
+nrow
 nucleobases
 onboarding
 organisation
@@ -60,6 +62,7 @@ protoype
 qual
 README
 readr
+rescales
 ropensci
 rOpenSci
 Shibuya

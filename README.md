@@ -68,7 +68,8 @@ by displaying the variable classes in a dataframe as a plot with
 
   - `vis_value()` visualise the value class of each cell in your data
 
-  - `vis_binary()` visualise the occurence of binary values in your data
+  - `vis_binary()` visualise the occurrence of binary values in your
+    data
 
 You can read more about visdat in the vignette, [“using
 visdat”](http://visdat.njtierney.com/articles/using_visdat.html).
