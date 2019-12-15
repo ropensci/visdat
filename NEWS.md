@@ -1,8 +1,9 @@
-# visdat 0.5.3.9000 (2019/05/20)
+# visdat 0.6.0.9000 (2019/12/15) "Shibuya, Covet, San Holo"
 
 ## New Feature
 
 * `vis_value()` for visualising all values in a dataset. It rescales values to be between 0 and 1. See #100
+* `vis_binary()` for visualising datasets with binary values - similar to `vis_value()`, but just for binary data (0, 1, NA). See #112
 
 # visdat 0.5.3 (2019/02/04) "The Legend of LoFi"
 

@@ -3,7 +3,6 @@
 \docType{package}
 \name{visdat}
 \alias{visdat}
-\alias{visdat-package}
 \title{visdat}
 \description{
 visdat is a package that helps with the preliminary visualisation of data.

@@ -9,12 +9,12 @@ vis_expect(data, expectation, show_perc = TRUE)
 \arguments{
 \item{data}{a data.frame}
 
-\item{expectation}{a formula following the syntax: \code{~.x {condition}}.
+\item{expectation}{a formula following the syntax: \verb{~.x \{condition\}}.
 For example, writing \code{~.x < 20} would mean "where a variable value is less
 than 20, replace with NA", and \code{~.x \%in\% {vector}} would mean "where a
 variable has values that are in that vector".}
 
-\item{show_perc}{logical. TRUE now adds in the \% of expectations are
+\item{show_perc}{logical. TRUE now adds in the \\% of expectations are
 TRUE or FALSE in the whole dataset into the legend. Default value is TRUE.}
 }
 \value{
@@ -27,7 +27,7 @@ write: \code{vis_expect(data, ~.x == -1)}, and you can see if there are times
 where the values in your data are equal to -1. You could also, for example,
 explore a set of bad strings, or possible NA values and visualise where
 they are using \code{vis_expect(data, ~.x \%in\% bad_strings)} where
-\code{bad_strings} is a character vector containing bad strings  like \code{N A}
+\code{bad_strings} is a character vector containing bad strings  like \verb{N A}
 \code{N/A} etc.
 }
 \examples{

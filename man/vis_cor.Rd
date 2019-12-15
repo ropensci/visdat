@@ -4,8 +4,7 @@
 \alias{vis_cor}
 \title{Visualise correlations amongst variables in your data as a heatmap}
 \usage{
-vis_cor(data, cor_method = "pearson",
-  na_action = "pairwise.complete.obs", ...)
+vis_cor(data, cor_method = "pearson", na_action = "pairwise.complete.obs", ...)
 }
 \arguments{
 \item{data}{data.frame}
