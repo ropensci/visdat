@@ -4,7 +4,12 @@
 \alias{vis_binary}
 \title{Visualise binary values}
 \usage{
-vis_binary(data, col_zero, col_one, col_na)
+vis_binary(
+  data,
+  col_zero = "salmon",
+  col_one = "steelblue2",
+  col_na = "grey90"
+)
 }
 \arguments{
 \item{data}{a data.frame}

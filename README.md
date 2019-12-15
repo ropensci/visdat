@@ -63,8 +63,12 @@ by displaying the variable classes in a dataframe as a plot with
 
   - `vis_cor()` visualise the correlation of variables in a nice heatmap
 
-  - `vis_guess()` visualise the individual class of earch value in your
+  - `vis_guess()` visualise the individual class of each value in your
     data
+
+  - `vis_value()` visualise the value class of each cell in your data
+
+  - `vis_binary()` visualise the occurence of binary values in your data
 
 You can read more about visdat in the vignette, [“using
 visdat”](http://visdat.njtierney.com/articles/using_visdat.html).
