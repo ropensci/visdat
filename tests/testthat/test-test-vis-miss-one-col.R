@@ -13,6 +13,9 @@ one_vis_miss_plot_show_perc_col_t <- vis_miss(df, show_perc_col = TRUE)
 
 test_that("vis_miss creates the right plot when one column is presented",{
   skip_on_cran()
+  skip_on_travis()
+  skip_on_appveyor()
+  skip_on_gh_actions()
   ver <- as.character(gdtools::version_freetype())
   cat(sprintf("FreeType version: %s\n", ver))
   vdiffr::expect_doppelganger("vis_miss with one col vanilla",

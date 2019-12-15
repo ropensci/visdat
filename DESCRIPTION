@@ -36,7 +36,7 @@ Imports:
 URL: http://visdat.njtierney.com/, https://github.com/ropensci/visdat
 BugReports: https://github.com/ropensci/visdat/issues
 Suggests:
-    testthat,
+    testthat (>= 2.1.0),
     plotly (>= 4.5.6),
     knitr,
     rmarkdown,

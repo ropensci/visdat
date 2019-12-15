@@ -312,3 +312,11 @@ test_if_all_binary <- function(data){
 scale_01 <- function(x) {
   (x - min(x, na.rm = TRUE)) / diff(range(x, na.rm = TRUE))
 }
+
+
+skip_on_gh_actions <- function() {
+  if (!identical(Sys.getenv("GITHUB_ACTIONS"), "true")) {
+    return(invisible(TRUE))
+  }
+  testthat::skip("On GitHub Actions")
+}
