@@ -17,3 +17,4 @@
 .Rprofile
 ^revdep$
 ^\.github$
+^CODE_OF_CONDUCT\.md$
