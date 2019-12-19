@@ -268,6 +268,26 @@ iris %>%
 
 ![](man/figures/README-iris-error-fix-1.png)<!-- -->
 
+## Using `vis_binary()`
+
+`vis_binary()` visualises binary values. See below for use with example
+data, `dat_bin`
+
+``` r
+vis_binary(dat_bin)
+```
+
+![](man/figures/README-vis-bin-1.png)<!-- -->
+
+If you don’t have only binary values a warning will be shown.
+
+``` r
+vis_binary(airquality)
+```
+
+    Error in test_if_all_binary(data) : 
+      data input can only contain binary values - this means either 0 or 1, or NA. Please subset the data to be binary values, or see ?vis_value.
+
 ## Using `vis_guess()`
 
 `vis_guess()` takes a guess at what each cell is. It’s best illustrated
