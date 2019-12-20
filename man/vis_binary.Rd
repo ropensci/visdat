@@ -8,7 +8,8 @@ vis_binary(
   data,
   col_zero = "salmon",
   col_one = "steelblue2",
-  col_na = "grey90"
+  col_na = "grey90",
+  order = NULL
 )
 }
 \arguments{
@@ -19,6 +20,8 @@ vis_binary(
 \item{col_one}{colour for ones, default is "steelblue2"}
 
 \item{col_na}{colour for NA, default is "grey90"}
+
+\item{order}{optional character vector of the order of variables}
 }
 \value{
 a ggplot plot of the binary values
@@ -28,4 +31,12 @@ Visualise binary values
 }
 \examples{
 vis_binary(dat_bin)
+
+# changing order of variables
+# create numeric names
+df <-  setNames(dat_bin, c("1.1", "10.4", "8.9"))
+df
+vis_binary(df)
+# specify the original order
+vis_binary(df, order = names(df))
 }
