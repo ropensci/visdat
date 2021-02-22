@@ -83,12 +83,17 @@ vis_expect <- function(data, expectation, show_perc = TRUE){
 
   }
 
-  vis_expect_plot <- data_expect %>%
+  colnames_data <- colnames(data_expect)
+  data_expect <- data_expect %>%
     # expect_frame(expectation) %>%
     dplyr::mutate(rows = dplyr::row_number()) %>%
     tidyr::gather_(key_col = "variable",
                    value_col = "valueType",
-                   gather_cols = names(.)[-length(.)]) %>%
+                   gather_cols = colnames_data)
+  data_expect <- data_expect %>%
+    dplyr::mutate(variable = factor(variable, levels = colnames_data))
+
+  vis_expect_plot <- data_expect %>%
     ggplot2::ggplot(ggplot2::aes_string(x = "variable",
                                         y = "rows")) +
     ggplot2::geom_raster(ggplot2::aes_string(fill = "valueType")) +
