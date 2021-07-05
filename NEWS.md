@@ -1,4 +1,4 @@
-# visdat 0.6.0.9000 (2019/12/15) "Shibuya, Covet, San Holo"
+# visdat 0.6.0 (2021/07/05) "Shibuya, Covet, San Holo"
 
 ## New Feature
 
