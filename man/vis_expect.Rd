@@ -56,9 +56,9 @@ common_nas <- c(
 )
 
 dat_ms <- tibble::tribble(~x,  ~y,    ~z,
-                         1,   "A",   -100,
-                         3,   "N/A", -99,
-                         NA,  NA,    -98,
+                         "1",   "A",   -100,
+                         "3",   "N/A", -99,
+                         "NA",  NA,    -98,
                          "N A", "E",   -101,
                          "na", "F",   -1)
 

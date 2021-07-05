@@ -1,6 +1,3 @@
-context("Guess type")
-
-
 test_that("guess_element correctly identifies individual elements", {
   expect_equal(guess_type(TRUE), "logical")
   expect_equal(guess_type(T), "logical")

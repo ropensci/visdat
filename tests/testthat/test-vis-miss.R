@@ -1,5 +1,3 @@
-context("vis_miss")
-
 # try out all the options
 vis_miss_plot <- vis_miss(typical_data)
 vis_miss_plot_cluster <- vis_miss(typical_data, cluster = TRUE)
@@ -10,9 +8,7 @@ vis_miss_plot_show_perc_col_t <- vis_miss(typical_data, show_perc_col = TRUE)
 
 test_that("vis_miss creates the right plot",{
   skip_on_cran()
-  skip_on_travis()
-  skip_on_appveyor()
-  skip_on_gh_actions()
+  skip_on_ci()
   ver <- as.character(gdtools::version_freetype())
   cat(sprintf("FreeType version: %s\n", ver))
   vdiffr::expect_doppelganger("vis_miss vanilla", vis_miss_plot)
@@ -24,5 +20,8 @@ test_that("vis_miss creates the right plot",{
 })
 
 test_that("vis_miss fails when an object of the wrong class is provided", {
-  testthat::expect_error(vis_miss(AirPassengers))
+  expect_snapshot(
+    error = TRUE,
+    vis_miss(AirPassengers)
+    )
 })

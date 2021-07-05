@@ -4,7 +4,8 @@
 \name{typical_data_large}
 \alias{typical_data_large}
 \title{A small toy dataset of imaginary people}
-\format{A data frame with 300 rows and 49 variables:
+\format{
+A data frame with 300 rows and 49 variables:
 \describe{
 \item{Age}{Age of each individual, see ?wakefield::age for more info}
 \item{Animal}{A vector of animals, see ?wakefield::animal}
@@ -55,7 +56,8 @@
 \item{Valid}{TRUE FALSE answer to a question}
 \item{Year}{significant year to that individuals}
 \item{Zip}{a zip code they have visited}
-}}
+}
+}
 \usage{
 typical_data_large
 }

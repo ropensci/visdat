@@ -22,7 +22,7 @@ Depends:
     R (>= 3.2.2)
 License: MIT + file LICENSE
 LazyData: true
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.1
 Imports:
     ggplot2,
     tidyr,
@@ -37,14 +37,16 @@ Imports:
 URL: http://visdat.njtierney.com/, https://github.com/ropensci/visdat
 BugReports: https://github.com/ropensci/visdat/issues
 Suggests:
-    testthat (>= 2.1.0),
+    testthat (>= 3.0.0),
     plotly (>= 4.5.6),
     knitr,
     rmarkdown,
     vdiffr,
     gdtools,
-    spelling
+    spelling,
+    covr
 VignetteBuilder: knitr
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 Language: en-US
+Config/testthat/edition: 3

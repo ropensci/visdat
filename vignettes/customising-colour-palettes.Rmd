@@ -1,0 +1,91 @@
+---
+title: "Customising colour palettes in visdat"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{customising-colour-palettes}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(visdat)
+```
+
+# How to provide your own colour palette?
+
+This vignette shoes you how to provide your own colour palette with `visdat`.
+
+A `visdat` plot is a `ggplot` object - so we can use the tools from ggplot to 
+tinker with colours. In this case, that is the `scale_fill_manual` function.
+
+A "standard" visdat plot might be like so:
+
+```{r standard}
+vis_dat(typical_data)
+```
+
+You can name the colours yourself like so (after first loading the `ggplot` package.
+
+```{r custom}
+library(ggplot2)
+vis_dat(typical_data) +
+  scale_fill_manual(
+    values = c(
+      "character" = "red",
+      "factor" = "blue",
+      "logical" = "green",
+      "numeric" = "purple",
+      "NA" = "gray"
+  ))
+```
+
+This is a pretty, uh, "popping" set of colours? You can also use some hex colours instead.
+
+Say, taken from `palette()`:
+
+```{r show-pal}
+palette()
+```
+
+
+```{r pal-hex-visdat}
+vis_dat(typical_data) +
+  scale_fill_manual(
+    values = c(
+      "character" = "#61D04F",
+      "factor" = "#2297E6",
+      "logical" = "#28E2E5",
+      "numeric" = "#CD0BBC",
+      "NA" = "#F5C710"
+  ))
+```
+
+
+How can we get nicer ones?
+
+Well, you can use any of `ggplot`'s `scale_fill_*` functions from inside ggplot2
+
+For example:
+
+```{r scale-fill-brewer}
+vis_dat(typical_data) +
+  scale_fill_brewer()
+```
+
+```{r scale-fill-viridis}
+vis_dat(typical_data) +
+  scale_fill_viridis_d()
+```
+
+Happy colour palette exploring! You might want to take a look at some of the following colour palettes from other packages:
+
+- [scico](https://github.com/thomasp85/scico#ggplot2-support)
+- [colorspace](https://cran.r-project.org/web/packages/colorspace/vignettes/colorspace.html#Usage_with_ggplot2)
+- [wesanderson](https://github.com/karthik/wesanderson#palettes)

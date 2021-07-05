@@ -1,7 +1,4 @@
 ## testing for miss_guide_label
-context("vis_miss Legend")
-
-
 test_that("miss_guide_label works for exactly 0.1% missing", {
 
   # 1 missing in 1000.
@@ -41,11 +38,11 @@ test_that("miss_guide_label works for some missings", {
   test_miss_4 <- c(1:10,NA)
 
   expect_equal(
-    tidyr::extract_numeric(miss_guide_label(test_miss_4)$p_miss_lab),
+    readr::parse_number(miss_guide_label(test_miss_4)$p_miss_lab),
     round(mean(is.na(test_miss_4))*100, 1)
     )
   expect_equal(
-    tidyr::extract_numeric(miss_guide_label(test_miss_4)$p_pres_lab),
+    readr::parse_number(miss_guide_label(test_miss_4)$p_pres_lab),
     100 - round(mean(is.na(test_miss_4))*100, 1)
     )
 

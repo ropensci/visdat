@@ -1,5 +1,3 @@
-context("Internals")
-
 test_vis_gather_ <- suppressWarnings(vis_gather_(typical_data))
 
 suppressWarnings(
@@ -40,7 +38,7 @@ test_that("vis_extract_value performs the same as old method",{
 
 test_that("any_numeric returns TRUE for numeric dataframes and FALSE for dataframes containing non-numeric values",{
 
-  testthat::expect_equal(all_numeric(airquality),TRUE)
-  testthat::expect_equal(all_numeric(iris),FALSE)
+  expect_equal(all_numeric(airquality),TRUE)
+  expect_equal(all_numeric(iris),FALSE)
 
 })

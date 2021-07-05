@@ -3,25 +3,24 @@
 
 # visdat <img src="man/figures/visdat-logo.png" align="right" />
 
+<!-- badges: start -->
+
 [![rOpenSci
-Badge](https://badges.ropensci.org/87_status.svg)](https://github.com/ropensci/onboarding/issues/87)[![JOSS
-status](http://joss.theoj.org/papers/c85f57adbc565b064fb4bfc9b59a1b2a/status.svg)](http://joss.theoj.org/papers/c85f57adbc565b064fb4bfc9b59a1b2a)[![DOI](https://zenodo.org/badge/50553382.svg)](https://zenodo.org/badge/latestdoi/50553382)[![Travis
-Build
-Status](https://travis-ci.org/ropensci/visdat.svg?branch=master)](https://travis-ci.org/ropensci/visdat)[![AppVeyor
-build
-status](https://ci.appveyor.com/api/projects/status/github/ropensci/visdat?branch=master&svg=true)](https://ci.appveyor.com/project/ropensci/visdat)[![Coverage
-Status](https://img.shields.io/codecov/c/github/ropensci/visdat/master.svg)](https://codecov.io/github/ropensci/visdat?branch=master)[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/visdat)](https://cran.r-project.org/package=visdat)[![CRAN
-Logs](http://cranlogs.r-pkg.org/badges/visdat)](http://cran.rstudio.com/web/packages/visdat/index.html)[![Project
+Badge](https://badges.ropensci.org/87_status.svg)](https://github.com/ropensci/software-review/issues/87)[![JOSS
+status](https://joss.theoj.org/papers/10.21105/joss.00355/status.svg)](https://joss.theoj.org/papers/10.21105/joss.00355)[![DOI](https://zenodo.org/badge/50553382.svg)](https://zenodo.org/badge/latestdoi/50553382)[![R-CMD-check](https://github.com/ropensci/visdat/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/visdat/actions)[![Codecov
+test
+coverage](https://codecov.io/gh/ropensci/visdat/branch/master/graph/badge.svg)](https://codecov.io/gh/ropensci/visdat?branch=master)[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/visdat)](https://cran.r-project.org/package=visdat)[![CRAN
+Logs](http://cranlogs.r-pkg.org/badges/visdat)](https://CRAN.R-project.org/package=visdat)[![Project
 Status: Active – The project has reached a stable, usable state and is
 being actively
-developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
+developed.](http://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/)
+<!-- badges: end -->
 
 # How to install
 
 visdat is available on CRAN
 
 ``` r
-
 install.packages("visdat")
 ```
 
@@ -29,7 +28,6 @@ If you would like to use the development version, install from github
 with:
 
 ``` r
-
 # install.packages("devtools")
 devtools::install_github("ropensci/visdat")
 ```
@@ -45,30 +43,30 @@ by displaying the variable classes in a dataframe as a plot with
 
 `visdat` has 6 functions:
 
-  - `vis_dat()` visualises a dataframe showing you what the classes of
+-   `vis_dat()` visualises a dataframe showing you what the classes of
     the columns are, and also displaying the missing data.
 
-  - `vis_miss()` visualises just the missing data, and allows for
+-   `vis_miss()` visualises just the missing data, and allows for
     missingness to be clustered and columns rearranged. `vis_miss()` is
     similar to `missing.pattern.plot` from the
-    [`mi`](https://cran.r-project.org/web/packages/mi/index.html)
-    package. Unfortunately `missing.pattern.plot` is no longer in the
-    `mi` package (as of 14/02/2016).
+    [`mi`](https://CRAN.R-project.org/package=mi) package. Unfortunately
+    `missing.pattern.plot` is no longer in the `mi` package (as of
+    14/02/2016).
 
-  - `vis_compare()` visualise differences between two dataframes of the
+-   `vis_compare()` visualise differences between two dataframes of the
     same dimensions
 
-  - `vis_expect()` visualise where certain conditions hold true in your
+-   `vis_expect()` visualise where certain conditions hold true in your
     data
 
-  - `vis_cor()` visualise the correlation of variables in a nice heatmap
+-   `vis_cor()` visualise the correlation of variables in a nice heatmap
 
-  - `vis_guess()` visualise the individual class of each value in your
+-   `vis_guess()` visualise the individual class of each value in your
     data
 
-  - `vis_value()` visualise the value class of each cell in your data
+-   `vis_value()` visualise the value class of each cell in your data
 
-  - `vis_binary()` visualise the occurrence of binary values in your
+-   `vis_binary()` visualise the occurrence of binary values in your
     data
 
 You can read more about visdat in the vignette, [“using
@@ -77,8 +75,9 @@ visdat”](http://visdat.njtierney.com/articles/using_visdat.html).
 ## Code of Conduct
 
 Please note that the visdat project is released with a [Contributor Code
-of Conduct](http://visdat.njtierney.com/CODE_OF_CONDUCT.html). By
-contributing to this project, you agree to abide by its terms.
+of
+Conduct](https://github.com/ropensci/visdat/blob/master/CODE_OF_CONDUCT.md).
+By contributing to this project, you agree to abide by its terms.
 
 # Examples
 
@@ -90,7 +89,6 @@ from May to September 1973. More information about the dataset can be
 found with `?airquality`.
 
 ``` r
-
 library(visdat)
 
 vis_dat(airquality)
@@ -108,7 +106,6 @@ grey. The column/variable names are listed on the x axis.
 We can explore the missing data further using `vis_miss()`:
 
 ``` r
-
 vis_miss(airquality)
 ```
 
@@ -120,7 +117,6 @@ place.
 You can cluster the missingness by setting `cluster = TRUE`:
 
 ``` r
-
 vis_miss(airquality, 
          cluster = TRUE)
 ```
@@ -131,7 +127,6 @@ Columns can also be arranged by columns with most missingness, by
 setting `sort_miss = TRUE`:
 
 ``` r
-
 vis_miss(airquality,
          sort_miss = TRUE)
 ```
@@ -142,7 +137,6 @@ vis_miss(airquality,
 at \<0.1% missingness:
 
 ``` r
-
 test_miss_df <- data.frame(x1 = 1:10000,
                            x2 = rep("A", 10000),
                            x3 = c(rep(1L, 9999), NA))
@@ -155,7 +149,6 @@ vis_miss(test_miss_df)
 `vis_miss` will also indicate when there is no missing data at all:
 
 ``` r
-
 vis_miss(mtcars)
 ```
 
@@ -190,7 +183,6 @@ If you try and compare differences when the dimensions are different,
 you get an ugly error:
 
 ``` r
-
 chickwts_diff_2 <- chickwts
 chickwts_diff_2$new_col <- chickwts_diff_2$weight*2
 
@@ -203,12 +195,11 @@ vis_compare(chickwts, chickwts_diff_2)
 
 `vis_expect` visualises certain conditions or values in your data. For
 example, If you are not sure whether to expect values greater than 25 in
-your data (airquality), you could write: `vis_expect(airquality,
-~.x>=25)`, and you can see if there are times where the values in your
-data are greater than or equal to 25:
+your data (airquality), you could write:
+`vis_expect(airquality, ~.x>=25)`, and you can see if there are times
+where the values in your data are greater than or equal to 25:
 
 ``` r
-
 vis_expect(airquality, ~.x >= 25)
 ```
 
@@ -222,7 +213,6 @@ This shows the proportion of times that there are values greater than
 To make it easy to plot correlations of your data, use `vis_cor`:
 
 ``` r
-
 vis_cor(airquality)
 ```
 
@@ -294,7 +284,6 @@ vis_binary(airquality)
 using some messy data, which we’ll make here:
 
 ``` r
-
 messy_vector <- c(TRUE,
                   T,
                   "TRUE",
@@ -320,7 +309,6 @@ messy_df <- data.frame(var1 = messy_vector,
 ```
 
 ``` r
-
 vis_guess(messy_df)
 vis_dat(messy_df)
 ```
@@ -334,7 +322,7 @@ this comparison above.
 # Thank yous
 
 Thank you to Ivan Hanigan who [first
-commented](http://www.njtierney.com/r/missing%20data/rbloggers/2015/12/01/ggplot-missing-data/#comment-2388263747)
+commented](https://www.njtierney.com/post/2015/11/12/ggplot-missing-data/)
 this suggestion after I made a blog post about an initial prototype
 `ggplot_missing`, and Jenny Bryan, whose
 [tweet](https://twitter.com/JennyBryan/status/679011378414268416) got me
@@ -350,9 +338,10 @@ this in the first place. Thank you also to Earo Wang and Stuart Lee for
 their help in getting capturing expressions in `vis_expect`.
 
 Finally thank you to [rOpenSci](https://github.com/ropensci) and it’s
-amazing [onboarding process](https://github.com/ropensci/onboarding),
-this process has made visdat a much better package, thanks to the editor
-Noam Ross (@noamross), and the reviewers Sean Hughes (@seaaan) and Mara
-Averick (@batpigandme).
+amazing [onboarding
+process](https://github.com/ropensci/software-review), this process has
+made visdat a much better package, thanks to the editor Noam Ross
+(@noamross), and the reviewers Sean Hughes (@seaaan) and Mara Averick
+(@batpigandme).
 
-[![ropensci\_footer](https://ropensci.org/public_images/ropensci_footer.png)](https://ropensci.org)
+[![ropensci_footer](https://ropensci.org/public_images/ropensci_footer.png)](https://ropensci.org)
