@@ -6,6 +6,10 @@
 
 # visdat 0.6.0 (2021/07/05) "Shibuya, Covet, San Holo"
 
+## Bug Fix
+
+* output of plot in `vis_expect` would reorder columns ([#133](https://github.com/ropensci/visdat/issues/133)), fixed in [#143](https://github.com/ropensci/visdat/pull/134) by [@muschellij2](https://github.com/muschellij2).
+
 ## New Feature
 
 * `vis_value()` for visualising all values in a dataset. It rescales values to be between 0 and 1. See #100
