@@ -34,7 +34,7 @@ Imports:
     tibble,
     glue,
     forcats
-URL: http://ropensci.github.io/visdat, http://visdat.njtierney.com/, https://github.com/ropensci/visdat
+URL: http://visdat.njtierney.com/, https://github.com/ropensci/visdat
 BugReports: https://github.com/ropensci/visdat/issues
 Suggests:
     testthat (>= 3.0.0),
