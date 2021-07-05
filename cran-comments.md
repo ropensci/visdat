@@ -1,6 +1,6 @@
 ## Test environments
-* local OS X install, R 3.5.1
-* ubuntu 12.04 (on travis-ci), R 3.5.1
+* local OS X install, R 4.1.0
+* github actions testing for devel, release, and ubuntu, windows, and macOSX
 * win-builder (devel and release)
 
 ## R CMD check results
@@ -8,22 +8,15 @@
 
 There were no ERRORs or WARNINGs or NOTEs
 
-## Reverse dependencies
+## revdepcheck results
 
-Reverse dependencies for the packages `naniar` and `PCRedux` were checked
-and there were noERRORs or WARNINGs, but were two NOTEs for `PCRedux`. These were unrelated to `visdat`, and are presented below:
+We checked 4 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
 
-```
-    *   checking installed package size ... NOTE
-    
-      installed size is  5.5Mb
-      sub-directories of 1Mb or more:
-        doc   3.9Mb
-    
+ * We saw 0 new problems
+ * We failed to check 1 packages
 
-    *   checking dependencies in R code ... NOTE
+Issues with CRAN packages are summarised below.
 
-    Namespace in Imports field not imported from: `caret`
-      All declared Imports should be used.
+### Failed to check
 
-```
+* bsem (R CMD check timed out)
