@@ -4,7 +4,8 @@
 \name{typical_data}
 \alias{typical_data}
 \title{A small toy dataset of imaginary people}
-\format{A data frame with 5000 rows and 11 variables:
+\format{
+A data frame with 5000 rows and 11 variables:
 \describe{
 \item{ID}{Unique identifier for each individual, a sequential character
 vector of zero-padded identification numbers (IDs). see ?wakefield::id}
@@ -18,7 +19,8 @@ vector of zero-padded identification numbers (IDs). see ?wakefield::id}
 \item{Smokes}{whether or not this person smokes, see ?wakefield::smokes}
 \item{Income}{Yearly income in dollars, see ?wakefield::income}
 \item{Died}{Whether or not this person has died yet., see ?wakefield::died}
-}}
+}
+}
 \usage{
 typical_data
 }

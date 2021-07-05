@@ -4,12 +4,14 @@
 \name{dat_bin}
 \alias{dat_bin}
 \title{A small toy dataset of binary data with missings.}
-\format{A data frame with 100 rows and 3 variables:
+\format{
+A data frame with 100 rows and 3 variables:
 \describe{
 \item{x}{a binary variable with missing values.}
 \item{y}{a binary variable with missing values.}
 \item{z}{a binary variable with \strong{no} missing values.}
-}}
+}
+}
 \usage{
 dat_bin
 }
