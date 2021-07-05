@@ -1,3 +1,9 @@
+# visdat 0.6.0.9000 (2021/07/06) "Superman, Lazlo Bane"
+
+## New Feature
+
+* A new vignette on 
+
 # visdat 0.6.0 (2021/07/05) "Shibuya, Covet, San Holo"
 
 ## New Feature

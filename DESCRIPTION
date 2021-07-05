@@ -1,6 +1,6 @@
 Package: visdat
 Title: Preliminary Visualisation of Data
-Version: 0.6.0
+Version: 0.6.0.9000
 Authors@R: c(
   person("Nicholas", "Tierney", role = c("aut", "cre"),
       email = "nicholas.tierney@gmail.com", 
@@ -34,7 +34,7 @@ Imports:
     tibble,
     glue,
     forcats
-URL: http://visdat.njtierney.com/, https://github.com/ropensci/visdat
+URL: http://ropensci.github.io/visdat, http://visdat.njtierney.com/, https://github.com/ropensci/visdat
 BugReports: https://github.com/ropensci/visdat/issues
 Suggests:
     testthat (>= 3.0.0),
