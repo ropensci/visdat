@@ -15,7 +15,7 @@
 #'   \item [vis_expect()]
 #' }
 #'
-#' Learn more about visdat at \url{www.njtierney.com/visdat/articles/using_visdat.html}
+#' Learn more about visdat at \url{http://visdat.njtierney.com/articles/using_visdat.html}
 #' @name visdat
 #' @docType package
 #' @importFrom magrittr %>%

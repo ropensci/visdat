@@ -125,7 +125,7 @@ need to pass `guess_integer = TRUE.`
 ## New Feature (under development)
 
 - `vis_compare` is a new function that allows you to compare two dataframes of the same dimension. It gives a fairly ugly warning if they are not of the same dimension.
-- `vis_dat` gains a "palette" argument in line with [issue 26](https://github.com/njtierney/visdat/issues/26), drawn from http://colorbrewer2.org/, there are currently three arguments, "default", "qual", and "cb_safe". "default" provides the ggplot defaults, "qual" uses some colour blind **unfriendly** colours, and "cb_safe" provides some colours friendly for colour blindness.
+- `vis_dat` gains a "palette" argument in line with [issue 26](https://github.com/ropensci/visdat/issues/26), drawn from http://colorbrewer2.org/, there are currently three arguments, "default", "qual", and "cb_safe". "default" provides the ggplot defaults, "qual" uses some colour blind **unfriendly** colours, and "cb_safe" provides some colours friendly for colour blindness.
 
 ## Minor Improvements
 
