@@ -1,5 +1,3 @@
-context("vis_expect")
-
 dat_test <- tibble::tribble(
            ~x, ~y,
            -1,  "A",
@@ -17,9 +15,7 @@ vis_expect_plot_show_perc_true <- vis_expect(dat_test,
 
 test_that("vis_expect creates the right plot",{
   skip_on_cran()
-  skip_on_travis()
-  skip_on_appveyor()
-  skip_on_gh_actions()
+  skip_on_ci()
   ver <- as.character(gdtools::version_freetype())
   cat(sprintf("FreeType version: %s\n", ver))
   vdiffr::expect_doppelganger("vis_expect vanilla",
@@ -29,5 +25,8 @@ test_that("vis_expect creates the right plot",{
 })
 
 test_that("vis_expect fails when an object of the wrong class is provided", {
-  testthat::expect_error(vis_expect(AirPassengers, ~.x < 20))
+  expect_snapshot(
+    error = TRUE,
+    vis_expect(AirPassengers, ~.x < 20)
+    )
 })

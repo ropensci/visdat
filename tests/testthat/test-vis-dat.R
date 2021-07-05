@@ -1,5 +1,3 @@
-context("vis_dat")
-
 # try out all the options
 vis_dat_plot <- vis_dat(typical_data)
 vis_dat_plot_sort_type <- vis_dat(typical_data, sort_type = FALSE)
@@ -8,9 +6,7 @@ vis_dat_plot_pal_cb <- vis_dat(typical_data, palette = "cb_safe")
 
 test_that("vis_dat creates the right plot",{
   skip_on_cran()
-  skip_on_travis()
-  skip_on_appveyor()
-  skip_on_gh_actions()
+  skip_on_ci()
   ver <- as.character(gdtools::version_freetype())
   cat(sprintf("FreeType version: %s\n", ver))
   vdiffr::expect_doppelganger("vis_dat vanilla",
@@ -24,17 +20,19 @@ test_that("vis_dat creates the right plot",{
 })
 
 test_that("vis_dat doesn't fail when using diamonds",{
-  msg <- paste0(packageVersion("ggplot2"))
-  cat(msg)
-  expect_is(vis_dat(ggplot2::diamonds), "gg")
+  expect_s3_class(vis_dat(ggplot2::diamonds), "gg")
 })
 
 test_that("vis_dat fails when the wrong palette is provided",{
-  ver <- as.character(gdtools::version_freetype())
-  cat(sprintf("FreeType version: %s\n", ver))
-  expect_error(vis_dat(typical_data, palette = "wat"))
+  expect_snapshot(
+    error = TRUE,
+    vis_dat(typical_data, palette = "wat")
+    )
 })
 
 test_that("vis_dat fails when an object of the wrong class is provided", {
-  testthat::expect_error(vis_dat(AirPassengers))
+  expect_snapshot(
+    error = TRUE,
+    vis_dat(AirPassengers)
+    )
 })
