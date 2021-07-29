@@ -1,4 +1,4 @@
-url: http://visdat.njtierney.com/
+url: http://ropensci.github.io/visdat
 
 template:
   package: rotemplate
