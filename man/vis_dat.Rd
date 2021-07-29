@@ -59,7 +59,7 @@ vis_dat(airquality, palette = "qual")
 
 # if you have a large dataset, you might want to try downsampling:
 \dontrun{
-library(nycflight13)
+library(nycflights13)
 library(dplyr)
 flights \%>\%
   sample_n(1000) \%>\%

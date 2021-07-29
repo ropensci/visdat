@@ -64,7 +64,7 @@ vis_miss(airquality, sort_miss = TRUE)
 
 \dontrun{
 # if you have a large dataset, you might want to try downsampling:
-library(nycflight13)
+library(nycflights13)
 library(dplyr)
 flights \%>\%
   sample_n(1000) \%>\%
