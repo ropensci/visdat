@@ -2,10 +2,6 @@ url: http://ropensci.github.io/visdat
 
 template:
   package: rotemplate
-  params:
-    docsearch:
-      api_key: 9ef7630dc874be89bea2042eec22bebf
-      index_name:  visdat
 
 home:
   links:
