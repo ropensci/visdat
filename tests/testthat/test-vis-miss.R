@@ -53,10 +53,10 @@ test_that("vis_miss correctly aggregate missings in legend",{
   global <- data.frame(x_lab = vis_miss_list$scales$scales[[2]]$labels) %>%
     tidyr::separate(col = "x_lab",sep = "\\(", remove = TRUE, into = c("column","percent")) %>%
     dplyr::mutate(percent = percent %>% stringr::str_replace("%\\)", "") %>% as.numeric())
-  expect_gt(global["Missing \n","percent"] ,28)
+  expect_gt(global[global$column=="Missing \n","percent"] ,28)
 
   global <- data.frame(x_lab = vis_miss_list_sort_rows$scales$scales[[2]]$labels) %>%
     tidyr::separate(col = "x_lab",sep = "\\(", remove = TRUE, into = c("column","percent")) %>%
     dplyr::mutate(percent = percent %>% stringr::str_replace("%\\)", "") %>% as.numeric())
-  expect_gt(global["Missing \n","percent"] ,20)
+  expect_gt(global[global$column=="Missing \n","percent"] ,20)
 })
