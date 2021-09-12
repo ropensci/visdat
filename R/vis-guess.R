@@ -100,7 +100,7 @@ guess_type <- function(x){
   # of about 3. This is faster, for the moment.
 
   output <- character(length(x))
-  nas <- is.na(x)
+  nas <- (x %>% fingerprint() %>% is.na() | is.na(x))
 
   output[!nas] <- vapply(FUN = readr::guess_parser,
                          X = x[!nas],
