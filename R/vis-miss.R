@@ -79,7 +79,11 @@ vis_miss <- function(x,
 
   # make a TRUE/FALSE matrix of the data.
   # This tells us whether it is missing (true) or not (false)
-  x.na <- is.na(x)
+  x.fingerprinted <- x %>%
+    purrr::map_df(fingerprint)
+
+  x.na <- x %>%
+    purrr::map_df(~fingerprint(.x) %>% is.na)
 
   # switch for creating the missing clustering
   if (cluster){
@@ -101,7 +105,7 @@ vis_miss <- function(x,
     # code inspired from https://r-forge.r-project.org/scm/viewvc.php/ ...
     # pkg/R/missing.pattern.plot.R?view=markup&root=mi-dev
     # get the order of columns with highest missingness
-    na_sort <- order(colSums(is.na(x)), decreasing = TRUE)
+    na_sort <- order(colSums(x.na), decreasing = TRUE)
 
     # get the names of those columns
     col_order_index <- names(x)[na_sort]
@@ -129,7 +133,7 @@ vis_miss <- function(x,
 
   if (show_perc) {
 
-    temp <- miss_guide_label(x)
+    temp <- miss_guide_label(x.fingerprinted)
 
     p_miss_lab <- temp$p_miss_lab
 
@@ -168,7 +172,7 @@ vis_miss <- function(x,
       vis_miss_plot +
         ggplot2::scale_x_discrete(position = "top",
                                   labels = label_col_missing_pct(
-                                    x,
+                                    x.fingerprinted,
                                     col_order_index)
         )
       # )
@@ -192,7 +196,7 @@ vis_miss <- function(x,
       ggplot2::scale_x_discrete(position = "top",
                                 limits = col_order_index,
                                 labels = label_col_missing_pct(
-                                  x,
+                                  x.fingerprinted,
                                   col_order_index)
       )
 

@@ -1,3 +1,4 @@
+
 #' Take the fingerprint of a data.frame - find the class or return NA
 #'
 #' `fingerprint` is an internal function that takes the "fingerprint" of a
@@ -11,13 +12,24 @@
 fingerprint <- function(x){
 
   # is the data missing?
-  ifelse(is.na(x),
-         # yes? Leave as is NA
-         yes = NA,
-         # no? make that value no equal to the class of this cell.
-         no = glue::glue_collapse(class(x),
-                                  sep = "\n")
-  )
+  if (!is.list(x)) {
+    ifelse(is.na(x),
+           # yes? Leave as is NA
+           yes = NA,
+           # no? make that value no equal to the class of this cell.
+           no = glue::glue_collapse(class(x),
+                                    sep = "\n")
+    )
+  } else {
+    ifelse(purrr::map_lgl(x,~length(.x)==0),
+           # yes? Leave as is NA
+           yes = NA,
+           # no? make that value no equal to the class of this cell.
+           no = glue::glue_collapse(class(x),
+                                    sep = "\n")
+    )
+
+  }
 } # end function
 
 

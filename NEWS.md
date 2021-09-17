@@ -2,6 +2,7 @@
 
 ## New Feature
 
+* `vis_dat()` `vis_miss()` and `vis_guess()` now render missing values in list-columns (@cregouby #138)
 * A new vignette on 
 
 # visdat 0.6.0 (2021/07/05) "Shibuya, Covet, San Holo"
