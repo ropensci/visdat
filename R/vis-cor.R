@@ -87,9 +87,11 @@ gather_cor <- function(data,
              use = na_action) %>%
     as.data.frame() %>%
     tibble::rownames_to_column() %>%
-    tidyr::gather(key = "key",
-                  value = "value",
-                  -rowname) %>%
+    tidyr::pivot_longer(
+      cols = -rowname,
+      names_to = "key",
+      values_to = "value"
+    ) %>%
     purrr::set_names(c("row_1", "row_2", "value"))
 
 }

@@ -87,9 +87,12 @@ vis_expect <- function(data, expectation, show_perc = TRUE){
   data_expect <- data_expect %>%
     # expect_frame(expectation) %>%
     dplyr::mutate(rows = dplyr::row_number()) %>%
-    tidyr::gather_(key_col = "variable",
-                   value_col = "valueType",
-                   gather_cols = colnames_data)
+    tidyr::pivot_longer(
+      cols = colnames_data,
+      names_to = "variable",
+      values_to = "valueType",
+      values_transform = list(valueType = as.character)
+    )
   data_expect <- data_expect %>%
     dplyr::mutate(variable = factor(variable, levels = colnames_data))
 
