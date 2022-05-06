@@ -27,7 +27,7 @@ reference:
   - title: "Visualise whether a value you expect is in a data frame"
     desc: >
       Visualise where certain conditions or values are TRUE in your data.
-    contents::
+    contents:
       - vis_expect
   - title: "Visualise correlations in a dataframe"
     desc: >
