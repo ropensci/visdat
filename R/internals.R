@@ -304,9 +304,11 @@ all_binary <- function(x, ...){
 test_if_dataframe <- function(x){
 
   msg <- cli::format_error(
-    "{.code vis_dat()} requires a {.cls data.frame}",
-    "the object I see has class{?es}: ",
-    "{.cls {glue::glue_collapse(class(x), sep = ", ")}}"
+    c(
+      "{.code vis_dat()} requires a {.cls data.frame}",
+      "the object I see has class(es): ",
+      "{.cls {glue::glue_collapse(class(x), sep = ', ', last = ', and ')}}"
+    )
   )
 
   if (!inherits(x, "data.frame")) {
@@ -320,9 +322,12 @@ test_if_dataframe <- function(x){
 test_if_all_numeric <- function(data){
 
   msg <- cli::format_error(
-    "data input can only contain numeric values",
-    "Please subset the data to the numeric values you would like.",
-    "{.code dplyr::select(<data>, where(is.numeric))}"
+    c(
+      "data input can only contain numeric values",
+      "Please subset the data to the numeric values you would like.",
+      "{.code dplyr::select(<data>, where(is.numeric))}",
+      "Can be helpful here!"
+    )
   )
 
   if (!all_numeric(data)) {
@@ -336,9 +341,11 @@ test_if_all_numeric <- function(data){
 test_if_all_binary <- function(data){
 
   msg <- cli::format_error(
-    "data input can only contain binary values",
-    "This means values are either 0 or 1, or NA.",
-    "Please subset the data to be binary values, or see {.code ?vis_value.}"
+    c(
+      "data input can only contain binary values",
+      "This means values are either 0 or 1, or NA.",
+      "Please subset the data to be binary values, or see {.code ?vis_value.}"
+    )
   )
 
   if (!all_binary(data)) {
