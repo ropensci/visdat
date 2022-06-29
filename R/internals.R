@@ -48,7 +48,8 @@ vis_gather_ <- function(x){
       names_to = "variable",
       values_to = "valueType",
       values_transform = list(valueType = as.character)
-    )
+    ) %>%
+    dplyr::arrange(rows, variable, valueType)
 }
 
 #' (Internal) Add values of each row as a column
@@ -323,7 +324,7 @@ test_if_all_numeric <- function(data){
 
   msg <- cli::format_error(
     c(
-      "data input can only contain numeric values",
+      "Data input can only contain numeric values",
       "Please subset the data to the numeric values you would like.",
       "{.code dplyr::select(<data>, where(is.numeric))}",
       "Can be helpful here!"

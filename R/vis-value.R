@@ -30,12 +30,15 @@
 vis_value <- function(data,
                       na_colour = "grey90",
                       viridis_option = "D") {
-
   test_if_all_numeric(data)
 
   purrr::map_dfr(data, scale_01) %>%
     vis_gather_() %>%
-    dplyr::mutate(value = vis_extract_value_(data)) %>%
+    dplyr::mutate(
+      value = vis_extract_value_(data),
+      value = as.numeric(value),
+      valueType = as.numeric(valueType)
+    ) %>%
     vis_create_() +
     # change the limits etc.
     ggplot2::guides(fill = ggplot2::guide_legend(title = "Value")) +
