@@ -43,9 +43,13 @@ fingerprint <- function(x){
 vis_gather_ <- function(x){
   x %>%
   dplyr::mutate(rows = dplyr::row_number()) %>%
-    tidyr::gather_(key_col = "variable",
-                   value_col = "valueType",
-                   gather_cols = names(.)[-length(.)])
+    tidyr::pivot_longer(
+      cols = -rows,
+      names_to = "variable",
+      values_to = "valueType",
+      values_transform = list(valueType = as.character)
+    ) %>%
+    dplyr::arrange(rows, variable, valueType)
 }
 
 #' (Internal) Add values of each row as a column
@@ -60,12 +64,15 @@ vis_gather_ <- function(x){
 #'
 vis_extract_value_ <- function(x){
 
-  suppressWarnings(
-    tidyr::gather_(x,
-                   "variable",
-                   "value",
-                   names(x))$value
+  data_longer <- tidyr::pivot_longer(
+    data = x,
+    cols = dplyr::everything(),
+    names_to = "variable",
+    values_to = "value",
+    values_transform = list(value = as.character)
   )
+
+  data_longer$value
 
 }
 
@@ -296,23 +303,57 @@ all_binary <- function(x, ...){
 #' }
 #'
 test_if_dataframe <- function(x){
+
+  msg <- cli::format_error(
+    c(
+      "{.code vis_dat()} requires a {.cls data.frame}",
+      "the object I see has class(es): ",
+      "{.cls {glue::glue_collapse(class(x), sep = ', ', last = ', and ')}}"
+    )
+  )
+
   if (!inherits(x, "data.frame")) {
-    stop("vis_dat requires a data.frame but the object I see has class/es: ",
-         glue::glue_collapse(class(x),
-                             sep = ", "),
-         call. = FALSE)
+    stop(
+      msg,
+      call. = FALSE)
+
   }
 }
 
 test_if_all_numeric <- function(data){
+
+  msg <- cli::format_error(
+    c(
+      "Data input can only contain numeric values",
+      "Please subset the data to the numeric values you would like.",
+      "{.code dplyr::select(<data>, where(is.numeric))}",
+      "Can be helpful here!"
+    )
+  )
+
   if (!all_numeric(data)) {
-    stop("data input can only contain numeric values, please subset the data to the numeric values you would like. dplyr::select_if(data, is.numeric) can be helpful here!")
+    stop(
+      msg,
+      call. = FALSE
+    )
     }
   }
 
 test_if_all_binary <- function(data){
+
+  msg <- cli::format_error(
+    c(
+      "data input can only contain binary values",
+      "This means values are either 0 or 1, or NA.",
+      "Please subset the data to be binary values, or see {.code ?vis_value.}"
+    )
+  )
+
   if (!all_binary(data)) {
-    stop("data input can only contain binary values - this means either 0 or 1, or NA. Please subset the data to be binary values, or see ?vis_value.")
+    stop(
+      msg,
+      call. = FALSE
+      )
   }
 }
 

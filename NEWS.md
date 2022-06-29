@@ -5,6 +5,10 @@
 * `vis_dat()` `vis_miss()` and `vis_guess()` now render missing values in list-columns (@cregouby #138)
 * A new vignette on 
 
+## Bug Fix
+
+* no longer use old version of `gather_` (#141)
+
 # visdat 0.6.0 (2021/07/05) "Shibuya, Covet, San Holo"
 
 ## Bug Fix

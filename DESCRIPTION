@@ -34,7 +34,8 @@ Imports:
     stats,
     tibble,
     glue,
-    forcats
+    forcats,
+    cli
 URL: http://visdat.njtierney.com/, https://github.com/ropensci/visdat
 BugReports: https://github.com/ropensci/visdat/issues
 Suggests:

@@ -9,8 +9,7 @@ test_that("vis_value creates the right plot",{
 })
 
 test_that("vis_value sends an error when used with the wrong data",{
-  expect_snapshot(
-    error = TRUE,
+  expect_snapshot_error(
     vis_value(iris)
     )
 })
