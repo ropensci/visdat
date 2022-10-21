@@ -357,11 +357,16 @@ test_if_all_binary <- function(data){
   }
 }
 
+monotonic <- function(x) all(diff(x) == 0)
+
 #' Scale a vector between 0 and one.
 #'
 #' @param x numeric vector
 #'
 #' @return numeric vector between 0 and 1
 scale_01 <- function(x) {
+  if (monotonic(x)){
+    return((x/x))
+  }
   (x - min(x, na.rm = TRUE)) / diff(range(x, na.rm = TRUE))
 }

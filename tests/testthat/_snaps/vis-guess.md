@@ -1,7 +1,7 @@
 # vis_guess fails when the wrong palette is provided
 
     Code
-      vis_guess(typical_data, palette = "wat")
+      vis_guess(test_data, palette = "wat")
     Error <simpleError>
       palette arguments need to be either 'qual' 'cb_safe' or 'default'
 
