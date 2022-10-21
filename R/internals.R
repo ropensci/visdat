@@ -9,6 +9,9 @@
 #'
 #' @param x a vector
 #'
+#' @keywords internal
+#' @noRd
+#'
 fingerprint <- function(x){
 
   # is the data missing?
@@ -37,6 +40,9 @@ fingerprint <- function(x){
 #'
 #' @param x a dataframe
 #'
+#' @keywords internal
+#' @noRd
+#'
 #' @return data.frame gathered to have columns "variables", "valueType", and a
 #'   row id called "rows".
 #'
@@ -60,6 +66,9 @@ vis_gather_ <- function(x){
 #'
 #' @param x dataframe created from `vis_gather_`
 #'
+#' @keywords internal
+#' @noRd
+#'
 #' @return the x dataframe with the added column `value`.
 #'
 vis_extract_value_ <- function(x){
@@ -80,6 +89,9 @@ vis_extract_value_ <- function(x){
 #'
 #' @param x a dataframe in longformat as transformed by `vis_gather_` and
 #'   `vis_extract_value`.
+#'
+#' @keywords internal
+#' @noRd
 #'
 #' @return a ggplot object
 #'
@@ -115,7 +127,8 @@ vis_create_ <- function(x){
 #'   http://colorbrewer2.org/.
 #'
 #' @return a visdat plot with a particular palette
-#'
+#' @keywords internal
+#' @noRd
 #' @examples
 #'
 #' \dontrun{
@@ -192,7 +205,8 @@ if (palette == "default"){
 #'
 #' @param x data.frame
 #' @param col_order_index the order of the columns
-#' @note internal
+#' @keywords internal
+#' @noRd
 #' @return data.frame containing the missingness percent down to 0.1 percent
 #'
 label_col_missing_pct <- function(x,
@@ -220,6 +234,9 @@ label_col_missing_pct <- function(x,
 #' `miss_guide_label` is an internal function for vis_miss to label the legend.
 #'
 #' @param x is a dataframe passed from vis_miss(x).
+#'
+#' @keywords internal
+#' @noRd
 #'
 #' @return a tibble with two columns `p_miss_lab` and `p_pres_lab`,
 #'   containing the labels to use for present and missing. A dataframe is
@@ -270,8 +287,10 @@ miss_guide_label <- function(x) {
 #'
 #' @return logical - TRUE means that there is a column with numerics, FALSE means that there is a column that is not numeric
 #'
-#' @examples
+#' @keywords internal
+#' @noRd
 #'
+#' @examples
 #'\dontrun{
 #' all_numeric(airquality) # TRUE
 #' all_numeric(iris) # FALSE
@@ -293,6 +312,9 @@ all_binary <- function(x, ...){
 #' @param x object
 #'
 #' @return an error if input (x) is not a data.frame
+#'
+#' @keywords internal
+#' @noRd
 #'
 #' @examples
 #' \dontrun{
@@ -360,6 +382,8 @@ test_if_all_binary <- function(data){
 #' Scale a vector between 0 and one.
 #'
 #' @param x numeric vector
+#' @keywords internal
+#' @noRd
 #'
 #' @return numeric vector between 0 and 1
 scale_01 <- function(x) {

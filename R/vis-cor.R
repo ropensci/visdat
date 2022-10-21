@@ -71,8 +71,10 @@ vis_cor <- function(data,
 #'   "na.or.complete", or "pairwise.complete.obs" (default). This option is
 #'   taken from the `cor` function argument `use`.
 #'
-#'
 #' @return tidy dataframe of correlations
+#'
+#' @keywords internal
+#' @noRd
 #'
 #' @examples
 #' gather_cor(airquality)

@@ -94,6 +94,9 @@ vis_compare <- function(df1,
 #'   and FALSE with "Different", unless it is missing (coded as NA), in which
 #'   case it leaves it as NA.
 #'
+#' @keywords internal
+#' @noRd
+#'
 #' @param x a vector
 #'
 #'

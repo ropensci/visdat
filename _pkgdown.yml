@@ -29,6 +29,16 @@ reference:
       Visualise where certain conditions or values are TRUE in your data.
     contents:
       - vis_expect
+  - title: "Display binary values"
+    desc: >
+      Explore data that is strictly binary
+    contents:
+      - vis_binary
+  - title: "Display all numeric values"
+    desc: >
+      Explore numeric values on the same scale
+    contents:
+      - vis_value
   - title: "Visualise correlations in a dataframe"
     desc: >
       Show the correlation amongst variables in simple function
@@ -39,6 +49,7 @@ reference:
       Potentially reveal other classes in your dataset
     contents:
       - vis_guess
+  - title: internal
 
 navbar:
   left:
