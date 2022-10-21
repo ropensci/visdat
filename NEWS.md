@@ -3,6 +3,7 @@
 ## New Feature
 
 * `vis_dat()` `vis_miss()` and `vis_guess()` now render missing values in list-columns (@cregouby #138)
+* Added `abbreviate_vars()` function to assist with abbreviating data names (#140)
 * A new vignette on 
 
 ## Bug Fix
