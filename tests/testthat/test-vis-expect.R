@@ -16,8 +16,6 @@ vis_expect_plot_show_perc_true <- vis_expect(dat_test,
 test_that("vis_expect creates the right plot",{
   skip_on_cran()
   skip_on_ci()
-  ver <- as.character(gdtools::version_freetype())
-  cat(sprintf("FreeType version: %s\n", ver))
   vdiffr::expect_doppelganger("vis_expect vanilla",
                               vis_expect_plot)
   vdiffr::expect_doppelganger("vis_expect show perc true",
