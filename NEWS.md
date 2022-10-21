@@ -9,6 +9,10 @@
 
 * no longer use old version of `gather_` (#141)
 
+## Misc
+
+* No longer uses gdtools for testing (#145)
+
 # visdat 0.6.0 (2021/07/05) "Shibuya, Covet, San Holo"
 
 ## Bug Fix

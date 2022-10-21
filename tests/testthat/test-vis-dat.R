@@ -7,8 +7,6 @@ vis_dat_plot_pal_cb <- vis_dat(typical_data, palette = "cb_safe")
 test_that("vis_dat creates the right plot",{
   skip_on_cran()
   skip_on_ci()
-  ver <- as.character(gdtools::version_freetype())
-  cat(sprintf("FreeType version: %s\n", ver))
   vdiffr::expect_doppelganger("vis_dat vanilla",
                               vis_dat_plot)
   vdiffr::expect_doppelganger("vis_dat sort_type",
