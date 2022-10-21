@@ -14,7 +14,7 @@ test_that("vis_value sends an error when used with the wrong data",{
     )
 })
 
-dat <- tibble(
+dat <- data.frame(
   constant = 34,
   regular = 1:5,
   sub_regular = c(NA, NA, 1, 2, 34)
