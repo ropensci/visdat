@@ -24,6 +24,11 @@
 #'   `nrow(data.frame) * ncol(data.frame)``). This can be changed. See
 #'   note for more details.
 #'
+#' @param facet bare variable name for a variable you would like to facet
+#'   by. By default there is no facetting. Only one variable can be facetted.
+#'   You can get the data structure using `data_vis_dat` and the facetted
+#'   structure by using `group_by` and then `data_vis_dat`.
+#'
 #' @return `ggplot2` object displaying the type of values in the data frame and
 #'   the position of any missing values.
 #'
@@ -62,7 +67,8 @@ vis_dat <- function(x,
                     sort_type = TRUE,
                     palette = "default",
                     warn_large_data = TRUE,
-                    large_data_size = 900000) {
+                    large_data_size = 900000,
+                    facet) {
 
   # throw error if x not data.frame
   test_if_dataframe(x)
@@ -91,11 +97,19 @@ vis_dat <- function(x,
   }
 
   # reshape the dataframe ready for geom_raster
-  d <- x %>%
-    purrr::map_df(fingerprint) %>%
-    vis_gather_() %>%
-    # get the values here so plotly can make them visible
-    dplyr::mutate(value = vis_extract_value_(x))
+  if (!missing(facet)){
+    d <- x %>%
+      group_by({{ facet }}) %>%
+      data_vis_dat()
+
+    quo_group_by <- rlang::enquo(facet)
+    group_string <- deparse(substitute(facet))
+
+    facet_position <- which(type_order_index == group_string)
+    type_order_index <- type_order_index[-facet_position]
+  } else {
+    d <- data_vis_dat(x)
+  }
 
   # do the plotting
   vis_dat_plot <-
@@ -107,6 +121,11 @@ vis_dat <- function(x,
     ggplot2::scale_x_discrete(limits = type_order_index,
                               position = "top") +
     ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0))
+
+  if (!missing(facet)) {
+    vis_dat_plot <- vis_dat_plot +
+      ggplot2::facet_wrap(facets = dplyr::vars( {{ facet }} ))
+  }
 
   # specify a palette ----------------------------------------------------------
   add_vis_dat_pal(vis_dat_plot, palette)

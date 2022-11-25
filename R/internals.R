@@ -42,7 +42,7 @@ fingerprint <- function(x){
 #'
 vis_gather_ <- function(x){
   x %>%
-  dplyr::mutate(rows = dplyr::row_number()) %>%
+    dplyr::mutate(rows = dplyr::row_number()) %>%
     tidyr::pivot_longer(
       cols = -rows,
       names_to = "variable",
@@ -88,18 +88,20 @@ vis_create_ <- function(x){
   ggplot2::ggplot(data = x,
                   ggplot2::aes_string(x = "variable",
                                       y = "rows",
-                                    # text assists with plotly mouseover
-                                    text = "value")) +
-  ggplot2::geom_raster(ggplot2::aes_string(fill = "valueType")) +
-  ggplot2::theme_minimal() +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45,
-                                                     vjust = 1,
-                                                     hjust = 1)) +
-  ggplot2::labs(x = "",
-                y = "Observations") +
+                                      # text assists with plotly mouseover
+                                      text = "value")) +
+    ggplot2::geom_tile(ggplot2::aes_string(fill = "valueType",
+                                           colour = "valueType")) +
+    ggplot2::theme_minimal() +
+    ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45,
+                                                       vjust = 1,
+                                                       hjust = 1)) +
+    ggplot2::labs(x = "",
+                  y = "Observations") +
     # flip the axes
     ggplot2::scale_y_reverse() +
-    ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0.5))
+    ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0.5)) +
+    ggplot2::guides(colour = "none")
 
 }
 
@@ -125,66 +127,66 @@ vis_create_ <- function(x){
 add_vis_dat_pal <- function(vis_plot, palette){
 
   # palette options: http://docs.ggplot2.org/current/discrete_scale.html
-# qualitative, 6 colours --------------------------------------------------
-vis_pal_qual <- c("#e41a1c", # red
-                      "#ffff33", # yellow
-                      "#ff7f00", # Orange
-                      "#377eb8", # blue
-                      "#4daf4a", # Green
-                      "#984ea3") # Purple
+  # qualitative, 6 colours --------------------------------------------------
+  vis_pal_qual <- c("#e41a1c", # red
+                             "#ffff33", # yellow
+                             "#ff7f00", # Orange
+                             "#377eb8", # blue
+                             "#4daf4a", # Green
+                             "#984ea3") # Purple
 
-# diverging, 6 colours, colour-blind safe -------------------------------
-vis_pal_cb_safe <- c('#d73027', # red
-                         '#fc8d59', # orange
-                         '#fee090', # yellow
-                         '#e0f3f8', # light blue
-                         '#91bfdb', # mid blue
-                         '#4575b4') # dark blue
+  # diverging, 6 colours, colour-blind safe -------------------------------
+  vis_pal_cb_safe <- c('#d73027', # red
+                                '#fc8d59', # orange
+                                '#fee090', # yellow
+                                '#e0f3f8', # light blue
+                                '#91bfdb', # mid blue
+                                '#4575b4') # dark blue
 
-if (palette == "default"){
+  if (palette == "default"){
 
-  vis_plot
+    vis_plot
 
-} else if (palette == "qual") {
+  } else if (palette == "qual") {
 
-  vis_plot +
-    ggplot2::scale_fill_manual(limits = c("character",
-                                          "date",
-                                          "factor",
-                                          "integer",
-                                          "logical",
-                                          "numeric"),
-                               breaks = c("character", # red
-                                          "date", # orange
-                                          "factor", # yellow
-                                          "integer", # light blue
-                                          "logical", # mid blue
-                                          "numeric"), # dark blue
-                               values = vis_pal_qual,
-                               na.value = "grey")
+    vis_plot +
+      ggplot2::scale_fill_manual(limits = c("character",
+                                            "date",
+                                            "factor",
+                                            "integer",
+                                            "logical",
+                                            "numeric"),
+                                 breaks = c("character", # red
+                                            "date", # orange
+                                            "factor", # yellow
+                                            "integer", # light blue
+                                            "logical", # mid blue
+                                            "numeric"), # dark blue
+                                 values = vis_pal_qual,
+                                 na.value = "grey")
 
 
-} else if (palette == "cb_safe") {
+  } else if (palette == "cb_safe") {
 
-  vis_plot +
-    ggplot2::scale_fill_manual(limits = c("character",
-                                          "date",
-                                          "factor",
-                                          "integer",
-                                          "logical",
-                                          "numeric"),
-                               breaks = c("character", # red
-                                          "date", # orange
-                                          "factor", # yellow
-                                          "integer", # light blue
-                                          "logical", # mid blue
-                                          "numeric"), # dark blue
-                               values = vis_pal_cb_safe,
-                               na.value = "grey")
+    vis_plot +
+      ggplot2::scale_fill_manual(limits = c("character",
+                                            "date",
+                                            "factor",
+                                            "integer",
+                                            "logical",
+                                            "numeric"),
+                                 breaks = c("character", # red
+                                            "date", # orange
+                                            "factor", # yellow
+                                            "integer", # light blue
+                                            "logical", # mid blue
+                                            "numeric"), # dark blue
+                                 values = vis_pal_cb_safe,
+                                 na.value = "grey")
 
-} else  {
-  stop("palette arguments need to be either 'qual' 'cb_safe' or 'default'")
-} # close else brace
+  } else  {
+    stop("palette arguments need to be either 'qual' 'cb_safe' or 'default'")
+  } # close else brace
 
 } # close the function
 
@@ -201,7 +203,7 @@ label_col_missing_pct <- function(x,
   # present everything in the right order
 
   labelled_pcts <-
-  purrr::map_df(x, ~round(mean(is.na(.))*100,2))[col_order_index] %>%
+    purrr::map_df(x, ~round(mean(is.na(.))*100,2))[col_order_index] %>%
     purrr::map_chr(function(x){
       dplyr::case_when(
         x == 0 ~  "0%",
@@ -210,7 +212,7 @@ label_col_missing_pct <- function(x,
       )
     })
 
-    glue::glue("{col_order_index} ({labelled_pcts})")
+  glue::glue("{col_order_index} ({labelled_pcts})")
 
 }
 
@@ -253,7 +255,7 @@ miss_guide_label <- function(x) {
 
     p_pres_lab <- glue::glue("Present \n({p_pres}%)")
 
-    }
+  }
 
   label_frame <- tibble::tibble(p_miss_lab,
                                 p_pres_lab)
@@ -336,8 +338,8 @@ test_if_all_numeric <- function(data){
       msg,
       call. = FALSE
     )
-    }
   }
+}
 
 test_if_all_binary <- function(data){
 
@@ -353,7 +355,7 @@ test_if_all_binary <- function(data){
     stop(
       msg,
       call. = FALSE
-      )
+    )
   }
 }
 
@@ -364,4 +366,41 @@ test_if_all_binary <- function(data){
 #' @return numeric vector between 0 and 1
 scale_01 <- function(x) {
   (x - min(x, na.rm = TRUE)) / diff(range(x, na.rm = TRUE))
+}
+
+group_by_fun <- function(data,.fun, ...){
+  tidyr::nest(data) %>%
+    dplyr::mutate(data = purrr::map(data, .fun, ...)) %>%
+    tidyr::unnest(cols = c(data))
+}
+
+data_vis_class_not_implemented <- function(fun){
+  msg <- cli::format_error(
+    c(
+      "We have not (yet) implemented the method for {.code fun} for \\
+      object with class(es): ",
+      "{.cls {glue::glue_collapse(class(x), sep = ', ', last = ', and ')}}"
+    )
+  )
+
+  stop(
+    msg,
+    call. = FALSE
+  )
+
+}
+
+test_if_all_numeric <- function(data){
+  if (!all_numeric(data)) {
+    msg <- cli::format_error(
+      "data input can only contain numeric values",
+      "please subset the data to the numeric values you would like.",
+      "{.code dplyr::select_if(data, is.numeric)} can be helpful here!"
+    )
+
+    stop(
+      msg,
+      call. = FALSE
+    )
+  }
 }
