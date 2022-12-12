@@ -37,7 +37,7 @@ vis_cor <- function(data,
   test_if_all_numeric(data)
 
   if (!missing(facet)){
-    data <- group_by(data, {{ facet }})
+    data <- dplyr::group_by(data, {{ facet }})
   }
 
     cor_data <- data_vis_cor(data,

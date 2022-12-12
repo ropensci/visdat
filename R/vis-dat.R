@@ -99,7 +99,7 @@ vis_dat <- function(x,
   # reshape the dataframe ready for geom_raster
   if (!missing(facet)){
     d <- x %>%
-      group_by({{ facet }}) %>%
+      dplyr::group_by({{ facet }}) %>%
       data_vis_dat()
 
     quo_group_by <- rlang::enquo(facet)

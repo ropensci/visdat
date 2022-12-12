@@ -77,6 +77,8 @@ vis_miss <- function(x,
          downsampling your data, or set argument 'warn_large_data' to FALSE.")
   }
 
+  data_vis_miss(x,
+                cluster)
   # make a TRUE/FALSE matrix of the data.
   # This tells us whether it is missing (true) or not (false)
   x.fingerprinted <- x %>%
