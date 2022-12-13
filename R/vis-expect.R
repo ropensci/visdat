@@ -97,9 +97,9 @@ vis_expect <- function(data, expectation, show_perc = TRUE){
     dplyr::mutate(variable = factor(variable, levels = colnames_data))
 
   vis_expect_plot <- data_expect %>%
-    ggplot2::ggplot(ggplot2::aes_string(x = "variable",
-                                        y = "rows")) +
-    ggplot2::geom_raster(ggplot2::aes_string(fill = "valueType")) +
+    ggplot2::ggplot(ggplot2::aes(x = variable,
+                                 y = rows)) +
+    ggplot2::geom_raster(ggplot2::aes(fill = valueType)) +
     ggplot2::theme_minimal() +
     ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45,
                                                        vjust = 1,
