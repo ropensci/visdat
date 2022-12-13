@@ -86,11 +86,11 @@ vis_extract_value_ <- function(x){
 vis_create_ <- function(x){
 
   ggplot2::ggplot(data = x,
-                  ggplot2::aes_string(x = "variable",
-                                      y = "rows",
+                  ggplot2::aes(x = variable,
+                               y = rows,
                                     # text assists with plotly mouseover
-                                    text = "value")) +
-  ggplot2::geom_raster(ggplot2::aes_string(fill = "valueType")) +
+                                    text = value)) +
+  ggplot2::geom_raster(ggplot2::aes(fill = valueType)) +
   ggplot2::theme_minimal() +
   ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45,
                                                      vjust = 1,
@@ -357,11 +357,16 @@ test_if_all_binary <- function(data){
   }
 }
 
+monotonic <- function(x) all(diff(x) == 0)
+
 #' Scale a vector between 0 and one.
 #'
 #' @param x numeric vector
 #'
 #' @return numeric vector between 0 and 1
 scale_01 <- function(x) {
+  if (monotonic(x)){
+    return((x/x))
+  }
   (x - min(x, na.rm = TRUE)) / diff(range(x, na.rm = TRUE))
 }

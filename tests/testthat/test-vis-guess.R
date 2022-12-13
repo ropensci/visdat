@@ -1,8 +1,9 @@
 # try out all the options
-vis_guess_plot <- vis_guess(typical_data)
-vis_guess_plot_cb_safe <- vis_guess(typical_data, palette = "cb_safe")
-vis_guess_plot_qual <- vis_guess(typical_data, palette = "qual")
-vis_guess_plot_default <- vis_guess(typical_data, palette = "default")
+test_data <- typical_data[c(1:5, 1001:1005),]
+vis_guess_plot <- vis_guess(test_data)
+vis_guess_plot_cb_safe <- vis_guess(test_data, palette = "cb_safe")
+vis_guess_plot_qual <- vis_guess(test_data, palette = "qual")
+vis_guess_plot_default <- vis_guess(test_data, palette = "default")
 
 test_that("vis_guess creates the right plot",{
   skip_on_ci()
@@ -15,7 +16,7 @@ test_that("vis_guess creates the right plot",{
 test_that("vis_guess fails when the wrong palette is provided",{
   expect_snapshot(
     error = TRUE,
-    vis_guess(typical_data, palette = "wat")
+    vis_guess(test_data, palette = "wat")
     )
 })
 
