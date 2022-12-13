@@ -90,8 +90,7 @@ vis_create_ <- function(x){
                                       y = "rows",
                                       # text assists with plotly mouseover
                                       text = "value")) +
-    ggplot2::geom_tile(ggplot2::aes_string(fill = "valueType",
-                                           colour = "valueType")) +
+    ggplot2::geom_raster(ggplot2::aes_string(fill = "valueType")) +
     ggplot2::theme_minimal() +
     ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45,
                                                        vjust = 1,

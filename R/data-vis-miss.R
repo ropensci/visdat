@@ -30,6 +30,7 @@ data_vis_miss.default <- function(x, ...){
 #' Create a tidy dataframe of missing data suitable for plotting
 #'
 #' @param x data.frame
+#' @param cluster logical - whether to cluster missingness. Default is FALSE.
 #'
 #' @return tidy dataframe of missing data
 #'
@@ -38,7 +39,34 @@ data_vis_miss.default <- function(x, ...){
 #'
 #' @rdname data-vis-miss
 #' @export
-data_vis_miss.data.frame <- function(x, ...){
+data_vis_miss.data.frame <- function(x, cluster = FALSE, ...){
+
+  x.na <- x %>%
+    purrr::map_df(~fingerprint(.x) %>% is.na)
+
+  # switch for creating the missing clustering
+  if (cluster){
+
+    # this retrieves a row order of the clustered missingness
+    row_order_index <-
+      stats::dist(x.na*1) %>%
+      stats::hclust(method = "mcquitty") %>%
+      stats::as.dendrogram() %>%
+      stats::order.dendrogram()
+
+  } else {
+    row_order_index <- seq_len(nrow(x))
+  } # end else
+
+  # Arranged data by dendrogram order index
+
+  # gather the variables together for plotting
+  # here we now have a column of the row number (row),
+  # then the variable(variables),
+  # then the contents of that variable (value)
+  dat_pre_vis <- as.data.frame(x.na[row_order_index , ])
+
+  dat_pre_vis
 
 }
 

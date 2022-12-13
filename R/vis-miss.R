@@ -66,7 +66,8 @@ vis_miss <- function(x,
                      show_perc = TRUE,
                      show_perc_col = TRUE,
                      large_data_size = 900000,
-                     warn_large_data = TRUE){
+                     warn_large_data = TRUE,
+                     facet = NULL){
 
   # throw error if x not data.frame
   test_if_dataframe(x)
@@ -77,29 +78,6 @@ vis_miss <- function(x,
          downsampling your data, or set argument 'warn_large_data' to FALSE.")
   }
 
-  data_vis_miss(x,
-                cluster)
-  # make a TRUE/FALSE matrix of the data.
-  # This tells us whether it is missing (true) or not (false)
-  x.fingerprinted <- x %>%
-    purrr::map_df(fingerprint)
-
-  x.na <- x %>%
-    purrr::map_df(~fingerprint(.x) %>% is.na)
-
-  # switch for creating the missing clustering
-  if (cluster){
-
-    # this retrieves a row order of the clustered missingness
-    row_order_index <-
-      stats::dist(x.na*1) %>%
-      stats::hclust(method = "mcquitty") %>%
-      stats::as.dendrogram() %>%
-      stats::order.dendrogram()
-
-  } else {
-    row_order_index <- seq_len(nrow(x))
-  } # end else
 
   if (sort_miss) {
 
@@ -107,7 +85,7 @@ vis_miss <- function(x,
     # code inspired from https://r-forge.r-project.org/scm/viewvc.php/ ...
     # pkg/R/missing.pattern.plot.R?view=markup&root=mi-dev
     # get the order of columns with highest missingness
-    na_sort <- order(colSums(x.na), decreasing = TRUE)
+    na_sort <- order(colSums(is.na(x)), decreasing = TRUE)
 
     # get the names of those columns
     col_order_index <- names(x)[na_sort]
@@ -118,24 +96,37 @@ vis_miss <- function(x,
 
   }
 
-  # Arranged data by dendrogram order index
 
-  # gather the variables together for plotting
-  # here we now have a column of the row number (row),
-  # then the variable(variables),
-  # then the contents of that variable (value)
-  dat_pre_vis <- as.data.frame(x.na[row_order_index , ])
+  # reshape the dataframe ready for geom_raster
+  if (!missing(facet)){
+    x_na <- x %>%
+      dplyr::group_by({{ facet }}) %>%
+      data_vis_miss(cluster)
 
-  d <- dat_pre_vis %>%
+    quo_group_by <- rlang::enquo(facet)
+    group_string <- deparse(substitute(facet))
+
+    facet_position <- which(col_order_index == group_string)
+    col_order_index <- col_order_index[-facet_position]
+  } else {
+    x_na <- data_vis_miss(x, cluster)
+  }
+
+  d <- x_na %>%
     vis_gather_() %>%
     # add info for plotly mousover
-    dplyr::mutate(value = vis_extract_value_(dat_pre_vis))
+    dplyr::mutate(value = vis_extract_value_(x_na))
 
   # calculate the overall % missingness to display in legend -------------------
 
   if (show_perc) {
 
-    temp <- miss_guide_label(x.fingerprinted)
+    # make a TRUE/FALSE matrix of the data.
+    # This tells us whether it is missing (true) or not (false)
+    x_fingerprinted <- x %>%
+      purrr::map_df(fingerprint)
+
+    temp <- miss_guide_label(x_fingerprinted)
 
     p_miss_lab <- temp$p_miss_lab
 
@@ -171,10 +162,10 @@ vis_miss <- function(x,
     if (show_perc_col) {
       return(
         # print(
-      vis_miss_plot +
+        vis_miss_plot <- vis_miss_plot +
         ggplot2::scale_x_discrete(position = "top",
                                   labels = label_col_missing_pct(
-                                    x.fingerprinted,
+                                    x_fingerprinted,
                                     col_order_index)
         )
       # )
@@ -182,7 +173,7 @@ vis_miss <- function(x,
     } else if (!show_perc_col) {
       return(
         # print(
-      vis_miss_plot +
+        vis_miss_plot <- vis_miss_plot +
         ggplot2::scale_x_discrete(position = "top",
                                   labels = col_order_index)
       # )
@@ -194,19 +185,26 @@ vis_miss <- function(x,
   if (show_perc_col) {
 
     # flip the axes, add the info about limits
-    vis_miss_plot +
+    vis_miss_plot <- vis_miss_plot +
       ggplot2::scale_x_discrete(position = "top",
                                 limits = col_order_index,
                                 labels = label_col_missing_pct(
-                                  x.fingerprinted,
+                                  x_fingerprinted,
                                   col_order_index)
       )
 
   } else {
-    vis_miss_plot +
+    vis_miss_plot <- vis_miss_plot +
       ggplot2::scale_x_discrete(position = "top",
                                 limits = col_order_index)
   }
+
+  if (!missing(facet)) {
+    vis_miss_plot <- vis_miss_plot +
+      ggplot2::facet_wrap(facets = dplyr::vars( {{ facet }} ))
+  }
+
+  return(vis_miss_plot)
 
   # guides(fill = guide_legend(title = "Type"))
   # Thanks to
