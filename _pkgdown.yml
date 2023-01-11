@@ -56,6 +56,11 @@ reference:
       - dat_bin
       - typical_data
       - typical_data_large
+  - title: "Misc helper functions"
+    desc: >
+      Functions that might be useful for users
+    contents:
+      - abbreviate_vars
 
 navbar:
   left:
