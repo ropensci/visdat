@@ -39,6 +39,23 @@ reference:
       Potentially reveal other classes in your dataset
     contents:
       - vis_guess
+  - title: "Display binary values (0,1) in a data frame"
+    desc: >
+      Explore data that is only binary in your data
+    contents:
+      - vis_binary
+  - title: "Display the values of each cell"
+    desc: >
+      Potentially reveal hidden patterns by seeing scaled values
+    contents:
+      - vis_value
+  - title: "Example data provided with visdat"
+    desc: >
+      Data is provided for exploring different functions in visdat
+    contents:
+      - dat_bin
+      - typical_data
+      - typical_data_large
 
 navbar:
   left:
