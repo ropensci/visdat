@@ -1,10 +1,10 @@
 pandoc: 2.7.3
-pkgdown: 1.6.1
+pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
   customising-colour-palettes: customising-colour-palettes.html
   using_visdat: using_visdat.html
-last_built: 2021-09-17T15:52Z
+last_built: 2023-01-11T22:58Z
 urls:
   reference: http://ropensci.github.io/visdat/reference
   article: http://ropensci.github.io/visdat/articles
