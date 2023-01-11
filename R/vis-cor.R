@@ -73,11 +73,11 @@ vis_cor <- function(data,
 #'
 #'
 #' @return tidy dataframe of correlations
+#' @keywords internal
+#' @noRd
 #'
 #' @examples
 #' gather_cor(airquality)
-#'
-#' @export
 gather_cor <- function(data,
                        cor_method = "pearson",
                        na_action = "pairwise.complete.obs"){

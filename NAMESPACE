@@ -2,7 +2,6 @@
 
 export("%>%")
 export(abbreviate_vars)
-export(gather_cor)
 export(vis_binary)
 export(vis_compare)
 export(vis_cor)
