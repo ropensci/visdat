@@ -53,16 +53,16 @@ vis_compare <- function(df1,
 
   # then we plot it
   ggplot2::ggplot(data = d,
-                  ggplot2::aes_string(
-                    x = "variable",
-                    y = "rows")) +
+                  ggplot2::aes(
+                    x = variable,
+                    y = rows)) +
                     # text assists with plotly mouseover
                     # text = c("value_df1", "value_df2"))) +
     # this test code has been removed as ggplot2 version 3.0.0
     # breaks.
     # Logged in issue https://github.com/ropensci/visdat/issues/89
 
-    ggplot2::geom_raster(ggplot2::aes_string(fill = "valueType")) +
+    ggplot2::geom_raster(ggplot2::aes(fill = valueType)) +
     ggplot2::theme_minimal() +
     ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45,
                                      vjust = 1,

@@ -13,3 +13,20 @@ test_that("vis_value sends an error when used with the wrong data",{
     vis_value(iris)
     )
 })
+
+dat <- data.frame(
+  constant = 34,
+  regular = 1:5,
+  sub_regular = c(NA, NA, 1, 2, 34)
+)
+
+vis_value_constant <- vis_value(dat, na_colour = "red")
+
+test_that("vis_value works when there is data of constant value", {
+  skip_on_cran()
+  skip_on_ci()
+  vdiffr::expect_doppelganger("vis_value constant",
+                              vis_value_constant)
+
+})
+

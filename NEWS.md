@@ -11,6 +11,8 @@
 ## Bug Fix
 
 * no longer use old version of `gather_` (#141)
+* resolve bug where `vis_value()` displayed constant values as NA values (#128) - these constant values are now shown as 1.
+* removed use of the now deprecated "aes_string" from ggplot2
 
 ## Misc
 
