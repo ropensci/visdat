@@ -64,9 +64,12 @@ data_vis_miss.data.frame <- function(x, cluster = FALSE, ...){
   # here we now have a column of the row number (row),
   # then the variable(variables),
   # then the contents of that variable (value)
-  dat_pre_vis <- as.data.frame(x.na[row_order_index , ])
+  vis_miss_data <- as.data.frame(x.na[row_order_index , ])
 
-  dat_pre_vis
+  vis_miss_data %>%
+    vis_gather_() %>%
+    # add info for plotly mousover
+    dplyr::mutate(value = vis_extract_value_(vis_miss_data))
 
 }
 

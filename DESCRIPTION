@@ -23,7 +23,7 @@ Depends:
     R (>= 3.2.2)
 License: MIT + file LICENSE
 LazyData: true
-RoxygenNote: 7.2.2
+RoxygenNote: 7.2.3
 Imports:
     ggplot2,
     tidyr,
@@ -35,7 +35,8 @@ Imports:
     tibble,
     glue,
     forcats,
-    cli
+    cli,
+    scales
 URL: http://visdat.njtierney.com/, https://github.com/ropensci/visdat
 BugReports: https://github.com/ropensci/visdat/issues
 Suggests:

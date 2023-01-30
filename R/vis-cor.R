@@ -56,9 +56,9 @@ vis_cor <- function(data,
 
 vis_cor_create <- function(data){
   ggplot2::ggplot(data = data,
-                  ggplot2::aes_string(x = "row_1",
-                                      y = "row_2",
-                                      fill = "value")) +
+                  ggplot2::aes(x = row_1,
+                               y = row_2,
+                               fill = value)) +
     ggplot2::geom_raster() +
     # colours from scico::scico(3, palette = "vik")
     ggplot2::scale_fill_gradient2(low = "#001260",# blue

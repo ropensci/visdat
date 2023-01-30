@@ -11,7 +11,8 @@ vis_miss(
   show_perc = TRUE,
   show_perc_col = TRUE,
   large_data_size = 9e+05,
-  warn_large_data = TRUE
+  warn_large_data = TRUE,
+  facet
 )
 }
 \arguments{
@@ -28,7 +29,10 @@ Default value is FALSE.}
 in the whole dataset into the legend. Default value is TRUE.}
 
 \item{show_perc_col}{logical. TRUE adds in the \\% missing data in a given
-column into the x axis. Can be disabled with FALSE. Default value is TRUE.}
+column into the x axis. Can be disabled with FALSE. Default value is TRUE.
+No missingness percentage column information will be presented when \code{facet}
+argument is used. Please see the \code{naniar} package to provide missingness
+summaries over groups.}
 
 \item{large_data_size}{integer default is 900000 (given by
 `nrow(data.frame) * ncol(data.frame)``). This can be changed. See
@@ -36,6 +40,11 @@ note for more details.}
 
 \item{warn_large_data}{logical - warn if there is large data? Default is TRUE
 see note for more details}
+
+\item{facet}{(optional) bare variable name, if you want to create a faceted
+plot, with one plot per level of the variable. No missingness percentage
+column information will be presented when \code{facet} argument is used. Please
+see the \code{naniar} package to provide missingness summaries over groups.}
 }
 \value{
 \code{ggplot2} object displaying the position of missing values in the
@@ -61,6 +70,8 @@ vis_miss(airquality)
 vis_miss(airquality, cluster = TRUE)
 
 vis_miss(airquality, sort_miss = TRUE)
+
+vis_miss(airquality, facet = Month)
 
 \dontrun{
 # if you have a large dataset, you might want to try downsampling:

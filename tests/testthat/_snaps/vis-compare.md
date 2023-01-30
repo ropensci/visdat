@@ -9,7 +9,7 @@
 
     Code
       vis_compare(iris, AirPassengers)
-    Error <simpleError>
+    Error <rlang_error>
       `vis_dat()` requires a <data.frame>
       the object I see has class(es):
       <ts>
@@ -18,7 +18,7 @@
 
     Code
       vis_compare(AirPassengers, iris)
-    Error <simpleError>
+    Error <rlang_error>
       `vis_dat()` requires a <data.frame>
       the object I see has class(es):
       <ts>
@@ -27,7 +27,7 @@
 
     Code
       vis_compare(AirPassengers, AirPassengers)
-    Error <simpleError>
+    Error <rlang_error>
       `vis_dat()` requires a <data.frame>
       the object I see has class(es):
       <ts>

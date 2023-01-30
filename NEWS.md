@@ -7,6 +7,7 @@
 * A new vignette on 
 * implemented facetting in `vis_dat()` and `vis_cor()` see (#78).
 * Implemented data methods for plots with `data_vis_dat()`, and `data_vis_dat()` see (#78).
+* Percentage missing in columns for `vis_miss()` is now rounding to integers - for more accurate representation of missingness summaries please use the `naniar` R package.
 
 ## Bug Fix
 

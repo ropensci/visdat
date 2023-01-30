@@ -31,7 +31,7 @@ data_vis_dat.default <- function(x, ...){
 #' @export
 data_vis_dat.data.frame <- function(x, ...){
   x %>%
-    purrr::map_df(fingerprint) %>%
+    fingerprint_df() %>%
     vis_gather_() %>%
     # get the values here so plotly can make them visible
     dplyr::mutate(value = vis_extract_value_(x))

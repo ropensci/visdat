@@ -12,7 +12,7 @@ data_vis_miss(x, ...)
 
 \method{data_vis_miss}{default}(x, ...)
 
-\method{data_vis_miss}{data.frame}(x, cluster, ...)
+\method{data_vis_miss}{data.frame}(x, cluster = FALSE, ...)
 
 \method{data_vis_miss}{grouped_df}(x, ...)
 }
@@ -21,7 +21,7 @@ data_vis_miss(x, ...)
 
 \item{...}{extra arguments (currently unused)}
 
-\item{cluster}{logical - whether to cluster the missing data}
+\item{cluster}{logical - whether to cluster missingness. Default is FALSE.}
 }
 \value{
 data frame

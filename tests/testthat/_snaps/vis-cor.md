@@ -2,14 +2,17 @@
 
     Code
       vis_cor(iris)
-    Error <simpleError>
-      data input can only contain numeric values, please subset the data to the numeric values you would like. dplyr::select_if(data, is.numeric) can be helpful here!
+    Error <rlang_error>
+      Data input can only contain numeric values
+      Please subset the data to the numeric values you would like.
+      `dplyr::select(<data>, where(is.numeric))`
+      Can be helpful here!
 
 # vis_cor fails when an object of the wrong class is provided
 
     Code
       vis_cor(AirPassengers)
-    Error <simpleError>
+    Error <rlang_error>
       `vis_dat()` requires a <data.frame>
       the object I see has class(es):
       <ts>

@@ -2,7 +2,7 @@
 
     Code
       vis_expect(AirPassengers, ~ .x < 20)
-    Error <simpleError>
+    Error <rlang_error>
       `vis_dat()` requires a <data.frame>
       the object I see has class(es):
       <ts>

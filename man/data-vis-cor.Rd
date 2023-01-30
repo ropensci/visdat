@@ -12,7 +12,12 @@ data_vis_cor(x, ...)
 
 \method{data_vis_cor}{default}(x, ...)
 
-\method{data_vis_cor}{data.frame}(x, cor_method = "pearson", na_action = "pairwise.complete.obs")
+\method{data_vis_cor}{data.frame}(
+  x,
+  cor_method = "pearson",
+  na_action = "pairwise.complete.obs",
+  ...
+)
 
 \method{data_vis_cor}{grouped_df}(x, ...)
 }

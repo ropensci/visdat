@@ -32,6 +32,17 @@ fingerprint <- function(x){
   }
 } # end function
 
+#' Run fingerprint on a dataframe
+#'
+#' @param x data frame
+#'
+#' @return data frame with column types and NA values
+#' @noRd
+#' @note internal
+fingerprint_df <- function(x){
+  purrr::map_df(x, fingerprint)
+}
+
 
 #' (Internal) Gather rows into a format appropriate for grid visualisation
 #'
@@ -201,13 +212,12 @@ label_col_missing_pct <- function(x,
 
   # present everything in the right order
 
-  labelled_pcts <-
-    purrr::map_df(x, ~round(mean(is.na(.))*100,2))[col_order_index] %>%
+  labelled_pcts <- colMeans(is.na(x))[col_order_index] %>%
     purrr::map_chr(function(x){
       dplyr::case_when(
         x == 0 ~  "0%",
-        x >= 0.1 ~ as.character(glue::glue("{x}%")),
-        x < 0.1 ~ "<0.1%"
+        x >= 0.001 ~ scales::percent(x, accuracy = 1),
+        x < 0.001 ~ "<0.1%"
       )
     })
 
@@ -305,55 +315,39 @@ all_binary <- function(x, ...){
 #'
 test_if_dataframe <- function(x){
 
-  msg <- cli::format_error(
-    c(
-      "{.code vis_dat()} requires a {.cls data.frame}",
-      "the object I see has class(es): ",
-      "{.cls {glue::glue_collapse(class(x), sep = ', ', last = ', and ')}}"
-    )
-  )
-
   if (!inherits(x, "data.frame")) {
-    stop(
-      msg,
-      call. = FALSE)
-
+    cli::cli_abort(
+      c(
+        "{.code vis_dat()} requires a {.cls data.frame}",
+        "the object I see has class(es): ",
+        "{.cls {glue::glue_collapse(class(x), sep = ', ', last = ', and ')}}"
+      )
+    )
   }
 }
 
 test_if_all_numeric <- function(data){
-
-  msg <- cli::format_error(
-    c(
-      "Data input can only contain numeric values",
-      "Please subset the data to the numeric values you would like.",
-      "{.code dplyr::select(<data>, where(is.numeric))}",
-      "Can be helpful here!"
-    )
-  )
-
   if (!all_numeric(data)) {
-    stop(
-      msg,
-      call. = FALSE
+    cli::cli_abort(
+      c(
+        "Data input can only contain numeric values",
+        "Please subset the data to the numeric values you would like.",
+        "{.code dplyr::select(<data>, where(is.numeric))}",
+        "Can be helpful here!"
+      )
     )
   }
 }
 
 test_if_all_binary <- function(data){
 
-  msg <- cli::format_error(
-    c(
-      "data input can only contain binary values",
-      "This means values are either 0 or 1, or NA.",
-      "Please subset the data to be binary values, or see {.code ?vis_value.}"
-    )
-  )
-
   if (!all_binary(data)) {
-    stop(
-      msg,
-      call. = FALSE
+    cli::cli_abort(
+      c(
+        "data input can only contain binary values",
+        "This means values are either 0 or 1, or NA.",
+        "Please subset the data to be binary values, or see {.code ?vis_value.}"
+      )
     )
   }
 }
@@ -379,32 +373,30 @@ group_by_fun <- function(data,.fun, ...){
 }
 
 data_vis_class_not_implemented <- function(fun){
-  msg <- cli::format_error(
+  cli::cli_abort(
     c(
       "We have not (yet) implemented the method for {.code fun} for \\
       object with class(es): ",
       "{.cls {glue::glue_collapse(class(x), sep = ', ', last = ', and ')}}"
     )
   )
-
-  stop(
-    msg,
-    call. = FALSE
-  )
-
 }
 
-test_if_all_numeric <- function(data){
-  if (!all_numeric(data)) {
-    msg <- cli::format_error(
-      "data input can only contain numeric values",
-      "please subset the data to the numeric values you would like.",
-      "{.code dplyr::select_if(data, is.numeric)} can be helpful here!"
-    )
+update_col_order_index <- function(col_order_index, facet, env = environment()){
+  group_string <- deparse(substitute(facet, env = env))
 
-    stop(
-      msg,
-      call. = FALSE
-    )
-  }
+  facet_position <- which(col_order_index == group_string)
+  col_order_index <- col_order_index[-facet_position]
 }
+
+
+ordered_col_miss_names <- function(x){
+  # order by column missingness, then get their names
+  # inspired from https://r-forge.r-project.org/scm/viewvc.php/pkg/R/...
+  # missing.pattern.plot.R?view=markup&root=mi-dev
+  na_sort <- order(colSums(is.na(x)), decreasing = TRUE)
+  col_order_index <- names(x)[na_sort]
+  col_order_index
+}
+
+

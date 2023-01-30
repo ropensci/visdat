@@ -47,8 +47,9 @@ data_vis_cor.default <- function(x, ...){
 #' @rdname data-vis-cor
 #' @export
 data_vis_cor.data.frame <- function(x,
-                         cor_method = "pearson",
-                         na_action = "pairwise.complete.obs"){
+                                    cor_method = "pearson",
+                                    na_action = "pairwise.complete.obs",
+                                    ...){
 
   stats::cor(x,
              method = cor_method,

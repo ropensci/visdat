@@ -88,37 +88,34 @@ vis_dat <- function(x,
                                                           sep = "\n"))
     )
     # get the names of those columns
-    type_order_index <- names(x)[type_sort]
+    col_order_index <- names(x)[type_sort]
 
   } else {
     # this means that the order remains the same as the dataframe.
-    type_order_index <- names(x)
+    col_order_index <- names(x)
 
   }
 
   # reshape the dataframe ready for geom_raster
   if (!missing(facet)){
-    d <- x %>%
+    vis_dat_data <- x %>%
       dplyr::group_by({{ facet }}) %>%
       data_vis_dat()
 
-    quo_group_by <- rlang::enquo(facet)
-    group_string <- deparse(substitute(facet))
+    col_order_index <- update_col_order_index(col_order_index, facet)
 
-    facet_position <- which(type_order_index == group_string)
-    type_order_index <- type_order_index[-facet_position]
   } else {
-    d <- data_vis_dat(x)
+    vis_dat_data <- data_vis_dat(x)
   }
 
   # do the plotting
   vis_dat_plot <-
     # add the boilerplate
-    vis_create_(d) +
+    vis_create_(vis_dat_data) +
     # change the limits etc.
     ggplot2::guides(fill = ggplot2::guide_legend(title = "Type")) +
     # add info about the axes
-    ggplot2::scale_x_discrete(limits = type_order_index,
+    ggplot2::scale_x_discrete(limits = col_order_index,
                               position = "top") +
     ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0))
 
