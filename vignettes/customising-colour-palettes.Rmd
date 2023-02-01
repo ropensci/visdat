@@ -87,5 +87,5 @@ vis_dat(typical_data) +
 Happy colour palette exploring! You might want to take a look at some of the following colour palettes from other packages:
 
 - [scico](https://github.com/thomasp85/scico#ggplot2-support)
-- [colorspace](https://cran.r-project.org/web/packages/colorspace/vignettes/colorspace.html#Usage_with_ggplot2)
+- [colorspace](https://cran.r-project.org/package=colorspace/vignettes/colorspace.html#Usage_with_ggplot2)
 - [wesanderson](https://github.com/karthik/wesanderson#palettes)

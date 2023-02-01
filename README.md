@@ -9,7 +9,7 @@
 Badge](https://badges.ropensci.org/87_status.svg)](https://github.com/ropensci/software-review/issues/87)[![JOSS
 status](https://joss.theoj.org/papers/10.21105/joss.00355/status.svg)](https://joss.theoj.org/papers/10.21105/joss.00355)[![DOI](https://zenodo.org/badge/50553382.svg)](https://zenodo.org/badge/latestdoi/50553382)[![R-CMD-check](https://github.com/ropensci/visdat/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ropensci/visdat/actions/workflows/R-CMD-check.yaml)[![Codecov
 test
-coverage](https://codecov.io/gh/ropensci/visdat/branch/master/graph/badge.svg)](https://codecov.io/gh/ropensci/visdat?branch=master)[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/visdat)](https://cran.r-project.org/package=visdat)[![CRAN
+coverage](https://codecov.io/gh/ropensci/visdat/branch/master/graph/badge.svg)](https://app.codecov.io/gh/ropensci/visdat?branch=master)[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/visdat)](https://cran.r-project.org/package=visdat)[![CRAN
 Logs](http://cranlogs.r-pkg.org/badges/visdat)](https://CRAN.R-project.org/package=visdat)[![Project
 Status: Active – The project has reached a stable, usable state and is
 being actively
@@ -70,8 +70,8 @@ by displaying the variable classes in a dataframe as a plot with
 
 - `vis_binary()` visualise the occurrence of binary values in your data
 
-You can read more about visdat in the vignette, [“using
-visdat”](http://visdat.njtierney.com/articles/using_visdat.html).
+You can read more about visdat in the vignette, \[“using
+visdat”\]<https://docs.ropensci.org/visdat/articles/using_visdat.html>).
 
 ## Code of Conduct
 

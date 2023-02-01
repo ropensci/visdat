@@ -20,7 +20,7 @@ It's main functions are:
 \item \code{\link[=vis_expect]{vis_expect()}}
 }
 
-Learn more about visdat at \url{http://visdat.njtierney.com/articles/using_visdat.html}
+Learn more about visdat at \url{https://docs.ropensci.org/visdat/}
 }
 \author{
 \strong{Maintainer}: Nicholas Tierney \email{nicholas.tierney@gmail.com} (\href{https://orcid.org/0000-0003-1460-8722}{ORCID})
