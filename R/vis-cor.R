@@ -32,7 +32,6 @@ vis_cor <- function(data,
                     facet,
                     ...){
 
-  # throw error if data not data.frame
   test_if_dataframe(data)
   test_if_all_numeric(data)
 

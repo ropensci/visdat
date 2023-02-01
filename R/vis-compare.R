@@ -27,17 +27,18 @@ vis_compare <- function(df1,
   # sort_match logical TRUE/FALSE.
   # TRUE arranges the columns in order of most matches.
 
-  # make a TRUE/FALSE matrix of the data.
-  # Tells us whether it is the same (true) as the other dataset, or not (false)
-
-  # throw error if df1 not data.frame
   test_if_dataframe(df1)
-
-  # throw error if df2 not data.frame
   test_if_dataframe(df2)
 
   if (!identical(dim(df1), dim(df2))) {
-    stop("vis_compare requires identical dimensions of df1 and df2")
+    cli::cli_abort(
+      c(
+        "{.fun vis_compare} requires identical dimensions of {.arg df1} and \\
+        {.arg df2}",
+        "The dimensions of {.arg df1} are: {dim(df1)}",
+        "The dimensions of {.arg df2} are: {dim(df2)}"
+        )
+    )
   }
 
   v_identical <- Vectorize(identical)

@@ -195,7 +195,12 @@ add_vis_dat_pal <- function(vis_plot, palette){
                                  na.value = "grey")
 
   } else  {
-    stop("palette arguments need to be either 'qual' 'cb_safe' or 'default'")
+    cli::cli_abort(
+      c(
+        "Palette arguments need to be one of: 'qual', 'cb_safe', or 'default'",
+        "You palette argument was: {.arg {palette}}"
+      )
+    )
   } # close else brace
 
 } # close the function
@@ -389,14 +394,32 @@ update_col_order_index <- function(col_order_index, facet, env = environment()){
   col_order_index <- col_order_index[-facet_position]
 }
 
-
-ordered_col_miss_names <- function(x){
-  # order by column missingness, then get their names
-  # inspired from https://r-forge.r-project.org/scm/viewvc.php/pkg/R/...
-  # missing.pattern.plot.R?view=markup&root=mi-dev
-  na_sort <- order(colSums(is.na(x)), decreasing = TRUE)
-  col_order_index <- names(x)[na_sort]
-  col_order_index
+test_if_large_data <- function(x, large_data_size, warn_large_data){
+  if (ncol(x) * nrow(x) > large_data_size && warn_large_data){
+    cli::cli_abort(
+      c(
+        "Data exceeds recommended size for visualisation",
+        "Consider downsampling your data with {.fn dplyr::slice_sample}",
+        "Or set argument, {.arg warn_large_data} = {.arg FALSE}"
+      )
+    )
+  }
 }
 
+fast_n_miss_col <- function(x) colSums(is.na(x))
 
+n_miss_col <- function(data, sort = FALSE){
+  # if no list columns
+  any_list <- any(purrr::map_lgl(data, is.list))
+  if (!any_list){
+    n_missing_cols <- fast_n_miss_col(data)
+  } else if (any_list){
+    n_missing_cols <- fast_n_miss_col(fingerprint_df(data))
+  }
+
+ if (sort){
+   n_missing_cols <- sort(n_missing_cols, decreasing = TRUE)
+ }
+
+  n_missing_cols
+}

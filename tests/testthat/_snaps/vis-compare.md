@@ -2,8 +2,10 @@
 
     Code
       vis_compare(iris, iris_add)
-    Error <simpleError>
-      vis_compare requires identical dimensions of df1 and df2
+    Error <rlang_error>
+      `vis_compare()` requires identical dimensions of `df1` and `df2`
+      The dimensions of `df1` are: 150 and 5
+      The dimensions of `df2` are: 150 and 6
 
 # vis_compare fails when an object of the wrong class is provided
 

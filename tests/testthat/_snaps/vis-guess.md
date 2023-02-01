@@ -2,8 +2,9 @@
 
     Code
       vis_guess(test_data, palette = "wat")
-    Error <simpleError>
-      palette arguments need to be either 'qual' 'cb_safe' or 'default'
+    Error <rlang_error>
+      Palette arguments need to be one of: 'qual', 'cb_safe', or 'default'
+      You palette argument was: `wat`
 
 # vis_guess fails when an object of the wrong class is provided
 

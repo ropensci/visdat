@@ -70,14 +70,8 @@ vis_dat <- function(x,
                     large_data_size = 900000,
                     facet) {
 
-  # throw error if x not data.frame
   test_if_dataframe(x)
-
-  # add warning for large data
-  if (ncol(x) * nrow(x) > large_data_size && warn_large_data){
-    stop("Data exceeds recommended size for visualisation, please consider
-         downsampling your data, or set argument 'warn_large_data' to FALSE.")
-  }
+  test_if_large_data(x, large_data_size, warn_large_data)
 
   if (sort_type) {
 

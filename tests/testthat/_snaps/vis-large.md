@@ -2,15 +2,17 @@
 
     Code
       vis_dat(big_df)
-    Error <simpleError>
-      Data exceeds recommended size for visualisation, please consider
-               downsampling your data, or set argument 'warn_large_data' to FALSE.
+    Error <rlang_error>
+      Data exceeds recommended size for visualisation
+      Consider downsampling your data with `dplyr::slice_sample()`
+      Or set argument, `warn_large_data` = `FALSE`
 
 ---
 
     Code
       vis_miss(big_df)
-    Error <simpleError>
-      Data exceeds recommended size for visualisation, please consider
-               downsampling your data, or set argument 'warn_large_data' to FALSE.
+    Error <rlang_error>
+      Data exceeds recommended size for visualisation
+      Consider downsampling your data with `dplyr::slice_sample()`
+      Or set argument, `warn_large_data` = `FALSE`
 
