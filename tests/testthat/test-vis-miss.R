@@ -56,3 +56,19 @@ test_that("vis_miss works with facets",{
   vdiffr::expect_doppelganger("vis_miss_facet", vis_miss_facet)
   vdiffr::expect_doppelganger("vis_miss_facet_no_pct", vis_miss_facet_no_pct)
 })
+
+the_vis_miss_data <- data_vis_miss(airquality)
+the_vis_miss_data_month <- airquality %>% group_by(Month) %>% data_vis_miss()
+
+test_that("data_vis_miss gets the data properly", {
+  expect_type(the_vis_miss_data, "list")
+  expect_s3_class(the_vis_miss_data, "data.frame")
+  expect_snapshot(the_vis_miss_data)
+})
+
+test_that("data_vis_miss gets the data properly for groups", {
+  expect_type(the_vis_miss_data_month, "list")
+  expect_s3_class(the_vis_miss_data_month, "data.frame")
+  expect_snapshot(the_vis_miss_data_month)
+})
+
