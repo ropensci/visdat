@@ -8,6 +8,8 @@
 #'   which the package, `visdat`, is based upon
 #'
 #' @param x a vector
+#' @keywords internal
+#' @noRd
 #'
 fingerprint <- function(x){
 
@@ -50,6 +52,8 @@ fingerprint_df <- function(x){
 #'
 #' @return data.frame gathered to have columns "variables", "valueType", and a
 #'   row id called "rows".
+#' @keywords internal
+#' @noRd
 #'
 vis_gather_ <- function(x){
   x %>%
@@ -72,6 +76,8 @@ vis_gather_ <- function(x){
 #' @param x dataframe created from `vis_gather_`
 #'
 #' @return the x dataframe with the added column `value`.
+#' @noRd
+#' @keywords internal
 #'
 vis_extract_value_ <- function(x){
 
@@ -93,6 +99,8 @@ vis_extract_value_ <- function(x){
 #'   `vis_extract_value`.
 #'
 #' @return a ggplot object
+#' @keywords internal
+#' @noRd
 #'
 vis_create_ <- function(x){
 
@@ -127,9 +135,9 @@ vis_create_ <- function(x){
 #'   http://colorbrewer2.org/.
 #'
 #' @return a visdat plot with a particular palette
-#'
+#' @keywords internal
+#' @noRd
 #' @examples
-#'
 #' \dontrun{
 #' # see internal use inside vis_guess and vis_dat
 #' }
@@ -210,6 +218,8 @@ add_vis_dat_pal <- function(vis_plot, palette){
 #' @param x data.frame
 #' @param col_order_index the order of the columns
 #' @note internal
+#' @keywords internal
+#' @noRd
 #' @return data.frame containing the missingness percent down to 0.1 percent
 #'
 label_col_missing_pct <- function(x,
@@ -240,7 +250,8 @@ label_col_missing_pct <- function(x,
 #' @return a tibble with two columns `p_miss_lab` and `p_pres_lab`,
 #'   containing the labels to use for present and missing. A dataframe is
 #'   returned because I think it is a good style habit compared to a list.
-#'
+#' @noRd
+#' @keywords internal
 #'
 miss_guide_label <- function(x) {
 
@@ -284,7 +295,10 @@ miss_guide_label <- function(x) {
 #' @param x data.frame
 #' @param ... optional extra inputs
 #'
-#' @return logical - TRUE means that there is a column with numerics, FALSE means that there is a column that is not numeric
+#' @return logical - TRUE means that there is a column with numerics, FALSE
+#'   means there is a column that is not numeric
+#' @noRd
+#' @keywords internal
 #'
 #' @examples
 #'
@@ -317,7 +331,8 @@ all_binary <- function(x, ...){
 #' #fail
 #' test_if_dataframe(AirPassengers)
 #' }
-#'
+#' @keywords internal
+#' @noRd
 test_if_dataframe <- function(x){
 
   if (!inherits(x, "data.frame")) {
@@ -364,6 +379,8 @@ monotonic <- function(x) all(diff(x) == 0)
 #' @param x numeric vector
 #'
 #' @return numeric vector between 0 and 1
+#' @noRd
+#' @keywords internal
 scale_01 <- function(x) {
   if (monotonic(x)){
     return((x/x))

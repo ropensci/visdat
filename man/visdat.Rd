@@ -3,6 +3,7 @@
 \docType{package}
 \name{visdat}
 \alias{visdat}
+\alias{visdat-package}
 \title{visdat}
 \description{
 visdat is a package that helps with the preliminary visualisation of data.
@@ -21,3 +22,18 @@ It's main functions are:
 
 Learn more about visdat at \url{http://visdat.njtierney.com/articles/using_visdat.html}
 }
+\author{
+\strong{Maintainer}: Nicholas Tierney \email{nicholas.tierney@gmail.com} (\href{https://orcid.org/0000-0003-1460-8722}{ORCID})
+
+Other contributors:
+\itemize{
+  \item Sean Hughes (\href{https://orcid.org/0000-0002-9409-9405}{ORCID}) (Sean Hughes reviewed the package for rOpenSci, see https://github.com/ropensci/onboarding/issues/87) [reviewer]
+  \item Mara Averick (Mara Averick reviewed the package for rOpenSci, see https://github.com/ropensci/onboarding/issues/87) [reviewer]
+  \item Stuart Lee [contributor]
+  \item Earo Wang [contributor]
+  \item Nic Crane [contributor]
+  \item Christophe Regouby [contributor]
+}
+
+}
+\keyword{internal}

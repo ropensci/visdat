@@ -96,7 +96,8 @@ vis_compare <- function(df1,
 #'   case it leaves it as NA.
 #'
 #' @param x a vector
-#'
+#' @keywords internal
+#' @noRd
 #'
 compare_print <- function(x){
 

@@ -76,6 +76,9 @@ vis_guess <- function(x, palette = "default"){
 #' @return a character vector that describes the suspected class. e.g., "10" is
 #'   an integer, "20.11" is a double, "text" is character, etc.
 #'
+#' @keywords internal
+#' @noRd
+#'
 #' @examples
 #' \dontrun{
 #' guess_type(1)
