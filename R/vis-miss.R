@@ -5,6 +5,10 @@
 #'   a missing cell and grey indicates a present cell. As it returns a ggplot
 #'   object, it is very easy to customize and change labels.
 #'
+#' The missingness summaries in the columns are rounded to the nearest integer.
+#'   For more detailed summaries, please see the summaries in the `naniar` R
+#'   package, specifically, `naniar::miss_var_summary()`.
+#'
 #' @param x a data.frame
 #'
 #' @param cluster logical. TRUE specifies that you want to use hierarchical
@@ -80,17 +84,12 @@ vis_miss <- function(
   warn_large_data = TRUE,
   facet
     ) {
-  # throw error if x not data.frame
-  test_if_dataframe(x)
 
-  # add warning for large data
-  if (ncol(x) * nrow(x) > large_data_size && warn_large_data) {
-    stop("Data exceeds recommended size for visualisation, please consider
-         downsampling your data, or set argument 'warn_large_data' to FALSE.")
-  }
+  test_if_dataframe(x)
+  test_if_large_data(x, large_data_size, warn_large_data)
 
   if (sort_miss) {
-    col_order_index <- ordered_col_miss_names(x)
+    col_order_index <- names(n_miss_col(x, sort = TRUE))
   } else if (!sort_miss) {
     col_order_index <- names(x)
   }

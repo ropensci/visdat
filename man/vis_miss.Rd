@@ -56,6 +56,11 @@ dataframe, colouring cells according to missingness, where black indicates
 a missing cell and grey indicates a present cell. As it returns a ggplot
 object, it is very easy to customize and change labels.
 }
+\details{
+The missingness summaries in the columns are rounded to the nearest integer.
+For more detailed summaries, please see the summaries in the \code{naniar} R
+package, specifically, \code{naniar::miss_var_summary()}.
+}
 \note{
 Some datasets might be too large to plot, sometimes creating a blank
 plot - if this happens, I would recommend downsampling the data, either
