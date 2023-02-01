@@ -34,3 +34,27 @@ test_that("vis_dat fails when an object of the wrong class is provided", {
     vis_dat(AirPassengers)
     )
 })
+
+vis_dat_facet <- vis_dat(airquality, facet = Month)
+
+test_that("vis_dat works with facetting", {
+  skip_on_ci()
+  skip_on_cran()
+  vdiffr::expect_doppelganger("vis_dat_facet", vis_dat_facet)
+})
+
+library(dplyr)
+the_vis_dat_data <- data_vis_dat(airquality)
+the_vis_dat_data_month <- airquality %>% group_by(Month) %>% data_vis_dat()
+
+test_that("data_vis_dat gets the data properly", {
+  expect_type(the_vis_dat_data, "list")
+  expect_s3_class(the_vis_dat_data, "data.frame")
+  expect_snapshot(the_vis_dat_data)
+})
+
+test_that("data_vis_dat gets the data properly for groups", {
+  expect_type(the_vis_dat_data_month, "list")
+  expect_s3_class(the_vis_dat_data_month, "data.frame")
+  expect_snapshot(the_vis_dat_data_month)
+})

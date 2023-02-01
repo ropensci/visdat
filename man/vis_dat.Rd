@@ -9,7 +9,8 @@ vis_dat(
   sort_type = TRUE,
   palette = "default",
   warn_large_data = TRUE,
-  large_data_size = 9e+05
+  large_data_size = 9e+05,
+  facet
 )
 }
 \arguments{
@@ -31,6 +32,11 @@ see note for more details}
 \item{large_data_size}{integer default is 900000 (given by
 `nrow(data.frame) * ncol(data.frame)``). This can be changed. See
 note for more details.}
+
+\item{facet}{bare variable name for a variable you would like to facet
+by. By default there is no facetting. Only one variable can be facetted.
+You can get the data structure using \code{data_vis_dat} and the facetted
+structure by using \code{group_by} and then \code{data_vis_dat}.}
 }
 \value{
 \code{ggplot2} object displaying the type of values in the data frame and

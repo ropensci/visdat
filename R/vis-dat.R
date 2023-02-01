@@ -24,6 +24,11 @@
 #'   `nrow(data.frame) * ncol(data.frame)``). This can be changed. See
 #'   note for more details.
 #'
+#' @param facet bare variable name for a variable you would like to facet
+#'   by. By default there is no facetting. Only one variable can be facetted.
+#'   You can get the data structure using `data_vis_dat` and the facetted
+#'   structure by using `group_by` and then `data_vis_dat`.
+#'
 #' @return `ggplot2` object displaying the type of values in the data frame and
 #'   the position of any missing values.
 #'
@@ -62,16 +67,11 @@ vis_dat <- function(x,
                     sort_type = TRUE,
                     palette = "default",
                     warn_large_data = TRUE,
-                    large_data_size = 900000) {
+                    large_data_size = 900000,
+                    facet) {
 
-  # throw error if x not data.frame
   test_if_dataframe(x)
-
-  # add warning for large data
-  if (ncol(x) * nrow(x) > large_data_size && warn_large_data){
-    stop("Data exceeds recommended size for visualisation, please consider
-         downsampling your data, or set argument 'warn_large_data' to FALSE.")
-  }
+  test_if_large_data(x, large_data_size, warn_large_data)
 
   if (sort_type) {
 
@@ -82,31 +82,45 @@ vis_dat <- function(x,
                                                           sep = "\n"))
     )
     # get the names of those columns
-    type_order_index <- names(x)[type_sort]
+    col_order_index <- names(x)[type_sort]
 
   } else {
     # this means that the order remains the same as the dataframe.
-    type_order_index <- names(x)
+    col_order_index <- names(x)
 
   }
 
   # reshape the dataframe ready for geom_raster
-  d <- x %>%
-    purrr::map_df(fingerprint) %>%
-    vis_gather_() %>%
-    # get the values here so plotly can make them visible
-    dplyr::mutate(value = vis_extract_value_(x))
+  if (!missing(facet)){
+    vis_dat_data <- x %>%
+      dplyr::group_by({{ facet }}) %>%
+      data_vis_dat()
+
+    col_order_index <- update_col_order_index(
+      col_order_index,
+      facet,
+      environment()
+    )
+
+  } else {
+    vis_dat_data <- data_vis_dat(x)
+  }
 
   # do the plotting
   vis_dat_plot <-
     # add the boilerplate
-    vis_create_(d) +
+    vis_create_(vis_dat_data) +
     # change the limits etc.
     ggplot2::guides(fill = ggplot2::guide_legend(title = "Type")) +
     # add info about the axes
-    ggplot2::scale_x_discrete(limits = type_order_index,
+    ggplot2::scale_x_discrete(limits = col_order_index,
                               position = "top") +
     ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0))
+
+  if (!missing(facet)) {
+    vis_dat_plot <- vis_dat_plot +
+      ggplot2::facet_wrap(facets = dplyr::vars( {{ facet }} ))
+  }
 
   # specify a palette ----------------------------------------------------------
   add_vis_dat_pal(vis_dat_plot, palette)

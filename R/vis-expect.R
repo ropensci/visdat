@@ -59,7 +59,6 @@
 #'
 vis_expect <- function(data, expectation, show_perc = TRUE){
 
-  # throw error if data not data.frame
   test_if_dataframe(data)
 
   data_expect <- expect_frame(data, expectation)
@@ -88,7 +87,7 @@ vis_expect <- function(data, expectation, show_perc = TRUE){
     # expect_frame(expectation) %>%
     dplyr::mutate(rows = dplyr::row_number()) %>%
     tidyr::pivot_longer(
-      cols = colnames_data,
+      cols = dplyr::all_of(colnames_data),
       names_to = "variable",
       values_to = "valueType",
       values_transform = list(valueType = as.character)

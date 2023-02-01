@@ -17,7 +17,7 @@ test_that("vis_gather_ returns the same as previous",{
 })
 
 d_old <- typical_data %>%
-  purrr::map_df(fingerprint) %>%
+  fingerprint_df() %>%
   vis_gather_()
 
 suppressWarnings({
@@ -30,7 +30,7 @@ suppressWarnings({
 
 d_new <-
   typical_data %>%
-  purrr::map_df(fingerprint) %>%
+  fingerprint_df() %>%
   vis_gather_() %>%
   dplyr::mutate(value = vis_extract_value_(typical_data)) %>%
   dplyr::arrange(value)

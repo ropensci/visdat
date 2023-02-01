@@ -5,6 +5,10 @@
 * `vis_dat()` `vis_miss()` and `vis_guess()` now render missing values in list-columns (@cregouby #138)
 * Added `abbreviate_vars()` function to assist with abbreviating data names (#140)
 * A new vignette on 
+* Implemented facetting in `vis_dat()` and `vis_cor()`, and `vis_miss()` see (#78). The next release will implement facetting for `vis_value()`, `vis_binary()`, `vis_compare()`, `vis_expect()`, and `vis_guess()`.
+* Implemented data methods for plots with `data_vis_dat()`, `data_vis_cor()`, and `data_vis_miss()` see (#78).
+* Percentage missing in columns for `vis_miss()` is now rounding to integers - for more accurate representation of missingness summaries please use the `naniar` R package.
+* Speed up some internal functions in visdat
 
 ## Bug Fix
 
@@ -15,6 +19,7 @@
 ## Misc
 
 * No longer uses gdtools for testing (#145)
+* Use `cli` internally for error messages.
 
 # visdat 0.6.0 (2021/07/05) "Shibuya, Covet, San Holo"
 
