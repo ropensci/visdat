@@ -22,3 +22,11 @@ test_that("vis_cor fails when an object of the wrong class is provided", {
     vis_cor(AirPassengers)
     )
 })
+
+vis_cor_facet <- vis_cor(airquality, facet = Month)
+
+test_that("vis_cor works with facetting", {
+  skip_on_ci()
+  skip_on_cran()
+  vdiffr::expect_doppelganger("vis_cor_facet", vis_cor_facet)
+})

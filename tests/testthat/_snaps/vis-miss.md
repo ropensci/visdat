@@ -29,7 +29,7 @@
 # vis_miss correctly aggregate missings in legend
 
     Code
-      legend
+      legend_lab
     Output
       # A tibble: 2 x 1
         x_lab              

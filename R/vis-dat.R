@@ -96,7 +96,11 @@ vis_dat <- function(x,
       dplyr::group_by({{ facet }}) %>%
       data_vis_dat()
 
-    col_order_index <- update_col_order_index(col_order_index, facet)
+    col_order_index <- update_col_order_index(
+      col_order_index,
+      facet,
+      environment()
+    )
 
   } else {
     vis_dat_data <- data_vis_dat(x)

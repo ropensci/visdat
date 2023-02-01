@@ -38,13 +38,21 @@ test_that("vis_miss manage missings in list columns",{
 })
 
 test_that("vis_miss correctly see missings in columns labels",{
-  # extract dataframe of columns computed missing percentage
   x_labs <- tibble::tibble(x_lab = vis_miss_list$scales$scales[[3]]$labels)
   expect_snapshot(x_labs)
 })
 
 test_that("vis_miss correctly aggregate missings in legend",{
-  # extract dataframe of columns computed missing percentage
-  legend <- tibble::tibble(x_lab = vis_miss_list$scales$scales[[2]]$labels)
-  expect_snapshot(legend)
+  legend_lab <- tibble::tibble(x_lab = vis_miss_list$scales$scales[[2]]$labels)
+  expect_snapshot(legend_lab)
+})
+
+vis_miss_facet <- vis_miss(airquality, facet = Month)
+vis_miss_facet_no_pct <- vis_miss(airquality, facet = Month, show_perc = FALSE)
+
+test_that("vis_miss works with facets",{
+  skip_on_cran()
+  skip_on_ci()
+  vdiffr::expect_doppelganger("vis_miss_facet", vis_miss_facet)
+  vdiffr::expect_doppelganger("vis_miss_facet_no_pct", vis_miss_facet_no_pct)
 })

@@ -34,3 +34,11 @@ test_that("vis_dat fails when an object of the wrong class is provided", {
     vis_dat(AirPassengers)
     )
 })
+
+vis_dat_facet <- vis_dat(airquality, facet = Month)
+
+test_that("vis_dat works with facetting", {
+  skip_on_ci()
+  skip_on_cran()
+  vdiffr::expect_doppelganger("vis_dat_facet", vis_dat_facet)
+})
