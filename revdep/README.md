@@ -1,29 +1,26 @@
 # Platform
 
-|field    |value                        |
-|:--------|:----------------------------|
-|version  |R version 4.1.0 (2021-05-18) |
-|os       |macOS Big Sur 11.4           |
-|system   |x86_64, darwin17.0           |
-|ui       |RStudio                      |
-|language |(EN)                         |
-|collate  |en_AU.UTF-8                  |
-|ctype    |en_AU.UTF-8                  |
-|tz       |Australia/Perth              |
-|date     |2021-07-05                   |
+|field    |value                                                                                       |
+|:--------|:-------------------------------------------------------------------------------------------|
+|version  |R version 4.2.2 (2022-10-31)                                                                |
+|os       |macOS Monterey 12.3.1                                                                       |
+|system   |aarch64, darwin20                                                                           |
+|ui       |RStudio                                                                                     |
+|language |(EN)                                                                                        |
+|collate  |en_US.UTF-8                                                                                 |
+|ctype    |en_US.UTF-8                                                                                 |
+|tz       |Australia/Hobart                                                                            |
+|date     |2023-02-01                                                                                  |
+|rstudio  |2022.12.0+353 Elsbeth Geranium (desktop)                                                    |
+|pandoc   |2.19.2 @ /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/ (via rmarkdown) |
 
 # Dependencies
 
 |package |old   |new   |Δ  |
 |:-------|:-----|:-----|:--|
 |visdat  |0.5.3 |0.6.0 |*  |
-|cpp11   |NA    |0.3.1 |*  |
+|forcats |NA    |1.0.0 |*  |
+|utf8    |NA    |1.2.3 |*  |
 
 # Revdeps
-
-## Failed to check (1)
-
-|package |version |error |warning |note |
-|:-------|:-------|:-----|:-------|:----|
-|bsem    |1.0.0   |1     |        |     |
 

@@ -1,5 +1,5 @@
 ## Test environments
-* local OS X install, R 4.1.0
+* local OS X install, R 4.2.2
 * github actions testing for devel, release, and ubuntu, windows, and macOSX
 * win-builder (devel and release)
 
@@ -10,13 +10,7 @@ There were no ERRORs or WARNINGs or NOTEs
 
 ## revdepcheck results
 
-We checked 4 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
+We checked 3 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
 
  * We saw 0 new problems
- * We failed to check 1 packages
-
-Issues with CRAN packages are summarised below.
-
-### Failed to check
-
-* bsem (R CMD check timed out)
+ * We failed to check 0 packages
