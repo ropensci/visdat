@@ -7,7 +7,7 @@
 
 [![rOpenSci
 Badge](https://badges.ropensci.org/87_status.svg)](https://github.com/ropensci/software-review/issues/87)[![JOSS
-status](https://joss.theoj.org/papers/10.21105/joss.00355/status.svg)](https://joss.theoj.org/papers/10.21105/joss.00355)[![DOI](https://zenodo.org/badge/50553382.svg)](https://zenodo.org/badge/latestdoi/50553382)[![R-CMD-check](https://github.com/ropensci/visdat/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/visdat/actions)[![Codecov
+status](https://joss.theoj.org/papers/10.21105/joss.00355/status.svg)](https://joss.theoj.org/papers/10.21105/joss.00355)[![DOI](https://zenodo.org/badge/50553382.svg)](https://zenodo.org/badge/latestdoi/50553382)[![R-CMD-check](https://github.com/ropensci/visdat/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ropensci/visdat/actions/workflows/R-CMD-check.yaml)[![Codecov
 test
 coverage](https://codecov.io/gh/ropensci/visdat/branch/master/graph/badge.svg)](https://codecov.io/gh/ropensci/visdat?branch=master)[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/visdat)](https://cran.r-project.org/package=visdat)[![CRAN
 Logs](http://cranlogs.r-pkg.org/badges/visdat)](https://CRAN.R-project.org/package=visdat)[![Project
@@ -21,6 +21,7 @@ developed.](http://www.repostatus.org/badges/latest/active.svg)](https://www.rep
 visdat is available on CRAN
 
 ``` r
+
 install.packages("visdat")
 ```
 
@@ -28,6 +29,7 @@ If you would like to use the development version, install from github
 with:
 
 ``` r
+
 # install.packages("devtools")
 devtools::install_github("ropensci/visdat")
 ```
@@ -43,31 +45,30 @@ by displaying the variable classes in a dataframe as a plot with
 
 `visdat` has 6 functions:
 
--   `vis_dat()` visualises a dataframe showing you what the classes of
-    the columns are, and also displaying the missing data.
+- `vis_dat()` visualises a dataframe showing you what the classes of the
+  columns are, and also displaying the missing data.
 
--   `vis_miss()` visualises just the missing data, and allows for
-    missingness to be clustered and columns rearranged. `vis_miss()` is
-    similar to `missing.pattern.plot` from the
-    [`mi`](https://CRAN.R-project.org/package=mi) package. Unfortunately
-    `missing.pattern.plot` is no longer in the `mi` package (as of
-    14/02/2016).
+- `vis_miss()` visualises just the missing data, and allows for
+  missingness to be clustered and columns rearranged. `vis_miss()` is
+  similar to `missing.pattern.plot` from the
+  [`mi`](https://CRAN.R-project.org/package=mi) package. Unfortunately
+  `missing.pattern.plot` is no longer in the `mi` package (as of
+  14/02/2016).
 
--   `vis_compare()` visualise differences between two dataframes of the
-    same dimensions
+- `vis_compare()` visualise differences between two dataframes of the
+  same dimensions
 
--   `vis_expect()` visualise where certain conditions hold true in your
-    data
+- `vis_expect()` visualise where certain conditions hold true in your
+  data
 
--   `vis_cor()` visualise the correlation of variables in a nice heatmap
+- `vis_cor()` visualise the correlation of variables in a nice heatmap
 
--   `vis_guess()` visualise the individual class of each value in your
-    data
+- `vis_guess()` visualise the individual class of each value in your
+  data
 
--   `vis_value()` visualise the value class of each cell in your data
+- `vis_value()` visualise the value class of each cell in your data
 
--   `vis_binary()` visualise the occurrence of binary values in your
-    data
+- `vis_binary()` visualise the occurrence of binary values in your data
 
 You can read more about visdat in the vignette, [“using
 visdat”](http://visdat.njtierney.com/articles/using_visdat.html).
@@ -89,6 +90,7 @@ from May to September 1973. More information about the dataset can be
 found with `?airquality`.
 
 ``` r
+
 library(visdat)
 
 vis_dat(airquality)
@@ -101,22 +103,39 @@ integer values, with some missing data in `Ozone` and `Solar.R`. The
 classes are represented on the legend, and missing data represented by
 grey. The column/variable names are listed on the x axis.
 
+The `vis_dat()` function also has a `facet` argument, so you can create
+small multiples of a similar plot for a level of a variable, e.g.,
+Month:
+
+``` r
+vis_dat(airquality, facet = Month)
+```
+
+![](man/figures/README-vis-dat-month-1.png)<!-- -->
+
+These currently also exist for `vis_miss()`, and the `vis_cor()`
+functions.
+
 ## Using `vis_miss()`
 
 We can explore the missing data further using `vis_miss()`:
 
 ``` r
+
 vis_miss(airquality)
 ```
 
 ![](man/figures/README-vis-miss-aq-1.png)<!-- -->
 
-Percentages of missing/complete in `vis_miss` are accurate to 1 decimal
-place.
+Percentages of missing/complete in `vis_miss` are accurate to the
+integer (whole number). To get more accurate and thorough exploratory
+summaries of missingness, I would recommend the
+[`naniar`](https://github.com/njtierney/naniar) R package
 
 You can cluster the missingness by setting `cluster = TRUE`:
 
 ``` r
+
 vis_miss(airquality, 
          cluster = TRUE)
 ```
@@ -127,6 +146,7 @@ Columns can also be arranged by columns with most missingness, by
 setting `sort_miss = TRUE`:
 
 ``` r
+
 vis_miss(airquality,
          sort_miss = TRUE)
 ```
@@ -137,6 +157,7 @@ vis_miss(airquality,
 at \<0.1% missingness:
 
 ``` r
+
 test_miss_df <- data.frame(x1 = 1:10000,
                            x2 = rep("A", 10000),
                            x3 = c(rep(1L, 9999), NA))
@@ -149,6 +170,7 @@ vis_miss(test_miss_df)
 `vis_miss` will also indicate when there is no missing data at all:
 
 ``` r
+
 vis_miss(mtcars)
 ```
 
@@ -183,6 +205,7 @@ If you try and compare differences when the dimensions are different,
 you get an ugly error:
 
 ``` r
+
 chickwts_diff_2 <- chickwts
 chickwts_diff_2$new_col <- chickwts_diff_2$weight*2
 
@@ -200,6 +223,7 @@ your data (airquality), you could write:
 where the values in your data are greater than or equal to 25:
 
 ``` r
+
 vis_expect(airquality, ~.x >= 25)
 ```
 
@@ -213,6 +237,7 @@ This shows the proportion of times that there are values greater than
 To make it easy to plot correlations of your data, use `vis_cor`:
 
 ``` r
+
 vis_cor(airquality)
 ```
 
@@ -284,6 +309,7 @@ vis_binary(airquality)
 using some messy data, which we’ll make here:
 
 ``` r
+
 messy_vector <- c(TRUE,
                   T,
                   "TRUE",
@@ -309,6 +335,7 @@ messy_df <- data.frame(var1 = messy_vector,
 ```
 
 ``` r
+
 vis_guess(messy_df)
 vis_dat(messy_df)
 ```

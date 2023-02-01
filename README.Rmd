@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 # visdat <img src="man/figures/visdat-logo.png" align="right" />
 
 <!-- badges: start -->
-[![rOpenSci Badge](https://badges.ropensci.org/87_status.svg)](https://github.com/ropensci/software-review/issues/87)[![JOSS status](https://joss.theoj.org/papers/10.21105/joss.00355/status.svg)](https://joss.theoj.org/papers/10.21105/joss.00355)[![DOI](https://zenodo.org/badge/50553382.svg)](https://zenodo.org/badge/latestdoi/50553382)[![R-CMD-check](https://github.com/ropensci/visdat/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/visdat/actions)[![Codecov test coverage](https://codecov.io/gh/ropensci/visdat/branch/master/graph/badge.svg)](https://codecov.io/gh/ropensci/visdat?branch=master)[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/visdat)](https://cran.r-project.org/package=visdat)[![CRAN Logs](http://cranlogs.r-pkg.org/badges/visdat)](https://CRAN.R-project.org/package=visdat)[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/)
+[![rOpenSci Badge](https://badges.ropensci.org/87_status.svg)](https://github.com/ropensci/software-review/issues/87)[![JOSS status](https://joss.theoj.org/papers/10.21105/joss.00355/status.svg)](https://joss.theoj.org/papers/10.21105/joss.00355)[![DOI](https://zenodo.org/badge/50553382.svg)](https://zenodo.org/badge/latestdoi/50553382)[![R-CMD-check](https://github.com/ropensci/visdat/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ropensci/visdat/actions/workflows/R-CMD-check.yaml)[![Codecov test coverage](https://codecov.io/gh/ropensci/visdat/branch/master/graph/badge.svg)](https://codecov.io/gh/ropensci/visdat?branch=master)[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/visdat)](https://cran.r-project.org/package=visdat)[![CRAN Logs](http://cranlogs.r-pkg.org/badges/visdat)](https://CRAN.R-project.org/package=visdat)[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/)
 <!-- badges: end -->
 
 # How to install
@@ -97,6 +97,14 @@ values, with some missing data in `Ozone` and `Solar.R`. The classes are
 represented on the legend, and missing data represented by grey. The
 column/variable names are listed on the x axis.
 
+The `vis_dat()` function also has a `facet` argument, so you can create small multiples of a similar plot for a level of a variable, e.g., Month:
+
+```{r vis-dat-month}
+vis_dat(airquality, facet = Month)
+```
+
+These currently also exist for `vis_miss()`, and the `vis_cor()` functions.
+
 ## Using `vis_miss()`
 
 We can explore the missing data further using `vis_miss()`:
@@ -107,7 +115,7 @@ vis_miss(airquality)
 
 ```
 
-Percentages of missing/complete in `vis_miss` are accurate to 1 decimal place.
+Percentages of missing/complete in `vis_miss` are accurate to the integer (whole number). To get more accurate and thorough exploratory summaries of missingness, I would recommend the [`naniar`](https://github.com/njtierney/naniar) R package
 
 You can cluster the missingness by setting `cluster = TRUE`:
 
