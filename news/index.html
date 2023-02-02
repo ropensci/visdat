@@ -10,7 +10,7 @@
     <a href="https://ropensci.org" class="external-link"><img src="https://ropensci.org/img/icon_short_white.svg" id="hexlogo" alt="rOpenSci"></a>
     <a class="navbar-brand me-2" href="../index.html">visdat</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,35 +61,33 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="0.6.0.9000" id="visdat-0609000-20210706-superman-lazlo-bane">visdat 0.6.0.9000 (2021/07/06) “Superman, Lazlo Bane”<a class="anchor" aria-label="anchor" href="#visdat-0609000-20210706-superman-lazlo-bane"></a></h2>
-<div class="section level3">
-<h3 id="new-feature-0-6-0-9000">New Feature<a class="anchor" aria-label="anchor" href="#new-feature-0-6-0-9000"></a></h3>
-<ul><li>
-<code><a href="../reference/vis_dat.html">vis_dat()</a></code> <code><a href="../reference/vis_miss.html">vis_miss()</a></code> and <code><a href="../reference/vis_guess.html">vis_guess()</a></code> now render missing values in list-columns (<a href="https://github.com/cregouby" class="external-link">@cregouby</a> <a href="https://github.com/ropensci/visdat/issues/138" class="external-link">#138</a>)</li>
-<li>Added <code><a href="../reference/abbreviate_vars.html">abbreviate_vars()</a></code> function to assist with abbreviating data names (<a href="https://github.com/ropensci/visdat/issues/140" class="external-link">#140</a>)</li>
-<li>A new vignette on</li>
-</ul></div>
-<div class="section level3">
-<h3 id="bug-fix-0-6-0-9000">Bug Fix<a class="anchor" aria-label="anchor" href="#bug-fix-0-6-0-9000"></a></h3>
-<ul><li>no longer use old version of <code>gather_</code> (<a href="https://github.com/ropensci/visdat/issues/141" class="external-link">#141</a>)</li>
-<li>resolve bug where <code><a href="../reference/vis_value.html">vis_value()</a></code> displayed constant values as NA values (<a href="https://github.com/ropensci/visdat/issues/128" class="external-link">#128</a>) - these constant values are now shown as 1.</li>
-<li>removed use of the now deprecated “aes_string” from ggplot2</li>
-</ul></div>
-<div class="section level3">
-<h3 id="misc-0-6-0-9000">Misc<a class="anchor" aria-label="anchor" href="#misc-0-6-0-9000"></a></h3>
-<ul><li>No longer uses gdtools for testing (<a href="https://github.com/ropensci/visdat/issues/145" class="external-link">#145</a>)</li></ul></div>
-</div>
-    <div class="section level2">
-<h2 class="pkg-version" data-toc-text="0.6.0" id="visdat-060-20210705-shibuya-covet-san-holo">visdat 0.6.0 (2021/07/05) “Shibuya, Covet, San Holo”<a class="anchor" aria-label="anchor" href="#visdat-060-20210705-shibuya-covet-san-holo"></a></h2>
-<div class="section level3">
-<h3 id="bug-fix-0-6-0">Bug Fix<a class="anchor" aria-label="anchor" href="#bug-fix-0-6-0"></a></h3>
-<ul><li>output of plot in <code>vis_expect</code> would reorder columns (<a href="https://github.com/ropensci/visdat/issues/133" class="external-link">#133</a>), fixed in <a href="https://github.com/ropensci/visdat/pull/134" class="external-link">#143</a> by <a href="https://github.com/muschellij2" class="external-link">@muschellij2</a>.</li></ul></div>
+<h2 class="pkg-version" data-toc-text="0.6.0" id="visdat-060-20230201-superman-lazlo-bane">visdat 0.6.0 (2023/02/01) “Superman, Lazlo Bane”<a class="anchor" aria-label="anchor" href="#visdat-060-20230201-superman-lazlo-bane"></a></h2>
 <div class="section level3">
 <h3 id="new-feature-0-6-0">New Feature<a class="anchor" aria-label="anchor" href="#new-feature-0-6-0"></a></h3>
 <ul><li>
 <code><a href="../reference/vis_value.html">vis_value()</a></code> for visualising all values in a dataset. It rescales values to be between 0 and 1. See <a href="https://github.com/ropensci/visdat/issues/100" class="external-link">#100</a></li>
 <li>
-<code><a href="../reference/vis_binary.html">vis_binary()</a></code> for visualising datasets with binary values - similar to <code><a href="../reference/vis_value.html">vis_value()</a></code>, but just for binary data (0, 1, NA). See <a href="https://github.com/ropensci/visdat/issues/112" class="external-link">#112</a>. Thank you to Trish Gilholm for her suggested use case for this.</li>
+<code><a href="../reference/vis_binary.html">vis_binary()</a></code> for visualising datasets with binary values - similar to <code><a href="../reference/vis_value.html">vis_value()</a></code>, but just for binary data (0, 1, NA). See <a href="https://github.com/ropensci/visdat/issues/125" class="external-link">#125</a>. Thank you to Trish Gilholm for her suggested use case for this.</li>
+<li>Implemented facetting in <code><a href="../reference/vis_dat.html">vis_dat()</a></code> and <code><a href="../reference/vis_cor.html">vis_cor()</a></code>, and <code><a href="../reference/vis_miss.html">vis_miss()</a></code> see (<a href="https://github.com/ropensci/visdat/issues/78" class="external-link">#78</a>). The next release will implement facetting for <code><a href="../reference/vis_value.html">vis_value()</a></code>, <code><a href="../reference/vis_binary.html">vis_binary()</a></code>, <code><a href="../reference/vis_compare.html">vis_compare()</a></code>, <code><a href="../reference/vis_expect.html">vis_expect()</a></code>, and <code><a href="../reference/vis_guess.html">vis_guess()</a></code>.</li>
+<li>Implemented data methods for plots with <code><a href="../reference/data-vis-dat.html">data_vis_dat()</a></code>, <code><a href="../reference/data-vis-cor.html">data_vis_cor()</a></code>, and <code><a href="../reference/data-vis-miss.html">data_vis_miss()</a></code> see (<a href="https://github.com/ropensci/visdat/issues/78" class="external-link">#78</a>).</li>
+<li>
+<code><a href="../reference/vis_dat.html">vis_dat()</a></code> <code><a href="../reference/vis_miss.html">vis_miss()</a></code> and <code><a href="../reference/vis_guess.html">vis_guess()</a></code> now render missing values in list-columns (<a href="https://github.com/cregouby" class="external-link">@cregouby</a> <a href="https://github.com/ropensci/visdat/issues/138" class="external-link">#138</a>)</li>
+<li>Added <code><a href="../reference/abbreviate_vars.html">abbreviate_vars()</a></code> function to assist with abbreviating data names (<a href="https://github.com/ropensci/visdat/issues/140" class="external-link">#140</a>)</li>
+<li>Percentage missing in columns for <code><a href="../reference/vis_miss.html">vis_miss()</a></code> is now rounding to integers - for more accurate representation of missingness summaries please use the <code>naniar</code> R package.</li>
+<li>A new vignette on customising colour palettes in visdat, “Customising colour palettes in visdat”.</li>
+</ul></div>
+<div class="section level3">
+<h3 id="bug-fix-0-6-0">Bug Fix<a class="anchor" aria-label="anchor" href="#bug-fix-0-6-0"></a></h3>
+<ul><li>no longer use old version of <code>gather_</code> (<a href="https://github.com/ropensci/visdat/issues/141" class="external-link">#141</a>)</li>
+<li>resolve bug where <code><a href="../reference/vis_value.html">vis_value()</a></code> displayed constant values as NA values (<a href="https://github.com/ropensci/visdat/issues/128" class="external-link">#128</a>) - these constant values are now shown as 1.</li>
+<li>removed use of the now deprecated “aes_string” from ggplot2</li>
+<li>output of plot in <code>vis_expect</code> would reorder columns (<a href="https://github.com/ropensci/visdat/issues/133" class="external-link">#133</a>), fixed in <a href="https://github.com/ropensci/visdat/pull/134" class="external-link">#143</a> by <a href="https://github.com/muschellij2" class="external-link">@muschellij2</a>.</li>
+</ul></div>
+<div class="section level3">
+<h3 id="misc-0-6-0">Misc<a class="anchor" aria-label="anchor" href="#misc-0-6-0"></a></h3>
+<ul><li>No longer uses gdtools for testing (<a href="https://github.com/ropensci/visdat/issues/145" class="external-link">#145</a>)</li>
+<li>Use <code>cli</code> internally for error messages.</li>
+<li>Speed up some internal functions in visdat</li>
 </ul></div>
 </div>
     <div class="section level2">
