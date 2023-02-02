@@ -2,7 +2,7 @@
 title: "Customising colour palettes in visdat"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{customising-colour-palettes}
+  %\VignetteIndexEntry{Customising-colour-palettes-in-visdat}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

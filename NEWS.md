@@ -2,15 +2,14 @@
 
 ## New Feature
 
-* `vis_dat()` `vis_miss()` and `vis_guess()` now render missing values in list-columns (@cregouby #138)
-* Added `abbreviate_vars()` function to assist with abbreviating data names (#140)
-* A new vignette on 
+* `vis_value()` for visualising all values in a dataset. It rescales values to be between 0 and 1. See #100
+* `vis_binary()` for visualising datasets with binary values - similar to `vis_value()`, but just for binary data (0, 1, NA). See #125. Thank you to Trish Gilholm for her suggested use case for this.
 * Implemented facetting in `vis_dat()` and `vis_cor()`, and `vis_miss()` see (#78). The next release will implement facetting for `vis_value()`, `vis_binary()`, `vis_compare()`, `vis_expect()`, and `vis_guess()`.
 * Implemented data methods for plots with `data_vis_dat()`, `data_vis_cor()`, and `data_vis_miss()` see (#78).
+* `vis_dat()` `vis_miss()` and `vis_guess()` now render missing values in list-columns (@cregouby #138)
+* Added `abbreviate_vars()` function to assist with abbreviating data names (#140)
 * Percentage missing in columns for `vis_miss()` is now rounding to integers - for more accurate representation of missingness summaries please use the `naniar` R package.
-* Speed up some internal functions in visdat
-* `vis_value()` for visualising all values in a dataset. It rescales values to be between 0 and 1. See #100
-* `vis_binary()` for visualising datasets with binary values - similar to `vis_value()`, but just for binary data (0, 1, NA). See #112. Thank you to Trish Gilholm for her suggested use case for this.
+* A new vignette on customising colour palettes in visdat, "Customising colour palettes in visdat".
 
 ## Bug Fix
 
@@ -23,6 +22,7 @@
 
 * No longer uses gdtools for testing (#145)
 * Use `cli` internally for error messages.
+* Speed up some internal functions in visdat
 
 # visdat 0.5.3 (2019/02/04) "The Legend of LoFi"
 
