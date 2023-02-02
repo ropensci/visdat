@@ -11,7 +11,7 @@
 #'   values present. This can be "everything", "all.obs", "complete.obs",
 #'   "na.or.complete", or "pairwise.complete.obs" (default). This option is
 #'   taken from the `cor` function argument `use`.,
-#' @param facet bare unqoted variable to use for facetting
+#' @param facet bare unqouted variable to use for facetting
 #' @param ... extra arguments you may want to pass to `cor`
 #'
 #' @return ggplot2 object
