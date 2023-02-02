@@ -14,11 +14,13 @@ reference:
       Tools for creating preliminary visualisations to "get a look at the data"
     contents:
       - vis_dat
+      - data-vis-dat
   - title: "Focus on the missing data"
     desc: >
       Specifically display information about the missingness
     contents:
       - vis_miss
+      - data-vis-miss
   - title: "Compare two dataframes"
     desc: >
       Only takes dataframes of the same dimensions
@@ -34,6 +36,7 @@ reference:
       Show the correlation amongst variables in simple function
     contents:
       - vis_cor
+      - data-vis-cor
   - title: "Display the best guess of what each cell contains"
     desc: >
       Potentially reveal other classes in your dataset
