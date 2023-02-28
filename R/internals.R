@@ -231,8 +231,9 @@ label_col_missing_pct <- function(x,
     purrr::map_chr(function(x){
       dplyr::case_when(
         x == 0 ~  "0%",
-        x >= 0.001 ~ scales::percent(x, accuracy = 1),
-        x < 0.001 ~ "<0.1%"
+        x < 0.001 ~ "<0.1%",
+        x < 0.01 ~ scales::percent(x, accuracy = 0.1),
+        x >= 0.01 ~ scales::percent(x, accuracy = 1),
       )
     })
 
