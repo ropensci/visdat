@@ -72,3 +72,15 @@ test_that("data_vis_miss gets the data properly for groups", {
   expect_snapshot(the_vis_miss_data_month)
 })
 
+test_that("column percentage between 0.1% and 0.5% is reported as <1%", {
+  x <- data.frame(
+    miss_0 = rep(1, 10000),
+    miss_0.08 = c(rep(NA_real_, 8), rep(1, 10000 - 8)),
+    miss_0.2 = c(rep(NA_real_, 20), rep(1, 10000 - 20)),
+    miss_0.8 = c(rep(NA_real_, 80), rep(1, 10000 - 80)),
+    miss_3.4 = c(rep(NA_real_, 340), rep(1, 10000 - 340)),
+    miss_23 =  c(rep(NA_real_, 2300), rep(1, 10000 - 2300))
+  )
+  vis_miss_percentages <- vis_miss(x, sort_miss = TRUE)
+  vdiffr::expect_doppelganger("vis_miss_percentages", vis_miss_percentages)
+})

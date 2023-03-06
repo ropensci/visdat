@@ -19,6 +19,7 @@
 * resolve bug where `vis_value()` displayed constant values as NA values (#128) - these constant values are now shown as 1.
 * removed use of the now deprecated "aes_string" from ggplot2
 * output of plot in `vis_expect` would reorder columns ([#133](https://github.com/ropensci/visdat/issues/133)), fixed in [#143](https://github.com/ropensci/visdat/pull/134) by [@muschellij2](https://github.com/muschellij2).
+* `vis_miss()` displayed missing percentages between 0.1% and 0.5% as 0% due to rounding. Now it dislpays "<1%" by @zeehio at https://github.com/ropensci/visdat/pull/162.
 
 ## Misc
 
