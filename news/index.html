@@ -83,6 +83,8 @@
 <li>resolve bug where <code><a href="../reference/vis_value.html">vis_value()</a></code> displayed constant values as NA values (<a href="https://github.com/ropensci/visdat/issues/128" class="external-link">#128</a>) - these constant values are now shown as 1.</li>
 <li>removed use of the now deprecated “aes_string” from ggplot2</li>
 <li>output of plot in <code>vis_expect</code> would reorder columns (<a href="https://github.com/ropensci/visdat/issues/133" class="external-link">#133</a>), fixed in <a href="https://github.com/ropensci/visdat/pull/134" class="external-link">#143</a> by <a href="https://github.com/muschellij2" class="external-link">@muschellij2</a>.</li>
+<li>
+<code><a href="../reference/vis_miss.html">vis_miss()</a></code> displayed missing percentages between 0.1% and 0.5% as 0% due to rounding. Now it dislpays “&lt;1%” by <a href="https://github.com/zeehio" class="external-link">@zeehio</a> at <a href="https://github.com/ropensci/visdat/pull/162" class="external-link uri">https://github.com/ropensci/visdat/pull/162</a>.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="misc-0-6-0">Misc<a class="anchor" aria-label="anchor" href="#misc-0-6-0"></a></h3>
