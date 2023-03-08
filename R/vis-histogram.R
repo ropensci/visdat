@@ -12,13 +12,13 @@
 #' @examples
 #'
 #' vis_histogram(airquality, bins = 30)
-#'s
+#'
 #' @export
-vis_histogram <- function(data, ...) {
-  test_if_dataframe(data)
-  test_if_all_numeric(data)
+vis_histogram <- function(x, ...) {
+  test_if_dataframe(x)
+  test_if_all_numeric(x)
 
-  vis_histogram_plot <- vis_histogram_create(data, ...)
+  vis_histogram_plot <- vis_histogram_create(x, ...)
 
   vis_histogram_plot
 }
