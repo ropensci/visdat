@@ -33,7 +33,7 @@
        8     2 Month    integer   118  
        9     2 Ozone    integer   8    
       10     2 Solar.R  integer   72   
-      # ... with 908 more rows
+      # i 908 more rows
 
 # data_vis_dat gets the data properly for groups
 
@@ -54,5 +54,5 @@
        8     5     2 Solar.R  integer   8    
        9     5     2 Temp     integer   72   
       10     5     2 Wind     numeric   2    
-      # ... with 755 more rows
+      # i 755 more rows
 

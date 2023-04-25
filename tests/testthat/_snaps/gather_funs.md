@@ -16,7 +16,7 @@
        8     2 Month    5        
        9     2 Ozone    36       
       10     2 Solar.R  118      
-      # ... with 908 more rows
+      # i 908 more rows
 
 ---
 
@@ -36,5 +36,5 @@
        8     1 Sex        Male     
        9     1 Smokes     FALSE    
       10     2 Age        25       
-      # ... with 44,990 more rows
+      # i 44,990 more rows
 

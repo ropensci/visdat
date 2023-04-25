@@ -55,7 +55,7 @@
        8     2 Month    FALSE     FALSE
        9     2 Ozone    FALSE     FALSE
       10     2 Solar.R  FALSE     FALSE
-      # ... with 908 more rows
+      # i 908 more rows
 
 # data_vis_miss gets the data properly for groups
 
@@ -76,5 +76,5 @@
        8     5     2 Solar.R  FALSE     FALSE
        9     5     2 Temp     FALSE     FALSE
       10     5     2 Wind     FALSE     FALSE
-      # ... with 755 more rows
+      # i 755 more rows
 

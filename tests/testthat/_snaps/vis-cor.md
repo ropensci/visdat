@@ -35,7 +35,7 @@
        8 Solar.R Solar.R  1     
        9 Solar.R Wind    -0.0568
       10 Solar.R Temp     0.276 
-      # ... with 26 more rows
+      # i 26 more rows
 
 # data_vis_cor gets the data properly for groups
 
@@ -56,5 +56,5 @@
        8     5 Solar.R Wind    -0.227 
        9     5 Solar.R Temp     0.455 
       10     5 Solar.R Day     -0.0644
-      # ... with 115 more rows
+      # i 115 more rows
 
