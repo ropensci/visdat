@@ -129,17 +129,24 @@ vis_miss <- function(
   }
 
   # then we plot it
+    # browser()
+  # Issue #98
+  # So I think we need to make a factor level for vis_miss, with
+  # missing being "NA" or "missing", and complete being "!NA" or "complete"
+  # This should allow us to assign the labels to each set and keep track of
+  # them, rather than having them
   vis_miss_plot <- vis_create_(vis_miss_data) +
     ggplot2::scale_fill_manual(
       name = "",
       values = c(
-        "grey80",
-        "grey20"
+        Present = "grey80",
+        Missing = "grey20"
       ),
       labels = c(
         p_pres_lab,
         p_miss_lab
-      )
+      ),
+      drop = FALSE
     ) +
     ggplot2::guides(fill = ggplot2::guide_legend(reverse = TRUE)) +
     ggplot2::theme(legend.position = "bottom") +

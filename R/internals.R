@@ -283,8 +283,8 @@ miss_guide_label <- function(x) {
 
   }
 
-  label_frame <- tibble::tibble(p_miss_lab,
-                                p_pres_lab)
+  label_frame <- tibble::tibble(p_miss_lab = p_miss_lab,
+                                p_pres_lab = p_pres_lab)
 
   return(label_frame)
 
