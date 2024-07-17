@@ -67,10 +67,11 @@ reference:
       - abbreviate_vars
 
 navbar:
-  left:
-  - text: Reference
-    href: reference/index.html
-  - text: Using visdat
-    href: articles/using_visdat.html
-  - text: News
-    href: news/index.html
+  components:
+    using:
+      text: Using visdat
+      href: articles/using_visdat.html
+  structure:
+    left:  [intro, reference, using, articles, tutorials, news]
+    right: [search, github, lightswitch]
+
