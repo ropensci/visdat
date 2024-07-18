@@ -2,8 +2,9 @@
 
     Code
       vis_miss(AirPassengers)
-    Error <rlang_error>
-      `vis_dat()` requires a <data.frame>
+    Condition
+      Error in `test_if_dataframe()`:
+      ! `vis_dat()` requires a <data.frame>
       the object I see has class(es):
       <ts>
 

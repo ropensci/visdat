@@ -2,16 +2,18 @@
 
     Code
       vis_dat(typical_data, palette = "wat")
-    Error <rlang_error>
-      Palette arguments need to be one of: 'qual', 'cb_safe', or 'default'
+    Condition
+      Error in `add_vis_dat_pal()`:
+      ! Palette arguments need to be one of: 'qual', 'cb_safe', or 'default'
       You palette argument was: `wat`
 
 # vis_dat fails when an object of the wrong class is provided
 
     Code
       vis_dat(AirPassengers)
-    Error <rlang_error>
-      `vis_dat()` requires a <data.frame>
+    Condition
+      Error in `test_if_dataframe()`:
+      ! `vis_dat()` requires a <data.frame>
       the object I see has class(es):
       <ts>
 

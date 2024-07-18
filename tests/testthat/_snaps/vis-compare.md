@@ -2,8 +2,9 @@
 
     Code
       vis_compare(iris, iris_add)
-    Error <rlang_error>
-      `vis_compare()` requires identical dimensions of `df1` and `df2`
+    Condition
+      Error in `vis_compare()`:
+      ! `vis_compare()` requires identical dimensions of `df1` and `df2`
       The dimensions of `df1` are: 150 and 5
       The dimensions of `df2` are: 150 and 6
 
@@ -11,8 +12,9 @@
 
     Code
       vis_compare(iris, AirPassengers)
-    Error <rlang_error>
-      `vis_dat()` requires a <data.frame>
+    Condition
+      Error in `test_if_dataframe()`:
+      ! `vis_dat()` requires a <data.frame>
       the object I see has class(es):
       <ts>
 
@@ -20,8 +22,9 @@
 
     Code
       vis_compare(AirPassengers, iris)
-    Error <rlang_error>
-      `vis_dat()` requires a <data.frame>
+    Condition
+      Error in `test_if_dataframe()`:
+      ! `vis_dat()` requires a <data.frame>
       the object I see has class(es):
       <ts>
 
@@ -29,8 +32,9 @@
 
     Code
       vis_compare(AirPassengers, AirPassengers)
-    Error <rlang_error>
-      `vis_dat()` requires a <data.frame>
+    Condition
+      Error in `test_if_dataframe()`:
+      ! `vis_dat()` requires a <data.frame>
       the object I see has class(es):
       <ts>
 
