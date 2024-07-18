@@ -41,15 +41,18 @@ data_vis_miss.default <- function(x, ...){
 #' @export
 data_vis_miss.data.frame <- function(x, cluster = FALSE, ...){
 
-  x.na <- x %>%
-    purrr::map_df(~fingerprint(.x) %>% is.na)
+  browser()
+  x_na <- x %>%
+    purrr::map_dfc(
+      .f = \(x) quick_shade(x)
+    )
 
   # switch for creating the missing clustering
   if (cluster){
 
     # this retrieves a row order of the clustered missingness
     row_order_index <-
-      stats::dist(x.na*1) %>%
+      stats::dist(x_na*1) %>%
       stats::hclust(method = "mcquitty") %>%
       stats::as.dendrogram() %>%
       stats::order.dendrogram()
@@ -64,7 +67,7 @@ data_vis_miss.data.frame <- function(x, cluster = FALSE, ...){
   # here we now have a column of the row number (row),
   # then the variable(variables),
   # then the contents of that variable (value)
-  vis_miss_data <- as.data.frame(x.na[row_order_index , ])
+  vis_miss_data <- as.data.frame(x_na[row_order_index , ])
 
   vis_miss_data %>%
     vis_gather_() %>%

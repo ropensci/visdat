@@ -129,7 +129,7 @@ vis_miss <- function(
   }
 
   # then we plot it
-    # browser()
+    browser()
   # Issue #98
   # So I think we need to make a factor level for vis_miss, with
   # missing being "NA" or "missing", and complete being "!NA" or "complete"
@@ -139,8 +139,8 @@ vis_miss <- function(
     ggplot2::scale_fill_manual(
       name = "",
       values = c(
-        Present = "grey80",
-        Missing = "grey20"
+        "grey80",
+        "grey20"
       ),
       labels = c(
         p_pres_lab,

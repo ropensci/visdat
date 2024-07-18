@@ -441,3 +441,16 @@ n_miss_col <- function(data, sort = FALSE){
 
   n_missing_cols
 }
+
+
+quick_shade <- function(x){
+  factor(is.na(x),
+         labels = c("!NA", "NA"),
+         levels = c(FALSE, TRUE))
+}
+
+label_shade_as_missing <- function(x){
+  dplyr::if_else(condition = isTRUE(x), # TRUE means missing
+                 true = "Missing",
+                 false = "Not Missing")
+}
