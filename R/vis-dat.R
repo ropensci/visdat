@@ -110,8 +110,7 @@ vis_dat <- function(
     # change the limits etc.
     ggplot2::guides(fill = ggplot2::guide_legend(title = "Type")) +
     # add info about the axes
-    ggplot2::scale_x_discrete(limits = col_order_index, position = "top") +
-    ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0))
+    ggplot2::scale_x_discrete(limits = col_order_index, position = "top")
 
   if (!missing(facet)) {
     vis_dat_plot <- vis_dat_plot +
