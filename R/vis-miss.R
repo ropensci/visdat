@@ -83,8 +83,7 @@ vis_miss <- function(
   large_data_size = 900000,
   warn_large_data = TRUE,
   facet
-    ) {
-
+) {
   test_if_dataframe(x)
   test_if_large_data(x, large_data_size, warn_large_data)
 
@@ -103,8 +102,7 @@ vis_miss <- function(
       col_order_index,
       facet,
       environment()
-      )
-
+    )
   } else {
     vis_miss_data <- data_vis_miss(x, cluster)
   }

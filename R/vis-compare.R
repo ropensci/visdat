@@ -20,9 +20,7 @@
 #' aq_diff[1:10, 1:2] <- NA
 #' vis_compare(airquality, aq_diff)
 #' @export
-vis_compare <- function(df1,
-                        df2){
-
+vis_compare <- function(df1, df2) {
   # could add a parameter, sort_match, to help with
   # sort_match logical TRUE/FALSE.
   # TRUE arranges the columns in order of most matches.
@@ -37,7 +35,7 @@ vis_compare <- function(df1,
         {.arg df2}",
         "The dimensions of {.arg df1} are: {dim(df1)}",
         "The dimensions of {.arg df2} are: {dim(df2)}"
-        )
+      )
     )
   }
 
@@ -49,41 +47,52 @@ vis_compare <- function(df1,
     as.data.frame() %>%
     purrr::map_df(compare_print) %>%
     vis_gather_() %>%
-    dplyr::mutate(value_df1 = vis_extract_value_(df1),
-                  value_df2 = vis_extract_value_(df2))
+    dplyr::mutate(
+      value_df1 = vis_extract_value_(df1),
+      value_df2 = vis_extract_value_(df2)
+    )
 
   # then we plot it
-  ggplot2::ggplot(data = d,
-                  ggplot2::aes(
-                    x = variable,
-                    y = rows)) +
-                    # text assists with plotly mouseover
-                    # text = c("value_df1", "value_df2"))) +
+  ggplot2::ggplot(
+    data = d,
+    ggplot2::aes(
+      x = variable,
+      y = rows
+    )
+  ) +
+    # text assists with plotly mouseover
+    # text = c("value_df1", "value_df2"))) +
     # this test code has been removed as ggplot2 version 3.0.0
     # breaks.
     # Logged in issue https://github.com/ropensci/visdat/issues/89
 
     ggplot2::geom_raster(ggplot2::aes(fill = valueType)) +
     ggplot2::theme_minimal() +
-    ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45,
-                                     vjust = 1,
-                                     hjust = 1)) +
-    ggplot2::labs(x = "",
-         y = "Observations",
-         # this prevents it from being used in the boilerplate
-         fill = "Cell Type") +
-    ggplot2::scale_fill_manual(limits = c("same",
-                                 "different"),
-                      breaks = c("same", # red
-                                 "different"), # dark blue
-                      values = c("#fc8d59", # Orange
-                                 "#91bfdb"), # blue
-                      na.value = "grey") +
-  # flip the axes
-  ggplot2::scale_y_reverse() +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0.25)) +
-    ggplot2::scale_x_discrete(position = "top",
-                              limits = names(df_diff))
+    ggplot2::theme(
+      axis.text.x = ggplot2::element_text(angle = 45, vjust = 1, hjust = 1)
+    ) +
+    ggplot2::labs(
+      x = "",
+      y = "Observations",
+      # this prevents it from being used in the boilerplate
+      fill = "Cell Type"
+    ) +
+    ggplot2::scale_fill_manual(
+      limits = c("same", "different"),
+      breaks = c(
+        "same", # red
+        "different"
+      ), # dark blue
+      values = c(
+        "#fc8d59", # Orange
+        "#91bfdb"
+      ), # blue
+      na.value = "grey"
+    ) +
+    # flip the axes
+    ggplot2::scale_y_reverse() +
+    ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0.25)) +
+    ggplot2::scale_x_discrete(position = "top", limits = names(df_diff))
 }
 
 #' (Internal) A utility function for `vis_compare`
@@ -99,13 +108,11 @@ vis_compare <- function(df1,
 #' @keywords internal
 #' @noRd
 #'
-compare_print <- function(x){
-
-  dplyr::if_else(x == "TRUE",
-                 true = "same",
-                 false = "different",
-                 missing = "missing")
-
-
+compare_print <- function(x) {
+  dplyr::if_else(
+    x == "TRUE",
+    true = "same",
+    false = "different",
+    missing = "missing"
+  )
 } # end function
-

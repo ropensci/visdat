@@ -20,3 +20,5 @@
 ^CODE_OF_CONDUCT\.md$
 ^codecov\.yml$
 ^CRAN-SUBMISSION$
+^[.]?air[.]toml$
+^\.vscode$

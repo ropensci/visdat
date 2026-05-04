@@ -27,9 +27,7 @@
 #'   select_if(is.numeric) %>%
 #'   vis_value()
 #'}
-vis_value <- function(data,
-                      na_colour = "grey90",
-                      viridis_option = "D") {
+vis_value <- function(data, na_colour = "grey90", viridis_option = "D") {
   test_if_all_numeric(data)
 
   purrr::map_dfr(data, scale_01) %>%
@@ -45,7 +43,5 @@ vis_value <- function(data,
     # add info about the axes
     ggplot2::scale_x_discrete(position = "top") +
     ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0)) +
-    ggplot2::scale_fill_viridis_c(option = viridis_option,
-                                  na.value = na_colour)
-
+    ggplot2::scale_fill_viridis_c(option = viridis_option, na.value = na_colour)
 }

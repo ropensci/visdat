@@ -29,7 +29,7 @@ vis_histogram_create <- function(data, ...) {
     tidyr::pivot_longer(cols = -rows) %>%
     dplyr::filter(!is.na(value)) %>%
     ggplot2::ggplot(ggplot2::aes(value)) +
-    ggplot2::facet_wrap(~ name, scales = "free") +
+    ggplot2::facet_wrap(~name, scales = "free") +
     ggplot2::geom_histogram(...) +
     ggplot2::theme_minimal() +
     ggplot2::labs(x = "", y = "") +

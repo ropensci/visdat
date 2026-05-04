@@ -9,19 +9,31 @@ one_vis_miss_plot_show_perc <- vis_miss(df, show_perc = FALSE)
 one_vis_miss_plot_show_perc_col <- vis_miss(df, show_perc_col = FALSE)
 one_vis_miss_plot_show_perc_col_t <- vis_miss(df, show_perc_col = TRUE)
 
-test_that("vis_miss creates the right plot when one column is presented",{
+test_that("vis_miss creates the right plot when one column is presented", {
   skip_on_cran()
   skip_on_ci()
-  vdiffr::expect_doppelganger("vis_miss with one col vanilla",
-                              one_vis_miss_plot)
-  vdiffr::expect_doppelganger("vis_miss with one col cluster",
-                              one_vis_miss_plot_cluster)
-  vdiffr::expect_doppelganger("vis_miss with one col sort rows",
-                              one_vis_miss_plot_sort_rows)
-  vdiffr::expect_doppelganger("vis_miss with one col show pct",
-                              one_vis_miss_plot_show_perc)
-  vdiffr::expect_doppelganger("vis_miss with one col show pct in columns",
-                              one_vis_miss_plot_show_perc_col)
-  vdiffr::expect_doppelganger("vis_miss with one col no show pct in columns",
-                              one_vis_miss_plot_show_perc_col_t)
+  vdiffr::expect_doppelganger(
+    "vis_miss with one col vanilla",
+    one_vis_miss_plot
+  )
+  vdiffr::expect_doppelganger(
+    "vis_miss with one col cluster",
+    one_vis_miss_plot_cluster
+  )
+  vdiffr::expect_doppelganger(
+    "vis_miss with one col sort rows",
+    one_vis_miss_plot_sort_rows
+  )
+  vdiffr::expect_doppelganger(
+    "vis_miss with one col show pct",
+    one_vis_miss_plot_show_perc
+  )
+  vdiffr::expect_doppelganger(
+    "vis_miss with one col show pct in columns",
+    one_vis_miss_plot_show_perc_col
+  )
+  vdiffr::expect_doppelganger(
+    "vis_miss with one col no show pct in columns",
+    one_vis_miss_plot_show_perc_col_t
+  )
 })

@@ -20,15 +20,12 @@
 #' vis_miss(long_data)
 #' long_data %>% abbreviate_vars() %>% vis_miss()
 #' @export
-abbreviate_vars <- function(data, min_length = 10){
-
+abbreviate_vars <- function(data, min_length = 10) {
   test_if_dataframe(data)
 
   dplyr::rename_with(
     data,
-    .fn = ~abbreviate(.x,
-                      minlength = min_length,
-                      method = "both"),
+    .fn = ~ abbreviate(.x, minlength = min_length, method = "both"),
     # this didn't work with ncar_over for some reason?
     .cols = dplyr::everything()
   )

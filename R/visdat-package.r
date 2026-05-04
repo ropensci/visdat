@@ -24,15 +24,19 @@
 #' @keywords internal
 "_PACKAGE"
 
-if(getRversion() >= "2.15.1")  utils::globalVariables(c("."))
-globalVariables(c("valueGuess",
-                  "valueType",
-                  "variable",
-                  "rows",
-                  "row_1",
-                  "row_2",
-                  "value",
-                  "cor",
-                  "setNames",
-                  "rowname",
-                  "n"))
+if (getRversion() >= "2.15.1") {
+  utils::globalVariables(c("."))
+}
+globalVariables(c(
+  "valueGuess",
+  "valueType",
+  "variable",
+  "rows",
+  "row_1",
+  "row_2",
+  "value",
+  "cor",
+  "setNames",
+  "rowname",
+  "n"
+))

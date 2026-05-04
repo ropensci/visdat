@@ -22,27 +22,34 @@
 #' # good - specify the original order
 #' vis_binary(df, order = names(df))
 #' @export
-vis_binary <- function(data,
-                       col_zero = "salmon",
-                       col_one = "steelblue2",
-                       col_na = "grey90",
-                       order = NULL) {
-
+vis_binary <- function(
+  data,
+  col_zero = "salmon",
+  col_one = "steelblue2",
+  col_na = "grey90",
+  order = NULL
+) {
   test_if_all_binary(data)
 
   data %>%
     vis_gather_() %>%
     dplyr::mutate(value = vis_extract_value_(data)) %>%
-    dplyr::mutate(valueType = forcats::as_factor(valueType),
-                  value = forcats::as_factor(value),
-                  variable = forcats::fct_relevel(variable, order)) %>%
+    dplyr::mutate(
+      valueType = forcats::as_factor(valueType),
+      value = forcats::as_factor(value),
+      variable = forcats::fct_relevel(variable, order)
+    ) %>%
     vis_create_() +
     # change the limits etc.
     ggplot2::guides(fill = ggplot2::guide_legend(title = "Value")) +
     # add info about the axes
     ggplot2::scale_x_discrete(position = "top") +
     ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0)) +
-    ggplot2::scale_fill_manual(values = c(col_zero, # zero
-                                          col_one), # one
-                               na.value = col_na)
+    ggplot2::scale_fill_manual(
+      values = c(
+        col_zero, # zero
+        col_one
+      ), # one
+      na.value = col_na
+    )
 }

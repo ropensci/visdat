@@ -2,8 +2,8 @@
 % Please edit documentation in R/visdat-package.r
 \docType{package}
 \name{visdat}
-\alias{visdat}
 \alias{visdat-package}
+\alias{visdat}
 \title{visdat}
 \description{
 visdat is a package that helps with the preliminary visualisation of data.
@@ -24,6 +24,11 @@ Learn more about visdat at \url{https://docs.ropensci.org/visdat/}
 }
 \author{
 \strong{Maintainer}: Nicholas Tierney \email{nicholas.tierney@gmail.com} (\href{https://orcid.org/0000-0003-1460-8722}{ORCID})
+
+Authors:
+\itemize{
+  \item Nicholas Tierney \email{nicholas.tierney@gmail.com} (\href{https://orcid.org/0000-0003-1460-8722}{ORCID})
+}
 
 Other contributors:
 \itemize{

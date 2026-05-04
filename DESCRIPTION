@@ -23,7 +23,6 @@ Depends:
     R (>= 3.2.2)
 License: MIT + file LICENSE
 LazyData: true
-RoxygenNote: 7.2.3
 Imports:
     ggplot2,
     tidyr,
@@ -53,3 +52,4 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 Language: en-US
 Config/testthat/edition: 3
+Config/roxygen2/version: 8.0.0

@@ -43,28 +43,25 @@
 #'                        var3 = sample(messy_vector))
 #' vis_guess(messy_df)
 #' @export
-vis_guess <- function(x, palette = "default"){
-
+vis_guess <- function(x, palette = "default") {
   test_if_dataframe(x)
 
-# x = messy_df
+  # x = messy_df
   # suppress warnings here as this is just a note about combining classes
   d <- suppressWarnings(vis_gather_(x)) %>%
     dplyr::mutate(valueType = guess_type(valueType)) %>%
-  # value for plotly mouseover
+    # value for plotly mouseover
     dplyr::mutate(value = vis_extract_value_(x))
 
   # add the boilerplate information
   vis_plot <- vis_create_(d) +
-      ggplot2::guides(fill = ggplot2::guide_legend(title = "Type")) +
-      # flip the axes, add info for axes
-      ggplot2::scale_x_discrete(position = "top",
-                                limits = names(x)) +
+    ggplot2::guides(fill = ggplot2::guide_legend(title = "Type")) +
+    # flip the axes, add info for axes
+    ggplot2::scale_x_discrete(position = "top", limits = names(x)) +
     ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0))
 
   # specify a palette ----------------------------------------------------------
   add_vis_dat_pal(vis_plot, palette)
-
 } # close function
 
 #' (Internal) Guess the type of each individual cell in a dataframe
@@ -89,8 +86,7 @@ vis_guess <- function(x, palette = "default"){
 #'
 #' purrr::map_df(iris, guess_type)
 #' }
-guess_type <- function(x){
-
+guess_type <- function(x) {
   # since
   # readr::collector_guess(NA,
   #                        locale_ = readr::locale())
@@ -104,11 +100,12 @@ guess_type <- function(x){
   output <- character(length(x))
   nas <- (x %>% fingerprint() %>% is.na() | is.na(x))
 
-  output[!nas] <- vapply(FUN = readr::guess_parser,
-                         X = x[!nas],
-                         FUN.VALUE = character(1),
-                         guess_integer = TRUE)
+  output[!nas] <- vapply(
+    FUN = readr::guess_parser,
+    X = x[!nas],
+    FUN.VALUE = character(1),
+    guess_integer = TRUE
+  )
   output[nas] <- NA
   output
-
 }

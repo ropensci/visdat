@@ -17,19 +17,19 @@
 #'   group_by(Month) %>%
 #'   data_vis_dat()
 #' }
-data_vis_dat <- function(x, ...){
+data_vis_dat <- function(x, ...) {
   UseMethod("data_vis_dat")
 }
 
 #' @rdname data-vis-dat
 #' @export
-data_vis_dat.default <- function(x, ...){
+data_vis_dat.default <- function(x, ...) {
   data_vis_class_not_implemented("vis_dat")
 }
 
 #' @rdname data-vis-dat
 #' @export
-data_vis_dat.data.frame <- function(x, ...){
+data_vis_dat.data.frame <- function(x, ...) {
   x %>%
     fingerprint_df() %>%
     vis_gather_() %>%
@@ -39,8 +39,6 @@ data_vis_dat.data.frame <- function(x, ...){
 
 #' @rdname data-vis-dat
 #' @export
-data_vis_dat.grouped_df <- function(x, ...){
+data_vis_dat.grouped_df <- function(x, ...) {
   group_by_fun(x, data_vis_dat)
 }
-
-

@@ -6,22 +6,28 @@ vis_miss_plot_show_perc <- vis_miss(typical_data, show_perc = FALSE)
 vis_miss_plot_show_perc_col <- vis_miss(typical_data, show_perc_col = FALSE)
 vis_miss_plot_show_perc_col_t <- vis_miss(typical_data, show_perc_col = TRUE)
 
-test_that("vis_miss creates the right plot",{
+test_that("vis_miss creates the right plot", {
   skip_on_cran()
   skip_on_ci()
   vdiffr::expect_doppelganger("vis_miss vanilla", vis_miss_plot)
   vdiffr::expect_doppelganger("vis_miss cluster", vis_miss_plot_cluster)
   vdiffr::expect_doppelganger("vis_miss sort rows", vis_miss_plot_sort_rows)
   vdiffr::expect_doppelganger("vis_miss show percent", vis_miss_plot_show_perc)
-  vdiffr::expect_doppelganger("vis_miss show percent in columns", vis_miss_plot_show_perc_col)
-  vdiffr::expect_doppelganger("vis_miss no show percent in columns", vis_miss_plot_show_perc_col_t)
+  vdiffr::expect_doppelganger(
+    "vis_miss show percent in columns",
+    vis_miss_plot_show_perc_col
+  )
+  vdiffr::expect_doppelganger(
+    "vis_miss no show percent in columns",
+    vis_miss_plot_show_perc_col_t
+  )
 })
 
 test_that("vis_miss fails when an object of the wrong class is provided", {
   expect_snapshot(
     error = TRUE,
     vis_miss(AirPassengers)
-    )
+  )
 })
 
 library(dplyr)
@@ -30,19 +36,22 @@ star_wars_missings <- starwars %>%
 vis_miss_list <- vis_miss(star_wars_missings)
 vis_miss_list_sort_rows <- vis_miss(starwars, sort_miss = TRUE)
 
-test_that("vis_miss manage missings in list columns",{
+test_that("vis_miss manage missings in list columns", {
   skip_on_cran()
   skip_on_ci()
   vdiffr::expect_doppelganger("vis_miss list", vis_miss_list)
-  vdiffr::expect_doppelganger("vis_miss list sort rows", vis_miss_list_sort_rows)
+  vdiffr::expect_doppelganger(
+    "vis_miss list sort rows",
+    vis_miss_list_sort_rows
+  )
 })
 
-test_that("vis_miss correctly see missings in columns labels",{
+test_that("vis_miss correctly see missings in columns labels", {
   x_labs <- tibble::tibble(x_lab = vis_miss_list$scales$scales[[3]]$labels)
   expect_snapshot(x_labs)
 })
 
-test_that("vis_miss correctly aggregate missings in legend",{
+test_that("vis_miss correctly aggregate missings in legend", {
   legend_lab <- tibble::tibble(x_lab = vis_miss_list$scales$scales[[2]]$labels)
   expect_snapshot(legend_lab)
 })
@@ -50,7 +59,7 @@ test_that("vis_miss correctly aggregate missings in legend",{
 vis_miss_facet <- vis_miss(airquality, facet = Month)
 vis_miss_facet_no_pct <- vis_miss(airquality, facet = Month, show_perc = FALSE)
 
-test_that("vis_miss works with facets",{
+test_that("vis_miss works with facets", {
   skip_on_cran()
   skip_on_ci()
   vdiffr::expect_doppelganger("vis_miss_facet", vis_miss_facet)
@@ -79,7 +88,7 @@ test_that("column percentage between 0.1% and 0.5% is reported as <1%", {
     miss_0.2 = c(rep(NA_real_, 20), rep(1, 10000 - 20)),
     miss_0.8 = c(rep(NA_real_, 80), rep(1, 10000 - 80)),
     miss_3.4 = c(rep(NA_real_, 340), rep(1, 10000 - 340)),
-    miss_23 =  c(rep(NA_real_, 2300), rep(1, 10000 - 2300))
+    miss_23 = c(rep(NA_real_, 2300), rep(1, 10000 - 2300))
   )
   vis_miss_percentages <- vis_miss(x, sort_miss = TRUE)
   vdiffr::expect_doppelganger("vis_miss_percentages", vis_miss_percentages)

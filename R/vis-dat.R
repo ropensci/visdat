@@ -63,35 +63,33 @@
 #'}
 #'
 #' @export
-vis_dat <- function(x,
-                    sort_type = TRUE,
-                    palette = "default",
-                    warn_large_data = TRUE,
-                    large_data_size = 900000,
-                    facet) {
-
+vis_dat <- function(
+  x,
+  sort_type = TRUE,
+  palette = "default",
+  warn_large_data = TRUE,
+  large_data_size = 900000,
+  facet
+) {
   test_if_dataframe(x)
   test_if_large_data(x, large_data_size, warn_large_data)
 
   if (sort_type) {
-
     type_sort <- order(
       # get the class, if there are multiple classes, combine them together
-      purrr::map_chr(.x = x,
-                     .f = function(x) glue::glue_collapse(class(x),
-                                                          sep = "\n"))
+      purrr::map_chr(.x = x, .f = function(x) {
+        glue::glue_collapse(class(x), sep = "\n")
+      })
     )
     # get the names of those columns
     col_order_index <- names(x)[type_sort]
-
   } else {
     # this means that the order remains the same as the dataframe.
     col_order_index <- names(x)
-
   }
 
   # reshape the dataframe ready for geom_raster
-  if (!missing(facet)){
+  if (!missing(facet)) {
     vis_dat_data <- x %>%
       dplyr::group_by({{ facet }}) %>%
       data_vis_dat()
@@ -101,7 +99,6 @@ vis_dat <- function(x,
       facet,
       environment()
     )
-
   } else {
     vis_dat_data <- data_vis_dat(x)
   }
@@ -113,16 +110,14 @@ vis_dat <- function(x,
     # change the limits etc.
     ggplot2::guides(fill = ggplot2::guide_legend(title = "Type")) +
     # add info about the axes
-    ggplot2::scale_x_discrete(limits = col_order_index,
-                              position = "top") +
+    ggplot2::scale_x_discrete(limits = col_order_index, position = "top") +
     ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0))
 
   if (!missing(facet)) {
     vis_dat_plot <- vis_dat_plot +
-      ggplot2::facet_wrap(facets = dplyr::vars( {{ facet }} ))
+      ggplot2::facet_wrap(facets = dplyr::vars({{ facet }}))
   }
 
   # specify a palette ----------------------------------------------------------
   add_vis_dat_pal(vis_dat_plot, palette)
-
-  } # close function
+} # close function

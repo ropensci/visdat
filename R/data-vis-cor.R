@@ -17,13 +17,13 @@
 #'   group_by(Month) %>%
 #'   data_vis_cor()
 #' }
-data_vis_cor <- function(x, ...){
+data_vis_cor <- function(x, ...) {
   UseMethod("data_vis_cor")
 }
 
 #' @rdname data-vis-cor
 #' @export
-data_vis_cor.default <- function(x, ...){
+data_vis_cor.default <- function(x, ...) {
   data_vis_class_not_implemented("vis_cor")
 }
 
@@ -46,14 +46,13 @@ data_vis_cor.default <- function(x, ...){
 #'
 #' @rdname data-vis-cor
 #' @export
-data_vis_cor.data.frame <- function(x,
-                                    cor_method = "pearson",
-                                    na_action = "pairwise.complete.obs",
-                                    ...){
-
-  stats::cor(x,
-             method = cor_method,
-             use = na_action) %>%
+data_vis_cor.data.frame <- function(
+  x,
+  cor_method = "pearson",
+  na_action = "pairwise.complete.obs",
+  ...
+) {
+  stats::cor(x, method = cor_method, use = na_action) %>%
     as.data.frame() %>%
     tibble::rownames_to_column() %>%
     tidyr::pivot_longer(
@@ -62,11 +61,10 @@ data_vis_cor.data.frame <- function(x,
       values_to = "value"
     ) %>%
     purrr::set_names(c("row_1", "row_2", "value"))
-
 }
 
 #' @rdname data-vis-cor
 #' @export
-data_vis_cor.grouped_df <- function(x, ...){
+data_vis_cor.grouped_df <- function(x, ...) {
   group_by_fun(x, data_vis_cor)
 }
