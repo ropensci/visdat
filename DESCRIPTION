@@ -15,7 +15,8 @@ Authors@R: c(
   person("Stuart", "Lee", role = c("ctb")),
   person("Earo", "Wang", role = c("ctb")),
   person("Nic", "Crane", role = c("ctb")),
-  person("Christophe", "Regouby", role=c("ctb"))
+  person("Christophe", "Regouby", role=c("ctb")),
+  person("Jordi", "Rosell", role=c("ctb"))
       )
 Description: Create preliminary exploratory data visualisations of an entire 
     dataset to identify problems or unexpected features using 'ggplot2'.
