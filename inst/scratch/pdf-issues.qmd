@@ -1,0 +1,13 @@
+---
+title: "Untitled"
+format: pdf
+---
+
+```{r}
+knitr::opts_chunk$set(
+  dev = "jpeg"
+)
+visdat::vis_miss(airquality)
+
+```
+

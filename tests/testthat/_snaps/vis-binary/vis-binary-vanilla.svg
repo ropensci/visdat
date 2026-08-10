@@ -18,6 +18,7 @@
   </clipPath>
 </defs>
 <g clip-path='url(#cpMC4wMHw3MjAuMDB8MC4wMHw1NzYuMDA=)'>
+<rect x='0.00' y='0.00' width='720.00' height='576.00' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
 </g>
 <defs>
   <clipPath id='cpMzcuNjl8NjU3LjYxfDQ5LjAwfDU3MC41Mg=='>
@@ -50,9 +51,9 @@
 <text x='32.76' y='547.47' text-anchor='end' style='font-size: 8.80px; fill: #4D4D4D; font-family: sans;' textLength='14.68px' lengthAdjust='spacingAndGlyphs'>100</text>
 <text transform='translate(13.05,309.76) rotate(-90)' text-anchor='middle' style='font-size: 11.00px; font-family: sans;' textLength='64.83px' lengthAdjust='spacingAndGlyphs'>Observations</text>
 <text x='674.05' y='284.88' style='font-size: 11.00px; font-family: sans;' textLength='28.14px' lengthAdjust='spacingAndGlyphs'>Value</text>
-<rect x='674.05' y='291.51' width='17.28' height='17.28' style='stroke-width: 0.75; stroke: none; fill: #FA8072;' />
-<rect x='674.05' y='308.79' width='17.28' height='17.28' style='stroke-width: 0.75; stroke: none; fill: #5CACEE;' />
-<rect x='674.05' y='326.07' width='17.28' height='17.28' style='stroke-width: 0.75; stroke: none; fill: #E5E5E5;' />
+<rect x='674.05' y='291.51' width='17.28' height='17.28' style='stroke-width: 0.00; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #FA8072;' />
+<rect x='674.05' y='308.79' width='17.28' height='17.28' style='stroke-width: 0.00; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #5CACEE;' />
+<rect x='674.05' y='326.07' width='17.28' height='17.28' style='stroke-width: 0.00; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #E5E5E5;' />
 <text x='696.81' y='303.17' style='font-size: 8.80px; font-family: sans;' textLength='4.89px' lengthAdjust='spacingAndGlyphs'>0</text>
 <text x='696.81' y='320.45' style='font-size: 8.80px; font-family: sans;' textLength='4.89px' lengthAdjust='spacingAndGlyphs'>1</text>
 <text x='696.81' y='337.73' style='font-size: 8.80px; font-family: sans;' textLength='12.23px' lengthAdjust='spacingAndGlyphs'>NA</text>

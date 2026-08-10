@@ -68,9 +68,6 @@ vis_compare <- function(df1, df2) {
 
     ggplot2::geom_raster(ggplot2::aes(fill = valueType)) +
     ggplot2::theme_minimal() +
-    ggplot2::theme(
-      axis.text.x = ggplot2::element_text(angle = 45, vjust = 1, hjust = 1)
-    ) +
     ggplot2::labs(
       x = "",
       y = "Observations",
@@ -91,8 +88,10 @@ vis_compare <- function(df1, df2) {
     ) +
     # flip the axes
     ggplot2::scale_y_reverse() +
-    ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0.25)) +
-    ggplot2::scale_x_discrete(position = "top", limits = names(df_diff))
+    ggplot2::scale_x_discrete(position = "top", limits = names(df_diff)) +
+    ggplot2::theme_sub_axis_x(
+      text = ggplot2::element_text(angle = 45, vjust = 0, hjust = 0)
+    )
 }
 
 #' (Internal) A utility function for `vis_compare`

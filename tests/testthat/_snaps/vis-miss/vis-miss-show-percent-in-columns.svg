@@ -18,6 +18,7 @@
   </clipPath>
 </defs>
 <g clip-path='url(#cpMC4wMHw3MjAuMDB8MC4wMHw1NzYuMDA=)'>
+<rect x='0.00' y='0.00' width='720.00' height='576.00' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
 </g>
 <defs>
   <clipPath id='cpNDIuNTh8NzE0LjUyfDc2LjMxfDUzMS4yMg=='>
@@ -64,8 +65,8 @@
 <text x='37.65' y='430.82' text-anchor='end' style='font-size: 8.80px; fill: #4D4D4D; font-family: sans;' textLength='19.58px' lengthAdjust='spacingAndGlyphs'>4000</text>
 <text x='37.65' y='513.53' text-anchor='end' style='font-size: 8.80px; fill: #4D4D4D; font-family: sans;' textLength='19.58px' lengthAdjust='spacingAndGlyphs'>5000</text>
 <text transform='translate(13.05,303.77) rotate(-90)' text-anchor='middle' style='font-size: 11.00px; font-family: sans;' textLength='64.83px' lengthAdjust='spacingAndGlyphs'>Observations</text>
-<rect x='323.26' y='547.65' width='17.28' height='17.39' style='stroke-width: 0.75; stroke: none; fill: #333333;' />
-<rect x='383.78' y='547.65' width='17.28' height='17.39' style='stroke-width: 0.75; stroke: none; fill: #CCCCCC;' />
+<rect x='323.26' y='547.65' width='17.28' height='17.39' style='stroke-width: 0.00; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #333333;' />
+<rect x='383.78' y='547.65' width='17.28' height='17.39' style='stroke-width: 0.00; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #CCCCCC;' />
 <text x='346.02' y='554.62' style='font-size: 8.80px; font-family: sans;' textLength='32.28px' lengthAdjust='spacingAndGlyphs'>Missing </text>
 <text x='346.02' y='564.13' style='font-size: 8.80px; font-family: sans;' textLength='25.92px' lengthAdjust='spacingAndGlyphs'>(4.4%)</text>
 <text x='406.54' y='554.62' style='font-size: 8.80px; font-family: sans;' textLength='32.78px' lengthAdjust='spacingAndGlyphs'>Present </text>

@@ -140,34 +140,34 @@ vis_miss <- function(
       )
     ) +
     ggplot2::guides(fill = ggplot2::guide_legend(reverse = TRUE)) +
-    ggplot2::theme_sub_legend(position = "bottom") +
-    # add the missingness column labels
+    ggplot2::theme_sub_legend(position = "bottom")
+  # add the missingness column labels
 
-    # if there is only one colummn you don't need to sort the columns
-    # this is perhaps a bit of a hacky way around, but I can't see another
-    # way around it. Related issue: https://github.com/ropensci/visdat/issues/72
-    if (ncol(x) == 1) {
-      if (show_perc_col) {
-        return(
-          vis_miss_plot <- vis_miss_plot +
-            ggplot2::scale_x_discrete(
-              position = "top",
-              labels = label_col_missing_pct(
-                x_fingerprinted,
-                col_order_index
-              )
+  # if there is only one colummn you don't need to sort the columns
+  # this is perhaps a bit of a hacky way around, but I can't see another
+  # way around it. Related issue: https://github.com/ropensci/visdat/issues/72
+  if (ncol(x) == 1) {
+    if (show_perc_col) {
+      return(
+        vis_miss_plot <- vis_miss_plot +
+          ggplot2::scale_x_discrete(
+            position = "top",
+            labels = label_col_missing_pct(
+              x_fingerprinted,
+              col_order_index
             )
-        )
-      } else if (!show_perc_col) {
-        return(
-          vis_miss_plot <- vis_miss_plot +
-            ggplot2::scale_x_discrete(
-              position = "top",
-              labels = col_order_index
-            )
-        )
-      }
+          )
+      )
+    } else if (!show_perc_col) {
+      return(
+        vis_miss_plot <- vis_miss_plot +
+          ggplot2::scale_x_discrete(
+            position = "top",
+            labels = col_order_index
+          )
+      )
     }
+  }
 
   if (!missing(facet)) {
     vis_miss_plot <- vis_miss_plot +
