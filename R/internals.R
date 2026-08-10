@@ -107,15 +107,14 @@ vis_create_ <- function(x) {
       text = value
     )
   ) +
-    ggplot2::geom_raster(ggplot2::aes(fill = valueType)) +
+    ggplot2::geom_raster(ggplot2::aes(fill = valueType), show.legend = TRUE) +
     ggplot2::theme_minimal() +
-    ggplot2::theme(
-      axis.text.x = ggplot2::element_text(angle = 45, vjust = 1, hjust = 1)
+    ggplot2::theme_sub_axis_x(
+      text = ggplot2::element_text(angle = 45, vjust = 0, hjust = 0)
     ) +
     ggplot2::labs(x = "", y = "Observations") +
     # flip the axes
     ggplot2::scale_y_reverse() +
-    ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0.5)) +
     ggplot2::guides(colour = "none")
 }
 
@@ -182,7 +181,8 @@ add_vis_dat_pal <- function(vis_plot, palette) {
           "numeric"
         ), # dark blue
         values = vis_pal_qual,
-        na.value = "grey"
+        na.value = "grey",
+        drop = FALSE
       )
   } else if (palette == "cb_safe") {
     vis_plot +

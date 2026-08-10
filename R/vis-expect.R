@@ -95,9 +95,6 @@ vis_expect <- function(data, expectation, show_perc = TRUE) {
     ggplot2::ggplot(ggplot2::aes(x = variable, y = rows)) +
     ggplot2::geom_raster(ggplot2::aes(fill = valueType)) +
     ggplot2::theme_minimal() +
-    ggplot2::theme(
-      axis.text.x = ggplot2::element_text(angle = 45, vjust = 1, hjust = 1)
-    ) +
     ggplot2::labs(x = "", y = "Observations") +
     # flip the axes
     ggplot2::scale_y_reverse() +
@@ -110,15 +107,18 @@ vis_expect <- function(data, expectation, show_perc = TRUE) {
         "grey"
       ),
       labels = c(p_expect_false_lab, p_expect_true_lab),
+      # light gray
       na.value = "#E5E5E5"
-    ) + # light gray
-    ggplot2::guides(fill = ggplot2::guide_legend(reverse = TRUE)) +
+    ) +
     # change the limits etc.
-    ggplot2::guides(fill = ggplot2::guide_legend(title = "Expectation")) +
+    ggplot2::guides(
+      fill = ggplot2::guide_legend(
+        title = "Expectation",
+        reverse = TRUE
+      )
+    ) +
     # add info about the axes
-    ggplot2::theme(legend.position = "bottom") +
-    # ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0.5)) +
-    ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0))
+    ggplot2::theme_sub_legend(position = "bottom")
 
   vis_expect_plot
 }

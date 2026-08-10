@@ -44,7 +44,6 @@ vis_binary <- function(
     ggplot2::guides(fill = ggplot2::guide_legend(title = "Value")) +
     # add info about the axes
     ggplot2::scale_x_discrete(position = "top") +
-    ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0)) +
     ggplot2::scale_fill_manual(
       values = c(
         col_zero, # zero

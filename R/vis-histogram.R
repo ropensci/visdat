@@ -34,7 +34,7 @@ vis_histogram_create <- function(data, ...) {
     ggplot2::theme_minimal() +
     ggplot2::labs(x = "", y = "") +
     ggplot2::guides(fill = ggplot2::guide_legend(title = "Histogram")) +
-    ggplot2::theme(
-      axis.text.x = ggplot2::element_text(angle = 45, hjust = 0.1)
+    ggplot2::theme_sub_axis_x(
+      text = ggplot2::element_text(angle = 45, hjust = 0.1)
     )
 }

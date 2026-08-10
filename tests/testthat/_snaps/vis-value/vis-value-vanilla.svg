@@ -18,6 +18,7 @@
   </clipPath>
 </defs>
 <g clip-path='url(#cpMC4wMHw3MjAuMDB8MC4wMHw1NzYuMDA=)'>
+<rect x='0.00' y='0.00' width='720.00' height='576.00' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
 </g>
 <defs>
   <clipPath id='cpMzcuNjl8NjUyLjcxfDY2LjYzfDU3MC41Mg=='>
@@ -53,11 +54,11 @@
 <text x='32.76' y='540.17' text-anchor='end' style='font-size: 8.80px; fill: #4D4D4D; font-family: sans;' textLength='14.68px' lengthAdjust='spacingAndGlyphs'>150</text>
 <text transform='translate(13.05,318.58) rotate(-90)' text-anchor='middle' style='font-size: 11.00px; font-family: sans;' textLength='64.83px' lengthAdjust='spacingAndGlyphs'>Observations</text>
 <text x='669.15' y='276.42' style='font-size: 11.00px; font-family: sans;' textLength='28.14px' lengthAdjust='spacingAndGlyphs'>Value</text>
-<rect x='669.15' y='283.04' width='17.28' height='17.28' style='stroke-width: 0.75; stroke: none; fill: #440154;' />
-<rect x='669.15' y='300.32' width='17.28' height='17.28' style='stroke-width: 0.75; stroke: none; fill: #3F5189;' />
-<rect x='669.15' y='317.60' width='17.28' height='17.28' style='stroke-width: 0.75; stroke: none; fill: #2B9089;' />
-<rect x='669.15' y='334.88' width='17.28' height='17.28' style='stroke-width: 0.75; stroke: none; fill: #6BC760;' />
-<rect x='669.15' y='352.16' width='17.28' height='17.28' style='stroke-width: 0.75; stroke: none; fill: #FDE725;' />
+<rect x='669.15' y='283.04' width='17.28' height='17.28' style='stroke-width: 0.00; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #440154;' />
+<rect x='669.15' y='300.32' width='17.28' height='17.28' style='stroke-width: 0.00; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #3F5189;' />
+<rect x='669.15' y='317.60' width='17.28' height='17.28' style='stroke-width: 0.00; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #2B9089;' />
+<rect x='669.15' y='334.88' width='17.28' height='17.28' style='stroke-width: 0.00; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #6BC760;' />
+<rect x='669.15' y='352.16' width='17.28' height='17.28' style='stroke-width: 0.00; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #FDE725;' />
 <text x='691.91' y='294.71' style='font-size: 8.80px; font-family: sans;' textLength='17.13px' lengthAdjust='spacingAndGlyphs'>0.00</text>
 <text x='691.91' y='311.99' style='font-size: 8.80px; font-family: sans;' textLength='17.13px' lengthAdjust='spacingAndGlyphs'>0.25</text>
 <text x='691.91' y='329.27' style='font-size: 8.80px; font-family: sans;' textLength='17.13px' lengthAdjust='spacingAndGlyphs'>0.50</text>

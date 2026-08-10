@@ -18,6 +18,7 @@
   </clipPath>
 </defs>
 <g clip-path='url(#cpMC4wMHw3MjAuMDB8MC4wMHw1NzYuMDA=)'>
+<rect x='0.00' y='0.00' width='720.00' height='576.00' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
 </g>
 <defs>
   <clipPath id='cpMzIuNzl8MjMxLjA2fDgzLjI4fDMxNS44NA=='>
@@ -130,15 +131,6 @@
 <g clip-path='url(#cpMC4wMHw3MjAuMDB8MC4wMHw1NzYuMDA=)'>
 </g>
 <defs>
-  <clipPath id='cpNDQwLjI4fDYzOC41NHwzMzcuOTd8NTcwLjUy'>
-    <rect x='440.28' y='337.97' width='198.26' height='232.55' />
-  </clipPath>
-</defs>
-<g clip-path='url(#cpNDQwLjI4fDYzOC41NHwzMzcuOTd8NTcwLjUy)'>
-</g>
-<g clip-path='url(#cpMC4wMHw3MjAuMDB8MC4wMHw1NzYuMDA=)'>
-</g>
-<defs>
   <clipPath id='cpMzIuNzl8MjMxLjA2fDMyMS4zMnwzMzcuOTc='>
     <rect x='32.79' y='321.32' width='198.26' height='16.65' />
   </clipPath>
@@ -155,15 +147,6 @@
 </defs>
 <g clip-path='url(#cpMjM2LjUzfDQzNC44MHwzMjEuMzJ8MzM3Ljk3)'>
 <text x='335.67' y='332.67' text-anchor='middle' style='font-size: 8.80px; fill: #1A1A1A; font-family: sans;' textLength='4.89px' lengthAdjust='spacingAndGlyphs'>9</text>
-</g>
-<g clip-path='url(#cpMC4wMHw3MjAuMDB8MC4wMHw1NzYuMDA=)'>
-</g>
-<defs>
-  <clipPath id='cpNDQwLjI4fDYzOC41NHwzMjEuMzJ8MzM3Ljk3'>
-    <rect x='440.28' y='321.32' width='198.26' height='16.65' />
-  </clipPath>
-</defs>
-<g clip-path='url(#cpNDQwLjI4fDYzOC41NHwzMjEuMzJ8MzM3Ljk3)'>
 </g>
 <g clip-path='url(#cpMC4wMHw3MjAuMDB8MC4wMHw1NzYuMDA=)'>
 </g>
@@ -221,9 +204,9 @@
 <text x='27.86' y='552.75' text-anchor='end' style='font-size: 8.80px; fill: #4D4D4D; font-family: sans;' textLength='9.79px' lengthAdjust='spacingAndGlyphs'>30</text>
 <text transform='translate(13.05,326.90) rotate(-90)' text-anchor='middle' style='font-size: 11.00px; font-family: sans;' textLength='64.83px' lengthAdjust='spacingAndGlyphs'>Observations</text>
 <text x='654.98' y='302.03' style='font-size: 11.00px; font-family: sans;' textLength='24.46px' lengthAdjust='spacingAndGlyphs'>Type</text>
-<rect x='654.98' y='308.65' width='17.28' height='17.28' style='stroke-width: 0.75; stroke: none; fill: #F8766D;' />
-<rect x='654.98' y='325.93' width='17.28' height='17.28' style='stroke-width: 0.75; stroke: none; fill: #00BFC4;' />
-<rect x='654.98' y='343.21' width='17.28' height='17.28' style='stroke-width: 0.75; stroke: none; fill: #7F7F7F;' />
+<rect x='654.98' y='308.65' width='17.28' height='17.28' style='stroke-width: 0.00; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #F8766D;' />
+<rect x='654.98' y='325.93' width='17.28' height='17.28' style='stroke-width: 0.00; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #00BFC4;' />
+<rect x='654.98' y='343.21' width='17.28' height='17.28' style='stroke-width: 0.00; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #7F7F7F;' />
 <text x='677.74' y='320.32' style='font-size: 8.80px; font-family: sans;' textLength='26.91px' lengthAdjust='spacingAndGlyphs'>integer</text>
 <text x='677.74' y='337.60' style='font-size: 8.80px; font-family: sans;' textLength='31.31px' lengthAdjust='spacingAndGlyphs'>numeric</text>
 <text x='677.74' y='354.88' style='font-size: 8.80px; font-family: sans;' textLength='12.23px' lengthAdjust='spacingAndGlyphs'>NA</text>

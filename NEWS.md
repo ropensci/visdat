@@ -1,4 +1,12 @@
-# visdat (development version)
+# visdat 0.6.1 (2026/08/10) "Don't I Hold You, Wheat"
+
+## New features
+
+* New `vis_histogram()` - visualises the distribution of every numeric column in a dataframe and displays it using a faceted ggplot object. - Thank you @jrosell for implementing this - #163 (PR #164).
+
+## Bug fix
+
+* Resolved issue where text on axis was floating up higher - #171 (PR #174).
 
 # visdat 0.6.0 (2023/02/01) "Superman, Lazlo Bane"
 

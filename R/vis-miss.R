@@ -140,10 +140,7 @@ vis_miss <- function(
       )
     ) +
     ggplot2::guides(fill = ggplot2::guide_legend(reverse = TRUE)) +
-    ggplot2::theme(legend.position = "bottom") +
-    # fix up the location of the text
-    ggplot2::theme(axis.text.x = ggplot2::element_text(hjust = 0))
-
+    ggplot2::theme_sub_legend(position = "bottom")
   # add the missingness column labels
 
   # if there is only one colummn you don't need to sort the columns
