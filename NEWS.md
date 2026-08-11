@@ -8,6 +8,11 @@
 
 * Resolved issue where text on axis was floating up higher - #171 (PR #174).
 
+## Misc
+
+* Remove magrittr; Use `|>` internally over `%>%`
+* Depend on R 4.2.0
+
 # visdat 0.6.0 (2023/02/01) "Superman, Lazlo Bane"
 
 ## New Feature

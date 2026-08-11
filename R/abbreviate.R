@@ -18,7 +18,7 @@
 #' )
 #'
 #' vis_miss(long_data)
-#' long_data %>% abbreviate_vars() %>% vis_miss()
+#' long_data |> abbreviate_vars() |> vis_miss()
 #' @export
 abbreviate_vars <- function(data, min_length = 10) {
   test_if_dataframe(data)

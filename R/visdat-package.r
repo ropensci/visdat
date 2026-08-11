@@ -18,7 +18,6 @@
 #' Learn more about visdat at \url{https://docs.ropensci.org/visdat/}
 #' @name visdat
 #' @docType package
-#' @importFrom magrittr %>%
 #' @importFrom stats cor
 #' @importFrom stats setNames
 #' @keywords internal

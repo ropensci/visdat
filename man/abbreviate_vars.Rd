@@ -28,5 +28,5 @@ long_data <- data.frame(
 )
 
 vis_miss(long_data)
-long_data \%>\% abbreviate_vars() \%>\% vis_miss()
+long_data |> abbreviate_vars() |> vis_miss()
 }

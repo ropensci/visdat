@@ -67,12 +67,12 @@ vis_dat(airquality, palette = "qual")
 \dontrun{
 library(nycflights13)
 library(dplyr)
-flights \%>\%
-  sample_n(1000) \%>\%
+flights |>
+  sample_n(1000) |>
   vis_dat()
 
-flights \%>\%
-  slice(1:1000) \%>\%
+flights |>
+  slice(1:1000) |>
   vis_dat()
 }
 

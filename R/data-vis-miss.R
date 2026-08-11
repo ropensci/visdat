@@ -13,8 +13,8 @@
 #' \dontrun{
 #' #return vis_dat data for each group
 #' library(dplyr)
-#' airquality %>%
-#'   group_by(Month) %>%
+#' airquality |>
+#'   group_by(Month) |>
 #'   data_vis_miss()
 #' }
 data_vis_miss <- function(x, ...) {
@@ -40,16 +40,15 @@ data_vis_miss.default <- function(x, ...) {
 #' @rdname data-vis-miss
 #' @export
 data_vis_miss.data.frame <- function(x, cluster = FALSE, ...) {
-  x.na <- x %>%
-    purrr::map_df(~ fingerprint(.x) %>% is.na)
+  x.na <- x |>
+    purrr::map_df(~ fingerprint(.x) |> is.na())
 
   # switch for creating the missing clustering
   if (cluster) {
     # this retrieves a row order of the clustered missingness
-    row_order_index <-
-      stats::dist(x.na * 1) %>%
-      stats::hclust(method = "mcquitty") %>%
-      stats::as.dendrogram() %>%
+    row_order_index <- stats::dist(x.na * 1) |>
+      stats::hclust(method = "mcquitty") |>
+      stats::as.dendrogram() |>
       stats::order.dendrogram()
   } else {
     row_order_index <- seq_len(nrow(x))
@@ -63,8 +62,8 @@ data_vis_miss.data.frame <- function(x, cluster = FALSE, ...) {
   # then the contents of that variable (value)
   vis_miss_data <- as.data.frame(x.na[row_order_index, ])
 
-  vis_miss_data %>%
-    vis_gather_() %>%
+  vis_miss_data |>
+    vis_gather_() |>
     # add info for plotly mousover
     dplyr::mutate(value = vis_extract_value_(vis_miss_data))
 }

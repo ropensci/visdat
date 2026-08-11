@@ -47,7 +47,7 @@ test_that("vis_dat works with facetting", {
 
 library(dplyr)
 the_vis_dat_data <- data_vis_dat(airquality)
-the_vis_dat_data_month <- airquality %>% group_by(Month) %>% data_vis_dat()
+the_vis_dat_data_month <- airquality |> group_by(Month) |> data_vis_dat()
 
 test_that("data_vis_dat gets the data properly", {
   expect_type(the_vis_dat_data, "list")

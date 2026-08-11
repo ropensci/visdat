@@ -38,6 +38,7 @@ Other contributors:
   \item Earo Wang [contributor]
   \item Nic Crane [contributor]
   \item Christophe Regouby [contributor]
+  \item Jordi Rosell [contributor]
 }
 
 }

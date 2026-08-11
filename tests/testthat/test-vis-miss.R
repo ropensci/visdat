@@ -31,7 +31,7 @@ test_that("vis_miss fails when an object of the wrong class is provided", {
 })
 
 library(dplyr)
-star_wars_missings <- starwars %>%
+star_wars_missings <- starwars |>
   select(-name, -skin_color, -eye_color, -films)
 vis_miss_list <- vis_miss(star_wars_missings)
 vis_miss_list_sort_rows <- vis_miss(starwars, sort_miss = TRUE)
@@ -67,7 +67,7 @@ test_that("vis_miss works with facets", {
 })
 
 the_vis_miss_data <- data_vis_miss(airquality)
-the_vis_miss_data_month <- airquality %>% group_by(Month) %>% data_vis_miss()
+the_vis_miss_data_month <- airquality |> group_by(Month) |> data_vis_miss()
 
 test_that("data_vis_miss gets the data properly", {
   expect_type(the_vis_miss_data, "list")

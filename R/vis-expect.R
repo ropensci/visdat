@@ -79,19 +79,19 @@ vis_expect <- function(data, expectation, show_perc = TRUE) {
   }
 
   colnames_data <- colnames(data_expect)
-  data_expect <- data_expect %>%
-    # expect_frame(expectation) %>%
-    dplyr::mutate(rows = dplyr::row_number()) %>%
+  data_expect <- data_expect |>
+    # expect_frame(expectation) |>
+    dplyr::mutate(rows = dplyr::row_number()) |>
     tidyr::pivot_longer(
       cols = dplyr::all_of(colnames_data),
       names_to = "variable",
       values_to = "valueType",
       values_transform = list(valueType = as.character)
     )
-  data_expect <- data_expect %>%
+  data_expect <- data_expect |>
     dplyr::mutate(variable = factor(variable, levels = colnames_data))
 
-  vis_expect_plot <- data_expect %>%
+  vis_expect_plot <- data_expect |>
     ggplot2::ggplot(ggplot2::aes(x = variable, y = rows)) +
     ggplot2::geom_raster(ggplot2::aes(fill = valueType)) +
     ggplot2::theme_minimal() +

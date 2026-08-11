@@ -64,12 +64,12 @@
 #' # if you have a large dataset, you might want to try downsampling:
 #' library(nycflights13)
 #' library(dplyr)
-#' flights %>%
-#'   sample_n(1000) %>%
+#' flights |>
+#'   sample_n(1000) |>
 #'   vis_miss()
 #'
-#' flights %>%
-#'   slice(1:1000) %>%
+#' flights |>
+#'   slice(1:1000) |>
 #'   vis_miss()
 #' }
 #'
@@ -94,8 +94,8 @@ vis_miss <- function(
   }
 
   if (!missing(facet)) {
-    vis_miss_data <- x %>%
-      dplyr::group_by({{ facet }}) %>%
+    vis_miss_data <- x |>
+      dplyr::group_by({{ facet }}) |>
       data_vis_miss(cluster)
 
     col_order_index <- update_col_order_index(

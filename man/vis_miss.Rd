@@ -82,12 +82,12 @@ vis_miss(airquality, facet = Month)
 # if you have a large dataset, you might want to try downsampling:
 library(nycflights13)
 library(dplyr)
-flights \%>\%
-  sample_n(1000) \%>\%
+flights |>
+  sample_n(1000) |>
   vis_miss()
 
-flights \%>\%
-  slice(1:1000) \%>\%
+flights |>
+  slice(1:1000) |>
   vis_miss()
 }
 

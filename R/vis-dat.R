@@ -53,12 +53,12 @@
 #' \dontrun{
 #' library(nycflights13)
 #' library(dplyr)
-#' flights %>%
-#'   sample_n(1000) %>%
+#' flights |>
+#'   sample_n(1000) |>
 #'   vis_dat()
 #'
-#' flights %>%
-#'   slice(1:1000) %>%
+#' flights |>
+#'   slice(1:1000) |>
 #'   vis_dat()
 #'}
 #'
@@ -90,8 +90,8 @@ vis_dat <- function(
 
   # reshape the dataframe ready for geom_raster
   if (!missing(facet)) {
-    vis_dat_data <- x %>%
-      dplyr::group_by({{ facet }}) %>%
+    vis_dat_data <- x |>
+      dplyr::group_by({{ facet }}) |>
       data_vis_dat()
 
     col_order_index <- update_col_order_index(
