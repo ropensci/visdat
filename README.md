@@ -192,7 +192,9 @@ Let’s make some changes to the `chickwts`, and compare this new dataset:
 ``` r
 set.seed(2019-04-03-1105)
 chickwts_diff <- chickwts
-chickwts_diff[sample(1:nrow(chickwts), 30),sample(1:ncol(chickwts), 2)] <- NA
+rows_to_na <- sample(seq_len(nrow(chickwts)), 30)
+cols_to_na <- sample(seq_len(ncol(chickwts)), 2)
+chickwts_diff[rows_to_na, cols_to_na] <- NA
 
 vis_compare(chickwts_diff, chickwts)
 ```
@@ -340,7 +342,7 @@ vis_guess(messy_df)
 vis_dat(messy_df)
 ```
 
-<img src="man/figures/README-vis-guess-messy-df-1.png" width="50%" /><img src="man/figures/README-vis-guess-messy-df-2.png" width="50%" />
+<img src="man/figures/README-vis-guess-messy-df-1.png" alt="" width="50%" /><img src="man/figures/README-vis-guess-messy-df-2.png" alt="" width="50%" />
 
 So here we see that there are many different kinds of data in your
 dataframe. As an analyst this might be a depressing finding. We can see

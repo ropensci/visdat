@@ -149,7 +149,7 @@ vis_miss <- function(
   if (ncol(x) == 1) {
     if (show_perc_col) {
       return(
-        vis_miss_plot <- vis_miss_plot +
+        vis_miss_plot +
           ggplot2::scale_x_discrete(
             position = "top",
             labels = label_col_missing_pct(
@@ -160,7 +160,7 @@ vis_miss <- function(
       )
     } else if (!show_perc_col) {
       return(
-        vis_miss_plot <- vis_miss_plot +
+        vis_miss_plot +
           ggplot2::scale_x_discrete(
             position = "top",
             labels = col_order_index

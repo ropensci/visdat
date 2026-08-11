@@ -31,14 +31,14 @@ test_that("any_numeric returns TRUE for numeric dataframes and FALSE for datafra
 })
 test_that("fingerprint can deal with complete-cases list columns", {
   expect_equal(
-    all(visdat:::fingerprint(dplyr::starwars$films) |> is.na()),
+    all(fingerprint(dplyr::starwars$films) |> is.na()),
     FALSE
   )
 })
 
 test_that("fingerprint can count n/a in list columns", {
   expect_equal(
-    sum(visdat:::fingerprint(dplyr::starwars$vehicles) |> is.na()),
+    sum(fingerprint(dplyr::starwars$vehicles) |> is.na()),
     76
   )
 })

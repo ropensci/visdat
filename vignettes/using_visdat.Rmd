@@ -10,7 +10,8 @@ vignette: >
 ---
 
 ```{r setup, echo = FALSE, include = FALSE}
-
+# jarl-ignore-file true_false_symbol: vectors are deliberately bad
+# Date: 2026-08-12
 knitr::opts_chunk$set(fig.width = 5,
                       fig.height = 4)
 
@@ -159,7 +160,9 @@ Let's make some changes to the `chickwts`, and compare this new dataset.
 ```{r vis-compare-iris}
 set.seed(2019-04-03-1107)
 chickwts_diff <- chickwts
-chickwts_diff[sample(1:nrow(chickwts), 30),sample(1:ncol(chickwts), 2)] <- NA
+rows_to_na <- sample(seq_len(nrow(chickwts)), 30)
+cols_to_na <- sample(seq_len(ncol(chickwts)), 2)
+chickwts_diff[rows_to_na, cols_to_na] <- NA
 
 vis_compare(chickwts_diff, chickwts)
 
