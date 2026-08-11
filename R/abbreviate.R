@@ -25,7 +25,7 @@ abbreviate_vars <- function(data, min_length = 10) {
 
   dplyr::rename_with(
     data,
-    .fn = ~ abbreviate(.x, minlength = min_length, method = "both"),
+    .fn = \(x) abbreviate(x, minlength = min_length, method = "both"),
     # this didn't work with ncar_over for some reason?
     .cols = dplyr::everything()
   )

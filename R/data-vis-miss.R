@@ -41,7 +41,7 @@ data_vis_miss.default <- function(x, ...) {
 #' @export
 data_vis_miss.data.frame <- function(x, cluster = FALSE, ...) {
   x.na <- x |>
-    purrr::map_df(~ fingerprint(.x) |> is.na())
+    purrr::map_df(\(x) fingerprint(x) |> is.na())
 
   # switch for creating the missing clustering
   if (cluster) {
