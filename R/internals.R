@@ -431,7 +431,7 @@ test_if_dims_identical <- function(
         "{.fun vis_compare} requires identical dimensions of {.arg {arg_x}} \\
         and {.arg {arg_y}}",
         "The dimensions of {.arg {arg_x}} are: {dim(x)}",
-        "The dimensions of {.arg {arg_t}} are: {dim(y)}"
+        "The dimensions of {.arg {arg_y}} are: {dim(y)}"
       ),
       call = call
     )
