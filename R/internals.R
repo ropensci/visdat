@@ -12,7 +12,8 @@
 #'
 fingerprint <- function(x) {
   # is the data missing?
-  if (!is.list(x)) {
+  data_missing <- !is.list(x)
+  if (data_missing) {
     ifelse(
       is.na(x),
       # yes? Leave as is NA
@@ -22,7 +23,7 @@ fingerprint <- function(x) {
     )
   } else {
     ifelse(
-      purrr::map_lgl(x, ~ length(.x) == 0),
+      purrr::map_lgl(x, \(x) length(x) == 0),
       # yes? Leave as is NA
       yes = NA,
       # no? make that value no equal to the class of this cell.
@@ -53,14 +54,14 @@ fingerprint_df <- function(x) {
 #' @noRd
 #'
 vis_gather_ <- function(x) {
-  x %>%
-    dplyr::mutate(rows = dplyr::row_number()) %>%
+  x |>
+    dplyr::mutate(rows = dplyr::row_number()) |>
     tidyr::pivot_longer(
       cols = -rows,
       names_to = "variable",
       values_to = "valueType",
       values_transform = list(valueType = as.character)
-    ) %>%
+    ) |>
     dplyr::arrange(rows, variable, valueType)
 }
 
@@ -118,6 +119,29 @@ vis_create_ <- function(x) {
     ggplot2::guides(colour = "none")
 }
 
+vis_dat_scale_fill_manual <- function(values) {
+  ggplot2::scale_fill_manual(
+    limits = c(
+      "character",
+      "date",
+      "factor",
+      "integer",
+      "logical",
+      "numeric"
+    ),
+    breaks = c(
+      "character", # red
+      "date", # orange
+      "factor", # yellow
+      "integer", # light blue
+      "logical", # mid blue
+      "numeric"
+    ), # dark blue
+    values = values,
+    na.value = "grey"
+  )
+}
+
 #' (Internal) Add a specific palette to a visdat plot
 #'
 #' @param vis_plot visdat plot created using `vis_gather_`, `vis_extract_value`
@@ -162,50 +186,9 @@ add_vis_dat_pal <- function(vis_plot, palette) {
   if (palette == "default") {
     vis_plot
   } else if (palette == "qual") {
-    vis_plot +
-      ggplot2::scale_fill_manual(
-        limits = c(
-          "character",
-          "date",
-          "factor",
-          "integer",
-          "logical",
-          "numeric"
-        ),
-        breaks = c(
-          "character", # red
-          "date", # orange
-          "factor", # yellow
-          "integer", # light blue
-          "logical", # mid blue
-          "numeric"
-        ), # dark blue
-        values = vis_pal_qual,
-        na.value = "grey",
-        drop = FALSE
-      )
+    vis_plot + vis_dat_scale_fill_manual(vis_pal_qual)
   } else if (palette == "cb_safe") {
-    vis_plot +
-      ggplot2::scale_fill_manual(
-        limits = c(
-          "character",
-          "date",
-          "factor",
-          "integer",
-          "logical",
-          "numeric"
-        ),
-        breaks = c(
-          "character", # red
-          "date", # orange
-          "factor", # yellow
-          "integer", # light blue
-          "logical", # mid blue
-          "numeric"
-        ), # dark blue
-        values = vis_pal_cb_safe,
-        na.value = "grey"
-      )
+    vis_plot + vis_dat_scale_fill_manual(vis_pal_cb_safe)
   } else {
     cli::cli_abort(
       c(
@@ -228,13 +211,13 @@ add_vis_dat_pal <- function(vis_plot, palette) {
 label_col_missing_pct <- function(x, col_order_index) {
   # present everything in the right order
 
-  labelled_pcts <- colMeans(is.na(x))[col_order_index] %>%
+  labelled_pcts <- colMeans(is.na(x))[col_order_index] |>
     purrr::map_chr(function(x) {
       dplyr::case_when(
         x == 0 ~ "0%",
         x < 0.001 ~ "<0.1%",
         x < 0.01 ~ "<1%",
-        x >= 0.01 ~ scales::percent(x, accuracy = 1),
+        x >= 0.01 ~ scales::percent(x, accuracy = 1)
       )
     })
 
@@ -379,8 +362,8 @@ scale_01 <- function(x) {
 }
 
 group_by_fun <- function(data, .fun, ...) {
-  tidyr::nest(data) %>%
-    dplyr::mutate(data = purrr::map(data, .fun, ...)) %>%
+  tidyr::nest(data) |>
+    dplyr::mutate(data = purrr::map(data, .fun, ...)) |>
     tidyr::unnest(cols = c(data))
 }
 
@@ -433,4 +416,24 @@ n_miss_col <- function(data, sort = FALSE) {
   }
 
   n_missing_cols
+}
+
+test_if_dims_identical <- function(
+  x,
+  y,
+  arg_x = rlang::caller_arg(x),
+  arg_y = rlang::caller_arg(y),
+  call = rlang::caller_env()
+) {
+  if (!identical(dim(x), dim(y))) {
+    cli::cli_abort(
+      message = c(
+        "{.fun vis_compare} requires identical dimensions of {.arg {arg_x}} \\
+        and {.arg {arg_y}}",
+        "The dimensions of {.arg {arg_x}} are: {dim(x)}",
+        "The dimensions of {.arg {arg_y}} are: {dim(y)}"
+      ),
+      call = call
+    )
+  }
 }

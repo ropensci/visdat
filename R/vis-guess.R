@@ -48,8 +48,8 @@ vis_guess <- function(x, palette = "default") {
 
   # x = messy_df
   # suppress warnings here as this is just a note about combining classes
-  d <- suppressWarnings(vis_gather_(x)) %>%
-    dplyr::mutate(valueType = guess_type(valueType)) %>%
+  d <- suppressWarnings(vis_gather_(x)) |>
+    dplyr::mutate(valueType = guess_type(valueType)) |>
     # value for plotly mouseover
     dplyr::mutate(value = vis_extract_value_(x))
 
@@ -97,7 +97,7 @@ guess_type <- function(x) {
   # of about 3. This is faster, for the moment.
 
   output <- character(length(x))
-  nas <- (x %>% fingerprint() %>% is.na() | is.na(x))
+  nas <- (x |> fingerprint() |> is.na() | is.na(x))
 
   output[!nas] <- vapply(
     FUN = readr::guess_parser,

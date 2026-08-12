@@ -8,10 +8,10 @@ dat_test <- tibble::tribble(
 
 
 # try out all the options
-vis_expect_plot <- vis_expect(dat_test, ~ .x == -1)
+vis_expect_plot <- vis_expect(dat_test, \(x) x == -1)
 vis_expect_plot_show_perc_true <- vis_expect(
   dat_test,
-  ~ .x == -1,
+  \(x) x == -1,
   show_perc = FALSE
 )
 
@@ -28,6 +28,6 @@ test_that("vis_expect creates the right plot", {
 test_that("vis_expect fails when an object of the wrong class is provided", {
   expect_snapshot(
     error = TRUE,
-    vis_expect(AirPassengers, ~ .x < 20)
+    vis_expect(AirPassengers, \(x) x < 20)
   )
 })

@@ -24,10 +24,10 @@ vis_histogram <- function(x, ...) {
 }
 
 vis_histogram_create <- function(data, ...) {
-  data %>%
-    dplyr::mutate(rows = dplyr::row_number()) %>%
-    tidyr::pivot_longer(cols = -rows) %>%
-    dplyr::filter(!is.na(value)) %>%
+  data |>
+    dplyr::mutate(rows = dplyr::row_number()) |>
+    tidyr::pivot_longer(cols = -rows) |>
+    dplyr::filter(!is.na(value)) |>
     ggplot2::ggplot(ggplot2::aes(value)) +
     ggplot2::facet_wrap(~name, scales = "free") +
     ggplot2::geom_histogram(...) +

@@ -2,26 +2,60 @@ Package: visdat
 Title: Preliminary Visualisation of Data
 Version: 0.6.0.9000
 Authors@R: c(
-  person("Nicholas", "Tierney", role = c("aut", "cre"),
-      email = "nicholas.tierney@gmail.com", 
-      comment = c(ORCID = "https://orcid.org/0000-0003-1460-8722")),
-  person("Sean", "Hughes", role = "rev", 
-      comment =c(ORCID = "https://orcid.org/0000-0002-9409-9405",
-                 "Sean Hughes reviewed the package for rOpenSci, 
-                  see https://github.com/ropensci/onboarding/issues/87")),
-  person("Mara", "Averick", role = "rev", 
-      comment = "Mara Averick reviewed the package for rOpenSci, see 
-      https://github.com/ropensci/onboarding/issues/87"),
-  person("Stuart", "Lee", role = c("ctb")),
-  person("Earo", "Wang", role = c("ctb")),
-  person("Nic", "Crane", role = c("ctb")),
-  person("Christophe", "Regouby", role=c("ctb")),
-  person("Jordi", "Rosell", role=c("ctb"))
-      )
+  person(
+    given = "Nicholas", 
+    family = "Tierney", 
+    role = c("aut", "cre"),
+    email = "nicholas.tierney@gmail.com", 
+    comment = c(ORCID = "0000-0003-1460-8722")
+    ),
+  person(
+    given = "Sean", 
+    family = "Hughes", 
+    role = "rev", 
+    comment = c(
+      ORCID = "0000-0002-9409-9405",
+      "Sean Hughes reviewed the package for rOpenSci, see 
+      https://github.com/ropensci/onboarding/issues/87"
+        )
+      ),
+  person(
+    given = "Mara", 
+    family = "Averick", 
+    role = "rev", 
+    comment = "Mara Averick reviewed the package for rOpenSci, see 
+      https://github.com/ropensci/onboarding/issues/87"
+      ),
+  person(
+    given = "Stuart", 
+    family = "Lee", 
+    role = c("ctb")
+    ),
+  person(
+    given = "Earo", 
+    family = "Wang", 
+    role = c("ctb")
+    ),
+  person(
+    given = "Nic", 
+    family ="Crane", 
+    role = c("ctb")
+    ),
+  person(
+    given = "Christophe", 
+    family = "Regouby", 
+    role=c("ctb")
+    ),
+  person(
+    given = "Jordi", 
+    family ="Rosell", 
+    role=c("ctb")
+    )
+  )
 Description: Create preliminary exploratory data visualisations of an entire 
     dataset to identify problems or unexpected features using 'ggplot2'.
 Depends:
-    R (>= 3.2.2)
+    R (>= 4.2.0)
 License: MIT + file LICENSE
 LazyData: true
 Imports:
@@ -30,13 +64,13 @@ Imports:
     dplyr,
     purrr,
     readr,
-    magrittr,
     stats,
     tibble,
     glue,
     forcats,
     cli,
-    scales
+    scales,
+    rlang
 URL: https://docs.ropensci.org/visdat/, https://github.com/ropensci/visdat
 BugReports: https://github.com/ropensci/visdat/issues
 Suggests:
@@ -51,6 +85,6 @@ Suggests:
 VignetteBuilder: knitr
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-Language: en-US
+Language: en-GB
 Config/testthat/edition: 3
 Config/roxygen2/version: 8.0.0

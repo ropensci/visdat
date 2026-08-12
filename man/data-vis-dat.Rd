@@ -33,8 +33,8 @@ data_vis_dat(airquality)
 \dontrun{
 #return vis_dat data for each group
 library(dplyr)
-airquality \%>\%
-  group_by(Month) \%>\%
+airquality |>
+  group_by(Month) |>
   data_vis_dat()
 }
 }

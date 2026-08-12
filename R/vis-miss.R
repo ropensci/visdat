@@ -64,12 +64,12 @@
 #' # if you have a large dataset, you might want to try downsampling:
 #' library(nycflights13)
 #' library(dplyr)
-#' flights %>%
-#'   sample_n(1000) %>%
+#' flights |>
+#'   sample_n(1000) |>
 #'   vis_miss()
 #'
-#' flights %>%
-#'   slice(1:1000) %>%
+#' flights |>
+#'   slice(1:1000) |>
 #'   vis_miss()
 #' }
 #'
@@ -94,8 +94,8 @@ vis_miss <- function(
   }
 
   if (!missing(facet)) {
-    vis_miss_data <- x %>%
-      dplyr::group_by({{ facet }}) %>%
+    vis_miss_data <- x |>
+      dplyr::group_by({{ facet }}) |>
       data_vis_miss(cluster)
 
     col_order_index <- update_col_order_index(
@@ -114,15 +114,12 @@ vis_miss <- function(
 
   if (show_perc) {
     temp <- miss_guide_label(x_fingerprinted)
-
     p_miss_lab <- temp$p_miss_lab
-
     p_pres_lab <- temp$p_pres_lab
 
     # else if show_perc FALSE
   } else {
     p_miss_lab <- "Missing"
-
     p_pres_lab <- "Present"
   }
 
@@ -149,7 +146,7 @@ vis_miss <- function(
   if (ncol(x) == 1) {
     if (show_perc_col) {
       return(
-        vis_miss_plot <- vis_miss_plot +
+        vis_miss_plot +
           ggplot2::scale_x_discrete(
             position = "top",
             labels = label_col_missing_pct(
@@ -160,7 +157,7 @@ vis_miss <- function(
       )
     } else if (!show_perc_col) {
       return(
-        vis_miss_plot <- vis_miss_plot +
+        vis_miss_plot +
           ggplot2::scale_x_discrete(
             position = "top",
             labels = col_order_index
@@ -194,9 +191,4 @@ vis_miss <- function(
   }
 
   return(vis_miss_plot)
-
-  # guides(fill = guide_legend(title = "Type"))
-  # Thanks to
-  # http://www.markhneedham.com/blog/2015/02/27/rggplot-controlling-x-axis-order/
-  # For the tip on using scale_x_discrete
-} # end of function
+}

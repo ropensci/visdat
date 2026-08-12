@@ -24,7 +24,7 @@
 #'   \item{Employment}{employee status}
 #'   \item{Eye}{eye colour}
 #'   \item{Grade}{percent grades}
-#'   \item{Grade_Level}{favorite school grade}
+#'   \item{Grade_Level}{favourite school grade}
 #'   \item{Group}{control or treatment}
 #'   \item{hair}{hair colours - "brown", "black", "blonde", or "red"}
 #'   \item{Height}{height in cm}
@@ -35,12 +35,13 @@
 #'   \item{Level}{levels between 1 and 4}
 #'   \item{Likert}{likert response - "strongly agree", "agree", and so on}
 #'   \item{Lorem_Ipsum}{lorem ipsum text}
-#'   \item{Marital}{marital status- "married", "divorced", "widowed", "separated", etc}
+#'   \item{Marital}{marital status- "married", "divorced", "widowed",
+#'   "separated", etc}
 #'   \item{Military}{miliary branch they are in}
-#'   \item{Month}{their favorite month}
+#'   \item{Month}{their favourite month}
 #'   \item{Name}{their name}
 #'   \item{Normal}{a random normal number}
-#'   \item{Political}{their favorite political party}
+#'   \item{Political}{their favourite political party}
 #'   \item{Race}{their race}
 #'   \item{Religion}{their religion}
 #'   \item{SAT}{their SAT score}

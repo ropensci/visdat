@@ -33,8 +33,8 @@ vis_value(airquality, viridis_option = "C")
 vis_value(airquality, viridis_option = "E")
 \dontrun{
 library(dplyr)
-diamonds \%>\%
-  select_if(is.numeric) \%>\%
+diamonds |>
+  select_if(is.numeric) |>
   vis_value()
 }
 }

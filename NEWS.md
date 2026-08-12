@@ -8,6 +8,11 @@
 
 * Resolved issue where text on axis was floating up higher - #171 (PR #174).
 
+## Misc
+
+* Remove magrittr; Use `|>` internally over `%>%`
+* Depend on R 4.2.0
+
 # visdat 0.6.0 (2023/02/01) "Superman, Lazlo Bane"
 
 ## New Feature
@@ -27,7 +32,7 @@
 * resolve bug where `vis_value()` displayed constant values as NA values (#128) - these constant values are now shown as 1.
 * removed use of the now deprecated "aes_string" from ggplot2
 * output of plot in `vis_expect` would reorder columns ([#133](https://github.com/ropensci/visdat/issues/133)), fixed in [#143](https://github.com/ropensci/visdat/pull/134) by [@muschellij2](https://github.com/muschellij2).
-* `vis_miss()` displayed missing percentages between 0.1% and 0.5% as 0% due to rounding. Now it dislpays "<1%" by @zeehio at https://github.com/ropensci/visdat/pull/162.
+* `vis_miss()` displayed missing percentages between 0.1% and 0.5% as 0% due to rounding. Now it displays "<1%" by @zeehio at https://github.com/ropensci/visdat/pull/162.
 
 ## Misc
 
@@ -52,8 +57,8 @@
 
 ## Bug Fix
 
-* [Jim Hester](https://github.com/jimhester) fixed recent changes in readr 1.2.0 in PR [#103](https://github.com/ropensci/visdat/pull/103), which changes the default behavior of the `guess_parser`, to not
-guess integer types by default. To opt-into the current behavior you
+* [Jim Hester](https://github.com/jimhester) fixed recent changes in readr 1.2.0 in PR [#103](https://github.com/ropensci/visdat/pull/103), which changes the default behaviour of the `guess_parser`, to not
+guess integer types by default. To opt-into the current behaviour you
 need to pass `guess_integer = TRUE.`
 
 # visdat 0.5.1 (2018/07/02) "The Northern Lights Moonwalker"

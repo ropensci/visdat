@@ -13,8 +13,8 @@
 #' \dontrun{
 #' #return vis_dat data for each group
 #' library(dplyr)
-#' airquality %>%
-#'   group_by(Month) %>%
+#' airquality |>
+#'   group_by(Month) |>
 #'   data_vis_dat()
 #' }
 data_vis_dat <- function(x, ...) {
@@ -30,9 +30,9 @@ data_vis_dat.default <- function(x, ...) {
 #' @rdname data-vis-dat
 #' @export
 data_vis_dat.data.frame <- function(x, ...) {
-  x %>%
-    fingerprint_df() %>%
-    vis_gather_() %>%
+  x |>
+    fingerprint_df() |>
+    vis_gather_() |>
     # get the values here so plotly can make them visible
     dplyr::mutate(value = vis_extract_value_(x))
 }

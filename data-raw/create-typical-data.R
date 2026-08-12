@@ -13,8 +13,8 @@ typical_data <- r_data_frame(
   smokes,
   income,
   died
-) %>%
-  wakefield::r_na(cols = c(2, 3, 6, 8), prob = 0.1) %>%
+) |>
+  wakefield::r_na(cols = c(2, 3, 6, 8), prob = 0.1) |>
   mutate(Income = as.factor(Income), Age = as.character(Age))
 
 use_data(typical_data, overwrite = TRUE)
