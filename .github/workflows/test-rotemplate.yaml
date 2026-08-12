@@ -1,0 +1,11 @@
+on:
+  push:
+  pull_request:
+
+name: Test-docs
+
+jobs:
+  Test-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ropensci-org/rotemplate@main
