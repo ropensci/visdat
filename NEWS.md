@@ -1,4 +1,4 @@
-# visdat 0.6.1 (2026/08/10) "Don't I Hold You, Wheat"
+# visdat 0.6.1 (2026/08/12) "Don't I Hold You, Wheat"
 
 ## New features
 
@@ -10,8 +10,8 @@
 
 ## Misc
 
-* Remove magrittr; Use `|>` internally over `%>%`
-* Depend on R 4.2.0
+* Remove magrittr; Use `|>` internally over `%>%` (#176)
+* Depend on R 4.2.0 (#176)
 
 # visdat 0.6.0 (2023/02/01) "Superman, Lazlo Bane"
 
