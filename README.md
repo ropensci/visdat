@@ -351,6 +351,17 @@ So here we see that there are many different kinds of data in your
 dataframe. As an analyst this might be a depressing finding. We can see
 this comparison above.
 
+## `vis_histogram()`
+
+`vis_histogram()` visualises the distribution of every numeric column in
+a dataframe and displays it using a faceted ggplot object.
+
+``` r
+vis_histogram(airquality, bins = 30)
+```
+
+![](man/figures/README-vis-histogram-1.png)<!-- -->
+
 # Thank yous
 
 Thank you to Ivan Hanigan who [first
