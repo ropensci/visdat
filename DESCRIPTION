@@ -69,7 +69,8 @@ Imports:
     glue,
     forcats,
     cli,
-    scales
+    scales,
+    rlang
 URL: https://docs.ropensci.org/visdat/, https://github.com/ropensci/visdat
 BugReports: https://github.com/ropensci/visdat/issues
 Suggests:
