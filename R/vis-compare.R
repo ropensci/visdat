@@ -27,17 +27,7 @@ vis_compare <- function(df1, df2) {
 
   test_if_dataframe(df1)
   test_if_dataframe(df2)
-
-  if (!identical(dim(df1), dim(df2))) {
-    cli::cli_abort(
-      c(
-        "{.fun vis_compare} requires identical dimensions of {.arg df1} and \\
-        {.arg df2}",
-        "The dimensions of {.arg df1} are: {dim(df1)}",
-        "The dimensions of {.arg df2} are: {dim(df2)}"
-      )
-    )
-  }
+  test_if_dims_identical(df1, df2)
 
   v_identical <- Vectorize(identical)
 
@@ -62,8 +52,7 @@ vis_compare <- function(df1, df2) {
   ) +
     # text assists with plotly mouseover
     # text = c("value_df1", "value_df2"))) +
-    # this test code has been removed as ggplot2 version 3.0.0
-    # breaks.
+    # this test code has been removed as ggplot2 version 3.0.0 breaks.
     # Logged in issue https://github.com/ropensci/visdat/issues/89
 
     ggplot2::geom_raster(ggplot2::aes(fill = valueType)) +
@@ -77,13 +66,13 @@ vis_compare <- function(df1, df2) {
     ggplot2::scale_fill_manual(
       limits = c("same", "different"),
       breaks = c(
-        "same", # red
-        "different"
-      ), # dark blue
+        "same", # orange
+        "different" # dark blue
+      ),
       values = c(
         "#fc8d59", # Orange
-        "#91bfdb"
-      ), # blue
+        "#91bfdb" # blue
+      ),
       na.value = "grey"
     ) +
     # flip the axes

@@ -35,7 +35,8 @@
 #'   \item{Level}{levels between 1 and 4}
 #'   \item{Likert}{likert response - "strongly agree", "agree", and so on}
 #'   \item{Lorem_Ipsum}{lorem ipsum text}
-#'   \item{Marital}{marital status- "married", "divorced", "widowed", "separated", etc}
+#'   \item{Marital}{marital status- "married", "divorced", "widowed",
+#'   "separated", etc}
 #'   \item{Military}{miliary branch they are in}
 #'   \item{Month}{their favourite month}
 #'   \item{Name}{their name}

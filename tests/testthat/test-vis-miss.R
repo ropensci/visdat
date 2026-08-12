@@ -1,3 +1,4 @@
+library(dplyr)
 # try out all the options
 vis_miss_plot <- vis_miss(typical_data)
 vis_miss_plot_cluster <- vis_miss(typical_data, cluster = TRUE)
@@ -30,7 +31,6 @@ test_that("vis_miss fails when an object of the wrong class is provided", {
   )
 })
 
-library(dplyr)
 star_wars_missings <- starwars |>
   select(-name, -skin_color, -eye_color, -films)
 vis_miss_list <- vis_miss(star_wars_missings)

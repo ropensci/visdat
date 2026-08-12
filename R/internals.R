@@ -12,7 +12,8 @@
 #'
 fingerprint <- function(x) {
   # is the data missing?
-  if (!is.list(x)) {
+  data_missing <- !is.list(x)
+  if (data_missing) {
     ifelse(
       is.na(x),
       # yes? Leave as is NA
@@ -118,6 +119,29 @@ vis_create_ <- function(x) {
     ggplot2::guides(colour = "none")
 }
 
+vis_dat_scale_fill_manual <- function(values) {
+  ggplot2::scale_fill_manual(
+    limits = c(
+      "character",
+      "date",
+      "factor",
+      "integer",
+      "logical",
+      "numeric"
+    ),
+    breaks = c(
+      "character", # red
+      "date", # orange
+      "factor", # yellow
+      "integer", # light blue
+      "logical", # mid blue
+      "numeric"
+    ), # dark blue
+    values = values,
+    na.value = "grey"
+  )
+}
+
 #' (Internal) Add a specific palette to a visdat plot
 #'
 #' @param vis_plot visdat plot created using `vis_gather_`, `vis_extract_value`
@@ -162,50 +186,9 @@ add_vis_dat_pal <- function(vis_plot, palette) {
   if (palette == "default") {
     vis_plot
   } else if (palette == "qual") {
-    vis_plot +
-      ggplot2::scale_fill_manual(
-        limits = c(
-          "character",
-          "date",
-          "factor",
-          "integer",
-          "logical",
-          "numeric"
-        ),
-        breaks = c(
-          "character", # red
-          "date", # orange
-          "factor", # yellow
-          "integer", # light blue
-          "logical", # mid blue
-          "numeric"
-        ), # dark blue
-        values = vis_pal_qual,
-        na.value = "grey",
-        drop = FALSE
-      )
+    vis_plot + vis_dat_scale_fill_manual(vis_pal_qual)
   } else if (palette == "cb_safe") {
-    vis_plot +
-      ggplot2::scale_fill_manual(
-        limits = c(
-          "character",
-          "date",
-          "factor",
-          "integer",
-          "logical",
-          "numeric"
-        ),
-        breaks = c(
-          "character", # red
-          "date", # orange
-          "factor", # yellow
-          "integer", # light blue
-          "logical", # mid blue
-          "numeric"
-        ), # dark blue
-        values = vis_pal_cb_safe,
-        na.value = "grey"
-      )
+    vis_plot + vis_dat_scale_fill_manual(vis_pal_cb_safe)
   } else {
     cli::cli_abort(
       c(
@@ -234,7 +217,7 @@ label_col_missing_pct <- function(x, col_order_index) {
         x == 0 ~ "0%",
         x < 0.001 ~ "<0.1%",
         x < 0.01 ~ "<1%",
-        x >= 0.01 ~ scales::percent(x, accuracy = 1),
+        x >= 0.01 ~ scales::percent(x, accuracy = 1)
       )
     })
 
@@ -433,4 +416,24 @@ n_miss_col <- function(data, sort = FALSE) {
   }
 
   n_missing_cols
+}
+
+test_if_dims_identical <- function(
+  x,
+  y,
+  arg_x = rlang::caller_arg(x),
+  arg_y = rlang::caller_arg(y),
+  call = rlang::caller_env()
+) {
+  if (!identical(dim(x), dim(y))) {
+    cli::cli_abort(
+      message = c(
+        "{.fun vis_compare} requires identical dimensions of {.arg {arg_x}} \\
+        and {.arg {arg_y}}",
+        "The dimensions of {.arg {arg_x}} are: {dim(x)}",
+        "The dimensions of {.arg {arg_t}} are: {dim(y)}"
+      ),
+      call = call
+    )
+  }
 }

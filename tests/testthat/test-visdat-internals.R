@@ -22,23 +22,18 @@ d_new <-
 # get the values here so plotly can make them visible
 
 test_that("vis_extract_value performs the same as old method", {
-  expect_equal(d_old$value, d_new$value)
+  expect_identical(d_old$value, d_new$value)
 })
 
-test_that("any_numeric returns TRUE for numeric dataframes and FALSE for dataframes containing non-numeric values", {
-  expect_equal(all_numeric(airquality), TRUE)
-  expect_equal(all_numeric(iris), FALSE)
+test_that("any_numeric returns TRUE for numeric dataframes and FALSE for \\
+          dataframes containing non-numeric values", {
+  expect_true(all_numeric(airquality))
+  expect_false(all_numeric(iris))
 })
 test_that("fingerprint can deal with complete-cases list columns", {
-  expect_equal(
-    all(fingerprint(dplyr::starwars$films) |> is.na()),
-    FALSE
-  )
+  expect_false(all(fingerprint(dplyr::starwars$films) |> is.na()))
 })
 
 test_that("fingerprint can count n/a in list columns", {
-  expect_equal(
-    sum(fingerprint(dplyr::starwars$vehicles) |> is.na()),
-    76
-  )
+  expect_identical(sum(fingerprint(dplyr::starwars$vehicles) |> is.na()), 76L)
 })

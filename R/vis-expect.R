@@ -66,22 +66,18 @@ vis_expect <- function(data, expectation, show_perc = TRUE) {
 
   if (show_perc) {
     temp <- expect_guide_label(data_expect)
-
     p_expect_true_lab <- temp$p_expect_false_lab
-
     p_expect_false_lab <- temp$p_expect_true_lab
 
     # else if show_perc FALSE (do nothing)
   } else {
     p_expect_true_lab <- "TRUE"
-
     p_expect_false_lab <- "FALSE"
   }
 
   colnames_data <- colnames(data_expect)
   data_expect <- data_expect |>
-    # expect_frame(expectation) |>
-    dplyr::mutate(rows = dplyr::row_number()) |>
+    tibble::rowid_to_column(var = "rows") |>
     tidyr::pivot_longer(
       cols = dplyr::all_of(colnames_data),
       names_to = "variable",
@@ -107,8 +103,7 @@ vis_expect <- function(data, expectation, show_perc = TRUE) {
         "grey"
       ),
       labels = c(p_expect_false_lab, p_expect_true_lab),
-      # light gray
-      na.value = "#E5E5E5"
+      na.value = "#E5E5E5" # light gray
     ) +
     # change the limits etc.
     ggplot2::guides(

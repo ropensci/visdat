@@ -1,3 +1,4 @@
+library(dplyr)
 # try out all the options
 vis_dat_plot <- vis_dat(typical_data)
 vis_dat_plot_sort_type <- vis_dat(typical_data, sort_type = FALSE)
@@ -45,7 +46,6 @@ test_that("vis_dat works with facetting", {
   vdiffr::expect_doppelganger("vis_dat_facet", vis_dat_facet)
 })
 
-library(dplyr)
 the_vis_dat_data <- data_vis_dat(airquality)
 the_vis_dat_data_month <- airquality |> group_by(Month) |> data_vis_dat()
 
