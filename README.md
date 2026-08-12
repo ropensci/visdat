@@ -43,7 +43,7 @@ by displaying the variable classes in a dataframe as a plot with
 `vis_dat`, and getting a brief look into missing data patterns using
 `vis_miss`.
 
-`visdat` has 6 functions:
+`visdat` has 7 functions:
 
 - `vis_dat()` visualises a dataframe showing you what the classes of the
   columns are, and also displaying the missing data.
@@ -69,6 +69,9 @@ by displaying the variable classes in a dataframe as a plot with
 - `vis_value()` visualise the value class of each cell in your data
 
 - `vis_binary()` visualise the occurrence of binary values in your data
+
+- `vis_histogram()` visualises a histogram of each numeric variable in
+  your data
 
 You can read more about visdat in the vignette, \[“using
 visdat”\]<https://docs.ropensci.org/visdat/articles/using_visdat.html>).

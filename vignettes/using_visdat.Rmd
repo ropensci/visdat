@@ -337,6 +337,15 @@ Here, you might just assume your data is weird because it's all factors - or wor
 
 At the moment `vis_guess` is very slow. Please take this into consideration when you are using it on data with more than 1000 rows. We're looking into ways of making it faster, potentially using methods from the `parallel` package, or extending the c++ code from `readr:::collectorGuess`.
 
+## `vis_histogram()`
+
+`vis_histogram()` visualises the distribution of every numeric column in a 
+dataframe and displays it using a faceted ggplot object.
+
+```{r vis-histogram}
+vis_histogram(airquality, bins = 30)
+```
+
 # Interactivity
 
 You can make the plots in visdat by wrapping them in `plotly::ggplotly`:
