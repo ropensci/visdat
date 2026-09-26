@@ -1,3 +1,5 @@
+# visdat (development version)
+
 # visdat 0.6.1 (2026/08/12) "Don't I Hold You, Wheat"
 
 ## New features
