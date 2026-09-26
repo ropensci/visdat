@@ -53,6 +53,11 @@ reference:
       Potentially reveal hidden patterns by seeing scaled values
     contents:
       - vis_value
+  - title: "Display the distribution of numeric variables"
+    desc: >
+      Quickly explore distributions, creating a histogram for each variable
+    contents:
+      - vis_histogram
   - title: "Example data provided with visdat"
     desc: >
       Data is provided for exploring different functions in visdat

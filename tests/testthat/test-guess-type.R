@@ -1,5 +1,4 @@
 # jarl-ignore-file true_false_symbol: vectors are deliberately bad
-# Date: 2026-08-12
 test_that("guess_element correctly identifies individual elements", {
   expect_identical(guess_type(TRUE), "logical")
   expect_identical(guess_type(TRUE), "logical")
